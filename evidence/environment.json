@@ -17,7 +17,18 @@
     "error_code": "AADSTS700082",
     "reason": "refresh_token_expired_inactivity",
     "capacity_list_query": "not_executed_after_auth_failure",
-    "identity_type_user_reported": "personal_microsoft_account"
+    "identity_type_user_reported": "personal_microsoft_account",
+    "portal_observation": {
+      "observed_at_utc": "2026-11-11T23:34:21.107010+00:00",
+      "authenticated": true,
+      "subscription_display_label": "Azure for Students",
+      "subscription_role_displayed": "Owner",
+      "entra_directory_visible": true,
+      "evidence": "user_supplied_screenshot_and_native_portal_observation",
+      "offer_terms_and_credit_balance_verified": false,
+      "entra_users_inspected": false,
+      "entra_roles_verified": false
+    }
   },
   "fabric": {
     "portal_observation": "sign_in_required",

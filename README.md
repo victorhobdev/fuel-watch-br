@@ -15,7 +15,8 @@ O projeto começou nesta pasta, que continha somente um Git vazio, sem commits e
 | Idempotência local | Duas execuções reais com o mesmo hash de estado de negócio |
 | Correção antiga e recuperação | Testadas com fixtures sintéticos identificados |
 | Notebook PySpark de Bronze | Código preparado; não executado no Fabric |
-| Fabric, capacidade e workspaces | Conta pessoal informada; acesso ainda não configurado; token Azure expirado na consulta online |
+| Acesso Azure | Portal confirmado; assinatura exibida como Azure for Students e papel Owner; saldo não verificado; CLI com token expirado na última consulta |
+| Fabric, capacidade e workspaces | Conta pessoal; usuário Entra e acesso ao Fabric ainda não confirmados |
 | Silver Delta, Warehouse Gold e pipeline | Não implementados/validados no Fabric |
 | SCD2, segurança, implantação e streaming | Etapas posteriores; sem resultado reivindicado |
 
