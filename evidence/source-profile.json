@@ -1,0 +1,498 @@
+{
+  "generated_at_utc": "2026-11-11T23:25:04.108010+00:00",
+  "execution_environment": "local_python_not_fabric",
+  "versions": {
+    "python": "3.13.5",
+    "pandas": "2.3.2",
+    "pyarrow": "23.0.1"
+  },
+  "sources": {
+    "anp": {
+      "run_id": "2619e683-b248-49e6-85e7-80a14a6dc6ae",
+      "source_id": "anp_2026_1",
+      "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/shpc/dsas/ca/ca-2026-01.zip",
+      "filename": "ca-2026-01.zip",
+      "source_page": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/serie-historica-de-precos-de-combustiveis",
+      "declared_period_start": "2026-01-01",
+      "declared_period_end": "2026-06-30",
+      "started_at_utc": "2026-11-11T23:12:54.722091+00:00",
+      "http_status": 200,
+      "resolved_url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/shpc/dsas/ca/ca-2026-01.zip",
+      "content_type": "application/zip",
+      "content_encoding": null,
+      "last_modified": null,
+      "etag": null,
+      "status": "identical_content",
+      "sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+      "bytes": 8488624,
+      "path": "data/raw/anp_2026_1/a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c/ca-2026-01.zip",
+      "finished_at_utc": "2026-11-11T23:12:56.417541+00:00"
+    },
+    "ibge": {
+      "run_id": "8c060476-118a-487d-ae32-e0e365c94917",
+      "source_id": "ibge_municipios_rj",
+      "url": "https://servicodados.ibge.gov.br/api/v1/localidades/estados/33/municipios",
+      "filename": "municipios-rj.json",
+      "source_page": "https://servicodados.ibge.gov.br/api/docs/localidades",
+      "started_at_utc": "2026-11-11T23:12:56.418224+00:00",
+      "http_status": 200,
+      "resolved_url": "https://servicodados.ibge.gov.br/api/v1/localidades/estados/33/municipios",
+      "content_type": "application/json; charset=utf-8",
+      "content_encoding": "gzip",
+      "last_modified": null,
+      "etag": null,
+      "status": "identical_content",
+      "sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+      "bytes": 2105,
+      "path": "data/raw/ibge_municipios_rj/2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0/municipios-rj.json",
+      "finished_at_utc": "2026-11-11T23:12:56.631146+00:00"
+    }
+  },
+  "layout": {
+    "csv_member": "Preços semestrais - AUTOMOTIVOS_2026.01.csv",
+    "csv_sha256": "04406f4e411380c07fff0343a746bcc5ef693bd4b26a267101ab0698c44b76a9",
+    "csv_bytes": 72117162,
+    "utf8_bom": true,
+    "encoding": "utf-8-sig (strict)",
+    "delimiter": ";",
+    "decimal_separator": ",",
+    "columns": [
+      {
+        "name": "Regiao - Sigla",
+        "raw_type": "string",
+        "empty_rows": 0,
+        "distinct_values": 5
+      },
+      {
+        "name": "Estado - Sigla",
+        "raw_type": "string",
+        "empty_rows": 0,
+        "distinct_values": 27
+      },
+      {
+        "name": "Municipio",
+        "raw_type": "string",
+        "empty_rows": 0,
+        "distinct_values": 416
+      },
+      {
+        "name": "Revenda",
+        "raw_type": "string",
+        "empty_rows": 0,
+        "distinct_values": 7021
+      },
+      {
+        "name": "CNPJ da Revenda",
+        "raw_type": "string",
+        "empty_rows": 0,
+        "distinct_values": 7963
+      },
+      {
+        "name": "Nome da Rua",
+        "raw_type": "string",
+        "empty_rows": 0,
+        "distinct_values": 5356
+      },
+      {
+        "name": "Numero Rua",
+        "raw_type": "string",
+        "empty_rows": 6,
+        "distinct_values": 2988
+      },
+      {
+        "name": "Complemento",
+        "raw_type": "string",
+        "empty_rows": 326259,
+        "distinct_values": 1388
+      },
+      {
+        "name": "Bairro",
+        "raw_type": "string",
+        "empty_rows": 728,
+        "distinct_values": 3781
+      },
+      {
+        "name": "Cep",
+        "raw_type": "string",
+        "empty_rows": 0,
+        "distinct_values": 6262
+      },
+      {
+        "name": "Produto",
+        "raw_type": "string",
+        "empty_rows": 0,
+        "distinct_values": 6
+      },
+      {
+        "name": "Data da Coleta",
+        "raw_type": "string",
+        "empty_rows": 0,
+        "distinct_values": 136
+      },
+      {
+        "name": "Valor de Venda",
+        "raw_type": "string",
+        "empty_rows": 0,
+        "distinct_values": 614
+      },
+      {
+        "name": "Valor de Compra",
+        "raw_type": "string",
+        "empty_rows": 422418,
+        "distinct_values": 1
+      },
+      {
+        "name": "Unidade de Medida",
+        "raw_type": "string",
+        "empty_rows": 0,
+        "distinct_values": 2
+      },
+      {
+        "name": "Bandeira",
+        "raw_type": "string",
+        "empty_rows": 0,
+        "distinct_values": 47
+      }
+    ]
+  },
+  "full_file": {
+    "rows": 422418,
+    "column_count": 16,
+    "exact_duplicate_excess_rows": 6,
+    "date_start": "2026-01-01",
+    "date_end": "2026-06-30",
+    "invalid_date_rows": 0,
+    "candidate_keys": [
+      {
+        "columns": [
+          "CNPJ da Revenda",
+          "Produto",
+          "Data da Coleta"
+        ],
+        "duplicate_excess_rows": 6,
+        "conflicting_keys_after_exact_dedup": 0,
+        "conflicting_rows_after_exact_dedup": 0
+      },
+      {
+        "columns": [
+          "CNPJ da Revenda",
+          "Produto",
+          "Data da Coleta",
+          "Unidade de Medida"
+        ],
+        "duplicate_excess_rows": 6,
+        "conflicting_keys_after_exact_dedup": 0,
+        "conflicting_rows_after_exact_dedup": 0
+      }
+    ],
+    "cnpj_format_invalid_rows": 0,
+    "cnpj_leading_whitespace_rows": 422418,
+    "products": {
+      "DIESEL": {
+        "rows": 45814,
+        "min": "5.09",
+        "max": "9.45",
+        "invalid_format_or_precision_rows": 0,
+        "non_positive_rows": 0,
+        "max_observed_decimal_scale": 2,
+        "units": [
+          "R$ / litro"
+        ]
+      },
+      "DIESEL S10": {
+        "rows": 77118,
+        "min": "5.33",
+        "max": "9.99",
+        "invalid_format_or_precision_rows": 0,
+        "non_positive_rows": 0,
+        "max_observed_decimal_scale": 2,
+        "units": [
+          "R$ / litro"
+        ]
+      },
+      "ETANOL": {
+        "rows": 93893,
+        "min": "2.89",
+        "max": "6.99",
+        "invalid_format_or_precision_rows": 0,
+        "non_positive_rows": 0,
+        "max_observed_decimal_scale": 2,
+        "units": [
+          "R$ / litro"
+        ]
+      },
+      "GASOLINA": {
+        "rows": 110925,
+        "min": "5.09",
+        "max": "9.79",
+        "invalid_format_or_precision_rows": 0,
+        "non_positive_rows": 0,
+        "max_observed_decimal_scale": 2,
+        "units": [
+          "R$ / litro"
+        ]
+      },
+      "GASOLINA ADITIVADA": {
+        "rows": 86231,
+        "min": "5.36",
+        "max": "9.89",
+        "invalid_format_or_precision_rows": 0,
+        "non_positive_rows": 0,
+        "max_observed_decimal_scale": 2,
+        "units": [
+          "R$ / litro"
+        ]
+      },
+      "GNV": {
+        "rows": 8437,
+        "min": "3.28",
+        "max": "6.49",
+        "invalid_format_or_precision_rows": 0,
+        "non_positive_rows": 0,
+        "max_observed_decimal_scale": 2,
+        "units": [
+          "R$ / m³"
+        ]
+      }
+    }
+  },
+  "slice": {
+    "scope_id": "anp-2026-1-rj-gasolina",
+    "anp_source_id": "anp_2026_1",
+    "ibge_source_id": "ibge_municipios_rj",
+    "uf": "RJ",
+    "produto": "GASOLINA",
+    "date_start": "2026-01-01",
+    "date_end": "2026-06-30",
+    "contract_version": "0.1",
+    "rows": 8052,
+    "excluded_rows": 414366,
+    "stations": 502,
+    "municipalities": 27,
+    "exact_duplicate_excess_rows": 0,
+    "observed_multiple_station_names": 0,
+    "observed_multiple_flags": 14,
+    "municipality_coverage": [
+      {
+        "municipio_anp": "ANGRA DOS REIS",
+        "ibge_matches": [
+          "3300100"
+        ],
+        "rows": 204,
+        "stations": 14
+      },
+      {
+        "municipio_anp": "ARARUAMA",
+        "ibge_matches": [
+          "3300209"
+        ],
+        "rows": 172,
+        "stations": 7
+      },
+      {
+        "municipio_anp": "BARRA DO PIRAI",
+        "ibge_matches": [
+          "3300308"
+        ],
+        "rows": 168,
+        "stations": 8
+      },
+      {
+        "municipio_anp": "BARRA MANSA",
+        "ibge_matches": [
+          "3300407"
+        ],
+        "rows": 259,
+        "stations": 14
+      },
+      {
+        "municipio_anp": "BELFORD ROXO",
+        "ibge_matches": [
+          "3300456"
+        ],
+        "rows": 190,
+        "stations": 11
+      },
+      {
+        "municipio_anp": "CABO FRIO",
+        "ibge_matches": [
+          "3300704"
+        ],
+        "rows": 208,
+        "stations": 9
+      },
+      {
+        "municipio_anp": "CAMPOS DOS GOYTACAZES",
+        "ibge_matches": [
+          "3301009"
+        ],
+        "rows": 89,
+        "stations": 17
+      },
+      {
+        "municipio_anp": "DUQUE DE CAXIAS",
+        "ibge_matches": [
+          "3301702"
+        ],
+        "rows": 301,
+        "stations": 23
+      },
+      {
+        "municipio_anp": "ITABORAI",
+        "ibge_matches": [
+          "3301900"
+        ],
+        "rows": 251,
+        "stations": 15
+      },
+      {
+        "municipio_anp": "ITAPERUNA",
+        "ibge_matches": [
+          "3302205"
+        ],
+        "rows": 126,
+        "stations": 6
+      },
+      {
+        "municipio_anp": "MACAE",
+        "ibge_matches": [
+          "3302403"
+        ],
+        "rows": 193,
+        "stations": 9
+      },
+      {
+        "municipio_anp": "MARICA",
+        "ibge_matches": [
+          "3302700"
+        ],
+        "rows": 179,
+        "stations": 12
+      },
+      {
+        "municipio_anp": "NILOPOLIS",
+        "ibge_matches": [
+          "3303203"
+        ],
+        "rows": 178,
+        "stations": 8
+      },
+      {
+        "municipio_anp": "NITEROI",
+        "ibge_matches": [
+          "3303302"
+        ],
+        "rows": 408,
+        "stations": 31
+      },
+      {
+        "municipio_anp": "NOVA FRIBURGO",
+        "ibge_matches": [
+          "3303401"
+        ],
+        "rows": 273,
+        "stations": 13
+      },
+      {
+        "municipio_anp": "NOVA IGUACU",
+        "ibge_matches": [
+          "3303500"
+        ],
+        "rows": 346,
+        "stations": 25
+      },
+      {
+        "municipio_anp": "PETROPOLIS",
+        "ibge_matches": [
+          "3303906"
+        ],
+        "rows": 338,
+        "stations": 26
+      },
+      {
+        "municipio_anp": "RESENDE",
+        "ibge_matches": [
+          "3304201"
+        ],
+        "rows": 208,
+        "stations": 11
+      },
+      {
+        "municipio_anp": "RIO BONITO",
+        "ibge_matches": [
+          "3304300"
+        ],
+        "rows": 161,
+        "stations": 7
+      },
+      {
+        "municipio_anp": "RIO DE JANEIRO",
+        "ibge_matches": [
+          "3304557"
+        ],
+        "rows": 2141,
+        "stations": 143
+      },
+      {
+        "municipio_anp": "SANTO ANTONIO DE PADUA",
+        "ibge_matches": [
+          "3304706"
+        ],
+        "rows": 248,
+        "stations": 10
+      },
+      {
+        "municipio_anp": "SAO GONCALO",
+        "ibge_matches": [
+          "3304904"
+        ],
+        "rows": 441,
+        "stations": 27
+      },
+      {
+        "municipio_anp": "SAO JOAO DE MERITI",
+        "ibge_matches": [
+          "3305109"
+        ],
+        "rows": 244,
+        "stations": 12
+      },
+      {
+        "municipio_anp": "SAQUAREMA",
+        "ibge_matches": [
+          "3305505"
+        ],
+        "rows": 167,
+        "stations": 12
+      },
+      {
+        "municipio_anp": "TRES RIOS",
+        "ibge_matches": [
+          "3306008"
+        ],
+        "rows": 133,
+        "stations": 8
+      },
+      {
+        "municipio_anp": "VALENCA",
+        "ibge_matches": [
+          "3306107"
+        ],
+        "rows": 140,
+        "stations": 8
+      },
+      {
+        "municipio_anp": "VOLTA REDONDA",
+        "ibge_matches": [
+          "3306305"
+        ],
+        "rows": 286,
+        "stations": 16
+      }
+    ]
+  },
+  "ibge": {
+    "municipalities_in_reference": 92,
+    "ambiguous_normalized_keys": 0
+  }
+}

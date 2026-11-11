@@ -1,0 +1,15 @@
+test_ambiguous_municipality_is_not_arbitrarily_chosen (test_contract.ContractTests.test_ambiguous_municipality_is_not_arbitrarily_chosen) ... ok
+test_decimal_and_leading_zero_cnpj_are_preserved (test_contract.ContractTests.test_decimal_and_leading_zero_cnpj_are_preserved) ... ok
+test_exact_duplicates_and_conflicts_are_distinct (test_contract.ContractTests.test_exact_duplicates_and_conflicts_are_distinct) ... ok
+test_extreme_positive_price_is_not_invalid (test_contract.ContractTests.test_extreme_positive_price_is_not_invalid) ... ok
+test_ibge_compressed_and_plain_responses (test_contract.ContractTests.test_ibge_compressed_and_plain_responses) ... ok
+test_invalid_values_are_quarantined_with_original (test_contract.ContractTests.test_invalid_values_are_quarantined_with_original) ... ok
+test_conflicting_delivery_does_not_advance_current (test_local_snapshot.SnapshotTests.test_conflicting_delivery_does_not_advance_current) ... ok
+test_quarantine_and_outlier_do_not_share_rejection_rule (test_local_snapshot.SnapshotTests.test_quarantine_and_outlier_do_not_share_rejection_rule) ... ok
+test_repeat_then_old_correction_and_removed_row_replace_scope (test_local_snapshot.SnapshotTests.test_repeat_then_old_correction_and_removed_row_replace_scope) ... ok
+test_write_failure_preserves_current_and_retry_does_not_duplicate (test_local_snapshot.SnapshotTests.test_write_failure_preserves_current_and_retry_does_not_duplicate) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.225s
+
+OK

@@ -1,0 +1,75 @@
+{
+  "verified_at_utc": "2026-11-11T23:23:14.030873+00:00",
+  "environment": "local_not_fabric",
+  "tests": {
+    "count": 10,
+    "failures": 0,
+    "errors": 0,
+    "successful": true,
+    "log": "evidence/tests-local.txt"
+  },
+  "notebook": {
+    "code_cells_compiled": 3,
+    "executed_in_fabric": false,
+    "executed_locally": false,
+    "syntax_verified_at_utc": "2026-11-11T23:27:53.294891+00:00",
+    "file_sha256": "77293d26ecc8361ff9c829d639dae0ccaaa20bc3c22d4234d76430f387a0a214"
+  },
+  "parquet": {
+    "rows": 8052,
+    "schema_verified": true,
+    "unique_business_keys": 8052,
+    "stations": 502,
+    "municipalities": 27,
+    "business_sha256_recomputed": "cf058cb4ddd6f1c323d46c2f2e795d5f11733e9a7196ec1c25f2e7b1e26869a4"
+  },
+  "real_runs": [
+    {
+      "run_id": "932c0a14-e02d-4508-b291-09d509d59b1d",
+      "started_at_utc": "2026-11-11T23:17:07.980899+00:00",
+      "status": "validated_local",
+      "counts": {
+        "received_full_file": 422418,
+        "outside_slice": 414366,
+        "selected": 8052,
+        "invalid": 0,
+        "exact_duplicate_excess": 0,
+        "conflicting_rows_after_exact_dedup": 0,
+        "accepted": 8052
+      },
+      "business_sha256": "cf058cb4ddd6f1c323d46c2f2e795d5f11733e9a7196ec1c25f2e7b1e26869a4"
+    },
+    {
+      "run_id": "e99c5efc-b148-486a-ae1c-6475e61bbb6f",
+      "started_at_utc": "2026-11-11T23:17:55.226263+00:00",
+      "status": "validated_local",
+      "counts": {
+        "received_full_file": 422418,
+        "outside_slice": 414366,
+        "selected": 8052,
+        "invalid": 0,
+        "exact_duplicate_excess": 0,
+        "conflicting_rows_after_exact_dedup": 0,
+        "accepted": 8052
+      },
+      "business_sha256": "cf058cb4ddd6f1c323d46c2f2e795d5f11733e9a7196ec1c25f2e7b1e26869a4"
+    },
+    {
+      "run_id": "1afcc98b-3587-4b1a-8d66-94ec90c2dcc7",
+      "started_at_utc": "2026-11-11T23:23:11.647241+00:00",
+      "status": "validated_local",
+      "counts": {
+        "received_full_file": 422418,
+        "outside_slice": 414366,
+        "selected": 8052,
+        "invalid": 0,
+        "exact_duplicate_excess": 0,
+        "conflicting_rows_after_exact_dedup": 0,
+        "accepted": 8052
+      },
+      "business_sha256": "cf058cb4ddd6f1c323d46c2f2e795d5f11733e9a7196ec1c25f2e7b1e26869a4"
+    }
+  ],
+  "republication_test": "synthetic_only_no_changed_official_delivery_observed",
+  "fabric_execution": false
+}

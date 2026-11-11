@@ -1,0 +1,19 @@
+{
+  "anp_2026_1": {
+    "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/shpc/dsas/ca/ca-2026-01.zip",
+    "filename": "ca-2026-01.zip",
+    "source_page": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/serie-historica-de-precos-de-combustiveis",
+    "declared_period_start": "2026-01-01",
+    "declared_period_end": "2026-06-30"
+  },
+  "ibge_municipios_rj": {
+    "url": "https://servicodados.ibge.gov.br/api/v1/localidades/estados/33/municipios",
+    "filename": "municipios-rj.json",
+    "source_page": "https://servicodados.ibge.gov.br/api/docs/localidades"
+  },
+  "anp_metadados": {
+    "url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/shpc/metadados-serie-historica-precos-combustiveis-1.pdf",
+    "filename": "metadados-anp.pdf",
+    "source_page": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/serie-historica-de-precos-de-combustiveis"
+  }
+}

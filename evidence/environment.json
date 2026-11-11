@@ -1,0 +1,30 @@
+{
+  "observed_at_utc": "2026-11-11T23:27:53.279108+00:00",
+  "local": {
+    "git": "2.49.0.windows.1",
+    "python": "3.13.5",
+    "pandas": "2.3.2",
+    "pyarrow": "23.0.1",
+    "pyspark_available": false
+  },
+  "azure": {
+    "credit_usd_user_reported": 100,
+    "credit_balance_verified_online": false,
+    "cached_subscription_count": 1,
+    "cached_default_subscription_state": "Enabled",
+    "cached_offer_type": "not_identified",
+    "live_subscription_query": "failed_authentication",
+    "error_code": "AADSTS700082",
+    "reason": "refresh_token_expired_inactivity",
+    "capacity_list_query": "not_executed_after_auth_failure",
+    "identity_type_user_reported": "personal_microsoft_account"
+  },
+  "fabric": {
+    "portal_observation": "sign_in_required",
+    "user_reported_access": "not_configured",
+    "capacity_verified": false,
+    "workspaces_verified": false,
+    "executed": false
+  },
+  "resources_created": false
+}

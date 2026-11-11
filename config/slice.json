@@ -1,0 +1,10 @@
+{
+  "scope_id": "anp-2026-1-rj-gasolina",
+  "anp_source_id": "anp_2026_1",
+  "ibge_source_id": "ibge_municipios_rj",
+  "uf": "RJ",
+  "produto": "GASOLINA",
+  "date_start": "2026-01-01",
+  "date_end": "2026-06-30",
+  "contract_version": "0.1"
+}

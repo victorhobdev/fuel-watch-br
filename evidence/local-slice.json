@@ -1,0 +1,40 @@
+{
+  "run_id": "1afcc98b-3587-4b1a-8d66-94ec90c2dcc7",
+  "started_at_utc": "2026-11-11T23:23:11.647241+00:00",
+  "environment": "local_not_fabric",
+  "scope": {
+    "scope_id": "anp-2026-1-rj-gasolina",
+    "anp_source_id": "anp_2026_1",
+    "ibge_source_id": "ibge_municipios_rj",
+    "uf": "RJ",
+    "produto": "GASOLINA",
+    "date_start": "2026-01-01",
+    "date_end": "2026-06-30",
+    "contract_version": "0.1"
+  },
+  "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+  "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+  "csv_member": "Preços semestrais - AUTOMOTIVOS_2026.01.csv",
+  "csv_sha256": "04406f4e411380c07fff0343a746bcc5ef693bd4b26a267101ab0698c44b76a9",
+  "csv_bytes": 72117162,
+  "utf8_bom": true,
+  "counts": {
+    "received_full_file": 422418,
+    "outside_slice": 414366,
+    "selected": 8052,
+    "invalid": 0,
+    "exact_duplicate_excess": 0,
+    "conflicting_rows_after_exact_dedup": 0,
+    "accepted": 8052
+  },
+  "status": "validated_local",
+  "business_sha256": "cf058cb4ddd6f1c323d46c2f2e795d5f11733e9a7196ec1c25f2e7b1e26869a4",
+  "unusual_iqr_rows": 26,
+  "iqr_lower": "5.4050",
+  "iqr_upper": "7.7650",
+  "finished_at_utc": "2026-11-11T23:23:11.782241+00:00",
+  "previous_business_sha256": "cf058cb4ddd6f1c323d46c2f2e795d5f11733e9a7196ec1c25f2e7b1e26869a4",
+  "same_business_state_as_previous": true,
+  "artifacts": "data/local/anp-2026-1-rj-gasolina/1afcc98b-3587-4b1a-8d66-94ec90c2dcc7",
+  "municipality_count": 27
+}
