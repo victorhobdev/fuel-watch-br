@@ -31,11 +31,18 @@
     }
   },
   "fabric": {
-    "portal_observation": "sign_in_required",
-    "user_reported_access": "not_configured",
-    "capacity_verified": false,
-    "workspaces_verified": false,
-    "executed": false
+    "portal_observation": "user_supplied_screenshot_signed_in_power_bi_experience",
+    "user_reported_access": "signed_in",
+    "user_reported_trial_days": 60,
+    "lakehouse_creation_user_reported": true,
+    "lakehouse_name_expected_from_instructions": "lh_fuelwatch",
+    "workspace_name_expected_from_instructions": "fuelwatch-dev",
+    "capacity_details_verified": false,
+    "workspace_details_verified": false,
+    "pipeline_execution_verified": false,
+    "spark_execution_verified": false,
+    "progress_recorded_at_utc": "2026-11-11T23:59:07.215104+00:00"
   },
-  "resources_created": false
+  "cloud_resources_created_by_agent": false,
+  "cloud_items_created_user_reported": true
 }
