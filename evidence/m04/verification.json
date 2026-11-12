@@ -1,0 +1,37 @@
+{
+  "verified_at_utc": "2026-11-12T23:06:34.279151+00:00",
+  "tests": {
+    "run": 31,
+    "failures": 0,
+    "errors": 0,
+    "successful": true
+  },
+  "m04_specific_tests": 8,
+  "preserved_m02_m03": [
+    {
+      "path": "notebooks/03_ibge_reference.ipynb",
+      "sha256": "15dce41fe238931ebd756ddf129d9247c6b2923c336acb7bd7e145af4c740ca6",
+      "unchanged": true
+    },
+    {
+      "path": "notebooks/04_bronze_to_silver.ipynb",
+      "sha256": "6f3a5159f2227a9e48ab68dfdc6d0611b67e6c9fad33bd930675d13e51720d1c",
+      "unchanged": true
+    },
+    {
+      "path": "fuelwatch/versioning_lab.py",
+      "unchanged_from_head": true
+    },
+    {
+      "path": "scripts/prepare_m03_lab.py",
+      "unchanged_from_head": true
+    },
+    {
+      "path": "tests/test_versioning_lab.py",
+      "unchanged_from_head": true
+    }
+  ],
+  "tsql_procedure_compiled_in_fabric": false,
+  "fabric_executed": false,
+  "official_input_adapter_implemented": false
+}

@@ -24,7 +24,7 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 | M01 | Ingestão e Bronze com repetição validada no Fabric | CONCLUÍDO | M00 |
 | M02 | IBGE e Silver tipada/validada no Fabric | CONCLUÍDO | M01 |
 | M03 | Versões de origem, correções antigas e backfill | PREPARAÇÃO LOCAL | M02 para execução Fabric |
-| M04 | Gold dimensional e histórico observado do posto | PLANEJADO | M03 |
+| M04 | Gold dimensional e histórico observado do posto | PREPARAÇÃO LOCAL | M03 para integração/execução Fabric |
 | M05 | Pipeline mestre e recuperação entre camadas | PLANEJADO | M04 |
 | M06 | Exercício delimitado de Dataflow Gen2 | PLANEJADO | M02 |
 | M07 | Acessos e governança com testes reais | PLANEJADO | M04 |
@@ -119,6 +119,8 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 **Métrica de saída:** diferenças de preço/contagem inexplicadas = 0; sobreposições SCD2 = 0; associações temporais ambíguas = 0.
 
 **Arquivos previstos:** `sql/warehouse/01_schema.sql`, `02_station_history.sql`, `03_publish_gold.sql`, `04_reconcile.sql`, `docs/data-model.md`, `evidence/fabric/gold/`.
+
+**Preparação em 12/11:** [modelo e roteiro M04](../../data-model.md), quatro scripts T-SQL, oito testes locais e [ensaio relacional real](../../../evidence/m04/local-gold.json). Reconciliação local de 8.052 coletas e 518 versões observadas; nenhuma execução Fabric. Adaptador da versão oficial depende do contrato aceito no M03; os cinco critérios permanecem abertos.
 
 ## M05 — Orquestração e recuperação entre camadas
 
@@ -274,6 +276,7 @@ Em cada sessão, acrescentar uma linha. As mudanças de estado exigem links para
 | 12/11/2026 | M02 | EM ANDAMENTO — 4/5 critérios | JSON 8405ed03 conferido: fixture aprovado, Silver Delta 0, 8.052 coletas, 502 postos, 27 municípios, 26 sinais e zero diferenças de negócio | Repetir notebook 04 com os mesmos snapshots; comprovar same_business_as_previous=true |
 | 12/11/2026 | M03 | PREPARAÇÃO LOCAL | 15 tentativas sintéticas reconciliadas, nove testes específicos; pacote M02 preservado | Aceitar Silver/repetição M02 e implementar notebook 05 |
 | 12/11/2026 | M02 | CONCLUÍDO — 5/5 critérios | JSON 5f55cb03 conferido: Delta 0 → 1, same_business_as_previous=true, contagens estáveis e comparação integral sem diferenças | Parar sessão 04; próximo marco M03, notebook 05 pendente |
+| 12/11/2026 | M04 | PREPARAÇÃO LOCAL | T-SQL e fixtures preparados; núcleo relacional e SCD2 verificados localmente sobre o snapshot M02 | Concluir M03; validar laboratório Warehouse e integrar snapshot aprovado |
 
 ## Dependências e referências oficiais
 

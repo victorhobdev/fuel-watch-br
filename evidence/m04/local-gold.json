@@ -1,0 +1,112 @@
+{
+  "run_id": "98af6309-4196-40fe-85f9-e299d3f3574f",
+  "generated_at_utc": "2026-11-12T23:07:15.924957+00:00",
+  "status": "gold_prepared_and_relational_core_validated_locally",
+  "environment": "local_duckdb_not_fabric",
+  "duckdb_version": "1.5.2",
+  "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+  "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+  "input": "M02 pinned reference.parquet, verified by approved manifest SHA",
+  "business_columns_compared": [
+    "cnpj",
+    "cnpj_origem",
+    "produto",
+    "data_coleta",
+    "preco_venda",
+    "moeda",
+    "unidade",
+    "uf",
+    "municipio_ibge",
+    "municipio_origem",
+    "revenda_observada",
+    "bandeira_observada",
+    "preco_incomum_iqr"
+  ],
+  "max_text_bytes_utf8": {
+    "cnpj": 14,
+    "cnpj_origem": 19,
+    "produto": 8,
+    "moeda": 3,
+    "unidade": 5,
+    "uf": 2,
+    "municipio_ibge": 7,
+    "municipio_origem": 22,
+    "revenda_observada": 76,
+    "bandeira_observada": 11
+  },
+  "stage_text_limits_bytes": {
+    "cnpj": 14,
+    "cnpj_origem": 80,
+    "produto": 80,
+    "moeda": 3,
+    "unidade": 30,
+    "uf": 2,
+    "municipio_ibge": 7,
+    "municipio_origem": 200,
+    "revenda_observada": 1000,
+    "bandeira_observada": 300
+  },
+  "counts": {
+    "observations": 8052,
+    "stations": 502,
+    "municipalities": 27,
+    "unusual_prices": 26,
+    "station_versions": 518,
+    "stations_with_multiple_flags": 14,
+    "stations_with_multiple_versions": 14,
+    "observed_attribute_transitions": {
+      "revenda_observada": 0,
+      "bandeira_observada": 16,
+      "municipio_ibge": 0
+    },
+    "same_day_attribute_ambiguities": 0,
+    "weekly_groups": 656
+  },
+  "reconciliation_errors": {
+    "missing_business_rows": 0,
+    "extra_business_rows": 0,
+    "duplicate_business_keys": 0,
+    "invalid_fact_references": 0,
+    "overlapping_station_intervals": 0,
+    "invalid_temporal_assignments": 0
+  },
+  "price_sum_fact": "52777.200",
+  "price_sum_weekly": "52777.200",
+  "same_state_on_replay": true,
+  "state_sha256": "2ffad44c409e3134554738e69d446420a02355f51c15b30e1872f1a774189d49",
+  "artifacts": "data/artifacts/m04/98af6309-4196-40fe-85f9-e299d3f3574f",
+  "synthetic_inputs_generated": [
+    "10_base",
+    "11_late_attribute",
+    "12_corrected_attribute",
+    "13_price_only",
+    "14_rejected_conflict"
+  ],
+  "prepared_sql_sha256": {
+    "sql/warehouse/01_schema.sql": "cf398e7e405c95e395cd58ed6429f17c53780f9b225a522f5fee3252208356bd",
+    "sql/warehouse/02_station_history.sql": "008dcfa21352cc7a689278f9c25d1052b1e0c27be923eaf24f73936575db24ab",
+    "sql/warehouse/03_publish_gold.sql": "4c4f44d8f51f7cebc306f9d98eba4ed3670db1ec78a7c58d29eb3337ac71a898",
+    "sql/warehouse/04_reconcile.sql": "7c35cded45735b36d5c8157b819a58a37bdfc54efc4ccb9bbe7e0e07e99aa232"
+  },
+  "generated_input_sha256": {
+    "05_seed_reference.sql": "b445a33628d464fd5ac0194ad067910ba370753842b021d244294b234810e628",
+    "10_base.sql": "838cd003b338221aefef902ddb683835358266dc7e667dc524d2e51a2a7d1128",
+    "11_late_attribute.sql": "2a449cab1d8cd3a12f77385d319719e47a210cd26449c2f7a57bd0ff6a0da63b",
+    "12_corrected_attribute.sql": "d7c6cd86d0454a6211e463b03c9c518320461f5eded44b59826188bae0a7596d",
+    "13_price_only.sql": "5186e0803d94843fce4631610a8bd74c7b0f2ddea048656282ce6df2ecd425d5",
+    "14_rejected_conflict.sql": "51de1225c78b13cc667ad3d60046f2eefaf38d9c5d9b275bb754dfe080e48aa7"
+  },
+  "fabric_executed": false,
+  "tsql_procedure_executed": false,
+  "local_adaptations": [
+    "bit -> BOOLEAN; datetime2(6) -> TIMESTAMP in local DDL",
+    "COUNT_BIG(*) -> COUNT(*)",
+    "DATALENGTH UTF8 macro",
+    "CAST(text AS varbinary(8000)) -> encode(text)"
+  ],
+  "limits": [
+    "DuckDB does not validate Fabric T-SQL compilation, collation or transaction behavior.",
+    "Real history reflects observed snapshots, not legal changes or bitemporal history.",
+    "Official input adapter depends on the accepted M03 publication contract."
+  ]
+}

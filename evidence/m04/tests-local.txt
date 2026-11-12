@@ -1,0 +1,36 @@
+test_ambiguous_municipality_is_not_arbitrarily_chosen (test_contract.ContractTests.test_ambiguous_municipality_is_not_arbitrarily_chosen) ... ok
+test_decimal_and_leading_zero_cnpj_are_preserved (test_contract.ContractTests.test_decimal_and_leading_zero_cnpj_are_preserved) ... ok
+test_exact_duplicates_and_conflicts_are_distinct (test_contract.ContractTests.test_exact_duplicates_and_conflicts_are_distinct) ... ok
+test_extreme_positive_price_is_not_invalid (test_contract.ContractTests.test_extreme_positive_price_is_not_invalid) ... ok
+test_ibge_compressed_and_plain_responses (test_contract.ContractTests.test_ibge_compressed_and_plain_responses) ... ok
+test_invalid_values_are_quarantined_with_original (test_contract.ContractTests.test_invalid_values_are_quarantined_with_original) ... ok
+test_attribute_correction_removes_obsolete_transition (test_gold_local.GoldTests.test_attribute_correction_removes_obsolete_transition) ... ok
+test_intervals_repetition_and_exact_boundary_assignment (test_gold_local.GoldTests.test_intervals_repetition_and_exact_boundary_assignment) ... ok
+test_iso_calendar_crosses_year_and_scope_boundary (test_gold_local.GoldTests.test_iso_calendar_crosses_year_and_scope_boundary) ... ok
+test_late_attribute_observation_splits_history_and_reassigns_facts (test_gold_local.GoldTests.test_late_attribute_observation_splits_history_and_reassigns_facts) ... ok
+test_observed_text_preserves_accent_case_and_trailing_space (test_gold_local.GoldTests.test_observed_text_preserves_accent_case_and_trailing_space) ... ok
+test_price_only_correction_does_not_create_station_version (test_gold_local.GoldTests.test_price_only_correction_does_not_create_station_version) ... ok
+test_rejected_input_preserves_published_fact_and_history (test_gold_local.GoldTests.test_rejected_input_preserves_published_fact_and_history) ... ok
+test_weekly_totals_reconcile_and_group_averages_need_weights (test_gold_local.GoldTests.test_weekly_totals_reconcile_and_group_averages_need_weights) ... ok
+test_conflicting_delivery_does_not_advance_current (test_local_snapshot.SnapshotTests.test_conflicting_delivery_does_not_advance_current) ... ok
+test_quarantine_and_outlier_do_not_share_rejection_rule (test_local_snapshot.SnapshotTests.test_quarantine_and_outlier_do_not_share_rejection_rule) ... ok
+test_repeat_then_old_correction_and_removed_row_replace_scope (test_local_snapshot.SnapshotTests.test_repeat_then_old_correction_and_removed_row_replace_scope) ... ok
+test_write_failure_preserves_current_and_retry_does_not_duplicate (test_local_snapshot.SnapshotTests.test_write_failure_preserves_current_and_retry_does_not_duplicate) ... ok
+test_approved_ibge_snapshot_and_tamper_detection (test_m02_reference.M02Tests.test_approved_ibge_snapshot_and_tamper_detection) ... ok
+test_bundle_is_deterministic_and_preserves_reference_types (test_m02_reference.M02Tests.test_bundle_is_deterministic_and_preserves_reference_types) ... ok
+test_interchange_mapping_preserves_all_source_columns (test_m02_reference.M02Tests.test_interchange_mapping_preserves_all_source_columns) ... ok
+test_synthetic_scenarios_match_shared_contract (test_m02_reference.M02Tests.test_synthetic_scenarios_match_shared_contract) ... ok
+test_conflicts_and_invalid_rows_preserve_active (test_versioning_lab.VersioningTests.test_conflicts_and_invalid_rows_preserve_active) ... ok
+test_exact_duplicate_does_not_add_an_observation (test_versioning_lab.VersioningTests.test_exact_duplicate_does_not_add_an_observation) ... ok
+test_hash_layout_and_scope_are_validated (test_versioning_lab.VersioningTests.test_hash_layout_and_scope_are_validated) ... ok
+test_late_addition_then_explicit_removal (test_versioning_lab.VersioningTests.test_late_addition_then_explicit_removal) ... ok
+test_official_scope_is_refused_and_inputs_are_not_mutated (test_versioning_lab.VersioningTests.test_official_scope_is_refused_and_inputs_are_not_mutated) ... ok
+test_old_correction_changes_only_january (test_versioning_lab.VersioningTests.test_old_correction_changes_only_january) ... ok
+test_partial_or_unapproved_removal_is_blocked (test_versioning_lab.VersioningTests.test_partial_or_unapproved_removal_is_blocked) ... ok
+test_same_delivery_keeps_business_and_pointer (test_versioning_lab.VersioningTests.test_same_delivery_keeps_business_and_pointer) ... ok
+test_stale_selection_cannot_regress_active (test_versioning_lab.VersioningTests.test_stale_selection_cannot_regress_active) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 1.163s
+
+OK
