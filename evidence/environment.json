@@ -53,7 +53,11 @@
     "bronze_replay_verified": false,
     "bronze_evidence_recorded_at_utc": "2026-11-12T00:21:05.416713+00:00",
     "bronze_replay_baseline_captured": true,
-    "bronze_replay_baseline_version": 0
+    "bronze_replay_baseline_version": 0,
+    "bronze_latest_run_id": "d174dc42-1327-47b6-acac-1da1300afbaf",
+    "bronze_run_outputs_received": 2,
+    "bronze_replay_reprocessed": true,
+    "bronze_counts_stable_after_replay": true
   },
   "cloud_resources_created_by_agent": false,
   "cloud_items_created_user_reported": true
