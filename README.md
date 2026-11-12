@@ -27,6 +27,8 @@ Os dados são amostrais. Ausência de observação não representa preço zero n
 
 Trabalho pausado pelo usuário após a validação da repetição Bronze. [Resumo e ponto de retomada](docs/retomada-2026-11-11.md). Próximo bloco: Silver PySpark, ainda não implementada no Fabric.
 
+[Roadmap completo e acompanhamento por marcos](docs/superpowers/plans/2026-11-12-fuel-watch-br-roadmap.md): 2 de 12 marcos concluídos, critérios de aceite, evidências e próximo bloco definidos. A elaboração do roadmap não iniciou a implementação da Silver.
+
 ## Reproduzir o bloco local
 
 Python 3.13.5 foi o ambiente observado. pandas e PyArrow já estavam disponíveis; não instalamos Spark nem modificamos a instalação global. Para outro ambiente, crie uma `.venv` e instale `requirements-local.txt` nela.
