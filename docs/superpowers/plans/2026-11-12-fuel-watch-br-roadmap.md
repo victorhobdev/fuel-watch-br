@@ -268,6 +268,7 @@ Em cada sessão, acrescentar uma linha. As mudanças de estado exigem links para
 | 11/11/2026 | M01 | CONCLUÍDO | Dois runs Bronze + comparação Delta 0 → 1, sem diferenças | Silver PySpark |
 | 12/11/2026 | Roadmap | REVISADO | Critérios e sequência definidos; execução de dados continua pausada | Retomar M02 quando solicitado |
 | 12/11/2026 | M02 | EM ANDAMENTO | Retomada solicitada; notebooks e bundle preparados, 14 testes locais; aceite Fabric aberto | Upload e execução do notebook 03 |
+| 12/11/2026 | M02 | EM ANDAMENTO | JSON do notebook 03 conferido: 92 municípios, zero ambiguidade e hashes aprovados | Parar sessão 03; executar notebook 04 |
 
 ## Dependências e referências oficiais
 

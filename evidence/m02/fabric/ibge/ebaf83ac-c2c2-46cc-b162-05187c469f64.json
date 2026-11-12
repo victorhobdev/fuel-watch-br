@@ -1,0 +1,18 @@
+{
+  "run_id": "ebaf83ac-c2c2-46cc-b162-05187c469f64",
+  "status": "ibge_reference_validated",
+  "environment": "fabric",
+  "source_mode": "preserved_official_http_snapshot_uploaded",
+  "source_url": "https://servicodados.ibge.gov.br/api/v1/localidades/estados/33/municipios",
+  "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+  "source_retrieved_at_utc": "2026-11-11T23:12:56.418224+00:00",
+  "spark_version": "4.1.1.5.5.20260929.238183312",
+  "python_version": "3.13.11",
+  "started_at_utc": "2026-11-12T22:30:19.624012+00:00",
+  "manifest_sha256": "01d587c6927b4d2aa93fea09acdfe61b2332508225c9aba554998d12d37e1aaa",
+  "raw_relative_path": "raw/ibge_municipios_rj/2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0/municipios-rj.http.gz",
+  "municipalities": 92,
+  "ambiguous_normalized_keys": 0,
+  "reference_table": "ref_municipio_ibge",
+  "finished_at_utc": "2026-11-12T22:30:40.897155+00:00"
+}

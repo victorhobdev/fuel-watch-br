@@ -1,0 +1,13 @@
+{
+  "checked_at_utc": "2026-11-12T22:32:49.580018+00:00",
+  "evidence_source": "user_supplied_fabric_notebook_output",
+  "audit_file": "evidence/m02/fabric/ibge/ebaf83ac-c2c2-46cc-b162-05187c469f64.json",
+  "snapshot_hash_matches_approved": true,
+  "manifest_hash_matches_approved": true,
+  "municipality_count": 92,
+  "ambiguous_normalized_keys": 0,
+  "remote_table_independently_queried": false,
+  "notebook_04_matches_prepared_version": true,
+  "silver_executed": false,
+  "silver_replay_verified": false
+}

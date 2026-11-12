@@ -21,7 +21,7 @@ O projeto começou nesta pasta, que continha somente um Git vazio, sem commits e
 | Lakehouse | Criação informada pelo usuário; detalhes da capacidade e do workspace ainda não registrados |
 | Pipeline / Copy | Status Bem-sucedido informado pelo usuário; ZIP de landing identificado na auditoria Bronze recebida |
 | Silver Delta e Warehouse Gold | Não implementados/validados no Fabric |
-| M02 — IBGE e Silver | Notebooks 03/04 e pacote de upload preparados; 14 testes locais aprovados; execução M02 no Fabric pendente |
+| M02 — IBGE e Silver | Referência IBGE validada no Fabric: 92 municípios e zero ambiguidade; fixture, Silver e repetição pendentes; 14 testes locais aprovados |
 | SCD2, segurança, implantação e streaming | Etapas posteriores; sem resultado reivindicado |
 
 Os dados são amostrais. Ausência de observação não representa preço zero nem cobertura de todos os postos. A saída inicial preserva a coleta individual; não é uma fato semanal.
