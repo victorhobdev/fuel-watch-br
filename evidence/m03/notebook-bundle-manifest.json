@@ -1,0 +1,41 @@
+{
+  "bundle_version": "m03-v1",
+  "files": {
+    "fuelwatch_rules.zip": {
+      "bytes": 5703,
+      "sha256": "2284a0d113a715125a9f79e5b99e7c1af7237f6afccfeac48531a47804119744"
+    },
+    "scenarios.json": {
+      "bytes": 62472,
+      "sha256": "154720fa4933f9dcf1f3dac3df25822aad409e94ee66f572a509dc7b2ea30a85"
+    }
+  },
+  "is_synthetic": true,
+  "official_guard": {
+    "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+    "municipalities": 27,
+    "rows": 8052,
+    "scope": {
+      "anp_source_id": "anp_2026_1",
+      "contract_version": "0.1",
+      "date_end": "2026-06-30",
+      "date_start": "2026-01-01",
+      "ibge_source_id": "ibge_municipios_rj",
+      "produto": "GASOLINA",
+      "scope_id": "anp-2026-1-rj-gasolina",
+      "uf": "RJ"
+    },
+    "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+    "stations": 502,
+    "table": "silver_preco_coletado"
+  },
+  "scenario_count": 17,
+  "scope": {
+    "contract_version": "0.1",
+    "date_end": "2026-06-30",
+    "date_start": "2026-01-01",
+    "produto": "GASOLINA",
+    "scope_id": "lab_m03_2026_1_rj_gasolina",
+    "uf": "RJ"
+  }
+}

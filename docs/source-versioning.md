@@ -1,6 +1,6 @@
 # M03 — Versões, correções antigas e backfill
 
-Estado: **laboratório local preparado e executado; execução no Fabric pendente**. O pacote M02 permanece congelado enquanto sua Silver é executada. Não importar nem substituir notebooks do M02 para executar este laboratório.
+Estado: **laboratório local executado e notebook 05 entregue; execução no Fabric pendente**. O M02 foi aceito pelas evidências recebidas e seu pacote permanece preservado. Para executar agora, seguir o [guia do notebook 05](m03-fabric.md): três arquivos em `Files/m03_input`, Lakehouse padrão e Run all.
 
 ## Por que comparar versões completas
 
@@ -50,8 +50,8 @@ São 15 tentativas no roteiro. Todas verificam um segundo escopo sentinela, que 
 
 ## Próximo bloco no Fabric, após aceitar M02
 
-1. Registrar a primeira Silver e sua repetição sem diferenças: 8.052 coletas, 502 postos e 27 municípios. Guardar o JSON e as versões Delta. Esse é o pré-requisito; os testes locais não o substituem.
-2. Criar notebook 05 e tabelas com prefixo `lab_m03_`, sem alterar `silver_preco_coletado`. Preservar as entradas sintéticas no Lakehouse e importar as regras verificadas.
+1. Pré-requisito concluído: primeira Silver e repetição sem diferenças registradas, com 8.052 coletas, 502 postos e 27 municípios. O notebook 05 também confere o baseline antes de começar.
+2. Importar o notebook 05 entregue e enviar o pacote M03 conforme o guia. Ele cria tabelas com prefixo `lab_m03_`, sem alterar `silver_preco_coletado`, preserva as entradas e executa 17 tentativas. A evidência de preparação fica em `evidence/m03/notebook-preparation.json`.
 3. Definir o catálogo de entregas/tentativas e a seleção de versão por escopo. Separar tentativa recebida, candidata validada, candidata rejeitada e versão ativa. Uma versão já vista pode receber novas tentativas; seu SHA não define sozinho o estado da tentativa.
 4. Materializar a candidata antes da promoção. Reconciliar tipos, categorias de qualidade e diferenças completas de registros com a versão ativa. Guardar as chaves e valores antes/depois, não apenas contagens ou fingerprints.
 5. Executar os cinco cenários de aceite do roadmap em Spark/Delta: repetição, correção antiga, atraso, remoção e conflito. Conferir também snapshot parcial, retry e proteção de outro escopo. Usar execução serial até demonstrar um mecanismo seguro de promoção concorrente.
@@ -62,4 +62,4 @@ Backfill significa reprocessar um escopo/período explicitamente selecionado a p
 
 ## Aceite e limites
 
-O M03 continua aberto até haver evidência Fabric dos cinco critérios do roadmap. O laboratório atual verifica o contrato e as transições seriais em Python. Não verifica Spark, commit Delta, isolamento entre jobs, conectores ou recuperação de falhas de publicação em nuvem. Nenhum recurso Fabric ou pago foi criado por esta preparação.
+O M03 continua aberto até haver evidência Fabric dos cinco critérios do roadmap. Os testes locais verificam o contrato, fixtures e preflight; formato e sintaxe do notebook também são conferidos. Spark e commits Delta do notebook 05 ainda aguardam execução no Fabric. O notebook exercita uma exceção Python antes da promoção, sem prometer recuperação de perda de cluster ou atomicidade entre tabelas. A integração com o fluxo oficial continua posterior ao laboratório. Nenhum recurso Fabric ou pago foi criado por esta preparação.

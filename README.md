@@ -24,7 +24,7 @@ O projeto começou nesta pasta, que continha somente um Git vazio, sem commits e
 | Warehouse Gold | Ainda não implementado/validado no Fabric |
 | M04 — Gold e SCD2 | [T-SQL e modelo preparados](docs/data-model.md); ensaio local real com 8.052 coletas, 518 versões observadas e reconciliação sem diferenças; execução Fabric pendente |
 | M02 — IBGE e Silver | CONCLUÍDO: IBGE, fixture distribuído, primeira Silver e repetição validados; cinco de cinco critérios aceitos |
-| M03 — Versões e backfill | [Laboratório sintético](docs/source-versioning.md) executado localmente: 15 tentativas verificadas; implementação e execução Fabric pendentes |
+| M03 — Versões e backfill | [Notebook 05 e pacote entregues](docs/m03-fabric.md) para 17 tentativas sintéticas; 28 testes locais aprovados, execução Spark/Delta no Fabric pendente |
 | SCD2, segurança, implantação e streaming | Etapas posteriores; sem resultado reivindicado |
 
 Os dados são amostrais. Ausência de observação não representa preço zero nem cobertura de todos os postos. A saída inicial preserva a coleta individual; não é uma fato semanal.

@@ -1,0 +1,41 @@
+{
+  "verified_at_utc": "2026-11-12T23:14:24.746560+00:00",
+  "state": "delivered_pending_fabric_execution",
+  "local_tests": {
+    "run": 28,
+    "failures": 0,
+    "errors": 0,
+    "successful": true,
+    "modules": [
+      "tests.test_contract",
+      "tests.test_local_snapshot",
+      "tests.test_m02_reference",
+      "tests.test_versioning_lab",
+      "tests.test_m03_notebook"
+    ]
+  },
+  "notebook": {
+    "path": "notebooks/05_source_versions_backfill.ipynb",
+    "sha256": "79e817eeb9762ba85099ab19afb83a06a53d3c18c3175fcfb1964e834eb77974",
+    "schema_valid": true,
+    "code_cells_compiled": 3,
+    "matches_source": true
+  },
+  "bundle_manifest_sha256": "1750f8fc2f61fadc54c729ee7d45d41a0820168a654e35650aa58c27e01a9f0b",
+  "upload_directory": "data/artifacts/m03_fabric",
+  "upload_files": {
+    "fuelwatch_rules.zip": {
+      "bytes": 5703,
+      "sha256": "2284a0d113a715125a9f79e5b99e7c1af7237f6afccfeac48531a47804119744"
+    },
+    "scenarios.json": {
+      "bytes": 62472,
+      "sha256": "154720fa4933f9dcf1f3dac3df25822aad409e94ee66f572a509dc7b2ea30a85"
+    }
+  },
+  "scenario_count": 17,
+  "m02_notebooks_and_bundle_unchanged": true,
+  "spark_executed_locally": false,
+  "fabric_executed": false,
+  "limits": "No local PySpark installed; tests verify fixtures, preflight and packaging, not Spark/Delta execution."
+}

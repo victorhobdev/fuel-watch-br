@@ -23,7 +23,7 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 | M00 | Fontes, contrato e referência local | CONCLUÍDO | — |
 | M01 | Ingestão e Bronze com repetição validada no Fabric | CONCLUÍDO | M00 |
 | M02 | IBGE e Silver tipada/validada no Fabric | CONCLUÍDO | M01 |
-| M03 | Versões de origem, correções antigas e backfill | PREPARAÇÃO LOCAL | M02 para execução Fabric |
+| M03 | Versões de origem, correções antigas e backfill | PRONTO PARA EXECUÇÃO | M02 concluído |
 | M04 | Gold dimensional e histórico observado do posto | PREPARAÇÃO LOCAL | M03 para integração/execução Fabric |
 | M05 | Pipeline mestre e recuperação entre camadas | PLANEJADO | M04 |
 | M06 | Exercício delimitado de Dataflow Gen2 | PLANEJADO | M02 |
@@ -102,7 +102,7 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 
 **Arquivos previstos:** `notebooks/05_source_versions_backfill.ipynb`, ajustes no notebook 04, `docs/source-versioning.md`, `evidence/fabric/versioning/`.
 
-**Preparação em 12/11:** [contrato e roteiro](../../source-versioning.md), modelo serial sintético, nove testes específicos e [15 tentativas locais verificadas](../../../evidence/m03/local-lab.json). O notebook 05 e a publicação Delta ainda não foram implementados; os cinco critérios Fabric permanecem abertos. O pacote M02 não foi alterado por esta preparação.
+**Preparação em 12/11:** [notebook 05 e guia de execução](../../m03-fabric.md) entregues, pacote de três arquivos e 17 tentativas sintéticas incluindo falha antes da promoção/retry. São 28 testes locais aprovados e formato/sintaxe conferidos, conforme [evidência de preparação](../../../evidence/m03/notebook-preparation.json). Spark/Delta deste notebook ainda não foram executados; os cinco critérios Fabric permanecem abertos. O pacote M02 continua preservado.
 
 ## M04 — Warehouse Gold e SCD2
 
@@ -255,12 +255,12 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 ## Próximo bloco concreto: M03
 
 1. Preservar os artefatos M02 aceitos e conferir o contrato do laboratório local M03 já executado.
-2. Implementar o notebook 05 com tabelas e caminhos de laboratório separados dos dados oficiais; registrar versões, escopo completo e estado ativo.
+2. Importar o notebook 05 entregue e enviar os três arquivos para Files/m03_input; conferir o Lakehouse padrão antes de Run all.
 3. Exercitar repetição, correção antiga, chegada atrasada, remoção e rejeição de conflito; comparar valores esperados e registros não afetados.
 4. Demonstrar preservação da versão ativa em falha e reprocessamento rastreável, registrando os limites transacionais entre tabelas.
 5. Executar no Fabric, receber os resultados e fechar cada critério M03 somente com evidência real.
 
-O aceite Silver M02 foi fechado. O laboratório M03 já tem preparação local e sintética; o notebook 05 e sua execução no Fabric permanecem pendentes. Este documento distingue essa preparação da execução validada.
+O aceite Silver M02 foi fechado. O notebook 05 está entregue e aguardando execução no Fabric; integração do controle com a origem oficial permanece posterior ao laboratório. Este documento distingue preparação de execução validada.
 
 ## Registro de acompanhamento
 
@@ -275,6 +275,7 @@ Em cada sessão, acrescentar uma linha. As mudanças de estado exigem links para
 | 12/11/2026 | M02 | EM ANDAMENTO | JSON do notebook 03 conferido: 92 municípios, zero ambiguidade e hashes aprovados | Parar sessão 03; executar notebook 04 |
 | 12/11/2026 | M02 | EM ANDAMENTO — 4/5 critérios | JSON 8405ed03 conferido: fixture aprovado, Silver Delta 0, 8.052 coletas, 502 postos, 27 municípios, 26 sinais e zero diferenças de negócio | Repetir notebook 04 com os mesmos snapshots; comprovar same_business_as_previous=true |
 | 12/11/2026 | M03 | PREPARAÇÃO LOCAL | 15 tentativas sintéticas reconciliadas, nove testes específicos; pacote M02 preservado | Aceitar Silver/repetição M02 e implementar notebook 05 |
+| 12/11/2026 | M03 | PRONTO PARA EXECUÇÃO | Notebook 05, três arquivos de upload, 17 cenários e 28 testes locais; formato/sintaxe aprovados, sem execução Spark/Delta | Upload em m03_input; importar 05; executar Run all e enviar JSON |
 | 12/11/2026 | M02 | CONCLUÍDO — 5/5 critérios | JSON 5f55cb03 conferido: Delta 0 → 1, same_business_as_previous=true, contagens estáveis e comparação integral sem diferenças | Parar sessão 04; próximo marco M03, notebook 05 pendente |
 | 12/11/2026 | M04 | PREPARAÇÃO LOCAL | T-SQL e fixtures preparados; núcleo relacional e SCD2 verificados localmente sobre o snapshot M02 | Concluir M03; validar laboratório Warehouse e integrar snapshot aprovado |
 
