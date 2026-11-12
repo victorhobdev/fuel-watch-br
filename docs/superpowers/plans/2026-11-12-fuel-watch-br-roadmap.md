@@ -1,6 +1,6 @@
 # Roadmap do Fuel Watch BR — marcos verificáveis
 
-Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: resultados registrados até o encerramento de 11/11/2026. Este documento planeja as próximas etapas; não inicia sua execução.
+Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M02 aceitos com as evidências registradas até a repetição Silver de 12/11/2026 e preparação local do M03. Planejamento e execução validada são identificados separadamente.
 
 **Objetivo:** concluir um observatório explicável de preços de combustíveis no Microsoft Fabric, com fluxo batch confiável, segurança e implantação demonstradas, laboratório sintético de streaming e consumo mínimo.
 
@@ -10,7 +10,7 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: resulta
 
 ## Como acompanhar
 
-- **Estado atual: 2 de 12 marcos concluídos.** Isso conta entregas aceitas, não representa percentual de esforço ou de tempo.
+- **Estado atual: 3 de 12 marcos concluídos.** Isso conta entregas aceitas, não representa percentual de esforço ou de tempo.
 - Cada marco tem cinco critérios de aceite. Marcar uma caixa exige uma evidência identificada: execução, consulta, comparação, matriz ou documento verificado.
 - Código preparado, teste local e execução no Fabric são estados distintos. Uma etapa que depende de Fabric não fica concluída apenas por passar localmente.
 - Os JSONs Fabric existentes foram fornecidos pelo usuário e conferidos localmente. Essa proveniência acompanha as conclusões; não houve consulta remota independente pelo agente.
@@ -22,7 +22,7 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: resulta
 | --- | --- | --- | --- |
 | M00 | Fontes, contrato e referência local | CONCLUÍDO | — |
 | M01 | Ingestão e Bronze com repetição validada no Fabric | CONCLUÍDO | M00 |
-| M02 | IBGE e Silver tipada/validada no Fabric | EM ANDAMENTO | M01 |
+| M02 | IBGE e Silver tipada/validada no Fabric | CONCLUÍDO | M01 |
 | M03 | Versões de origem, correções antigas e backfill | PREPARAÇÃO LOCAL | M02 para execução Fabric |
 | M04 | Gold dimensional e histórico observado do posto | PLANEJADO | M03 |
 | M05 | Pipeline mestre e recuperação entre camadas | PLANEJADO | M04 |
@@ -80,11 +80,11 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: resulta
 - [x] Silver real com CNPJ string, data date e preço decimal(10,3); para os mesmos snapshots/contrato, reconciliar a referência local de 8.052 coletas, 502 postos e 27 municípios. Investigar qualquer diferença, sem ajustar os dados apenas para atingir a meta.
 - [x] Contagens fecham: recebidos = fora do recorte + selecionados; selecionados = inválidos + duplicatas exatas excedentes + conflitos após deduplicação + aceitos.
 - [x] Fixture inválido conserva original/motivo em quarentena; fixture extremo válido permanece aceito e sinalizado. Registrar o efeito do IQR e comparar com os 26 sinais locais sem transformar esse número em regra universal.
-- [ ] Segunda execução mantém o mesmo multiconjunto e valores de negócio da Silver; comparação integral com o Parquet local sem diferenças inexplicadas.
+- [x] Segunda execução mantém o mesmo multiconjunto e valores de negócio da Silver; comparação integral com o Parquet local sem diferenças inexplicadas.
 
 **Métrica de saída:** zero diferença inexplicada e 100% dos selecionados contabilizados. Não exigir zero rejeições em novas origens.
 
-**Evidências existentes:** `notebooks/03_ibge_reference.ipynb`, `notebooks/04_bronze_to_silver.ipynb`, pacote aprovado e 14 testes locais em `evidence/m02/preparation.json`; execuções IBGE e primeira Silver em `evidence/m02/fabric/`, com proveniência dos retornos e conferências locais. Quatro de cinco critérios aceitos. Repetição ainda não demonstrada; novo retorno deve comprovar o mesmo negócio após reprocessar.
+**Evidências existentes:** `notebooks/03_ibge_reference.ipynb`, `notebooks/04_bronze_to_silver.ipynb`, pacote aprovado e 14 testes locais em `evidence/m02/preparation.json`; execuções IBGE, primeira Silver e repetição em `evidence/m02/fabric/`, com proveniência dos retornos e conferências locais. Cinco de cinco critérios aceitos em 12/11/2026: Delta 0 → 1, `same_business_as_previous=true`, 8.052 coletas, 502 postos, 27 municípios e comparação integral sem diferenças. SKU/região/expiração exata do trial seguem como pendências operacionais, sem impedir o aceite dos cinco critérios de dados.
 
 ## M03 — Versões, correção histórica e backfill
 
@@ -250,15 +250,15 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: resulta
 
 **Fora do escopo inicial:** clima/INMET, população, predição, API/backend, frontend próprio, carga nacional de vários anos e operação permanente. Não usar essas extensões como requisito para concluir o projeto atual.
 
-## Próximo bloco concreto: M02
+## Próximo bloco concreto: M03
 
-1. Conferir os JSONs de aceite M01, o Lakehouse padrão e registrar os dados operacionais do trial/runtime sem informações pessoais de conta.
-2. Preservar e ler o snapshot IBGE no Fabric, tratando gzip e reconciliando seus códigos com a referência local.
-3. Criar Silver a partir do hash ANP aprovado; aplicar recorte e regras do contrato com tipos explícitos.
-4. Registrar aceitos, inválidos, duplicatas e conflitos; comparar integralmente com a fatia local e testar um inválido e um extremo válido em fixture.
-5. Reexecutar, comparar estado de negócio, salvar evidências e atualizar o aceite de M02.
+1. Preservar os artefatos M02 aceitos e conferir o contrato do laboratório local M03 já executado.
+2. Implementar o notebook 05 com tabelas e caminhos de laboratório separados dos dados oficiais; registrar versões, escopo completo e estado ativo.
+3. Exercitar repetição, correção antiga, chegada atrasada, remoção e rejeição de conflito; comparar valores esperados e registros não afetados.
+4. Demonstrar preservação da versão ativa em falha e reprocessamento rastreável, registrando os limites transacionais entre tabelas.
+5. Executar no Fabric, receber os resultados e fechar cada critério M03 somente com evidência real.
 
-Executar M03 no Fabric após fechar o aceite Silver. A pedido do usuário, a preparação local e sintética do M03 pode avançar enquanto M02 é executado, preservando seu pacote aprovado. Este documento distingue essa preparação da execução validada.
+O aceite Silver M02 foi fechado. O laboratório M03 já tem preparação local e sintética; o notebook 05 e sua execução no Fabric permanecem pendentes. Este documento distingue essa preparação da execução validada.
 
 ## Registro de acompanhamento
 
@@ -273,6 +273,7 @@ Em cada sessão, acrescentar uma linha. As mudanças de estado exigem links para
 | 12/11/2026 | M02 | EM ANDAMENTO | JSON do notebook 03 conferido: 92 municípios, zero ambiguidade e hashes aprovados | Parar sessão 03; executar notebook 04 |
 | 12/11/2026 | M02 | EM ANDAMENTO — 4/5 critérios | JSON 8405ed03 conferido: fixture aprovado, Silver Delta 0, 8.052 coletas, 502 postos, 27 municípios, 26 sinais e zero diferenças de negócio | Repetir notebook 04 com os mesmos snapshots; comprovar same_business_as_previous=true |
 | 12/11/2026 | M03 | PREPARAÇÃO LOCAL | 15 tentativas sintéticas reconciliadas, nove testes específicos; pacote M02 preservado | Aceitar Silver/repetição M02 e implementar notebook 05 |
+| 12/11/2026 | M02 | CONCLUÍDO — 5/5 critérios | JSON 5f55cb03 conferido: Delta 0 → 1, same_business_as_previous=true, contagens estáveis e comparação integral sem diferenças | Parar sessão 04; próximo marco M03, notebook 05 pendente |
 
 ## Dependências e referências oficiais
 

@@ -1,0 +1,63 @@
+{
+  "run_id": "5f55cb03-9bee-47d0-bdac-72385578e338",
+  "status": "silver_validated",
+  "environment": "fabric",
+  "scope": {
+    "anp_source_id": "anp_2026_1",
+    "contract_version": "0.1",
+    "date_end": "2026-06-30",
+    "date_start": "2026-01-01",
+    "ibge_source_id": "ibge_municipios_rj",
+    "produto": "GASOLINA",
+    "scope_id": "anp-2026-1-rj-gasolina",
+    "uf": "RJ"
+  },
+  "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+  "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+  "manifest_sha256": "01d587c6927b4d2aa93fea09acdfe61b2332508225c9aba554998d12d37e1aaa",
+  "spark_version": "4.1.1.5.5.20260929.238183312",
+  "python_version": "3.13.11",
+  "started_at_utc": "2026-11-12T22:46:18.893655+00:00",
+  "fixture": {
+    "status": "fixture_validated",
+    "counts": {
+      "selected": 14,
+      "invalid": 2,
+      "exact_duplicate_excess": 1,
+      "conflicting_rows_after_exact_dedup": 2,
+      "accepted": 9
+    },
+    "unusual_accepted": 1,
+    "quarantine_table": "lab_m02_quarantine",
+    "is_synthetic": true
+  },
+  "counts": {
+    "selected": 8052,
+    "invalid": 0,
+    "exact_duplicate_excess": 0,
+    "conflicting_rows_after_exact_dedup": 0,
+    "accepted": 8052,
+    "received_full_file": 422418,
+    "outside_slice": 414366
+  },
+  "local_reference_comparison": {
+    "missing_business_rows": false,
+    "extra_business_rows": false,
+    "business_columns_compared": [
+      "cnpj", "cnpj_origem", "produto", "data_coleta", "preco_venda", "moeda",
+      "unidade", "uf", "municipio_ibge", "municipio_origem", "revenda_observada",
+      "bandeira_observada", "preco_incomum_iqr"
+    ]
+  },
+  "silver_table": "silver_preco_coletado",
+  "silver_rows": 8052,
+  "stations": 502,
+  "municipalities": 27,
+  "unusual_iqr_rows": 26,
+  "iqr_lower": "5.4050",
+  "iqr_upper": "7.7650",
+  "previous_delta_version": 0,
+  "same_business_as_previous": true,
+  "silver_delta_version": 1,
+  "finished_at_utc": "2026-11-12T22:47:20.928472+00:00"
+}

@@ -2,7 +2,7 @@
 
 Projeto pessoal para aprender Microsoft Fabric e praticar competências da DP-700 com dados públicos de preços de combustíveis. Explicações e registros em português; nomes de ferramentas preservados como aparecem na interface.
 
-## Estado em 11/11/2026
+## Estado em 12/11/2026
 
 O projeto começou nesta pasta, que continha somente um Git vazio, sem commits e sem remoto. Nenhum outro projeto foi alterado. Nenhum recurso pago foi criado.
 
@@ -20,17 +20,17 @@ O projeto começou nesta pasta, que continha somente um Git vazio, sem commits e
 | Acesso ao Fabric | Login mostrado em captura do portal; avaliação de 60 dias informada pelo usuário |
 | Lakehouse | Criação informada pelo usuário; detalhes da capacidade e do workspace ainda não registrados |
 | Pipeline / Copy | Status Bem-sucedido informado pelo usuário; ZIP de landing identificado na auditoria Bronze recebida |
-| Silver Delta | Primeira execução validada pelo JSON recebido: 8.052 coletas, 502 postos, 27 municípios e comparação integral local sem diferenças; repetição pendente |
+| Silver Delta | Duas execuções validadas pelos JSONs recebidos: Delta 0 → 1, 8.052 coletas, 502 postos, 27 municípios e mesmo negócio; comparação integral local sem diferenças |
 | Warehouse Gold | Ainda não implementado/validado no Fabric |
-| M02 — IBGE e Silver | IBGE e fixture distribuído validados; primeira Silver na versão Delta 0; quatro de cinco critérios aceitos; repetição pendente |
+| M02 — IBGE e Silver | CONCLUÍDO: IBGE, fixture distribuído, primeira Silver e repetição validados; cinco de cinco critérios aceitos |
 | M03 — Versões e backfill | [Laboratório sintético](docs/source-versioning.md) executado localmente: 15 tentativas verificadas; implementação e execução Fabric pendentes |
 | SCD2, segurança, implantação e streaming | Etapas posteriores; sem resultado reivindicado |
 
 Os dados são amostrais. Ausência de observação não representa preço zero nem cobertura de todos os postos. A saída inicial preserva a coleta individual; não é uma fato semanal.
 
-Trabalho retomado em M02 a pedido do usuário. A Bronze e sua repetição permanecem concluídas; a referência IBGE, o fixture e a primeira Silver foram validados pelos retornos recebidos do Fabric. Próxima ação: repetir o notebook 04 para verificar a estabilidade dos valores de negócio. [Guia do M02](docs/m02-silver-ibge.md). O [resumo de 11/11](docs/retomada-2026-11-11.md) conserva o checkpoint anterior.
+M02 concluído pelos retornos recebidos do Fabric: referência IBGE, fixture, Silver e repetição aceitos. A Bronze e sua repetição permanecem concluídas. Próximo marco: M03, para tratar versões de origem, correções antigas e backfill; o laboratório local já está preparado e a implementação Fabric está pendente. [Guia do M02](docs/m02-silver-ibge.md). O [resumo de 11/11](docs/retomada-2026-11-11.md) conserva o checkpoint anterior.
 
-[Roadmap completo e acompanhamento por marcos](docs/superpowers/plans/2026-11-12-fuel-watch-br-roadmap.md): 2 de 12 marcos concluídos, M02 em andamento; primeira Silver validada, repetição ainda pendente.
+[Roadmap completo e acompanhamento por marcos](docs/superpowers/plans/2026-11-12-fuel-watch-br-roadmap.md): 3 de 12 marcos concluídos; próximo marco M03, com preparação local existente e aceite Fabric aberto.
 
 ## Reproduzir o bloco local
 

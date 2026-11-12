@@ -1,10 +1,12 @@
 # M02 — referência IBGE e Silver PySpark
 
-Estado: **em desenvolvimento; referência IBGE, fixture e primeira Silver validados no Fabric por saídas fornecidas pelo usuário; repetição Silver pendente**. Quatro dos cinco critérios M02 foram aceitos. A Bronze e a repetição M01 permanecem concluídas. Não foi alterada a lógica dos notebooks 01/02.
+Estado: **M02 concluído em 12/11/2026; referência IBGE, fixture, Silver e repetição validados no Fabric por saídas fornecidas pelo usuário**. Cinco dos cinco critérios M02 foram aceitos. A Bronze e a repetição M01 permanecem concluídas. Não foi alterada a lógica dos notebooks 01/02.
 
-O notebook 03 retornou `ibge_reference_validated`, 92 municípios e zero ambiguidade, com os hashes esperados do snapshot e manifesto. Runtime informado: Spark `4.1.1.5.5.20260929.238183312`, Python `3.13.11`. Evidência em `evidence/m02/fabric/ibge/ebaf83ac-c2c2-46cc-b162-05187c469f64.json`; proveniência em `evidence/m02/fabric/README.md`. O código do notebook 04 e o pacote permanecem na versão já preparada; não é necessário novo upload para o próximo passo.
+O notebook 03 retornou `ibge_reference_validated`, 92 municípios e zero ambiguidade, com os hashes esperados do snapshot e manifesto. Runtime informado: Spark `4.1.1.5.5.20260929.238183312`, Python `3.13.11`. Evidência em `evidence/m02/fabric/ibge/ebaf83ac-c2c2-46cc-b162-05187c469f64.json`; proveniência em `evidence/m02/fabric/README.md`. O código do notebook 04 e o pacote permanecem na versão preparada e aprovada.
 
-O notebook 04 retornou `silver_validated` no run `8405ed03-35cb-4c6b-979b-731e8833235f`: versão Delta 0, 8.052 coletas, 502 postos, 27 municípios e 26 preços incomuns preservados. Categorias, hashes e limites IQR conferem com o manifesto; comparação integral dos 13 campos sem diferenças. O fixture distribuído também passou, com quarentena sintética rastreável. Evidências e conferência local em `evidence/m02/fabric/`. Na primeira carga, `previous_delta_version` e `same_business_as_previous` são nulos; o próximo passo é o Bloco 3, sem mudar bundle ou parâmetros.
+O notebook 04 retornou `silver_validated` no run `8405ed03-35cb-4c6b-979b-731e8833235f`: versão Delta 0, 8.052 coletas, 502 postos, 27 municípios e 26 preços incomuns preservados. Categorias, hashes e limites IQR conferem com o manifesto; comparação integral dos 13 campos sem diferenças. O fixture distribuído também passou, com quarentena sintética rastreável. Evidências e conferência local em `evidence/m02/fabric/`. Na primeira carga, `previous_delta_version` e `same_business_as_previous` são nulos, como esperado.
+
+A repetição no run `5f55cb03-9bee-47d0-bdac-72385578e338` retornou `silver_validated`, `previous_delta_version=0`, `silver_delta_version=1` e `same_business_as_previous=true`. Mesmos hashes, contagens, cobertura, sinais IQR e comparação integral local sem diferenças. O Bloco 3 foi aceito; os passos abaixo permanecem como roteiro de reprodução. Proveniência e conferência em `evidence/m02/fabric/silver-replay-validation.json`. O aceite cobre os mesmos snapshots; promoção de nova versão pertence ao M03.
 
 ## Decisões e motivo
 
@@ -105,8 +107,8 @@ Se ocorrer HTTP 430, conferir as sessões concluídas e parar as que ainda retê
 | Código, pacote e checks locais | COMPLETO | 14 testes aprovados, schema dos notebooks e sintaxe conferidos |
 | Execução da referência IBGE no Fabric | COMPLETO | JSON ibge_reference_validated recebido e conferido; 92 municípios, hashes aprovados |
 | Fixture e primeira Silver no Fabric | COMPLETO | JSON silver_validated recebido: fixture aprovado, 8.052 coletas, 502 postos, 27 municípios, 26 sinais e zero diferenças |
-| Repetição Silver no Fabric | NAO_FEITO | Reexecutar notebook 04; exigir same_business_as_previous=true |
-| Marco M02 completo | PARCIAL | Quatro dos cinco critérios aceitos; falta comprovar repetição |
+| Repetição Silver no Fabric | COMPLETO | JSON 5f55cb03: Delta 0 → 1, same_business_as_previous=true, mesmas contagens e comparação integral sem diferenças |
+| Marco M02 completo | COMPLETO | Cinco dos cinco critérios aceitos; próximo marco M03 |
 
 ## Referências
 
