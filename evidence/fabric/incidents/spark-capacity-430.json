@@ -1,0 +1,17 @@
+{
+  "evidence_source": "user_supplied_error_message",
+  "error_name": "InvalidHttpRequest",
+  "error_code": "TooManyRequestsForCapacity",
+  "http_status": 430,
+  "message": "This Spark job can't be run because you've hit spark overall capacity compute limit.",
+  "category": "operational_spark_capacity_admission",
+  "affected_notebook": "not_yet_identified",
+  "previous_bronze_validated_run_id": "528c6d6e-2483-4024-bb31-925ccf1b1dee",
+  "hypothesis": "An earlier interactive notebook session may still hold capacity while another notebook starts.",
+  "hypothesis_confirmed": false,
+  "active_sessions_inspected": false,
+  "capacity_sku_verified": false,
+  "code_or_data_failure_demonstrated": false,
+  "next_check": "Inspect active sessions, stop only completed Fuel Watch notebook sessions, retry the rejected step.",
+  "resolved": false
+}
