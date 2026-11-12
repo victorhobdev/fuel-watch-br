@@ -18,7 +18,8 @@ O projeto começou nesta pasta, que continha somente um Git vazio, sem commits e
 | Acesso Azure | Portal confirmado; assinatura exibida como Azure for Students e papel Owner; saldo não verificado; CLI com token expirado na última consulta |
 | Acesso ao Fabric | Login mostrado em captura do portal; avaliação de 60 dias informada pelo usuário |
 | Lakehouse | Criação informada pelo usuário; detalhes da capacidade e do workspace ainda não registrados |
-| Silver Delta, Warehouse Gold e pipeline | Não implementados/validados no Fabric |
+| Pipeline / Copy | Status Bem-sucedido informado pelo usuário; arquivo e métricas da execução ainda não inspecionados |
+| Silver Delta e Warehouse Gold | Não implementados/validados no Fabric |
 | SCD2, segurança, implantação e streaming | Etapas posteriores; sem resultado reivindicado |
 
 Os dados são amostrais. Ausência de observação não representa preço zero nem cobertura de todos os postos. A saída inicial preserva a coleta individual; não é uma fato semanal.

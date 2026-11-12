@@ -41,7 +41,10 @@
     "workspace_details_verified": false,
     "pipeline_execution_verified": false,
     "spark_execution_verified": false,
-    "progress_recorded_at_utc": "2026-11-11T23:59:07.215104+00:00"
+    "progress_recorded_at_utc": "2026-11-11T23:59:07.215104+00:00",
+    "pipeline_status_user_reported": "Bem-sucedido",
+    "pipeline_artifact_verified": false,
+    "pipeline_result_recorded_at_utc": "2026-11-12T00:10:26.927527+00:00"
   },
   "cloud_resources_created_by_agent": false,
   "cloud_items_created_user_reported": true
