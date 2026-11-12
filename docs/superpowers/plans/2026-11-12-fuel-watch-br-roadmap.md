@@ -22,7 +22,7 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: resulta
 | --- | --- | --- | --- |
 | M00 | Fontes, contrato e referência local | CONCLUÍDO | — |
 | M01 | Ingestão e Bronze com repetição validada no Fabric | CONCLUÍDO | M00 |
-| M02 | IBGE e Silver tipada/validada no Fabric | PRÓXIMO | M01 |
+| M02 | IBGE e Silver tipada/validada no Fabric | EM ANDAMENTO | M01 |
 | M03 | Versões de origem, correções antigas e backfill | PLANEJADO | M02 |
 | M04 | Gold dimensional e histórico observado do posto | PLANEJADO | M03 |
 | M05 | Pipeline mestre e recuperação entre camadas | PLANEJADO | M04 |
@@ -267,6 +267,7 @@ Em cada sessão, acrescentar uma linha. As mudanças de estado exigem links para
 | 11/11/2026 | M00 | CONCLUÍDO | Perfil real + fatia local + 10 testes | Bronze Fabric |
 | 11/11/2026 | M01 | CONCLUÍDO | Dois runs Bronze + comparação Delta 0 → 1, sem diferenças | Silver PySpark |
 | 12/11/2026 | Roadmap | REVISADO | Critérios e sequência definidos; execução de dados continua pausada | Retomar M02 quando solicitado |
+| 12/11/2026 | M02 | EM ANDAMENTO | Retomada solicitada; notebooks e bundle preparados, 14 testes locais; aceite Fabric aberto | Upload e execução do notebook 03 |
 
 ## Dependências e referências oficiais
 

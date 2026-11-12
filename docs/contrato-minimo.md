@@ -44,6 +44,8 @@ O snapshot atual não comprova o estado histórico dos limites ou nomes municipa
 
 Quarentena contém registro original, número lógico do registro CSV e motivos: data inválida/fora do semestre, preço inválido ou não positivo, precisão incompatível, CNPJ fora do formato, campo obrigatório ausente, unidade incompatível ou município sem correspondência única.
 
+Na implementação Spark do M02, a Bronze já validada não contém ordinal do CSV. A identidade técnica usa hash da linha, payload dos 16 valores originais, hash da entrega e run_id; não se fabrica um ordinal com ordenação arbitrária. As contagens registram a multiplicidade das ocorrências. O número lógico continua disponível apenas no ensaio local e no arquivo original preservado.
+
 Preço positivo incomum permanece aceito. O sinal exploratório `preco_incomum_iqr` usa quartis inclusivos e cercas Q1−1,5×IQR e Q3+1,5×IQR, somente em gasolina/RJ/litro/no semestre. Não é limite de preço legal, prova de erro ou limiar universal; será reavaliado no consumo temporal. Houve 26 sinais em dados reais, nenhum deles rejeitado.
 
 Reconciliação do escopo: `selecionados = inválidos + duplicatas exatas excedentes + linhas conflitantes após deduplicação + aceitos`. Fora do recorte é uma categoria separada de rejeição. Mudança estrutural de CSV bloqueia tudo; não se filtra uma linha deslocada silenciosamente.

@@ -1,0 +1,48 @@
+{
+  "verified_at_utc": "2026-11-12T22:22:52.754926+00:00",
+  "state": "prepared_pending_fabric_execution",
+  "local_tests": {
+    "run": 14,
+    "failures": 0,
+    "errors": 0,
+    "successful": true
+  },
+  "bundle_manifest_sha256": "01d587c6927b4d2aa93fea09acdfe61b2332508225c9aba554998d12d37e1aaa",
+  "reference_rows": 8052,
+  "ibge_municipalities": 92,
+  "business_columns_compared": [
+    "cnpj",
+    "cnpj_origem",
+    "produto",
+    "data_coleta",
+    "preco_venda",
+    "moeda",
+    "unidade",
+    "uf",
+    "municipio_ibge",
+    "municipio_origem",
+    "revenda_observada",
+    "bandeira_observada",
+    "preco_incomum_iqr"
+  ],
+  "notebooks": [
+    {
+      "path": "notebooks/03_ibge_reference.ipynb",
+      "sha256": "15dce41fe238931ebd756ddf129d9247c6b2923c336acb7bd7e145af4c740ca6",
+      "schema_valid": true,
+      "code_cells_compiled": 3,
+      "spark_executed_locally": false,
+      "fabric_executed": false
+    },
+    {
+      "path": "notebooks/04_bronze_to_silver.ipynb",
+      "sha256": "6f3a5159f2227a9e48ab68dfdc6d0611b67e6c9fad33bd930675d13e51720d1c",
+      "schema_valid": true,
+      "code_cells_compiled": 3,
+      "spark_executed_locally": false,
+      "fabric_executed": false
+    }
+  ],
+  "local_spark_limit": "No PySpark installed; Java 24 present; no global runtime modified.",
+  "user_action_required": "Upload four files to Files/m02_input and execute notebook 03 in Fabric."
+}

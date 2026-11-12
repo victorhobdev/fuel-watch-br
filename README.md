@@ -21,13 +21,14 @@ O projeto começou nesta pasta, que continha somente um Git vazio, sem commits e
 | Lakehouse | Criação informada pelo usuário; detalhes da capacidade e do workspace ainda não registrados |
 | Pipeline / Copy | Status Bem-sucedido informado pelo usuário; ZIP de landing identificado na auditoria Bronze recebida |
 | Silver Delta e Warehouse Gold | Não implementados/validados no Fabric |
+| M02 — IBGE e Silver | Notebooks 03/04 e pacote de upload preparados; 14 testes locais aprovados; execução M02 no Fabric pendente |
 | SCD2, segurança, implantação e streaming | Etapas posteriores; sem resultado reivindicado |
 
 Os dados são amostrais. Ausência de observação não representa preço zero nem cobertura de todos os postos. A saída inicial preserva a coleta individual; não é uma fato semanal.
 
-Trabalho pausado pelo usuário após a validação da repetição Bronze. [Resumo e ponto de retomada](docs/retomada-2026-11-11.md). Próximo bloco: Silver PySpark, ainda não implementada no Fabric.
+Trabalho retomado em M02 a pedido do usuário. A Bronze e sua repetição permanecem concluídas; a referência IBGE e a Silver estão preparadas para execução. [Guia do M02](docs/m02-silver-ibge.md). O [resumo de 11/11](docs/retomada-2026-11-11.md) conserva o checkpoint anterior.
 
-[Roadmap completo e acompanhamento por marcos](docs/superpowers/plans/2026-11-12-fuel-watch-br-roadmap.md): 2 de 12 marcos concluídos, critérios de aceite, evidências e próximo bloco definidos. A elaboração do roadmap não iniciou a implementação da Silver.
+[Roadmap completo e acompanhamento por marcos](docs/superpowers/plans/2026-11-12-fuel-watch-br-roadmap.md): 2 de 12 marcos concluídos, M02 em andamento; execução da Silver no Fabric ainda não comprovada.
 
 ## Reproduzir o bloco local
 
