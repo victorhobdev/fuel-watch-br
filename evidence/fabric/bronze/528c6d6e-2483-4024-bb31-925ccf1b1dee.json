@@ -1,0 +1,16 @@
+{
+  "run_id": "528c6d6e-2483-4024-bb31-925ccf1b1dee",
+  "status": "bronze_validated",
+  "environment": "fabric",
+  "started_at_utc": "2026-11-12T00:17:15.085961+00:00",
+  "landing_relative_path": "landing/anp/2026-1/ce3c5e53-e57e-42c8-9411-992516d122da/ca-2026-01.zip",
+  "source_url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/shpc/dsas/ca/ca-2026-01.zip",
+  "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+  "expected_source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+  "csv_sha256": "04406f4e411380c07fff0343a746bcc5ef693bd4b26a267101ab0698c44b76a9",
+  "csv_member": "Preços semestrais - AUTOMOTIVOS_2026.01.csv",
+  "raw_bytes": 8488624,
+  "source_rows": 422418,
+  "bronze_rows_for_version": 422418,
+  "finished_at_utc": "2026-11-12T00:17:42.783653+00:00"
+}

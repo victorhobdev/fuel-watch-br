@@ -40,11 +40,18 @@
     "capacity_details_verified": false,
     "workspace_details_verified": false,
     "pipeline_execution_verified": false,
-    "spark_execution_verified": false,
+    "spark_execution_verified": true,
     "progress_recorded_at_utc": "2026-11-11T23:59:07.215104+00:00",
     "pipeline_status_user_reported": "Bem-sucedido",
     "pipeline_artifact_verified": false,
-    "pipeline_result_recorded_at_utc": "2026-11-12T00:10:26.927527+00:00"
+    "pipeline_result_recorded_at_utc": "2026-11-12T00:10:26.927527+00:00",
+    "spark_execution_evidence_source": "user_supplied_json_output_reconciled_locally",
+    "spark_execution_directly_observed_by_agent": false,
+    "bronze_audit_file": "evidence/fabric/bronze/528c6d6e-2483-4024-bb31-925ccf1b1dee.json",
+    "bronze_run_id": "528c6d6e-2483-4024-bb31-925ccf1b1dee",
+    "bronze_rows_for_version": 422418,
+    "bronze_replay_verified": false,
+    "bronze_evidence_recorded_at_utc": "2026-11-12T00:21:05.416713+00:00"
   },
   "cloud_resources_created_by_agent": false,
   "cloud_items_created_user_reported": true

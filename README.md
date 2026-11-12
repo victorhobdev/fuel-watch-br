@@ -14,11 +14,12 @@ O projeto começou nesta pasta, que continha somente um Git vazio, sem commits e
 | Saída local tipada | Parquet: 8.052 coletas, 502 postos, 27 municípios |
 | Idempotência local | Duas execuções reais com o mesmo hash de estado de negócio |
 | Correção antiga e recuperação | Testadas com fixtures sintéticos identificados |
-| Notebook PySpark de Bronze | Código preparado; não executado no Fabric |
+| Bronze Delta no Fabric | Saída de execução fornecida pelo usuário: bronze_validated; 422.418 registros, hash e tamanho reconciliados com o perfil local |
+| Repetição da Bronze no Fabric | Notebook de comparação preparado; ainda não executado |
 | Acesso Azure | Portal confirmado; assinatura exibida como Azure for Students e papel Owner; saldo não verificado; CLI com token expirado na última consulta |
 | Acesso ao Fabric | Login mostrado em captura do portal; avaliação de 60 dias informada pelo usuário |
 | Lakehouse | Criação informada pelo usuário; detalhes da capacidade e do workspace ainda não registrados |
-| Pipeline / Copy | Status Bem-sucedido informado pelo usuário; arquivo e métricas da execução ainda não inspecionados |
+| Pipeline / Copy | Status Bem-sucedido informado pelo usuário; ZIP de landing identificado na auditoria Bronze recebida |
 | Silver Delta e Warehouse Gold | Não implementados/validados no Fabric |
 | SCD2, segurança, implantação e streaming | Etapas posteriores; sem resultado reivindicado |
 

@@ -1,0 +1,24 @@
+{
+  "checked_at_utc": "2026-11-12T00:21:05.416713+00:00",
+  "evidence_source": "user_supplied_fabric_notebook_output",
+  "audit_file": "evidence/fabric/bronze/528c6d6e-2483-4024-bb31-925ccf1b1dee.json",
+  "audit_file_sha256": "bb618c4751929ca019d3ba5f938b957ddb90ac9e6188ee7621c1d055561db91e",
+  "zip_hash_matches_local_profile": true,
+  "csv_hash_matches_local_profile": true,
+  "byte_count_matches_local_profile": true,
+  "rows_reconciled": 422418,
+  "remote_table_independently_queried_by_agent": false,
+  "replay_verified_in_fabric": false,
+  "notebook_syntax_checks": [
+    {
+      "file": "notebooks/01_landing_to_bronze.ipynb",
+      "sha256": "5870fb960e3897eec2661ce18e741f8195c042bbb878b3fc890c9c0fd0151057",
+      "code_cells_compiled": 3
+    },
+    {
+      "file": "notebooks/02_verify_bronze_replay.ipynb",
+      "sha256": "673fa2e643a4b40bfad9b9a23590999d69664117b639d25a465ea83807d51b6e",
+      "code_cells_compiled": 2
+    }
+  ]
+}
