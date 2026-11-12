@@ -22,7 +22,7 @@ O projeto começou nesta pasta, que continha somente um Git vazio, sem commits e
 | Pipeline / Copy | Status Bem-sucedido informado pelo usuário; ZIP de landing identificado na auditoria Bronze recebida |
 | Silver Delta | Duas execuções validadas pelos JSONs recebidos: Delta 0 → 1, 8.052 coletas, 502 postos, 27 municípios e mesmo negócio; comparação integral local sem diferenças |
 | Warehouse Gold | Ainda não implementado/validado no Fabric |
-| M04 — Gold e SCD2 | [T-SQL e modelo preparados](docs/data-model.md); ensaio local real com 8.052 coletas, 518 versões observadas e reconciliação sem diferenças; execução Fabric pendente |
+| M04 — Gold e SCD2 | [Roteiro completo e pacote preparados](docs/m04-fabric.md): notebook 07 consome o contrato oficial M03; sete cenários Warehouse e publicação/validação Gold; ensaio local sem diferenças; execução Fabric pendente |
 | M02 — IBGE e Silver | CONCLUÍDO: IBGE, fixture distribuído, primeira Silver e repetição validados; cinco de cinco critérios aceitos |
 | M03 — Versões e backfill | [Laboratório Fabric validado](evidence/fabric/versioning/README.md): 17 cenários; [notebook 06 entregue](docs/m03-official.md) para seleção oficial/repetição, execução pendente |
 | SCD2, segurança, implantação e streaming | Etapas posteriores; sem resultado reivindicado |

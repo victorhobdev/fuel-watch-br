@@ -1,6 +1,6 @@
 -- PREPARADO, não executado no Fabric. Executar como um batch único no Warehouse.
 -- Stage deve estar congelada e completa durante validação/carga, com um único escritor.
-CREATE OR ALTER PROCEDURE lab_m04.publish_gold @batch_id varchar(80)
+CREATE OR ALTER PROCEDURE lab_m04.publish_gold @batch_id varchar(80), @inject_fail_before_commit bit = 0
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -62,7 +62,9 @@ BEGIN
         DELETE FROM lab_m04.publication;
         INSERT INTO lab_m04.publication
             SELECT batch_id, scope_id, source_sha256, ibge_sha256, silver_delta_version, is_synthetic,
-                CAST(SYSUTCDATETIME() AS datetime2(6)), expected_rows FROM lab_m04.stage_manifest;
+                CAST(SYSUTCDATETIME() AS datetime2(6)), expected_rows, source_table, snapshot_id FROM lab_m04.stage_manifest;
+        IF @inject_fail_before_commit = 1
+            THROW 51999, 'Falha injetada apos escritas e antes do commit.', 1;
         COMMIT TRANSACTION;
         SELECT 'gold_lab_published' AS status, * FROM lab_m04.publication;
     END TRY

@@ -1,0 +1,66 @@
+{
+  "verified_at_utc": "2026-11-12T23:56:03.100109+00:00",
+  "state": "execution_package_prepared_pending_fabric",
+  "local_tests": {
+    "run": 51,
+    "failures": 0,
+    "errors": 0,
+    "successful": true
+  },
+  "m04_specific_tests": 15,
+  "bundle_version": "m04-v2",
+  "manifest_sha256": "bbc35790faa9d2997abd8d71112392167a91748c616ebed48772998b194daee7",
+  "notebook": {
+    "path": "notebooks/07_export_gold_input.ipynb",
+    "sha256": "4e6f7cbf0d33fc913dc532a5f0298e668651f88528e1ae7f166ab4548b90c71d",
+    "schema_valid": true,
+    "code_cells_compiled": 4
+  },
+  "upload_directory": "data/artifacts/m04_fabric/upload",
+  "upload_files": 6,
+  "warehouse_directory": "data/artifacts/m04_fabric/warehouse",
+  "warehouse_files": {
+    "00_preflight.sql": "5c4370f3e8aa7816b4c6b2878582bbc06dfb828a0b53f2dfc9cea02fad062267",
+    "01_lab_setup.sql": "ac0ec53618daae327a700ba2f375bb91869b58ef154fb42d81bd644ed74d0c2e",
+    "02_lab_seed.sql": "fda825012caa1e083ee9890eb309e452edd970ec1a57bf2f1f0bc7fa5945623e",
+    "03_lab_fixture_suite.sql": "aa401898f20645eebc9f6d7dce4bc8e7d78e9158a4144935ba460b9c62442e79",
+    "04_lab_reconcile.sql": "c059342e60e6c5d8dfd485a27fe3814d121e583e2696ddb6f0992fbc2185a08b",
+    "20_gold_setup.sql": "fb18c2dd12b1d5a5ddecbdf8506f08e13626aeb25a60cef947d738a62ba9c681",
+    "30_import_approved_snapshot.sql": "1093438e1c8e4e50f1cca4cde0c781bae33053013c2c64fcf05acf55c1c75919",
+    "31_publish_approved_snapshot.sql": "69943b99d899903ae25cc43134eee20f3829530f7e182476d918604c55b3ef4a",
+    "32_gold_validate.sql": "f93ab275404fd0cb60f4b1ea4eeee06acffe7b4e251f3dfc23131a4ec060819f"
+  },
+  "fabric_fixture_scenarios_prepared": 7,
+  "official_source_table": "silver_preco_publicado",
+  "source_version_strategy": "pin successful M03 consumer_contract delta_version and snapshot_id; verify active identity and full business",
+  "official_input_adapter_implemented": true,
+  "fabric_executed": false,
+  "tsql_procedure_executed_in_fabric": false,
+  "preserved_m02_m03_notebooks": [
+    {
+      "path": "notebooks/03_ibge_reference.ipynb",
+      "sha256": "15dce41fe238931ebd756ddf129d9247c6b2923c336acb7bd7e145af4c740ca6",
+      "matches_prepared_version": true
+    },
+    {
+      "path": "notebooks/04_bronze_to_silver.ipynb",
+      "sha256": "6f3a5159f2227a9e48ab68dfdc6d0611b67e6c9fad33bd930675d13e51720d1c",
+      "matches_prepared_version": true
+    },
+    {
+      "path": "notebooks/05_source_versions_backfill.ipynb",
+      "sha256": "79e817eeb9762ba85099ab19afb83a06a53d3c18c3175fcfb1964e834eb77974",
+      "matches_prepared_version": true
+    },
+    {
+      "path": "notebooks/06_official_source_selection.ipynb",
+      "sha256": "8efc13b7b24fe8b209a34b116a3522f36d304d0db4bf24303efa571dea9952a5",
+      "matches_prepared_version": true
+    }
+  ],
+  "limits": [
+    "T-SQL runtime compilation and behavior require actual Warehouse execution.",
+    "Spark export not run locally.",
+    "Reviewed ANP/IBGE snapshot only; no arbitrary republication accepted."
+  ]
+}

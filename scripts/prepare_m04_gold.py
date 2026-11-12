@@ -22,6 +22,8 @@ def write_json(path, value):
 
 
 def literal(value):
+    if value is None:
+        return "NULL"
     if isinstance(value, bool):
         return "1" if value else "0"
     if isinstance(value, (int, Decimal)):
@@ -125,7 +127,8 @@ def main():
         control = {"batch_id": "lab-m04-" + name, "scope_id": "lab_m04_2026_1_rj_gasolina",
                    "source_sha256": hashlib.sha256(payload).hexdigest(), "ibge_sha256": proof["ibge_sha256"],
                    "silver_delta_version": 0, "is_synthetic": True, "expected_rows": len(values),
-                   "expected_stations": 1, "expected_municipalities": 1, "expected_unusual": 0}
+                   "expected_stations": 1, "expected_municipalities": 1, "expected_unusual": 0,
+                   "source_table": "lab_m04_fixture", "snapshot_id": "fixture-" + name}
         sql = "-- DADOS SINTETICOS. source_sha256 identifica o JSON adjacente; delta_version=0 e um marcador do fixture.\n"
         sql += "BEGIN TRANSACTION;\nDELETE FROM lab_m04.stage_coleta;\nDELETE FROM lab_m04.stage_manifest;\n"
         sql += insert("stage_coleta", values, BUSINESS_FIELDS) + "\n"
@@ -144,15 +147,17 @@ def main():
               "reconciliation_errors": checks, "price_sum_fact": str(total), "price_sum_weekly": str(weekly[1]),
               "same_state_on_replay": before == after, "state_sha256": after,
               "artifacts": out.relative_to(ROOT).as_posix(), "synthetic_inputs_generated": list(fixtures),
+              "oracle_parquet_sha256": {name: hashlib.sha256((out / name).read_bytes()).hexdigest()
+                                         for name in ["real_station_history.parquet", "real_weekly.parquet"]},
               "prepared_sql_sha256": {p.relative_to(ROOT).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
                                       for p in sorted((ROOT / "sql/warehouse").glob("*.sql"))},
               "generated_input_sha256": {p.name: hashlib.sha256(p.read_bytes()).hexdigest()
                                          for p in sorted(out.glob("*.sql"))},
               "fabric_executed": False, "tsql_procedure_executed": False,
-              "local_adaptations": ["bit -> BOOLEAN; datetime2(6) -> TIMESTAMP in local DDL", "COUNT_BIG(*) -> COUNT(*)", "DATALENGTH UTF8 macro", "CAST(text AS varbinary(8000)) -> encode(text)"],
+              "local_adaptations": ["bit -> BOOLEAN; datetime2(6) -> TIMESTAMP in local DDL", "COUNT_BIG(*) -> COUNT(*)", "DATALENGTH UTF8 macro", "CAST(text AS varbinary(8000)) -> encode(text)", "CONVERT date style 23 -> DuckDB ISO date cast"],
               "limits": ["DuckDB does not validate Fabric T-SQL compilation, collation or transaction behavior.",
                          "Real history reflects observed snapshots, not legal changes or bitemporal history.",
-                         "Official input adapter depends on the accepted M03 publication contract."]}
+                         "Official adapter consumes the successful M03 consumer_contract and rechecks the reviewed M02 business baseline."]}
     evidence = ROOT / "evidence/m04"
     evidence.mkdir(parents=True, exist_ok=True)
     write_json(evidence / "local-gold.json", report)

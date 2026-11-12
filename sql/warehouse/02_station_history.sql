@@ -21,7 +21,7 @@ WITH observacoes AS (
         OR DATALENGTH(revenda_observada) <> nome_bytes_anterior
         OR DATALENGTH(bandeira_observada) <> bandeira_bytes_anterior
 )
-SELECT CONCAT(cnpj, ':', CAST(data_coleta AS varchar(10))) AS posto_sk,
+SELECT CONCAT(cnpj, ':', CONVERT(varchar(10), data_coleta, 23)) AS posto_sk,
     cnpj, revenda_observada, bandeira_observada, municipio_ibge, uf, data_coleta AS observado_desde,
     LEAD(data_coleta) OVER (PARTITION BY cnpj ORDER BY data_coleta) AS observado_ate
 FROM mudancas;

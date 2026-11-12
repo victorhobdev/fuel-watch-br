@@ -18,7 +18,8 @@ CREATE TABLE lab_m04.stage_manifest (
     source_sha256 varchar(64) NOT NULL, ibge_sha256 varchar(64) NOT NULL,
     silver_delta_version bigint NOT NULL, is_synthetic bit NOT NULL,
     expected_rows bigint NOT NULL, expected_stations bigint NOT NULL,
-    expected_municipalities bigint NOT NULL, expected_unusual bigint NOT NULL
+    expected_municipalities bigint NOT NULL, expected_unusual bigint NOT NULL,
+    source_table varchar(128) NOT NULL, snapshot_id varchar(80) NOT NULL
 );
 IF OBJECT_ID('lab_m04.dim_data') IS NULL
 CREATE TABLE lab_m04.dim_data (
@@ -52,5 +53,6 @@ CREATE TABLE lab_m04.publication (
     batch_id varchar(80) NOT NULL, scope_id varchar(100) NOT NULL,
     source_sha256 varchar(64) NOT NULL, ibge_sha256 varchar(64) NOT NULL,
     silver_delta_version bigint NOT NULL, is_synthetic bit NOT NULL,
-    published_at_utc datetime2(6) NOT NULL, rows_published bigint NOT NULL
+    published_at_utc datetime2(6) NOT NULL, rows_published bigint NOT NULL,
+    source_table varchar(128) NOT NULL, snapshot_id varchar(80) NOT NULL
 );

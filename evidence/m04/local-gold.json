@@ -1,6 +1,6 @@
 {
-  "run_id": "98af6309-4196-40fe-85f9-e299d3f3574f",
-  "generated_at_utc": "2026-11-12T23:07:15.924957+00:00",
+  "run_id": "9a98dccf-6a4d-4103-8280-9116667f3007",
+  "generated_at_utc": "2026-11-12T23:52:25.566583+00:00",
   "status": "gold_prepared_and_relational_core_validated_locally",
   "environment": "local_duckdb_not_fabric",
   "duckdb_version": "1.5.2",
@@ -74,7 +74,7 @@
   "price_sum_weekly": "52777.200",
   "same_state_on_replay": true,
   "state_sha256": "2ffad44c409e3134554738e69d446420a02355f51c15b30e1872f1a774189d49",
-  "artifacts": "data/artifacts/m04/98af6309-4196-40fe-85f9-e299d3f3574f",
+  "artifacts": "data/artifacts/m04/9a98dccf-6a4d-4103-8280-9116667f3007",
   "synthetic_inputs_generated": [
     "10_base",
     "11_late_attribute",
@@ -82,19 +82,25 @@
     "13_price_only",
     "14_rejected_conflict"
   ],
+  "oracle_parquet_sha256": {
+    "real_station_history.parquet": "ebcc23248d2a2bab06feb1a92a9addef7bf58eaef4b51b330d9bab1518c8d551",
+    "real_weekly.parquet": "7bb2e24db7e44b23a186589c62b3fbf0b1a126899e44e8929367a13ee9bcc73b"
+  },
   "prepared_sql_sha256": {
-    "sql/warehouse/01_schema.sql": "cf398e7e405c95e395cd58ed6429f17c53780f9b225a522f5fee3252208356bd",
-    "sql/warehouse/02_station_history.sql": "008dcfa21352cc7a689278f9c25d1052b1e0c27be923eaf24f73936575db24ab",
-    "sql/warehouse/03_publish_gold.sql": "4c4f44d8f51f7cebc306f9d98eba4ed3670db1ec78a7c58d29eb3337ac71a898",
-    "sql/warehouse/04_reconcile.sql": "7c35cded45735b36d5c8157b819a58a37bdfc54efc4ccb9bbe7e0e07e99aa232"
+    "sql/warehouse/01_schema.sql": "c65db6fd4ec9d58affcdba6d53adb54143b42173dc05c2301493fbb2e6f38902",
+    "sql/warehouse/02_station_history.sql": "d0615eb9b567dd4252188b3974734338b3013e7431cef2207fb12db2caa52a91",
+    "sql/warehouse/03_publish_gold.sql": "6364ec7886abba05d46f89088489a2685515bfbdfe38af5df6bb364c62531381",
+    "sql/warehouse/04_reconcile.sql": "7c35cded45735b36d5c8157b819a58a37bdfc54efc4ccb9bbe7e0e07e99aa232",
+    "sql/warehouse/30_import_approved_snapshot.sql": "1093438e1c8e4e50f1cca4cde0c781bae33053013c2c64fcf05acf55c1c75919",
+    "sql/warehouse/31_publish_approved_snapshot.sql": "69943b99d899903ae25cc43134eee20f3829530f7e182476d918604c55b3ef4a"
   },
   "generated_input_sha256": {
     "05_seed_reference.sql": "b445a33628d464fd5ac0194ad067910ba370753842b021d244294b234810e628",
-    "10_base.sql": "838cd003b338221aefef902ddb683835358266dc7e667dc524d2e51a2a7d1128",
-    "11_late_attribute.sql": "2a449cab1d8cd3a12f77385d319719e47a210cd26449c2f7a57bd0ff6a0da63b",
-    "12_corrected_attribute.sql": "d7c6cd86d0454a6211e463b03c9c518320461f5eded44b59826188bae0a7596d",
-    "13_price_only.sql": "5186e0803d94843fce4631610a8bd74c7b0f2ddea048656282ce6df2ecd425d5",
-    "14_rejected_conflict.sql": "51de1225c78b13cc667ad3d60046f2eefaf38d9c5d9b275bb754dfe080e48aa7"
+    "10_base.sql": "e4b54f6ce5376501c1f20b72f317fb0047c4825a4316e96dfaa760cf260d24c1",
+    "11_late_attribute.sql": "df865e431b482dd6cceed09401d04988d619319e91c7f5904d01caff709ef3f5",
+    "12_corrected_attribute.sql": "a5534827081f55277490255bf8138222148ed99ea2a2e28ec108c91ea567cae2",
+    "13_price_only.sql": "a8ae30804e55e85b86e53e4c8de8931bc2384785b915a5cb5d57a70ca753a10a",
+    "14_rejected_conflict.sql": "ed1fff1494bb3519f5b1248a61b628fbbc8dcf5967a999b803f8e547d98377a4"
   },
   "fabric_executed": false,
   "tsql_procedure_executed": false,
@@ -102,11 +108,12 @@
     "bit -> BOOLEAN; datetime2(6) -> TIMESTAMP in local DDL",
     "COUNT_BIG(*) -> COUNT(*)",
     "DATALENGTH UTF8 macro",
-    "CAST(text AS varbinary(8000)) -> encode(text)"
+    "CAST(text AS varbinary(8000)) -> encode(text)",
+    "CONVERT date style 23 -> DuckDB ISO date cast"
   ],
   "limits": [
     "DuckDB does not validate Fabric T-SQL compilation, collation or transaction behavior.",
     "Real history reflects observed snapshots, not legal changes or bitemporal history.",
-    "Official input adapter depends on the accepted M03 publication contract."
+    "Official adapter consumes the successful M03 consumer_contract and rechecks the reviewed M02 business baseline."
   ]
 }

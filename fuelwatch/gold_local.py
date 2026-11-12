@@ -35,6 +35,7 @@ def open_model():
         statement = statement.replace("datetime2(6)", "TIMESTAMP")
         conn.execute(statement)
     core = (ROOT / "sql/warehouse/02_station_history.sql").read_text(encoding="utf-8")
+    core = core.replace("CONVERT(varchar(10), data_coleta, 23)", "CAST(data_coleta AS varchar(10))")
     core = re.sub(r"CAST\((\w+) AS varbinary\(8000\)\)", r"encode(\1)", core)
     conn.execute(core.replace("COUNT_BIG(*)", "COUNT(*)"))
     return conn

@@ -1,6 +1,6 @@
 # M04 — Gold dimensional e histórico observado
 
-**Estado em 12/11/2026: preparado; núcleo relacional testado localmente; nenhuma execução M04 no Fabric.** O M02 está aceito. M03 continua sendo pré-requisito para escolher e publicar a entrada oficial da Gold. Esta preparação não altera notebooks, regras ou evidências M02/M03.
+**Estado em 12/11/2026: pacote de execução preparado; núcleo relacional testado localmente; nenhuma execução M04 no Fabric.** O pacote consome o `consumer_contract` oficial do M03, fixa `silver_preco_publicado` por versão Delta/snapshot_id e reconcilia seu conteúdo com o baseline revisado no M02. Esta preparação não altera notebooks, regras ou evidências M02/M03. Para executar, seguir o [roteiro completo M04](m04-fabric.md).
 
 ## Decisões e verificações
 
@@ -30,7 +30,7 @@ erDiagram
 | Objeto em `lab_m04` | Chave e significado |
 | --- | --- |
 | `stage_coleta` | Os 13 campos tipados de negócio da Silver; snapshot completo, congelado durante a carga |
-| `stage_manifest` | Uma linha: batch_id, scope_id, hashes ANP/IBGE, versão Delta, is_synthetic e contagens esperadas |
+| `stage_manifest` | Uma linha: batch_id, scope_id, tabela de origem, snapshot_id, hashes ANP/IBGE, versão Delta, is_synthetic e contagens esperadas |
 | `dim_data` | `data_sk=AAAAMMDD`; dias de 01/01 a 30/06/2026, início de semana, ano/semana ISO |
 | `dim_produto` | `produto_sk=1` nesta fatia restrita: GASOLINA/BRL/litro; outros produtos/unidades bloqueados |
 | `dim_municipio` | Código IBGE textual de sete posições; nome/UF do snapshot identificado por hash |
@@ -72,16 +72,15 @@ A semana começa na segunda-feira; usar também ano ISO e data de início. A pri
 
 A média é `SUM(preco_venda)/COUNT(coletas)`; não representa volume vendido. Para reunir grupos, somar `soma_precos` e dividir pela soma de `coletas`. Não calcular média simples das médias. `postos_observados` é distinto dentro de cada grupo e não é aditivo entre semanas/municípios. Os 27 municípios observados são cobertura da amostra; o snapshot IBGE tem 92 municípios e não informa quantos postos deveriam ter sido coletados.
 
-## Roteiro de execução, após concluir M03
+## Roteiro operacional
 
-1. **Reconhecer o destino:** conferir item Warehouse, workspace, trial e collation. Reusar o item/capacidade existentes quando apropriado; registrar nome e permissão. Nenhum item foi criado nesta preparação. Qualquer alternativa paga exige estimativa e autorização.
-2. **Criar laboratório:** executar `sql/warehouse/01_schema.sql`. Executar cada `CREATE VIEW` do arquivo 02 em uma consulta separada, na ordem. Criar o procedimento do arquivo 03 como um batch único. Confirmar compilação no Fabric antes de carregar dados.
-3. **Referências:** no laboratório vazio, executar `05_seed_reference.sql` da pasta de artefatos indicada pela evidência. São 181 datas e 92 municípios; a geração está vinculada ao snapshot IBGE aprovado. Não reexecutar o seed sobre referências preenchidas: o procedimento detecta duplicatas.
-4. **Fixtures:** executar `10_base.sql`, salvar a reconciliação do arquivo 04 e repetir `10_base.sql`. Executar `11_late_attribute.sql`, `12_corrected_attribute.sql`, `13_price_only.sql` e `14_rejected_conflict.sql`. Esta última deve falhar, preservando a publicação válida anterior. Cada arquivo substitui apenas o stage do laboratório. Os JSONs adjacentes são as entradas sintéticas identificadas pelo SHA no manifesto; `silver_delta_version=0` é marcador do fixture, não versão Delta observada.
-5. **Conferir resultados esperados:** base com 4 fatos/2 versões; repetição com o mesmo negócio; atraso com 5 fatos/4 versões; correção de atributo com 4 fatos/1 versão; correção apenas de preço com 4 fatos/2 versões e preço 7.000 em 05/01. O caso conflitante preserva este último resultado. Salvar linhas dos intervalos e fatos, não apenas contagens.
-6. **Integrar a entrada oficial:** identificar o contrato de publicação aceito no M03, a versão Delta aprovada, hashes e escopo. Materializar um snapshot imutável de transferência com os 13 campos e compará-lo integralmente com a versão aprovada. Copiar para o stage isolado e carregar o manifesto com as contagens reais. A ligação exata será implementada após conhecer o resultado M03; o código atual não lê automaticamente a tabela Silver mutável nem presume um ponteiro que ainda não existe.
-7. **Publicar e reconciliar o baseline oficial no laboratório:** exigir 8.052/502/27/26 somente se a versão aprovada ainda for o snapshot M02. Se M03 aprovar conteúdo diferente, reconciliar o delta revisado e ajustar expectativas de forma explícita. Executar arquivo 04 e guardar input, SQL/commit, batch, snapshot, resultados e horários UTC em `evidence/fabric/gold/`.
-8. **Promover para Gold oficial:** após validar laboratório e integração, definir schema/destino final e substituir a entrada sintética pela aprovada, com nova versão revisada dos scripts. Não renomear automaticamente o laboratório nem misturar fixtures e dados oficiais. Execução serial; controle concorrente e falhas operacionais serão aprofundados em M05.
+O [roteiro M04](m04-fabric.md) é a sequência única de execução, com arquivos completos, campos para editar, resultados esperados, retomada e evidências. O builder reúne as views em batches dinâmicos; não é necessário recortá-las manualmente. O caminho é seleção oficial M03 no 06 → laboratório `lab_m04` → notebook 07 → importação por batch_id → publicação em `gold` → validação → repetição.
+
+O notebook aceita somente um `consumer_contract` M03 bem-sucedido compatível com a seleção ativa, fixa essa versão Delta, compara os 13 campos com o baseline e exporta tabelas `m04_transfer_*`; o manifesto do lote é escrito por último. O SQL importa somente o lote indicado, com 8.052 coletas, 92 municípios IBGE, 181 datas, 518 intervalos esperados e 656 grupos semanais esperados. Não consome todas as versões nem aceita silenciosamente uma Silver alterada.
+
+`gold.expected_posto` e `gold.expected_weekly` são tabelas auxiliares de validação carregadas do oracle preservado por hash; não são dimensões adicionais nem resultados produzidos pelo próprio procedimento T-SQL. O laboratório tem suas próprias expectativas e registros em `lab_m04.fixture_checks`, por experimento.
+
+Todos os registros oficiais vão para o schema `gold`; fixtures ficam em `lab_m04`. A publicação oficial, seus metadados e a comparação são verificáveis pelos scripts finais. Execução serial; controle concorrente e recuperação geral entre camadas serão aprofundados no M05.
 
 Uma consulta entre Warehouse e SQL analytics endpoint pode usar nomes de três partes no mesmo workspace, conforme [documentação](https://learn.microsoft.com/en-us/fabric/data-warehouse/query-warehouse). Isso não seleciona por si uma versão Delta histórica nem comprova que a sincronização do endpoint já terminou. Por isso o adaptador dependerá de snapshot de transferência verificado, com referência ao M03.
 
@@ -94,4 +93,4 @@ python -m scripts.prepare_m04_gold
 
 DuckDB 1.5.2 já estava instalado; foi declarado em `requirements-local.txt`, sem instalação ou alteração global. O harness executa as views do arquivo 02 e a reconciliação relacional do 04. Adapta tipos (`bit`, `datetime2`), `COUNT_BIG`, `DATALENGTH` e conversões binárias explicitamente; não executa o procedimento T-SQL, a gestão transacional do Fabric ou `GO`/DDL condicional. O ensaio preserva valores e multiplicidades com `EXCEPT ALL`. No procedimento preparado, chaves únicas, associação temporal, contagem e comparação binária bidirecional compõem o check.
 
-Os testes locais não fecham critérios do roadmap que exigem Fabric. Compilação T-SQL, semântica de collation, limites de tipos, transferência, rollback real e comparação das saídas sintéticas com os valores esperados continuam pendentes. O adaptador oficial e a publicação oficial também permanecem pendentes; não há resultado Gold em nuvem reivindicado.
+Os testes locais não fecham critérios do roadmap que exigem Fabric. Compilação T-SQL, semântica de collation, transferência, rollback real e comparação das saídas sintéticas continuam pendentes de execução. O adaptador e a publicação oficial do baseline estão preparados no pacote; não há resultado Gold em nuvem reivindicado.

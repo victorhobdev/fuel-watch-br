@@ -124,6 +124,8 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 
 **Preparação em 12/11:** [modelo e roteiro M04](../../data-model.md), quatro scripts T-SQL, oito testes locais e [ensaio relacional real](../../../evidence/m04/local-gold.json). Reconciliação local de 8.052 coletas e 518 versões observadas; nenhuma execução Fabric. Adaptador da versão oficial depende do contrato aceito no M03; os cinco critérios permanecem abertos.
 
+**Pacote operacional M04:** [roteiro completo](../../m04-fabric.md), notebook **07** que consome o `consumer_contract` do **06 oficial M03**, seis arquivos de upload, nove scripts Warehouse em ordem e sete cenários sintéticos com comparação integral/rollback. Entrada, publicação oficial, validação e repetição estão preparadas. [Verificação do pacote](../../../evidence/m04/execution-package.json); execução Fabric e aceite continuam pendentes.
+
 ## M05 — Orquestração e recuperação entre camadas
 
 **Resultado:** uma execução parametrizada de ponta a ponta, com recuperação sem publicação parcial.
