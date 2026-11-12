@@ -20,16 +20,17 @@ O projeto começou nesta pasta, que continha somente um Git vazio, sem commits e
 | Acesso ao Fabric | Login mostrado em captura do portal; avaliação de 60 dias informada pelo usuário |
 | Lakehouse | Criação informada pelo usuário; detalhes da capacidade e do workspace ainda não registrados |
 | Pipeline / Copy | Status Bem-sucedido informado pelo usuário; ZIP de landing identificado na auditoria Bronze recebida |
-| Silver Delta e Warehouse Gold | Não implementados/validados no Fabric |
-| M02 — IBGE e Silver | Referência IBGE validada no Fabric: 92 municípios e zero ambiguidade; fixture, Silver e repetição pendentes; 14 testes locais aprovados |
+| Silver Delta | Primeira execução validada pelo JSON recebido: 8.052 coletas, 502 postos, 27 municípios e comparação integral local sem diferenças; repetição pendente |
+| Warehouse Gold | Ainda não implementado/validado no Fabric |
+| M02 — IBGE e Silver | IBGE e fixture distribuído validados; primeira Silver na versão Delta 0; quatro de cinco critérios aceitos; repetição pendente |
 | M03 — Versões e backfill | [Laboratório sintético](docs/source-versioning.md) executado localmente: 15 tentativas verificadas; implementação e execução Fabric pendentes |
 | SCD2, segurança, implantação e streaming | Etapas posteriores; sem resultado reivindicado |
 
 Os dados são amostrais. Ausência de observação não representa preço zero nem cobertura de todos os postos. A saída inicial preserva a coleta individual; não é uma fato semanal.
 
-Trabalho retomado em M02 a pedido do usuário. A Bronze e sua repetição permanecem concluídas; a referência IBGE e a Silver estão preparadas para execução. [Guia do M02](docs/m02-silver-ibge.md). O [resumo de 11/11](docs/retomada-2026-11-11.md) conserva o checkpoint anterior.
+Trabalho retomado em M02 a pedido do usuário. A Bronze e sua repetição permanecem concluídas; a referência IBGE, o fixture e a primeira Silver foram validados pelos retornos recebidos do Fabric. Próxima ação: repetir o notebook 04 para verificar a estabilidade dos valores de negócio. [Guia do M02](docs/m02-silver-ibge.md). O [resumo de 11/11](docs/retomada-2026-11-11.md) conserva o checkpoint anterior.
 
-[Roadmap completo e acompanhamento por marcos](docs/superpowers/plans/2026-11-12-fuel-watch-br-roadmap.md): 2 de 12 marcos concluídos, M02 em andamento; execução da Silver no Fabric ainda não comprovada.
+[Roadmap completo e acompanhamento por marcos](docs/superpowers/plans/2026-11-12-fuel-watch-br-roadmap.md): 2 de 12 marcos concluídos, M02 em andamento; primeira Silver validada, repetição ainda pendente.
 
 ## Reproduzir o bloco local
 

@@ -1,0 +1,31 @@
+{
+  "checked_at_utc": "2026-11-12T22:44:36.682927+00:00",
+  "evidence_source": "user_supplied_fabric_notebook_output",
+  "audit_file": "evidence/m02/fabric/silver/8405ed03-35cb-4c6b-979b-731e8833235f.json",
+  "audit_sha256": "4d8fa65d59530db555433159dd52c211b5464bd2bab5cbaf5aaea833d10356e1",
+  "checks": {
+    "audit_identity": true,
+    "source_hash": true,
+    "ibge_hash": true,
+    "manifest_hash": true,
+    "scope": true,
+    "category_counts": true,
+    "full_file_reconciliation": true,
+    "selected_reconciliation": true,
+    "coverage": true,
+    "iqr_limits": true,
+    "business_comparison": true,
+    "fixture": true,
+    "first_silver_version": true,
+    "prepared_notebooks_unchanged": true,
+    "chronological_timestamps": true
+  },
+  "checks_passed": 15,
+  "duration_seconds": 63.748986,
+  "remote_table_independently_queried": false,
+  "silver_executed": true,
+  "fixture_distributed_executed": true,
+  "silver_replay_verified": false,
+  "m02_acceptance_criteria_met": 4,
+  "m02_acceptance_criteria_total": 5
+}

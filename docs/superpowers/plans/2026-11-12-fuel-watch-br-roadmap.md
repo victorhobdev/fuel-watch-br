@@ -76,15 +76,15 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: resulta
 
 **Passos:** registrar runtime/SKU/região/expiração do trial; conferir o Lakehouse padrão; levar o snapshot IBGE preservado ao Fabric; selecionar explicitamente o hash ANP aprovado; portar as regras locais; executar e reconciliar. A referência IBGE local recebida veio com Content-Encoding gzip, que precisa ser tratado.
 
-- [ ] Snapshot IBGE rastreável no Fabric, com os 92 códigos municipais do RJ da referência atual, sem chaves normalizadas ambíguas; 27 nomes presentes na fatia com correspondência única.
-- [ ] Silver real com CNPJ string, data date e preço decimal(10,3); para os mesmos snapshots/contrato, reconciliar a referência local de 8.052 coletas, 502 postos e 27 municípios. Investigar qualquer diferença, sem ajustar os dados apenas para atingir a meta.
-- [ ] Contagens fecham: recebidos = fora do recorte + selecionados; selecionados = inválidos + duplicatas exatas excedentes + conflitos após deduplicação + aceitos.
-- [ ] Fixture inválido conserva original/motivo em quarentena; fixture extremo válido permanece aceito e sinalizado. Registrar o efeito do IQR e comparar com os 26 sinais locais sem transformar esse número em regra universal.
+- [x] Snapshot IBGE rastreável no Fabric, com os 92 códigos municipais do RJ da referência atual, sem chaves normalizadas ambíguas; 27 nomes presentes na fatia com correspondência única.
+- [x] Silver real com CNPJ string, data date e preço decimal(10,3); para os mesmos snapshots/contrato, reconciliar a referência local de 8.052 coletas, 502 postos e 27 municípios. Investigar qualquer diferença, sem ajustar os dados apenas para atingir a meta.
+- [x] Contagens fecham: recebidos = fora do recorte + selecionados; selecionados = inválidos + duplicatas exatas excedentes + conflitos após deduplicação + aceitos.
+- [x] Fixture inválido conserva original/motivo em quarentena; fixture extremo válido permanece aceito e sinalizado. Registrar o efeito do IQR e comparar com os 26 sinais locais sem transformar esse número em regra universal.
 - [ ] Segunda execução mantém o mesmo multiconjunto e valores de negócio da Silver; comparação integral com o Parquet local sem diferenças inexplicadas.
 
 **Métrica de saída:** zero diferença inexplicada e 100% dos selecionados contabilizados. Não exigir zero rejeições em novas origens.
 
-**Arquivos previstos:** `notebooks/03_ibge_reference.ipynb`, `notebooks/04_bronze_to_silver.ipynb`, ajustes focados em `fuelwatch/contract.py` somente se a semântica precisar mudar; evidências em `evidence/fabric/silver/`. Nenhum desses novos notebooks existe ainda.
+**Evidências existentes:** `notebooks/03_ibge_reference.ipynb`, `notebooks/04_bronze_to_silver.ipynb`, pacote aprovado e 14 testes locais em `evidence/m02/preparation.json`; execuções IBGE e primeira Silver em `evidence/m02/fabric/`, com proveniência dos retornos e conferências locais. Quatro de cinco critérios aceitos. Repetição ainda não demonstrada; novo retorno deve comprovar o mesmo negócio após reprocessar.
 
 ## M03 — Versões, correção histórica e backfill
 
@@ -271,6 +271,7 @@ Em cada sessão, acrescentar uma linha. As mudanças de estado exigem links para
 | 12/11/2026 | Roadmap | REVISADO | Critérios e sequência definidos; execução de dados continua pausada | Retomar M02 quando solicitado |
 | 12/11/2026 | M02 | EM ANDAMENTO | Retomada solicitada; notebooks e bundle preparados, 14 testes locais; aceite Fabric aberto | Upload e execução do notebook 03 |
 | 12/11/2026 | M02 | EM ANDAMENTO | JSON do notebook 03 conferido: 92 municípios, zero ambiguidade e hashes aprovados | Parar sessão 03; executar notebook 04 |
+| 12/11/2026 | M02 | EM ANDAMENTO — 4/5 critérios | JSON 8405ed03 conferido: fixture aprovado, Silver Delta 0, 8.052 coletas, 502 postos, 27 municípios, 26 sinais e zero diferenças de negócio | Repetir notebook 04 com os mesmos snapshots; comprovar same_business_as_previous=true |
 | 12/11/2026 | M03 | PREPARAÇÃO LOCAL | 15 tentativas sintéticas reconciliadas, nove testes específicos; pacote M02 preservado | Aceitar Silver/repetição M02 e implementar notebook 05 |
 
 ## Dependências e referências oficiais

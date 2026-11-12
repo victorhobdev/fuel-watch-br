@@ -63,9 +63,9 @@
     "bronze_replay_before_version": 0,
     "bronze_replay_after_version": 1,
     "m02": {
-      "state": "ibge_validated_pending_silver",
+      "state": "first_silver_validated_pending_replay",
       "ibge_reference_executed": true,
-      "silver_executed": false,
+      "silver_executed": true,
       "silver_replay_verified": false,
       "preparation_evidence": "evidence/m02/preparation.json",
       "ibge_reference_evidence_source": "user_supplied_json_reconciled_locally",
@@ -73,7 +73,17 @@
       "runtime_observed": {
         "spark_version": "4.1.1.5.5.20260929.238183312",
         "python_version": "3.13.11"
-      }
+      },
+      "silver_evidence_source": "user_supplied_json_reconciled_locally",
+      "silver_audit_file": "evidence/m02/fabric/silver/8405ed03-35cb-4c6b-979b-731e8833235f.json",
+      "silver_run_id": "8405ed03-35cb-4c6b-979b-731e8833235f",
+      "silver_delta_version": 0,
+      "silver_rows": 8052,
+      "silver_stations": 502,
+      "silver_municipalities": 27,
+      "fixture_distributed_executed": true,
+      "acceptance_criteria_met": 4,
+      "acceptance_criteria_total": 5
     }
   },
   "cloud_resources_created_by_agent": false,
@@ -81,8 +91,8 @@
   "work_status": {
     "status": "in_progress",
     "current_milestone": "M02",
-    "checkpoint": "ibge_reference_validated_from_received_output",
-    "waiting_for": "user_fabric_execution_of_notebook_04",
-    "recorded_at_utc": "2026-11-12T22:32:49.580018+00:00"
+    "checkpoint": "first_silver_validated_from_received_output",
+    "waiting_for": "user_fabric_replay_of_notebook_04",
+    "recorded_at_utc": "2026-11-12T22:44:36.682927+00:00"
   }
 }
