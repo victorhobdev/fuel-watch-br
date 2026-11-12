@@ -1,0 +1,39 @@
+{
+  "verified_at_utc": "2026-11-12T22:35:25.011520+00:00",
+  "local_tests": {
+    "run": 23,
+    "failures": 0,
+    "errors": 0,
+    "successful": true
+  },
+  "m03_specific_tests": 9,
+  "m02_frozen_manifest_sha256": "01d587c6927b4d2aa93fea09acdfe61b2332508225c9aba554998d12d37e1aaa",
+  "m02_frozen_files": [
+    {
+      "path": "notebooks/03_ibge_reference.ipynb",
+      "sha256": "15dce41fe238931ebd756ddf129d9247c6b2923c336acb7bd7e145af4c740ca6",
+      "matches_approved": true
+    },
+    {
+      "path": "notebooks/04_bronze_to_silver.ipynb",
+      "sha256": "6f3a5159f2227a9e48ab68dfdc6d0611b67e6c9fad33bd930675d13e51720d1c",
+      "matches_approved": true
+    },
+    {
+      "path": "data/artifacts/m02/fuelwatch_rules.zip",
+      "sha256": "2284a0d113a715125a9f79e5b99e7c1af7237f6afccfeac48531a47804119744",
+      "matches_approved": true
+    },
+    {
+      "path": "data/artifacts/m02/municipios-rj.http.gz",
+      "sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+      "matches_approved": true
+    },
+    {
+      "path": "data/artifacts/m02/reference.parquet",
+      "sha256": "e8455f401fa4fc281622249f9cd2f8e1733d093460717361f2627a97b4e2a5f2",
+      "matches_approved": true
+    }
+  ],
+  "m03_fabric_executed": false
+}

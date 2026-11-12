@@ -23,7 +23,7 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: resulta
 | M00 | Fontes, contrato e referência local | CONCLUÍDO | — |
 | M01 | Ingestão e Bronze com repetição validada no Fabric | CONCLUÍDO | M00 |
 | M02 | IBGE e Silver tipada/validada no Fabric | EM ANDAMENTO | M01 |
-| M03 | Versões de origem, correções antigas e backfill | PLANEJADO | M02 |
+| M03 | Versões de origem, correções antigas e backfill | PREPARAÇÃO LOCAL | M02 para execução Fabric |
 | M04 | Gold dimensional e histórico observado do posto | PLANEJADO | M03 |
 | M05 | Pipeline mestre e recuperação entre camadas | PLANEJADO | M04 |
 | M06 | Exercício delimitado de Dataflow Gen2 | PLANEJADO | M02 |
@@ -101,6 +101,8 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: resulta
 **Métrica de saída:** cinco cenários de controle aprovados: repetição, correção antiga, chegada atrasada, remoção e rejeição de versão conflitante. Hash/contagens sozinhos não substituem a comparação de registros afetados e não afetados.
 
 **Arquivos previstos:** `notebooks/05_source_versions_backfill.ipynb`, ajustes no notebook 04, `docs/source-versioning.md`, `evidence/fabric/versioning/`.
+
+**Preparação em 12/11:** [contrato e roteiro](../../source-versioning.md), modelo serial sintético, nove testes específicos e [15 tentativas locais verificadas](../../../evidence/m03/local-lab.json). O notebook 05 e a publicação Delta ainda não foram implementados; os cinco critérios Fabric permanecem abertos. O pacote M02 não foi alterado por esta preparação.
 
 ## M04 — Warehouse Gold e SCD2
 
@@ -256,7 +258,7 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: resulta
 4. Registrar aceitos, inválidos, duplicatas e conflitos; comparar integralmente com a fatia local e testar um inválido e um extremo válido em fixture.
 5. Reexecutar, comparar estado de negócio, salvar evidências e atualizar o aceite de M02.
 
-Não começar M03 até fechar o aceite Silver. Preparar plano detalhado de código apenas do bloco que será executado; este documento é o mapa completo de entregas, não código futuro presumido como pronto.
+Executar M03 no Fabric após fechar o aceite Silver. A pedido do usuário, a preparação local e sintética do M03 pode avançar enquanto M02 é executado, preservando seu pacote aprovado. Este documento distingue essa preparação da execução validada.
 
 ## Registro de acompanhamento
 
@@ -269,6 +271,7 @@ Em cada sessão, acrescentar uma linha. As mudanças de estado exigem links para
 | 12/11/2026 | Roadmap | REVISADO | Critérios e sequência definidos; execução de dados continua pausada | Retomar M02 quando solicitado |
 | 12/11/2026 | M02 | EM ANDAMENTO | Retomada solicitada; notebooks e bundle preparados, 14 testes locais; aceite Fabric aberto | Upload e execução do notebook 03 |
 | 12/11/2026 | M02 | EM ANDAMENTO | JSON do notebook 03 conferido: 92 municípios, zero ambiguidade e hashes aprovados | Parar sessão 03; executar notebook 04 |
+| 12/11/2026 | M03 | PREPARAÇÃO LOCAL | 15 tentativas sintéticas reconciliadas, nove testes específicos; pacote M02 preservado | Aceitar Silver/repetição M02 e implementar notebook 05 |
 
 ## Dependências e referências oficiais
 
