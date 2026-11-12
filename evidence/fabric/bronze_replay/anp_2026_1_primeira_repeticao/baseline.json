@@ -1,0 +1,14 @@
+{
+  "status": "baseline_captured",
+  "environment": "fabric",
+  "check_id": "anp_2026_1_primeira_repeticao",
+  "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+  "delta_version": 0,
+  "rows": 422418,
+  "columns": [
+    "regiao_sigla", "uf", "municipio", "revenda", "cnpj_revenda", "nome_rua",
+    "numero_rua", "complemento", "bairro", "cep", "produto", "data_coleta",
+    "valor_venda", "valor_compra", "unidade_medida", "bandeira"
+  ],
+  "captured_at_utc": "2026-11-12T00:28:37.006900+00:00"
+}

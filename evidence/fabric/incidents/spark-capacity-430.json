@@ -13,5 +13,8 @@
   "capacity_sku_verified": false,
   "code_or_data_failure_demonstrated": false,
   "next_check": "Inspect active sessions, stop only completed Fuel Watch notebook sessions, retry the rejected step.",
-  "resolved": false
+  "resolved": false,
+  "subsequent_successful_stage": "notebook_02_before_baseline_captured",
+  "subsequent_stage_evidence": "evidence/fabric/bronze_replay/anp_2026_1_primeira_repeticao/baseline.json",
+  "recovery_action_user_reported": false
 }

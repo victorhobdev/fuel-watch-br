@@ -15,7 +15,7 @@ O projeto começou nesta pasta, que continha somente um Git vazio, sem commits e
 | Idempotência local | Duas execuções reais com o mesmo hash de estado de negócio |
 | Correção antiga e recuperação | Testadas com fixtures sintéticos identificados |
 | Bronze Delta no Fabric | Saída de execução fornecida pelo usuário: bronze_validated; 422.418 registros, hash e tamanho reconciliados com o perfil local |
-| Repetição da Bronze no Fabric | Notebook de comparação preparado; ainda não executado |
+| Repetição da Bronze no Fabric | Baseline recebido: versão Delta 0, 422.418 linhas; reprocessamento e comparação final pendentes |
 | Acesso Azure | Portal confirmado; assinatura exibida como Azure for Students e papel Owner; saldo não verificado; CLI com token expirado na última consulta |
 | Acesso ao Fabric | Login mostrado em captura do portal; avaliação de 60 dias informada pelo usuário |
 | Lakehouse | Criação informada pelo usuário; detalhes da capacidade e do workspace ainda não registrados |

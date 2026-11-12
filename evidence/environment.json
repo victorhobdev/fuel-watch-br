@@ -51,7 +51,9 @@
     "bronze_run_id": "528c6d6e-2483-4024-bb31-925ccf1b1dee",
     "bronze_rows_for_version": 422418,
     "bronze_replay_verified": false,
-    "bronze_evidence_recorded_at_utc": "2026-11-12T00:21:05.416713+00:00"
+    "bronze_evidence_recorded_at_utc": "2026-11-12T00:21:05.416713+00:00",
+    "bronze_replay_baseline_captured": true,
+    "bronze_replay_baseline_version": 0
   },
   "cloud_resources_created_by_agent": false,
   "cloud_items_created_user_reported": true
