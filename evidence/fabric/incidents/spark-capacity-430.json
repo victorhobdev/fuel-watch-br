@@ -12,9 +12,11 @@
   "active_sessions_inspected": false,
   "capacity_sku_verified": false,
   "code_or_data_failure_demonstrated": false,
-  "next_check": "Inspect active sessions, stop only completed Fuel Watch notebook sessions, retry the rejected step.",
-  "resolved": false,
+  "next_check": "No retry pending; inspect sessions and capacity details if the symptom recurs.",
+  "resolved": true,
   "subsequent_successful_stage": "notebook_02_before_baseline_captured",
   "subsequent_stage_evidence": "evidence/fabric/bronze_replay/anp_2026_1_primeira_repeticao/baseline.json",
-  "recovery_action_user_reported": false
+  "recovery_action_user_reported": false,
+  "resolution_scope": "spark_job_admission_recovered_as_shown_by_successful_subsequent_runs",
+  "resolution_evidence": "evidence/fabric/bronze_replay/anp_2026_1_primeira_repeticao/f6a0f752-a9a6-4be3-8db4-339560062bbb.json"
 }

@@ -8,7 +8,7 @@
   "byte_count_matches_local_profile": true,
   "rows_reconciled": 422418,
   "remote_table_independently_queried_by_agent": false,
-  "replay_verified_in_fabric": false,
+  "replay_verified_in_fabric": true,
   "notebook_syntax_checks": [
     {
       "file": "notebooks/01_landing_to_bronze.ipynb",
@@ -20,5 +20,14 @@
       "sha256": "673fa2e643a4b40bfad9b9a23590999d69664117b639d25a465ea83807d51b6e",
       "code_cells_compiled": 2
     }
-  ]
+  ],
+  "replay_evidence_source": "user_supplied_fabric_json_reconciled_locally",
+  "replay_proof_file": "evidence/fabric/bronze_replay/anp_2026_1_primeira_repeticao/f6a0f752-a9a6-4be3-8db4-339560062bbb.json",
+  "replay_proof_sha256": "488ee9fb860430eaa83df69b43e2eb0dea652aa029195d30d97963be4788f0de",
+  "replay_checked_at_utc": "2026-11-12T00:41:25.457085+00:00",
+  "same_schema": true,
+  "replay_rows_before": 422418,
+  "replay_rows_after": 422418,
+  "missing_rows_detected": false,
+  "extra_rows_detected": false
 }

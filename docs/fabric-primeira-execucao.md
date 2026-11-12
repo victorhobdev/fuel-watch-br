@@ -1,5 +1,7 @@
 # Próximo bloco — acesso e primeira execução no Fabric
 
+**Encerramento de 11/11/2026:** primeira carga e teste de repetição Bronze concluídos, conforme JSONs fornecidos pelo usuário e conferidos localmente. Comparação Delta 0 → 1 aprovada, com 422.418 linhas em ambos os estados e nenhum registro ausente/adicional. As notas abaixo preservam a sequência de configuração e incidentes. O estado final e o próximo bloco estão em [retomada-2026-11-11.md](retomada-2026-11-11.md). Trabalho pausado a pedido do usuário.
+
 ## Progresso informado após a configuração
 
 O usuário informou criação da identidade de laboratório, entrou no portal Fabric (captura da experiência Power BI), informou avaliação gratuita de 60 dias e confirmou a criação do Lakehouse após o roteiro de `lh_fuelwatch`. Nome efetivo do workspace, identificador/região/SKU da capacidade e execução de dados ainda não foram inspecionados. O próximo passo é a primeira Copy activity. Credenciais ficam no Gerenciador de Credenciais do Windows; não registrar senhas no projeto.

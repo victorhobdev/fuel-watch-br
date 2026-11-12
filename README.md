@@ -15,7 +15,7 @@ O projeto começou nesta pasta, que continha somente um Git vazio, sem commits e
 | Idempotência local | Duas execuções reais com o mesmo hash de estado de negócio |
 | Correção antiga e recuperação | Testadas com fixtures sintéticos identificados |
 | Bronze Delta no Fabric | Saída de execução fornecida pelo usuário: bronze_validated; 422.418 registros, hash e tamanho reconciliados com o perfil local |
-| Repetição da Bronze no Fabric | Baseline Delta 0 e segunda carga recebidos: hashes/tamanho/contagens iguais; comparação completa das linhas ainda pendente |
+| Repetição da Bronze no Fabric | Validada pelo JSON recebido: versões Delta 0 e 1, 422.418 linhas, mesmo esquema e nenhum registro ausente/adicional nas 16 colunas de origem |
 | Acesso Azure | Portal confirmado; assinatura exibida como Azure for Students e papel Owner; saldo não verificado; CLI com token expirado na última consulta |
 | Acesso ao Fabric | Login mostrado em captura do portal; avaliação de 60 dias informada pelo usuário |
 | Lakehouse | Criação informada pelo usuário; detalhes da capacidade e do workspace ainda não registrados |
@@ -24,6 +24,8 @@ O projeto começou nesta pasta, que continha somente um Git vazio, sem commits e
 | SCD2, segurança, implantação e streaming | Etapas posteriores; sem resultado reivindicado |
 
 Os dados são amostrais. Ausência de observação não representa preço zero nem cobertura de todos os postos. A saída inicial preserva a coleta individual; não é uma fato semanal.
+
+Trabalho pausado pelo usuário após a validação da repetição Bronze. [Resumo e ponto de retomada](docs/retomada-2026-11-11.md). Próximo bloco: Silver PySpark, ainda não implementada no Fabric.
 
 ## Reproduzir o bloco local
 

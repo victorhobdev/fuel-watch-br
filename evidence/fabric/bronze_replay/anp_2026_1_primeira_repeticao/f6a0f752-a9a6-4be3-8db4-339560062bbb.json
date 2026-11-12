@@ -1,0 +1,16 @@
+{
+  "check_id": "anp_2026_1_primeira_repeticao",
+  "environment": "fabric",
+  "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+  "before_version": 0,
+  "after_version": 1,
+  "check_run_id": "f6a0f752-a9a6-4be3-8db4-339560062bbb",
+  "started_at_utc": "2026-11-12T00:38:50.352828+00:00",
+  "before_rows": 422418,
+  "after_rows": 422418,
+  "same_schema": true,
+  "missing_rows_detected": false,
+  "extra_rows_detected": false,
+  "status": "bronze_replay_validated",
+  "finished_at_utc": "2026-11-12T00:39:06.490130+00:00"
+}

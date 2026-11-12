@@ -50,15 +50,25 @@
     "bronze_audit_file": "evidence/fabric/bronze/528c6d6e-2483-4024-bb31-925ccf1b1dee.json",
     "bronze_run_id": "528c6d6e-2483-4024-bb31-925ccf1b1dee",
     "bronze_rows_for_version": 422418,
-    "bronze_replay_verified": false,
+    "bronze_replay_verified": true,
     "bronze_evidence_recorded_at_utc": "2026-11-12T00:21:05.416713+00:00",
     "bronze_replay_baseline_captured": true,
     "bronze_replay_baseline_version": 0,
     "bronze_latest_run_id": "d174dc42-1327-47b6-acac-1da1300afbaf",
     "bronze_run_outputs_received": 2,
     "bronze_replay_reprocessed": true,
-    "bronze_counts_stable_after_replay": true
+    "bronze_counts_stable_after_replay": true,
+    "bronze_replay_evidence_source": "user_supplied_fabric_json_reconciled_locally",
+    "bronze_replay_proof_file": "evidence/fabric/bronze_replay/anp_2026_1_primeira_repeticao/f6a0f752-a9a6-4be3-8db4-339560062bbb.json",
+    "bronze_replay_before_version": 0,
+    "bronze_replay_after_version": 1
   },
   "cloud_resources_created_by_agent": false,
-  "cloud_items_created_user_reported": true
+  "cloud_items_created_user_reported": true,
+  "work_status": {
+    "status": "paused_by_user",
+    "checkpoint": "bronze_initial_load_and_same_input_replay_validated",
+    "next_block": "silver_pyspark_not_started",
+    "recorded_at_utc": "2026-11-12T00:41:25.457085+00:00"
+  }
 }
