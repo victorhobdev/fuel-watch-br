@@ -2,6 +2,8 @@
 
 Estado: **laboratório do notebook 05 validado no Fabric; integração oficial pendente**. Os 17 cenários passaram conforme a saída recebida e as [27 verificações locais dessa evidência](../evidence/fabric/versioning/README.md). O M02 e sua Silver permanecem preservados. O [guia do notebook 05](m03-fabric.md) permite reproduzir o laboratório.
 
+**Próxima execução entregue:** [notebook 06 — seleção oficial e repetição](m03-official.md). Reutiliza `Files/m02_input`, reconcilia os bytes oficiais com a Bronze, seleciona o snapshot revisado e fornece o contrato de consumo Gold. O marco será fechado somente após conferir seu retorno Fabric.
+
 ## Por que comparar versões completas
 
 Um filtro `data_coleta > MAX(data_coleta)` perde correções e chegadas atrasadas. O laboratório começa com junho já presente e muda janeiro: a data máxima continua igual, mas o estado de negócio precisa mudar.

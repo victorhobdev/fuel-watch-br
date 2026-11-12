@@ -1,0 +1,55 @@
+{
+  "verified_at_utc": "2026-11-12T23:40:09.905823+00:00",
+  "state": "prepared_pending_fabric_execution",
+  "local_tests": {
+    "run": 36,
+    "errors": 0,
+    "failures": 0,
+    "successful": true,
+    "modules": [
+      "tests.test_contract",
+      "tests.test_local_snapshot",
+      "tests.test_m02_reference",
+      "tests.test_versioning_lab",
+      "tests.test_m03_notebook",
+      "tests.test_publication"
+    ]
+  },
+  "notebook": {
+    "path": "notebooks/06_official_source_selection.ipynb",
+    "sha256": "8efc13b7b24fe8b209a34b116a3522f36d304d0db4bf24303efa571dea9952a5",
+    "schema_valid": true,
+    "code_cells_compiled": 4,
+    "sources_match": true
+  },
+  "policy": {
+    "policy_version": "official-initial-v1",
+    "is_synthetic": false,
+    "complete_snapshot": true,
+    "scope": {
+      "anp_source_id": "anp_2026_1",
+      "contract_version": "0.1",
+      "date_end": "2026-06-30",
+      "date_start": "2026-01-01",
+      "ibge_source_id": "ibge_municipios_rj",
+      "produto": "GASOLINA",
+      "scope_id": "anp-2026-1-rj-gasolina",
+      "uf": "RJ"
+    },
+    "source_id": "anp_2026_1",
+    "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+    "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+    "expected_previous_identity": null,
+    "approved_delta": {
+      "inserted": 8052,
+      "removed": 0,
+      "updated": 0
+    }
+  },
+  "reuses_m02_manifest_sha256": "01d587c6927b4d2aa93fea09acdfe61b2332508225c9aba554998d12d37e1aaa",
+  "new_data_upload_required": false,
+  "m02_and_lab05_notebooks_unchanged": true,
+  "spark_executed_locally": false,
+  "fabric_executed": false,
+  "limits": "No local PySpark; local tests exercise promotion policy, bytes and packaging, not Spark/Delta writes."
+}

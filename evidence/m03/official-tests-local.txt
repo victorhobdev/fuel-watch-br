@@ -1,0 +1,41 @@
+test_ambiguous_municipality_is_not_arbitrarily_chosen (tests.test_contract.ContractTests.test_ambiguous_municipality_is_not_arbitrarily_chosen) ... ok
+test_decimal_and_leading_zero_cnpj_are_preserved (tests.test_contract.ContractTests.test_decimal_and_leading_zero_cnpj_are_preserved) ... ok
+test_exact_duplicates_and_conflicts_are_distinct (tests.test_contract.ContractTests.test_exact_duplicates_and_conflicts_are_distinct) ... ok
+test_extreme_positive_price_is_not_invalid (tests.test_contract.ContractTests.test_extreme_positive_price_is_not_invalid) ... ok
+test_ibge_compressed_and_plain_responses (tests.test_contract.ContractTests.test_ibge_compressed_and_plain_responses) ... ok
+test_invalid_values_are_quarantined_with_original (tests.test_contract.ContractTests.test_invalid_values_are_quarantined_with_original) ... ok
+test_conflicting_delivery_does_not_advance_current (tests.test_local_snapshot.SnapshotTests.test_conflicting_delivery_does_not_advance_current) ... ok
+test_quarantine_and_outlier_do_not_share_rejection_rule (tests.test_local_snapshot.SnapshotTests.test_quarantine_and_outlier_do_not_share_rejection_rule) ... ok
+test_repeat_then_old_correction_and_removed_row_replace_scope (tests.test_local_snapshot.SnapshotTests.test_repeat_then_old_correction_and_removed_row_replace_scope) ... ok
+test_write_failure_preserves_current_and_retry_does_not_duplicate (tests.test_local_snapshot.SnapshotTests.test_write_failure_preserves_current_and_retry_does_not_duplicate) ... ok
+test_approved_ibge_snapshot_and_tamper_detection (tests.test_m02_reference.M02Tests.test_approved_ibge_snapshot_and_tamper_detection) ... ok
+test_bundle_is_deterministic_and_preserves_reference_types (tests.test_m02_reference.M02Tests.test_bundle_is_deterministic_and_preserves_reference_types) ... ok
+test_interchange_mapping_preserves_all_source_columns (tests.test_m02_reference.M02Tests.test_interchange_mapping_preserves_all_source_columns) ... ok
+test_synthetic_scenarios_match_shared_contract (tests.test_m02_reference.M02Tests.test_synthetic_scenarios_match_shared_contract) ... ok
+test_conflicts_and_invalid_rows_preserve_active (tests.test_versioning_lab.VersioningTests.test_conflicts_and_invalid_rows_preserve_active) ... ok
+test_exact_duplicate_does_not_add_an_observation (tests.test_versioning_lab.VersioningTests.test_exact_duplicate_does_not_add_an_observation) ... ok
+test_hash_layout_and_scope_are_validated (tests.test_versioning_lab.VersioningTests.test_hash_layout_and_scope_are_validated) ... ok
+test_late_addition_then_explicit_removal (tests.test_versioning_lab.VersioningTests.test_late_addition_then_explicit_removal) ... ok
+test_official_scope_is_refused_and_inputs_are_not_mutated (tests.test_versioning_lab.VersioningTests.test_official_scope_is_refused_and_inputs_are_not_mutated) ... ok
+test_old_correction_changes_only_january (tests.test_versioning_lab.VersioningTests.test_old_correction_changes_only_january) ... ok
+test_partial_or_unapproved_removal_is_blocked (tests.test_versioning_lab.VersioningTests.test_partial_or_unapproved_removal_is_blocked) ... ok
+test_same_delivery_keeps_business_and_pointer (tests.test_versioning_lab.VersioningTests.test_same_delivery_keeps_business_and_pointer) ... ok
+test_stale_selection_cannot_regress_active (tests.test_versioning_lab.VersioningTests.test_stale_selection_cannot_regress_active) ... ok
+test_actual_notebook_preflight_matches_fixture_guards (tests.test_m03_notebook.M03NotebookTests.test_actual_notebook_preflight_matches_fixture_guards) ... ok
+test_bundle_is_deterministic_and_binds_all_payloads (tests.test_m03_notebook.M03NotebookTests.test_bundle_is_deterministic_and_binds_all_payloads) ... ok
+test_failed_candidate_is_only_activated_on_retry (tests.test_m03_notebook.M03NotebookTests.test_failed_candidate_is_only_activated_on_retry) ... ok
+test_scenario_coverage_and_historical_values (tests.test_m03_notebook.M03NotebookTests.test_scenario_coverage_and_historical_values) ... ok
+test_wrong_field_count_is_rejected (tests.test_m03_notebook.M03NotebookTests.test_wrong_field_count_is_rejected) ... ok
+test_initial_registration_requires_reviewed_complete_delta (tests.test_publication.PublicationTests.test_initial_registration_requires_reviewed_complete_delta) ... ok
+test_notebook_stream_hash_preserves_original_bytes (tests.test_publication.PublicationTests.test_notebook_stream_hash_preserves_original_bytes) ... ok
+test_partial_synthetic_scope_hash_and_invalid_delta_are_refused (tests.test_publication.PublicationTests.test_partial_synthetic_scope_hash_and_invalid_delta_are_refused) ... ok
+test_reviewed_source_change_supports_old_correction (tests.test_publication.PublicationTests.test_reviewed_source_change_supports_old_correction) ... ok
+test_same_anp_with_different_reference_needs_explicit_predecessor (tests.test_publication.PublicationTests.test_same_anp_with_different_reference_needs_explicit_predecessor) ... ok
+test_same_identity_is_noop_only_for_equal_business (tests.test_publication.PublicationTests.test_same_identity_is_noop_only_for_equal_business) ... ok
+test_stale_policy_cannot_overwrite_another_version (tests.test_publication.PublicationTests.test_stale_policy_cannot_overwrite_another_version) ... ok
+test_unapproved_removal_is_blocked (tests.test_publication.PublicationTests.test_unapproved_removal_is_blocked) ... ok
+
+----------------------------------------------------------------------
+Ran 36 tests in 0.751s
+
+OK
