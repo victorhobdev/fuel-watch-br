@@ -1,6 +1,6 @@
 # M03 — Versões, correções antigas e backfill
 
-Estado: **laboratório local executado e notebook 05 entregue; execução no Fabric pendente**. O M02 foi aceito pelas evidências recebidas e seu pacote permanece preservado. Para executar agora, seguir o [guia do notebook 05](m03-fabric.md): três arquivos em `Files/m03_input`, Lakehouse padrão e Run all.
+Estado: **laboratório do notebook 05 validado no Fabric; integração oficial pendente**. Os 17 cenários passaram conforme a saída recebida e as [27 verificações locais dessa evidência](../evidence/fabric/versioning/README.md). O M02 e sua Silver permanecem preservados. O [guia do notebook 05](m03-fabric.md) permite reproduzir o laboratório.
 
 ## Por que comparar versões completas
 
@@ -62,4 +62,4 @@ Backfill significa reprocessar um escopo/período explicitamente selecionado a p
 
 ## Aceite e limites
 
-O M03 continua aberto até haver evidência Fabric dos cinco critérios do roadmap. Os testes locais verificam o contrato, fixtures e preflight; formato e sintaxe do notebook também são conferidos. Spark e commits Delta do notebook 05 ainda aguardam execução no Fabric. O notebook exercita uma exceção Python antes da promoção, sem prometer recuperação de perda de cluster ou atomicidade entre tabelas. A integração com o fluxo oficial continua posterior ao laboratório. Nenhum recurso Fabric ou pago foi criado por esta preparação.
+Os cenários do laboratório e seus commits Delta foram validados pela saída Fabric recebida; não houve consulta remota independente. O M03 permanece em andamento para integrar o controle ao fluxo oficial: o notebook atual declara `official_integration_implemented=false`. A falha exercitada é uma exceção Python antes da promoção, sem demonstrar recuperação de perda de cluster ou atomicidade entre tabelas. Nenhum recurso pago foi criado por este trabalho.

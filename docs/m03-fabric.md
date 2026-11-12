@@ -1,6 +1,6 @@
 # Executar o M03 no Fabric — notebook 05
 
-**Estado: entregue para execução; Spark/Delta ainda não validados neste notebook.** M02 já foi aceito pelas auditorias recebidas: 8.052 coletas, 502 postos, 27 municípios e repetição Silver sem diferenças. O notebook 03 é do M02/IBGE; este marco M03 usa o **notebook 05**.
+**Estado: laboratório validado no Fabric pela saída fornecida pelo usuário.** Os 17 cenários passaram em 12/11/2026; [evidências e limites](../evidence/fabric/versioning/README.md). A Silver oficial permaneceu na versão 1. A integração do controle ao fluxo oficial ainda está pendente. As instruções abaixo permitem reproduzir o laboratório. O notebook 03 é do M02/IBGE; este marco M03 usa o **notebook 05**.
 
 ## Arquivos e upload
 
@@ -85,7 +85,7 @@ O último JSON deve conter:
 }
 ```
 
-Esses são os **valores esperados**, não uma execução já realizada. O JSON real inclui IDs, horários UTC, runtime, hashes e versões Delta. Copiar o JSON final inteiro para registrar as evidências; parar a sessão depois de concluir.
+O trecho acima é um exemplo resumido; os mesmos resultados foram confirmados no retorno recebido do experimento `ccbdb9dc-8c1a-487d-a034-1c8960edb67e`. O JSON real preservado inclui IDs, horários UTC, runtime, hashes e versões Delta. Em nova execução, copiar o JSON final inteiro para registrar as evidências; parar a sessão depois de concluir.
 
 ## Em caso de erro
 
