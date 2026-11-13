@@ -1,6 +1,6 @@
 # M06 — referência municipal em Dataflow Gen2
 
-Estado: **fonte verificada no Fabric; definição M preparada, sem execução Dataflow**. Não é uma nova referência canônica. A consulta SQL real confirmou 92 linhas e 92 códigos distintos em `lh_fuelwatch.dbo.ref_municipio_ibge`, no hash IBGE aprovado. [Preflight](../evidence/fabric/dataflow/reference-preflight-2026-11-13.json).
+Estado: **item Dataflow criado e definição relida no Fabric; refresh ainda não iniciado**. Não é uma nova referência canônica. A consulta SQL real confirmou 92 linhas e 92 códigos distintos em `lh_fuelwatch.dbo.ref_municipio_ibge`, no hash IBGE aprovado. [Preflight](../evidence/fabric/dataflow/reference-preflight-2026-11-13.json).
 
 O exercício usa a própria referência preservada do M02, filtrada pelo hash, projeta código/nome/UF, aplica tipos textuais e remove espaços externos. O destino é somente `lab_m06_municipios`, no Lakehouse do laboratório. Não modifica `ref_municipio_ibge`, Silver ou Gold. Managed settings devem substituir a tabela em cada refresh; comprovar 92 linhas após a repetição continua obrigatório.
 
@@ -8,9 +8,9 @@ O exercício usa a própria referência preservada do M02, filtrada pelo hash, p
 
 ## Dependências de conexão
 
-A API retornou apenas a conexão HTTP ANP existente. O conector Lakehouse está disponível e informa somente `OAuth2` como credencial suportada. O contrato público de criação de conexões não oferece esse fluxo OAuth como payload de credencial. Portanto, falta criar a conexão organizacional Lakehouse pelo fluxo interativo, sem enviar senha ou token em chat. Isso não impede os ensaios M05 por CLI.
+A API inicialmente retornou apenas a conexão HTTP ANP existente. O conector Lakehouse está disponível e informa somente `OAuth2` como credencial suportada. O usuário criou `lh_fuelwatch_oauth` pelo fluxo interativo; a API confirmou Lakehouse/OAuth2. Nenhuma senha ou token foi copiado para a definição ou para o Git.
 
-O [template de metadados](../fabric/m06/queryMetadata.template.json) possui placeholders para bindings. Não inventar ClusterId, não usar Anonymous para contornar OAuth e não habilitar refresh antes de persistir e reler uma conexão válida. A definição nativa exportada e o suporte real a CI/CD ainda precisam ser confirmados no item criado.
+O item `df_m06_ibge_lab` foi criado pela API com o M e a conexão fornecida. O retorno `getDefinition` confirmou o M integral, o binding composto e `loadEnabled=false` no destino oculto. [Prova de autoria](../evidence/fabric/dataflow/authoring-2026-11-13.json). A [exportação nativa real](../fabric/m06/native/queryMetadata.json) mantém formato `202502` e remove bindings do ambiente; o template inicial fica separado. A origem tem load habilitado por padrão (o servidor omite `true` na releitura). Isso ainda não comprova resolução de credenciais em runtime ou implantação Git real.
 
 ## Verificação de execução
 

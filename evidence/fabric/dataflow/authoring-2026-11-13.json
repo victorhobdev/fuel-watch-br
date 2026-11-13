@@ -1,0 +1,15 @@
+{
+  "environment": "fabric",
+  "item": "df_m06_ibge_lab",
+  "item_type": "Dataflow",
+  "source": "Fabric REST create and getDefinition",
+  "definition_format_version": "202502",
+  "created": true,
+  "mashup_readback_matches": true,
+  "oauth_connection_binding_readback_matches": true,
+  "destination_hidden_and_load_disabled": true,
+  "credential_type": "OAuth2",
+  "refresh_started": false,
+  "runtime_result_validated": false,
+  "native_export_redacted": "fabric/m06/native"
+}

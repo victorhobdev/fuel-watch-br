@@ -1,0 +1,34 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {
+    "allowFastCopy": false,
+    "maxConcurrency": 1
+  },
+  "name": "df_m06_ibge_lab",
+  "documentLocale": "pt-BR",
+  "queriesMetadata": {
+    "p_inject_invalid": {
+      "queryId": "ade12f55-3543-4b5b-a11f-d0f786d9f309",
+      "queryName": "p_inject_invalid",
+      "loadEnabled": false
+    },
+    "lab_m06_municipios": {
+      "queryId": "b71d53ac-e5ca-494b-a80a-a835c6fd8b30",
+      "queryName": "lab_m06_municipios"
+    },
+    "lab_m06_municipios_DataDestination": {
+      "queryId": "21337dc7-7ef6-4224-a1c2-52d501dba90b",
+      "queryName": "lab_m06_municipios_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"{{CONNECTION_CLUSTER_ID}}\",\"DatasourceId\":\"{{LAKEHOUSE_CONNECTION_ID}}\"}"
+    }
+  ],
+  "allowNativeQueries": false
+}
