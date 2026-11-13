@@ -1,0 +1,13 @@
+{
+  "environment": "fabric",
+  "existing_connection_types": [
+    "HttpServer"
+  ],
+  "lakehouse_supported_credential_types": [
+    "OAuth2"
+  ],
+  "lakehouse_oauth_connection_exists": false,
+  "dataflow_created": false,
+  "dataflow_execution_validated": false,
+  "interactive_connection_requested": true
+}

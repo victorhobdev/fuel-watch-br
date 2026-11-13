@@ -1,0 +1,17 @@
+{
+  "environment": "fabric",
+  "recorded_at_utc": "2026-11-13T13:49:21.520927+00:00",
+  "transport": "ODBC 18 with Entra token; read-only SQL",
+  "source_table": "lh_fuelwatch.dbo.ref_municipio_ibge",
+  "approved_ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+  "rows": 92,
+  "distinct_codes": 92,
+  "projection_columns": [
+    "municipio_ibge",
+    "nome",
+    "uf"
+  ],
+  "dataflow_created": false,
+  "dataflow_executed": false,
+  "purpose": "Source dependency check for M06, not Dataflow acceptance"
+}
