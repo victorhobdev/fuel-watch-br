@@ -31,7 +31,7 @@ def save():
     receipt_path.write_text(json.dumps(receipt, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
-def child_summary(folder, notebook, expected_status, filename="summary.json"):
+def child_summary(folder, notebook, expected_status, filename="summary.json", arguments=None):
     """Execucao serial: exigir exatamente um recibo novo e bem-sucedido do filho."""
     directory = "Files/" + folder
 
@@ -43,7 +43,7 @@ def child_summary(folder, notebook, expected_status, filename="summary.json"):
                 if notebookutils.fs.exists(directory + "/" + entry.name.rstrip("/") + "/" + filename)}
 
     before = receipts()
-    notebookutils.notebook.run(notebook, 900)
+    notebookutils.notebook.run(notebook, 900, arguments or {})
     added = receipts() - before
     if len(added) != 1:
         receipt["child_receipt_discovery"] = {"filename": filename, "before_count": len(before),
@@ -78,7 +78,8 @@ try:
         if p_fault_stage == "silver":
             raise RuntimeError("M05_INJECTED_SILVER_FAILURE_AFTER_VALIDATION: bloquear export e Gold")
     else:
-        result = child_summary("audit/m04", "07_export_gold_input", "m04_transfer_ready", "transfer.json")
+        result = child_summary("audit/m04", "07_export_gold_input", "m04_transfer_ready", "transfer.json",
+                               {"p_rules_library_path": "/lakehouse/default/Files/m02_input/fuelwatch_rules.zip"})
         receipt.update(batch_id=result["batch_id"], source_delta_version=result["source_delta_version"],
                        snapshot_id=result["snapshot_id"])
     receipt.update(status="stage_validated", finished_at_utc=datetime.now(timezone.utc).isoformat())

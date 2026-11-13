@@ -1,0 +1,43 @@
+{
+  "environment": "fabric",
+  "job_id": "42f770b8-7c27-4cd7-94d6-3faeb593d1a5",
+  "status": "Failed",
+  "failed_activity": "Export_Gold_Input",
+  "cause": "same ZIP basename registered from different paths in shared SparkContext",
+  "error_excerpt": "An error occurred while calling o7780.throwExceptionIfHave.\n: com.microsoft.spark.notebook.msutils.NotebookExecutionException: requirement failed: File fuelwatch_rules.zip was already registered with a different path (old path = /lakehouse/default/Files/m02_input/fuelwatch_rules.zip, new path = /lakehouse/default/Files/m04_input/fuelwatch_rules.zip\n",
+  "sessions": [
+    {
+      "activity": "Bronze",
+      "session_id": "32904caf-bfae-4f76-bf77-e561d129431d",
+      "session_sharing": {
+        "sessionSource": "created",
+        "sessionTag": "fuelwatch_m05_serial"
+      }
+    },
+    {
+      "activity": "Silver",
+      "session_id": "32904caf-bfae-4f76-bf77-e561d129431d",
+      "session_sharing": {
+        "sessionSource": "attached",
+        "sessionTag": "fuelwatch_m05_serial"
+      }
+    },
+    {
+      "activity": "Export_Gold_Input",
+      "session_id": "32904caf-bfae-4f76-bf77-e561d129431d",
+      "session_sharing": {
+        "sessionSource": "attached",
+        "sessionTag": "fuelwatch_m05_serial"
+      }
+    }
+  ],
+  "previous_publication_unchanged": true,
+  "guard_resultsets": [
+    [
+      {
+        "status": "m05_previous_publication_unchanged",
+        "root_run_id": "42f770b8-7c27-4cd7-94d6-3faeb593d1a5"
+      }
+    ]
+  ]
+}

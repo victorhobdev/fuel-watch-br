@@ -84,11 +84,12 @@ class StageContractTests(unittest.TestCase):
         self.assertIn("child_audit_relative_path", receipts[0])
 
     def test_export_returns_exact_new_batch(self):
-        error, exited, _, receipts = self.run_stage("export")
+        error, exited, calls, receipts = self.run_stage("export")
         self.assertIsNone(error)
         self.assertEqual(json.loads(exited[0])["batch_id"], "new-batch")
         self.assertEqual(receipts[0]["status"], "stage_validated")
         self.assertTrue(receipts[0]["child_audit_relative_path"].endswith("/transfer.json"))
+        self.assertEqual(calls[0][1]["p_rules_library_path"], "/lakehouse/default/Files/m02_input/fuelwatch_rules.zip")
 
     def test_remote_receipt_remains_discoverable_when_mounted_listing_is_stale(self):
         error, exited, _, receipts = self.run_stage("export", stale_mount=True)

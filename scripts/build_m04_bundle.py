@@ -257,8 +257,8 @@ def build_notebook(fingerprint):
             value.update(execution_count=None, outputs=[])
         return value
     cells = [cell("markdown", "# M04 — Snapshot oficial selecionado no M03 para Warehouse\n\nPREPARADO; ainda não executado no Fabric.\nConcluir notebook 06 de seleção oficial M03 e parar sua sessão.\nAnexar lh_fuelwatch como default Lakehouse e usar sessão nova.\nEnviar os seis arquivos de data/artifacts/m04_fabric/upload para Files/m04_input.\nExecutar Run all; enviar o JSON m04_transfer_ready e parar a sessão.\nConsome o consumer_contract M03, fixa a versão publicada e reconcilia o baseline revisado.\nGrava apenas m04_transfer_* e arquivos de auditoria.\n"),
-             cell("code", 'p_bundle_dir = "/lakehouse/default/Files/m04_input"\n' + f'p_expected_manifest_sha256 = "{fingerprint}"\n'),
-             cell("code", (ROOT / "notebooks/m02_sources/bootstrap.py").read_text(encoding="utf-8")),
+             cell("code", 'p_bundle_dir = "/lakehouse/default/Files/m04_input"\n' + f'p_expected_manifest_sha256 = "{fingerprint}"\n' + 'p_rules_library_path = ""\n'),
+             cell("code", (ROOT / "notebooks/m04_sources/bootstrap.py").read_text(encoding="utf-8")),
              cell("code", (ROOT / "fuelwatch/gold_input.py").read_text(encoding="utf-8")),
              cell("code", (ROOT / "notebooks/m04_sources/07_export_gold_input.py").read_text(encoding="utf-8"))]
     cells[1]["metadata"]["tags"] = ["parameters"]

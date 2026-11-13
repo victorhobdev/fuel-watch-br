@@ -1,0 +1,15 @@
+{
+  "environment": "fabric",
+  "source": "OneLake SDK read of both existing bundles",
+  "identical_sha256": true,
+  "library_sha256": "2284a0d113a715125a9f79e5b99e7c1af7237f6afccfeac48531a47804119744",
+  "paths": [
+    "m02_input/fuelwatch_rules.zip",
+    "m04_input/fuelwatch_rules.zip"
+  ],
+  "immutable_bundles_modified": false,
+  "correction": "M05 passes the M02 registered library path to notebook 07; notebook 07 verifies it against the M04 manifest before addPyFile",
+  "standalone_default": "M04 own bundle path",
+  "local_tests_passed": 65,
+  "deployed_and_readback_verified": true
+}
