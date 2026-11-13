@@ -1,0 +1,22 @@
+{
+  "environment": "fabric",
+  "job_id": "8bdaddc5-ed4e-4699-8e4b-a42b897c3df8",
+  "case": "invalid",
+  "status": "m06_refresh_verified",
+  "job_status": "Failed",
+  "fixture_invalid": true,
+  "failure_reason": {
+    "requestId": "121244fc-bde6-46a1-af1f-e2f352370f8c",
+    "errorCode": "ModelBuilderEvaluationErrorCode",
+    "message": "Unexpected exception in query \"lab_m06_municipios\", Message: M06_REFERENCE_CONTRACT: Esperados 92 municipios RJ unicos e validos do snapshot aprovado.",
+    "isRetriable": false
+  },
+  "checked_at_utc": "2026-11-13T15:02:00.965025+00:00",
+  "reference_rows": 92,
+  "target_rows": null,
+  "column_types": null,
+  "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+  "reference_projection_sha256": "09f725387053e28575e1578333ffe1bd76e70baec561740412ff02e5d318bc42",
+  "full_projection_comparison_passed": false,
+  "same_as": ".local/m06-api/06fc923d-79ae-4670-9371-5380c194a45b/verification.json"
+}

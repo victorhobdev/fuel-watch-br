@@ -1,0 +1,15 @@
+{
+  "id": "8bdaddc5-ed4e-4699-8e4b-a42b897c3df8",
+  "jobType": "Refresh",
+  "invokeType": "Manual",
+  "status": "Failed",
+  "failureReason": {
+    "requestId": "121244fc-bde6-46a1-af1f-e2f352370f8c",
+    "errorCode": "ModelBuilderEvaluationErrorCode",
+    "message": "Unexpected exception in query \"lab_m06_municipios\", Message: M06_REFERENCE_CONTRACT: Esperados 92 municipios RJ unicos e validos do snapshot aprovado.",
+    "isRetriable": false
+  },
+  "rootActivityId": "0aa32a62-536c-4b9f-acd1-0a683df942e8",
+  "startTimeUtc": "2026-11-13T14:59:33.6999638",
+  "endTimeUtc": "2026-11-13T14:59:39.788507"
+}

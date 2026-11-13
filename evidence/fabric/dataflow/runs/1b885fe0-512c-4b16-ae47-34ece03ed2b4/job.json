@@ -1,0 +1,10 @@
+{
+  "id": "1b885fe0-512c-4b16-ae47-34ece03ed2b4",
+  "jobType": "Refresh",
+  "invokeType": "Manual",
+  "status": "Completed",
+  "failureReason": null,
+  "rootActivityId": "42465db1-f17b-4f27-851b-24d0a077e480",
+  "startTimeUtc": "2026-11-13T14:56:17.2367167",
+  "endTimeUtc": "2026-11-13T14:56:57.4065017"
+}

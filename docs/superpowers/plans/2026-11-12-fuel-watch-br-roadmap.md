@@ -1,6 +1,6 @@
 # Roadmap do Fuel Watch BR — marcos verificáveis
 
-Atualizado em **13/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M05 aceitos no Fabric; M06 em execução e M07 em preparação. Planejamento, testes locais e execução validada são identificados separadamente.
+Atualizado em **13/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M06 aceitos no Fabric; M07 em preparação e M08 com destino remoto pendente. Planejamento, testes locais e execução validada são identificados separadamente.
 
 **Objetivo:** concluir um observatório explicável de preços de combustíveis no Microsoft Fabric, com fluxo batch confiável, segurança e implantação demonstradas, laboratório sintético de streaming e consumo mínimo.
 
@@ -10,7 +10,7 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 
 ## Como acompanhar
 
-- **Estado atual: 6 de 12 marcos concluídos.** Isso conta entregas aceitas, não representa percentual de esforço ou de tempo.
+- **Estado atual: 7 de 12 marcos concluídos.** Isso conta entregas aceitas, não representa percentual de esforço ou de tempo.
 - Cada marco tem cinco critérios de aceite. Marcar uma caixa exige uma evidência identificada: execução, consulta, comparação, matriz ou documento verificado.
 - Código preparado, teste local e execução no Fabric são estados distintos. Uma etapa que depende de Fabric não fica concluída apenas por passar localmente.
 - Evidências M00–M02 e laboratório M03 foram fornecidas pelo usuário e conferidas localmente. A seleção oficial M03 e o M04 foram executados pelo agente na guia Fabric autorizada, com saídas observadas diretamente. A proveniência acompanha cada registro; não houve consulta independente fora dos notebooks.
@@ -26,7 +26,7 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 | M03 | Versões de origem, correções antigas e backfill | CONCLUÍDO | M02 |
 | M04 | Gold dimensional e histórico observado do posto | CONCLUÍDO | M03 |
 | M05 | Pipeline mestre e recuperação entre camadas | CONCLUÍDO | M04 |
-| M06 | Exercício delimitado de Dataflow Gen2 | EM DESENVOLVIMENTO | M02 |
+| M06 | Exercício delimitado de Dataflow Gen2 | CONCLUÍDO | M02 |
 | M07 | Acessos e governança com testes reais | PLANEJADO | M04 |
 | M08 | Git do workspace e implantação entre ambientes | PLANEJADO | M05; M06 para implantar esse item |
 | M09 | Monitoramento, diagnóstico e desempenho medido | PLANEJADO | M05; repetir verificações após M08 |
@@ -154,13 +154,15 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 
 **Passos:** usar o mesmo snapshot IBGE, selecionar código/nome/UF, tipar e normalizar espaços; gravar tabela de laboratório separada; comparar com a referência canônica. Não fazer toda origem passar por Copy e Dataflow em sequência.
 
-- [ ] Disponibilidade e variante do Dataflow Gen2 confirmadas no trial/tenant, incluindo suporte aplicável a Git/implantação.
-- [ ] Fluxo executado em tabela de laboratório identificada, com os 92 códigos do snapshot de referência, sem virar uma segunda fonte canônica de município.
-- [ ] Tipos e unicidade dos códigos aprovados; comparação com a projeção equivalente da referência apresenta zero diferenças inexplicadas.
-- [ ] Nova atualização não duplica a tabela; erro de transformação provocado em fixture é diagnosticado e recuperado, com saídas registradas.
-- [ ] Documentação explica quando escolher Copy, notebook ou Dataflow para esse caso e referencia a definição exportada real.
+- [x] Disponibilidade e variante do Dataflow Gen2 confirmadas no trial/tenant, incluindo suporte aplicável a Git/implantação.
+- [x] Fluxo executado em tabela de laboratório identificada, com os 92 códigos do snapshot de referência, sem virar uma segunda fonte canônica de município.
+- [x] Tipos e unicidade dos códigos aprovados; comparação com a projeção equivalente da referência apresenta zero diferenças inexplicadas.
+- [x] Nova atualização não duplica a tabela; erro de transformação provocado em fixture é diagnosticado e recuperado, com saídas registradas.
+- [x] Documentação explica quando escolher Copy, notebook ou Dataflow para esse caso e referencia a definição exportada real.
 
 **Métrica de saída:** um fluxo válido, uma repetição e um erro recuperado. Se o recurso estiver indisponível, marcar bloqueio/condição e decidir redução explicitamente; não contar código não executado como laboratório concluído.
+
+**Aceite em 13/11:** 5/5 critérios. Dataflow Gen2 criado/relido e quatro jobs reais: inicial, repetição, erro sintético e recuperação. SQL confirmou 92 códigos únicos, três campos varchar e igualdade integral ao snapshot IBGE. Fixture restaurada false, definição nativa exportada e suporte CI/CD documentado; Git/implantação real permanecem M08. [Aceite](../../../evidence/fabric/dataflow/m06-acceptance-2026-11-13.json); 7/12 marcos concluídos.
 
 **Arquivos previstos:** item real em `fabric/`, `docs/dataflow-gen2.md`, `evidence/fabric/dataflow/`.
 
@@ -294,6 +296,7 @@ Em cada sessão, acrescentar uma linha. As mudanças de estado exigem links para
 
 | 13/11/2026 | M05 | PARCIAL — sem aceite Fabric | Notebook 08 e cópia do pipeline criados; 57 testes locais; editor de notebooks preso no carregamento. [Estado](../../../evidence/fabric/orchestration/preparation-status.json) | Recuperar editor, conferir parâmetros e executar orquestração/falhas; 5/12 marcos |
 | 13/11/2026 | M05 | CONCLUÍDO — 5/5 critérios | Carga completa, falhas Silver/Gold, recuperações, repetição e agendamento real desabilitado; auditoria REST/OneLake/SQL | M06 em execução; 6/12 marcos concluídos |
+| 13/11/2026 | M06 | CONCLUÍDO — 5/5 critérios | Dataflow Gen2 real: 92 municípios, repetição sem duplicação, erro sintético e recuperação, definição nativa relida | M07 leitor pendente; M08 remoto pendente; 7/12 marcos |
 
 ## Dependências e referências oficiais
 

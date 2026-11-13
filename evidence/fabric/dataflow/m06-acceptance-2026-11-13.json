@@ -1,0 +1,24 @@
+{
+  "milestone": "M06",
+  "status": "accepted",
+  "environment": "fabric",
+  "criteria_passed": 5,
+  "criteria_total": 5,
+  "checked_at_utc": "2026-11-13T15:07:32.191426+00:00",
+  "item": "df_m06_ibge_lab",
+  "variant": "Dataflow Gen2 with CI/CD native definition format 202502",
+  "execute_api": "Dataflow Run On Demand Execute (preview), delegated user identity",
+  "cases": {
+    "baseline": "06fc923d-79ae-4670-9371-5380c194a45b",
+    "replay": "1b885fe0-512c-4b16-ae47-34ece03ed2b4",
+    "invalid": "8bdaddc5-ed4e-4699-8e4b-a42b897c3df8",
+    "recovery": "9fb44ee5-89bf-43e2-b4c3-620953b97b3b"
+  },
+  "reference_and_target_rows": 92,
+  "distinct_codes": 92,
+  "all_three_columns_textual": true,
+  "full_projection_comparisons_passed": true,
+  "canonical_reference_unchanged_across_all_cases": true,
+  "fixture_restored_false_and_readback_verified": true,
+  "git_or_deployment_execution_claimed": false
+}

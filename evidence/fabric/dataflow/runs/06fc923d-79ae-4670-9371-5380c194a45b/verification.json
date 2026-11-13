@@ -1,0 +1,30 @@
+{
+  "environment": "fabric",
+  "job_id": "06fc923d-79ae-4670-9371-5380c194a45b",
+  "case": "baseline",
+  "status": "m06_refresh_verified",
+  "job_status": "Completed",
+  "fixture_invalid": false,
+  "failure_reason": null,
+  "checked_at_utc": "2026-11-13T14:55:42.368488+00:00",
+  "reference_rows": 92,
+  "target_rows": 92,
+  "column_types": [
+    {
+      "COLUMN_NAME": "municipio_ibge",
+      "DATA_TYPE": "varchar"
+    },
+    {
+      "COLUMN_NAME": "nome",
+      "DATA_TYPE": "varchar"
+    },
+    {
+      "COLUMN_NAME": "uf",
+      "DATA_TYPE": "varchar"
+    }
+  ],
+  "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+  "reference_projection_sha256": "09f725387053e28575e1578333ffe1bd76e70baec561740412ff02e5d318bc42",
+  "full_projection_comparison_passed": true,
+  "same_as": null
+}

@@ -1,0 +1,9 @@
+{
+  "environment": "fabric",
+  "job_id": "1b885fe0-512c-4b16-ae47-34ece03ed2b4",
+  "case": "replay",
+  "fixture_invalid": false,
+  "accepted_at_utc": "2026-11-13T14:56:30.066335+00:00",
+  "definition_backup": "definition-before-cfe3f482-045c-4cc8-9dd0-8acd7dcc6ed9.json",
+  "retry_after": 60
+}
