@@ -1,6 +1,6 @@
 # Fechar M03 — seleção oficial no notebook 06
 
-**Estado: código entregue e verificado localmente; execução Fabric pendente.** O notebook 05 já demonstrou correção antiga, atraso, remoção, rejeição e recuperação com dados sintéticos. Agora falta registrar a versão **oficial aprovada**, repetir sua seleção e definir o contrato de entrada do Gold.
+**Estado: executado e validado no Fabric; M03 concluído.** O run 6929bb98 registrou a versão oficial aprovada, repetiu sem novo commit e definiu o contrato de entrada do Gold. O notebook 05 já demonstrou os cenários sintéticos. [Evidências do aceite](../evidence/fabric/versioning/official/README.md). As instruções abaixo permitem reproduzir a execução.
 
 ## Executar
 
@@ -52,7 +52,7 @@ Valores esperados no resumo:
 
 Na primeira execução, `registration.status` deve ser `published` e `replay.status`, `replayed`. Se já existir a mesma seleção, ambos podem ser `replayed`; uma seleção diferente deve ser investigada. O JSON também precisa conter a comparação integral CSV/Bronze e o contrato de consumo com snapshot/versionamento identificados.
 
-Com esse retorno conferido, o M03 poderá ser fechado junto da evidência dos 17 cenários do notebook 05. Até recebê-lo, registrar somente **preparado**, sem marcar o marco como concluído.
+Esse retorno foi observado e conferido em 12/11/2026: registro `published`, repetição `replayed`, seleção Delta 0 → 0 e entradas M02 preservadas. Junto dos 17 cenários do notebook 05, fecha cinco critérios e o marco M03. A sessão Spark foi encerrada após concluir.
 
 ## Limites e recuperação
 

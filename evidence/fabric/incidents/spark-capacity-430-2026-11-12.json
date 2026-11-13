@@ -1,0 +1,16 @@
+{
+  "observed_at_utc": "2026-11-13T00:02:47.150501+00:00",
+  "environment": "fabric",
+  "status": "recovered",
+  "error": "HTTP 430 TooManyRequestsForCapacity before notebook 06 code started",
+  "observations": [
+    "Spark settings showed active=1, queued=0, used/max capacity units=8/8.",
+    "HC_lh_fuelwatch_LakehouseOperation showed completed table-preview jobs.",
+    "Stop application in detail view returned unable-to-stop.",
+    "Monitoring hub Cancel -> Yes, stop ended activity; its status subsequently showed successful.",
+    "Notebook 06 was admitted on retry, completed and its Spark session was stopped."
+  ],
+  "paid_capacity_created_or_upgraded": false,
+  "workspace_spark_settings_changed": false,
+  "limits": "Observed recovery sequence; cause of initial stop-command rejection not established."
+}

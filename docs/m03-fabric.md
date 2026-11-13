@@ -1,6 +1,6 @@
 # Executar o M03 no Fabric — notebook 05
 
-**Estado: laboratório validado no Fabric pela saída fornecida pelo usuário.** Os 17 cenários passaram em 12/11/2026; [evidências e limites](../evidence/fabric/versioning/README.md). A Silver oficial permaneceu na versão 1. A integração do controle ao fluxo oficial ainda está pendente. As instruções abaixo permitem reproduzir o laboratório. O notebook 03 é do M02/IBGE; este marco M03 usa o **notebook 05**.
+**Estado: laboratório validado no Fabric pela saída fornecida pelo usuário.** Os 17 cenários passaram em 12/11/2026; [evidências e limites](../evidence/fabric/versioning/README.md). A Silver original permaneceu na versão 1. A [seleção oficial do notebook 06](../evidence/fabric/versioning/official/README.md) foi validada depois, fechando o M03. As instruções abaixo permitem reproduzir o laboratório. O notebook 03 é do M02/IBGE; o laboratório deste marco M03 usa o **notebook 05**.
 
 ## Arquivos e upload
 

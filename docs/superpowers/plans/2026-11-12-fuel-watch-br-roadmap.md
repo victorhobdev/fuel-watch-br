@@ -1,6 +1,6 @@
 # Roadmap do Fuel Watch BR — marcos verificáveis
 
-Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M02 aceitos com as evidências registradas até a repetição Silver de 12/11/2026 e preparação local do M03. Planejamento e execução validada são identificados separadamente.
+Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M03 aceitos no Fabric e M04 preparado para execução. Planejamento, testes locais e execução validada são identificados separadamente.
 
 **Objetivo:** concluir um observatório explicável de preços de combustíveis no Microsoft Fabric, com fluxo batch confiável, segurança e implantação demonstradas, laboratório sintético de streaming e consumo mínimo.
 
@@ -10,10 +10,10 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 
 ## Como acompanhar
 
-- **Estado atual: 3 de 12 marcos concluídos.** Isso conta entregas aceitas, não representa percentual de esforço ou de tempo.
+- **Estado atual: 4 de 12 marcos concluídos.** Isso conta entregas aceitas, não representa percentual de esforço ou de tempo.
 - Cada marco tem cinco critérios de aceite. Marcar uma caixa exige uma evidência identificada: execução, consulta, comparação, matriz ou documento verificado.
 - Código preparado, teste local e execução no Fabric são estados distintos. Uma etapa que depende de Fabric não fica concluída apenas por passar localmente.
-- Os JSONs Fabric existentes foram fornecidos pelo usuário e conferidos localmente. Essa proveniência acompanha as conclusões; não houve consulta remota independente pelo agente.
+- Evidências M00–M02 e laboratório M03 foram fornecidas pelo usuário e conferidas localmente. A seleção oficial M03 foi executada pelo agente na guia Fabric autorizada, com saída observada diretamente. A proveniência acompanha cada registro; não houve consulta independente fora dos notebooks.
 - Para concluir um marco: fechar seus cinco critérios, registrar evidências, atualizar status/data/commit e indicar o próximo. Falha deixa o marco aberto e preserva a última etapa verde.
 - Dependência indisponível recebe **BLOQUEADO**, com condição de desbloqueio. Recurso condicionado pode receber **NÃO APLICÁVEL**, com justificativa explícita; isso não significa funcionalidade praticada.
 - Não há calendário contratado. Atualizar a previsão de blocos após executar M02 e medir o ritmo real. Registrar data exata de expiração e capacidade do trial; os 60 dias foram informados, não têm vencimento confirmado neste repositório.
@@ -23,7 +23,7 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 | M00 | Fontes, contrato e referência local | CONCLUÍDO | — |
 | M01 | Ingestão e Bronze com repetição validada no Fabric | CONCLUÍDO | M00 |
 | M02 | IBGE e Silver tipada/validada no Fabric | CONCLUÍDO | M01 |
-| M03 | Versões de origem, correções antigas e backfill | EM ANDAMENTO — LAB VALIDADO | Integração oficial pendente |
+| M03 | Versões de origem, correções antigas e backfill | CONCLUÍDO | M02 |
 | M04 | Gold dimensional e histórico observado do posto | PREPARAÇÃO LOCAL | M03 para integração/execução Fabric |
 | M05 | Pipeline mestre e recuperação entre camadas | PLANEJADO | M04 |
 | M06 | Exercício delimitado de Dataflow Gen2 | PLANEJADO | M02 |
@@ -92,11 +92,11 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 
 **Passos:** definir escopo completo da entrega, estados de processamento e versão ativa; preservar duas versões; atualizar/reconstruir somente o escopo afetado; comparar resultado esperado e publicado. Usar cópias sintéticas identificadas do snapshot quando não houver republicação oficial observada.
 
-- [ ] Manifesto/controle no Fabric distingue entrega, hash, semestre, run_id, estado e versão selecionada; entrada idêntica e conteúdo alterado recebem tratamento distinto.
-- [ ] Repetir a mesma versão mantém o estado de negócio, com auditoria de nova execução e sem novas observações publicadas.
-- [ ] Uma correção de preço de janeiro atualiza exatamente o registro/escopo esperado mesmo com dados de junho já existentes.
-- [ ] Uma chegada atrasada e uma remoção explícita em uma nova versão completa produzem as diferenças esperadas; registros fora do escopo permanecem iguais. Arquivo parcial não pode ser interpretado como substituição completa.
-- [ ] Conflito de chave ou falha estrutural bloqueia a promoção da versão, preserva a versão ativa anterior e permite reprocessamento/backfill rastreável após correção.
+- [x] Manifesto/controle no Fabric distingue entrega, hash, semestre, run_id, estado e versão selecionada; entrada idêntica e conteúdo alterado recebem tratamento distinto.
+- [x] Repetir a mesma versão mantém o estado de negócio, com auditoria de nova execução e sem novas observações publicadas.
+- [x] Uma correção de preço de janeiro atualiza exatamente o registro/escopo esperado mesmo com dados de junho já existentes.
+- [x] Uma chegada atrasada e uma remoção explícita em uma nova versão completa produzem as diferenças esperadas; registros fora do escopo permanecem iguais. Arquivo parcial não pode ser interpretado como substituição completa.
+- [x] Conflito de chave ou falha estrutural bloqueia a promoção da versão, preserva a versão ativa anterior e permite reprocessamento/backfill rastreável após correção.
 
 **Métrica de saída:** cinco cenários de controle aprovados: repetição, correção antiga, chegada atrasada, remoção e rejeição de versão conflitante. Hash/contagens sozinhos não substituem a comparação de registros afetados e não afetados.
 
@@ -104,7 +104,9 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 
 **Preparação em 12/11:** [notebook 05 e guia de execução](../../m03-fabric.md) entregues, pacote de três arquivos e 17 tentativas sintéticas incluindo falha antes da promoção/retry. São 28 testes locais aprovados e formato/sintaxe conferidos, conforme [evidência de preparação](../../../evidence/m03/notebook-preparation.json). Spark/Delta deste notebook ainda não foram executados; os cinco critérios Fabric permanecem abertos. O pacote M02 continua preservado.
 
-**Execução em 12/11:** [laboratório Fabric validado](../../../evidence/fabric/versioning/README.md), experimento ccbdb9dc: 17 cenários, versões ativas 0 → 7, oito rejeições, falha antes da promoção recuperada e Silver oficial na versão 1 sem diferenças. Os cinco cenários de controle foram exercitados no laboratório sintético. Integração ao fluxo oficial permanece pendente (`official_integration_implemented=false`); o marco não é fechado por esta evidência isolada.
+**Execução em 12/11:** [laboratório Fabric validado](../../../evidence/fabric/versioning/README.md), experimento ccbdb9dc: 17 cenários, versões ativas 0 → 7, oito rejeições, falha antes da promoção recuperada e Silver oficial na versão 1 sem diferenças. Os cinco cenários de controle foram exercitados no laboratório sintético. No checkpoint do laboratório a integração oficial ainda estava pendente; esse retorno isolado não fechava o marco.
+
+**Fechamento em 12/11:** [seleção oficial e repetição validadas](../../../evidence/fabric/versioning/official/README.md), run 6929bb98, 34 checks. Foram publicadas 8.052 coletas; repetição preservou Delta 0 e snapshot, com Bronze/IBGE/Silver M02 nas mesmas versões. Contrato de consumo para Gold registrado, sessão encerrada e cinco critérios aceitos em conjunto com o laboratório. Nenhuma republicação real da ANP ou concorrência entre publicadores é reivindicada.
 
 ## M04 — Warehouse Gold e SCD2
 
@@ -256,15 +258,15 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 
 **Fora do escopo inicial:** clima/INMET, população, predição, API/backend, frontend próprio, carga nacional de vários anos e operação permanente. Não usar essas extensões como requisito para concluir o projeto atual.
 
-## Próximo bloco concreto: M03
+## Próximo bloco concreto: M04
 
-1. Preservar a Silver M02 e as evidências do laboratório 05 já validado; parar sua sessão após concluir.
-2. Definir o manifesto e a seleção de versões para os arquivos oficiais preservados, reaproveitando o contrato demonstrado no laboratório.
-3. Integrar validação, materialização da candidata e publicação por escopo sem perder os checks do baseline M02.
-4. Demonstrar no Fabric a seleção rastreável da versão oficial aprovada e sua repetição sem diferenças; permitir que Gold consuma somente essa seleção.
-5. Registrar a evidência da integração antes de fechar M03. Não inventar uma republicação oficial para satisfazer o teste.
+1. Preservar os aceites M00–M03 e consumir o contrato oficial do run 6929bb98: silver_preco_publicado, Delta 0, snapshot 3da66482.
+2. Seguir o roteiro M04 já preparado e conferir as dependências do Warehouse antes de criar/executar itens.
+3. Reconciliar o export da versão selecionada, executar os cenários sintéticos e publicar o modelo dimensional somente após seus checks.
+4. Validar SCD2 observado, fato de coleta, consumo semanal e repetição no Warehouse com evidências reais.
+5. Registrar os resultados M04 sem estender os aceites anteriores a etapas ainda não executadas.
 
-O aceite Silver M02 foi fechado e o notebook 05 foi validado no laboratório Fabric. Próximo bloco: integrar o controle de versões ao fluxo oficial preservando o baseline e demonstrar seu consumo rastreável; não é necessário repetir o laboratório sem motivo. A execução sintética não representa uma republicação oficial observada.
+M03 concluído: 17 cenários sintéticos mais seleção oficial/repetição no Fabric. Sessão Spark encerrada. Próxima execução é M04, não repetir M03 sem motivo.
 
 ## Registro de acompanhamento
 
@@ -283,6 +285,7 @@ Em cada sessão, acrescentar uma linha. As mudanças de estado exigem links para
 | 12/11/2026 | M03 | LAB FABRIC VALIDADO | Experimento ccbdb9dc: 17 cenários e 27 checks do retorno; recuperação correta e Silver oficial inalterada | Parar sessão 05; integrar controle ao fluxo oficial |
 | 12/11/2026 | M02 | CONCLUÍDO — 5/5 critérios | JSON 5f55cb03 conferido: Delta 0 → 1, same_business_as_previous=true, contagens estáveis e comparação integral sem diferenças | Parar sessão 04; próximo marco M03, notebook 05 pendente |
 | 12/11/2026 | M04 | PREPARAÇÃO LOCAL | T-SQL e fixtures preparados; núcleo relacional e SCD2 verificados localmente sobre o snapshot M02 | Concluir M03; validar laboratório Warehouse e integrar snapshot aprovado |
+| 12/11/2026 | M03 | CONCLUÍDO — 5/5 critérios | Run 6929bb98 executado na guia Fabric: 34 checks, 8.052 coletas, seleção Delta 0 → 0 no replay, M02 preservado e sessão encerrada | M04 — Gold/Warehouse; 4/12 marcos concluídos |
 
 ## Dependências e referências oficiais
 

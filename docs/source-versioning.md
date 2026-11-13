@@ -1,8 +1,8 @@
 # M03 — Versões, correções antigas e backfill
 
-Estado: **laboratório do notebook 05 validado no Fabric; integração oficial pendente**. Os 17 cenários passaram conforme a saída recebida e as [27 verificações locais dessa evidência](../evidence/fabric/versioning/README.md). O M02 e sua Silver permanecem preservados. O [guia do notebook 05](m03-fabric.md) permite reproduzir o laboratório.
+Estado: **M03 concluído, cinco critérios aceitos no Fabric**. Os 17 cenários do notebook 05 e a [seleção oficial/repetição do notebook 06](../evidence/fabric/versioning/official/README.md) estão validados. O M02 e sua Silver permanecem preservados. O [guia do notebook 05](m03-fabric.md) permite reproduzir o laboratório.
 
-**Próxima execução entregue:** [notebook 06 — seleção oficial e repetição](m03-official.md). Reutiliza `Files/m02_input`, reconcilia os bytes oficiais com a Bronze, seleciona o snapshot revisado e fornece o contrato de consumo Gold. O marco será fechado somente após conferir seu retorno Fabric.
+**Seleção oficial executada:** [notebook 06](m03-official.md), run 6929bb98. Conferiu arquivos/Bronze, publicou 8.052 coletas em `silver_preco_publicado` Delta 0 e repetiu sem alterar negócio ou seleção. O contrato de consumo Gold foi registrado; a sessão foi encerrada.
 
 ## Por que comparar versões completas
 
@@ -64,4 +64,4 @@ Backfill significa reprocessar um escopo/período explicitamente selecionado a p
 
 ## Aceite e limites
 
-Os cenários do laboratório e seus commits Delta foram validados pela saída Fabric recebida; não houve consulta remota independente. O M03 permanece em andamento para integrar o controle ao fluxo oficial: o notebook atual declara `official_integration_implemented=false`. A falha exercitada é uma exceção Python antes da promoção, sem demonstrar recuperação de perda de cluster ou atomicidade entre tabelas. Nenhum recurso pago foi criado por este trabalho.
+O laboratório foi validado pela saída Fabric fornecida pelo usuário. A seleção oficial foi executada pelo agente pela guia autorizada e conferida com 34 checks do retorno; não houve consulta remota independente fora do notebook. `official_integration_implemented=true` registra a seleção do snapshot oficial revisado para consumo. A falha exercitada no laboratório é uma exceção Python antes da promoção, sem demonstrar recuperação de perda de cluster, publicação concorrente ou atomicidade entre tabelas. Nenhuma republicação real foi inventada e nenhum recurso pago foi criado.

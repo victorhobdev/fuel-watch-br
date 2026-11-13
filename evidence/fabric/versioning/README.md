@@ -14,4 +14,4 @@ Resultados reconciliados entre os 17 eventos e o resumo final:
 - Quatro coletas finais; todas as comparações de negócio, seleção ativa, commit e escopo protegido retornaram verdadeiras.
 - Silver oficial: versão 1 antes e depois, com comparação integral sem alteração informada pelo notebook.
 
-Este aceite é do laboratório sintético serial. Não comprova republicação oficial da ANP, concorrência entre jobs, transação entre tabelas ou recuperação de perda do cluster. `official_integration_implemented=false` está explícito no retorno. O próximo bloco é incorporar o controle ao fluxo de origem oficial antes de fechar essa integração do M03.
+Este aceite é do laboratório sintético serial. Não comprova republicação oficial da ANP, concorrência entre jobs, transação entre tabelas ou recuperação de perda do cluster. `official_integration_implemented=false` está explícito neste retorno histórico. A [seleção oficial/repetição do notebook 06](official/README.md) foi validada depois e fecha o M03 em conjunto com este laboratório.

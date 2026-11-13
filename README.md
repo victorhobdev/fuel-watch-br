@@ -24,14 +24,14 @@ O projeto começou nesta pasta, que continha somente um Git vazio, sem commits e
 | Warehouse Gold | Ainda não implementado/validado no Fabric |
 | M04 — Gold e SCD2 | [Roteiro completo e pacote preparados](docs/m04-fabric.md): notebook 07 consome o contrato oficial M03; sete cenários Warehouse e publicação/validação Gold; ensaio local sem diferenças; execução Fabric pendente |
 | M02 — IBGE e Silver | CONCLUÍDO: IBGE, fixture distribuído, primeira Silver e repetição validados; cinco de cinco critérios aceitos |
-| M03 — Versões e backfill | [Laboratório Fabric validado](evidence/fabric/versioning/README.md): 17 cenários; [notebook 06 entregue](docs/m03-official.md) para seleção oficial/repetição, execução pendente |
+| M03 — Versões e backfill | CONCLUÍDO: 17 cenários sintéticos e [seleção oficial/repetição validadas no Fabric](evidence/fabric/versioning/official/README.md); cinco critérios aceitos |
 | SCD2, segurança, implantação e streaming | Etapas posteriores; sem resultado reivindicado |
 
 Os dados são amostrais. Ausência de observação não representa preço zero nem cobertura de todos os postos. A saída inicial preserva a coleta individual; não é uma fato semanal.
 
-M02 concluído pelos retornos recebidos do Fabric: referência IBGE, fixture, Silver e repetição aceitos. M03 em andamento: laboratório sintético validado no Fabric; integração da seleção de versões ao fluxo oficial pendente. [Guia do M02](docs/m02-silver-ibge.md). O [resumo de 11/11](docs/retomada-2026-11-11.md) conserva o checkpoint anterior.
+M00–M03 concluídos. A seleção oficial está em `silver_preco_publicado`, Delta 0, com 8.052 coletas e repetição sem novo commit. Entradas M02 preservadas e sessão Spark encerrada. Próximo marco: M04, Gold no Warehouse, consumindo o contrato de versão aprovado. O [resumo de 11/11](docs/retomada-2026-11-11.md) conserva o checkpoint anterior.
 
-[Roadmap completo e acompanhamento por marcos](docs/superpowers/plans/2026-11-12-fuel-watch-br-roadmap.md): 3 de 12 marcos concluídos; M03 com laboratório Fabric aceito e integração oficial aberta.
+[Roadmap completo e acompanhamento por marcos](docs/superpowers/plans/2026-11-12-fuel-watch-br-roadmap.md): 4 de 12 marcos concluídos; M04 preparado, ainda sem aceite Fabric.
 
 ## Reproduzir o bloco local
 
