@@ -1,0 +1,3 @@
+# Emissor finito do endpoint gerenciado Eventstream, sem Azure Event Hubs novo.
+azure-eventhub
+websocket-client

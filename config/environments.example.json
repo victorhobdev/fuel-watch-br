@@ -1,0 +1,18 @@
+{
+  "dev": {
+    "workspace_name": "fuelwatch-dev",
+    "workspace_id": "<DEV_WORKSPACE_ID>",
+    "lakehouse_id": "<DEV_LAKEHOUSE_ID>",
+    "warehouse_id": "<DEV_WAREHOUSE_ID>",
+    "lakehouse_oauth_connection_id": "<DEV_LAKEHOUSE_OAUTH_CONNECTION_ID>"
+  },
+  "test": {
+    "workspace_name": "fuelwatch-test",
+    "workspace_id": "<TEST_WORKSPACE_ID>",
+    "lakehouse_id": "<TEST_LAKEHOUSE_ID>",
+    "warehouse_id": "<TEST_WAREHOUSE_ID>",
+    "lakehouse_oauth_connection_id": "<TEST_LAKEHOUSE_OAUTH_CONNECTION_ID>"
+  },
+  "capacity_policy": "Somente capacidade trial existente e verificada; nenhuma capacidade paga autorizada.",
+  "bindings_policy": "IDs reais e credenciais em .local; exemplo nao e configuracao executavel."
+}

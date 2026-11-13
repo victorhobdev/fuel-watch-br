@@ -1,0 +1,8 @@
+{
+  "status": "pattern_scan_completed",
+  "historical_blobs_scanned": 394,
+  "hits": [],
+  "limits": "Scanner de padroes conhecidos; nao certifica ausencia de todos os segredos.",
+  "recorded_at_utc": "2026-11-13T15:59:36.149230+00:00",
+  "scope": "Historico alcancavel anterior aos novos commits M07-M10; repetir antes de publicar novos commits."
+}

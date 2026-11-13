@@ -1,6 +1,8 @@
 """Contrato de transporte: repetir leituras nunca pode duplicar um job."""
 import sys
 import time
+import os
+import importlib
 from pathlib import Path
 from types import SimpleNamespace
 import unittest
@@ -50,3 +52,19 @@ class ClientTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             client.request("GET", "https://notfabric.example.net/resource")
         self.credential.get_token.assert_not_called()
+
+
+class IdentityTests(unittest.TestCase):
+    def test_reader_and_author_use_distinct_project_caches(self):
+        try:
+            paths = []
+            for identity in ["author", "reader"]:
+                with patch.dict(os.environ, {"FUELWATCH_IDENTITY": identity}):
+                    importlib.reload(client)
+                    paths.append(os.environ["AZURE_CONFIG_DIR"])
+                    self.assertIsNone(client._fabric_token)
+            self.assertNotEqual(paths[0], paths[1])
+            self.assertTrue(paths[0].endswith("azure"))
+            self.assertTrue(paths[1].endswith("azure-reader"))
+        finally:
+            importlib.reload(client)

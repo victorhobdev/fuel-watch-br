@@ -1,0 +1,15 @@
+{
+  "recorded_at_utc": "2026-11-13T14:48:15.505998+00:00",
+  "source": "Initial Graph project-prefix identity query and Fabric workspace roleAssignments, before reader provisioning",
+  "workspace_role_counts": {
+    "Admin": 1,
+    "Member": 0,
+    "Contributor": 0,
+    "Viewer": 0
+  },
+  "project_prefix_identity_count": 1,
+  "reader_named_identity_found": false,
+  "reader_tests_executed": false,
+  "role_assignments_changed": false,
+  "rls_or_mask_applied": false
+}

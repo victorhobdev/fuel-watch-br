@@ -1,0 +1,27 @@
+name: Fuel Watch checks
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  portable-tests:
+    # Runner efemero local, exclusivo deste repositorio privado; sem runner pago.
+    runs-on: [self-hosted, Windows, X64, fuelwatch-local]
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Prepare isolated Python
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          python -m venv .ci-venv
+          if ($LASTEXITCODE -ne 0) { throw 'Falha criando venv.' }
+          .ci-venv/Scripts/python.exe -m pip install -r tools/ci/requirements.lock
+          if ($LASTEXITCODE -ne 0) { throw 'Falha instalando dependencias.' }
+      - name: Run portable tests
+        shell: pwsh
+        env:
+          FUELWATCH_CI_PYTHON: .ci-venv/Scripts/python.exe
+        run: ./tools/ci/check.ps1

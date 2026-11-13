@@ -1,0 +1,120 @@
+{
+  "captured_at_utc": "2026-11-13T15:43:02.903634+00:00",
+  "environment": "fabric",
+  "workspace_alias": "DEV",
+  "capacity": {
+    "sku": "FTL4",
+    "region": "Brazil South",
+    "state": "Active"
+  },
+  "trial_expiration_verified": false,
+  "trial_expiration_utc": null,
+  "spark_settings": {
+    "automaticLog": {
+      "enabled": true
+    },
+    "highConcurrency": {
+      "notebookInteractiveRunEnabled": true,
+      "notebookPipelineRunEnabled": true
+    },
+    "pool": {
+      "customizeComputeEnabled": true,
+      "defaultPool": {
+        "name": "Starter Pool",
+        "type": "Workspace",
+        "id": "00000000-0000-0000-0000-000000000000"
+      },
+      "starterPool": {
+        "maxNodeCount": 10,
+        "maxExecutors": 9
+      }
+    },
+    "environment": {
+      "runtimeVersion": "2.0"
+    },
+    "job": {
+      "conservativeJobAdmissionEnabled": false,
+      "sessionTimeoutInMinutes": 20
+    }
+  },
+  "items": [
+    {
+      "name": "lh_fuelwatch",
+      "type": "SQLEndpoint"
+    },
+    {
+      "name": "wh_fuelwatch",
+      "type": "Warehouse"
+    },
+    {
+      "name": "StagingWarehouseForDataflows_20261113140901",
+      "type": "Warehouse"
+    },
+    {
+      "name": "StagingLakehouseForDataflows_20261113140901",
+      "type": "SQLEndpoint"
+    },
+    {
+      "name": "lh_fuelwatch",
+      "type": "Lakehouse"
+    },
+    {
+      "name": "pl_anp_landing",
+      "type": "DataPipeline"
+    },
+    {
+      "name": "01_landing_to_bronze",
+      "type": "Notebook"
+    },
+    {
+      "name": "02_verify_bronze_replay",
+      "type": "Notebook"
+    },
+    {
+      "name": "03_ibge_reference",
+      "type": "Notebook"
+    },
+    {
+      "name": "04_bronze_to_silver",
+      "type": "Notebook"
+    },
+    {
+      "name": "05_source_versions_backfill",
+      "type": "Notebook"
+    },
+    {
+      "name": "06_export_gold_input",
+      "type": "Notebook"
+    },
+    {
+      "name": "06_official_source_selection",
+      "type": "Notebook"
+    },
+    {
+      "name": "07_export_gold_input",
+      "type": "Notebook"
+    },
+    {
+      "name": "08_pipeline_stage",
+      "type": "Notebook"
+    },
+    {
+      "name": "pl_fuelwatch_master",
+      "type": "DataPipeline"
+    },
+    {
+      "name": "df_m06_ibge_lab",
+      "type": "Dataflow"
+    },
+    {
+      "name": "StagingLakehouseForDataflows_20261113140901",
+      "type": "Lakehouse"
+    },
+    {
+      "name": "lab_m07_permission_probe",
+      "type": "Notebook"
+    }
+  ],
+  "inventory_timing": "Antes da criacao do notebook de benchmark M09.",
+  "paid_capacity_created": false
+}

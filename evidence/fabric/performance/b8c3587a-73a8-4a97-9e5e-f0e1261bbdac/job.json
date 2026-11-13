@@ -1,0 +1,9 @@
+{
+  "id": "e2ac7876-631a-4f46-aef9-b7814500d57a",
+  "jobType": "RunNotebook",
+  "invokeType": "Manual",
+  "status": "Completed",
+  "startTimeUtc": "2026-11-13T15:49:10.3329196",
+  "endTimeUtc": "2026-11-13T15:49:53.2981952",
+  "failureReason": null
+}

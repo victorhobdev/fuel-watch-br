@@ -1,0 +1,15 @@
+{
+  "status": "author_fixtures_verified",
+  "environment": "fabric",
+  "verified_at_utc": "2026-11-13T15:38:49.369050+00:00",
+  "synthetic_rows": 2,
+  "author_visible_ufs": [
+    "RJ",
+    "SP"
+  ],
+  "author_unmasked": true,
+  "probe_notebook_created": true,
+  "probe_file_readback_equal": true,
+  "reader_tested": false,
+  "roles_granted_by_setup": false
+}

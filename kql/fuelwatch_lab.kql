@@ -1,0 +1,41 @@
+// Executar cada consulta separadamente com p_run_id igual ao manifesto do lote.
+// Deduplicacao e somente do laboratorio sintetico; nao representa dados ANP.
+
+// Q1 — ultimo preco por posto/produto, usando event_time.
+declare query_parameters(p_run_id:string);
+lab_preco_eventos
+| where is_synthetic == true and lab_run_id == p_run_id
+| summarize arg_max(ingestion_time(), *) by event_id
+| summarize arg_max(event_time, *) by posto_id, produto
+| project posto_id, produto, preco, moeda, unidade, event_time, event_id
+| order by posto_id asc
+
+// Q2 — janelas de cinco minutos sobre eventos deduplicados.
+declare query_parameters(p_run_id:string);
+lab_preco_eventos
+| where is_synthetic == true and lab_run_id == p_run_id
+| summarize arg_max(ingestion_time(), *) by event_id
+| summarize coletas=count(), soma_precos=sum(preco), preco_medio=avg(preco),
+            preco_minimo=min(preco), preco_maximo=max(preco)
+            by janela=bin(event_time, 5m), produto, moeda, unidade
+| order by janela asc
+
+// Q3 — conjunto exato e payload deduplicado para reconciliacao externa.
+declare query_parameters(p_run_id:string);
+lab_preco_eventos
+| where lab_run_id == p_run_id
+| summarize arg_max(ingestion_time(), *) by event_id
+| project event_id, lab_run_id, posto_id, produto, moeda, unidade,
+          event_time, sequence, preco, is_synthetic, is_late_fixture
+| order by sequence asc
+
+// Q4 — duplicatas/atrasos; ingestion_time nao substitui event_time.
+declare query_parameters(p_run_id:string);
+lab_preco_eventos
+| where lab_run_id == p_run_id
+| extend chegada=ingestion_time(), atraso_segundos=datetime_diff('second', ingestion_time(), event_time)
+| summarize ocorrencias=count(), primeira_chegada=min(chegada), ultima_chegada=max(chegada),
+            maior_atraso_segundos=max(atraso_segundos), late_fixture=max(toint(is_late_fixture))
+            by event_id
+| where ocorrencias > 1 or late_fixture == 1
+| order by event_id asc

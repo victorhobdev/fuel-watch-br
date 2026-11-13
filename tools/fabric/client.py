@@ -9,7 +9,10 @@ import requests
 from azure.identity import AzureCliCredential
 
 ROOT = Path(__file__).resolve().parents[2]
-os.environ["AZURE_CONFIG_DIR"] = str(ROOT / ".local/azure")
+identity = os.environ.get("FUELWATCH_IDENTITY", "author")
+if identity not in {"author", "reader"}:
+    raise ValueError("FUELWATCH_IDENTITY deve ser author ou reader")
+os.environ["AZURE_CONFIG_DIR"] = str(ROOT / (".local/azure-reader" if identity == "reader" else ".local/azure"))
 credential = AzureCliCredential()
 _fabric_token = None
 

@@ -1,0 +1,15 @@
+{
+  "milestone": "M09",
+  "status": "dev_validated_pending_m08_revalidation",
+  "environment": "fabric",
+  "dev_criteria_verified": 5,
+  "criteria_total": 5,
+  "full_milestone_accepted": false,
+  "pending": "Repetir inventario/verificacoes pertinentes no destino apos M08",
+  "performance_experiment_id": "b8c3587a-73a8-4a97-9e5e-f0e1261bbdac",
+  "performance_job_id": "e2ac7876-631a-4f46-aef9-b7814500d57a",
+  "execution_index": "execution-index-2026-11-13.json",
+  "trial_expiration_verified": false,
+  "cost_or_cu_measured": false,
+  "production_configuration_changed": false
+}

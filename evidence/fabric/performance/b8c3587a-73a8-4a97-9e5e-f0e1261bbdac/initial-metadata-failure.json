@@ -1,0 +1,13 @@
+{
+  "id": "949da8d4-6da6-49aa-a799-abbd979526a3",
+  "jobType": "RunNotebook",
+  "status": "Failed",
+  "startTimeUtc": "2026-11-13T15:46:10.89",
+  "endTimeUtc": "2026-11-13T15:46:11.2533333",
+  "failureReason": {
+    "requestId": "39d858ab-67fb-4f12-ad8b-cf0eef34ef1e",
+    "errorCode": "BadRequest",
+    "message": "Failed to run notebook due to invalid request. [Error: Not supported language: . Please set language name in metadata.language_info.name field. For example, \"python\".]",
+    "isRetriable": false
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "recorded_at_utc": "2026-11-13T15:59:36.149230+00:00",
+  "runtime_source_readback_equal": true,
+  "runtime_language_info": "python",
+  "runtime_source_sha256": "89b46eb4a922b7ba1b80d939a44ce92b88689a3cc1732aa89d1d749a17ab72fe",
+  "source_path": "notebooks/m09_sources/09_weekly_benchmark.py",
+  "repository_head_before_checkpoint_commit": "319a087e557215f3128888d197d84f0cd6b68b0d",
+  "source_was_uncommitted_at_execution": true,
+  "development_tests_passed": 73,
+  "operational_client_tests_passed": 6,
+  "portable_ci_checks_initial_passed": 34,
+  "github_provider_execution_claimed": false
+}

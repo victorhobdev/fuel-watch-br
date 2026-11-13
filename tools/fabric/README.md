@@ -48,7 +48,7 @@ O probe testa initialize/list_tools, sem executar operacoes remotas. Seu resulta
 - REST: lista real de itens do workspace validada. OneLake: listagem real de Files validada. SQL: SELECT 1 no Warehouse validado com token Entra. Evidencia: evidence/fabric/tooling/setup-2026-11-13.json.
 - Nenhum job de dados ou recurso Azure pago foi criado por esta configuracao.
 
-Antes de retomar M05: obter e preservar a definicao remota do notebook 08, comparar com o fonte local e corrigir a descoberta de recibos. O ultimo teste local dessa area ainda tem uma falha conhecida; instalacao das ferramentas nao resolve nem valida esse comportamento.
+Naquele checkpoint de instalacao, a descoberta de recibos do M05 ainda precisava de correcao. Ela foi corrigida e M05/M06 foram posteriormente aceitos com execucoes reais; ver os respectivos indices de evidencia. Instalacao das ferramentas e aceite de um marco sao verificacoes diferentes.
 
 Referencias: [Fabric CLI](https://microsoft.github.io/fabric-cli/), [Microsoft Fabric MCP](https://github.com/microsoft/mcp/blob/main/servers/Fabric.Mcp.Server/README.md), [Codex MCP](https://developers.openai.com/codex/mcp/).
 
@@ -82,4 +82,12 @@ O cliente mantem o token Fabric somente em memoria ate perto da expiracao e repe
 A retomada conserva casos verificados e observa o mesmo job aceito quando o acompanhamento foi interrompido. Falha terminal conhecida em uma recuperacao normal permite nova tentativa; cancelamento ou inicio sem job_id exigem inspecao. A suite principal de desenvolvimento continua separada (`python -m unittest discover -v`).
 
 `m05_schedule_once.py --cases <recovery-cases.json>` so aceita a bateria completa aprovada. Prepara um unico disparo pretendido em janela curta, desabilita e rele a agenda apos observar o job, acompanha o mesmo job e compara o negocio. Se existir um registro desse experimento, recusa criar outra agenda: consultar a agenda/job ja registrados antes de qualquer nova acao.
+
+## Seguranca e medicao
+
+`m07_setup.py` prepara apenas objetos sinteticos isolados e verifica o acesso do autor. O estado privado permite retomar a criacao assincrona sem repetir POST. Nao concede Viewer nem prova RLS do leitor. Para testar com leitor, usar processo/cache separado e `FUELWATCH_IDENTITY=reader`; o shell padrao seleciona explicitamente `author`.
+
+O experimento M09 ja executado usa `m09_job.py --prepare`, `--start` e `--watch <id>`; `check_m09.py` confronta seis medicoes com Gold por SQL. Nao executar novamente para apenas consultar resultados. `--retry-terminal` autoriza nova tentativa somente depois de verificar falha terminal anterior, preservando o registro. O benchmark restaura shuffle/cache e nao escreve tabelas oficiais. Os planos originais ficam privados; a copia para Git retira identificadores de ambiente e registra ambos os hashes.
+
+O workflow M08 usa `tools/ci/check.ps1` com Python de CI separado e dependencias fixadas. Nao recebe caches Azure nem acessa Fabric. Testes locais nao contam como execucao no GitHub, sincronizacao Git do workspace ou implantacao entre ambientes.
 

@@ -1,0 +1,4 @@
+# Somente dependencias dos testes portaveis; nenhuma credencial ou SDK SQL/OneLake.
+pandas==2.3.2
+azure-identity==1.27.0
+requests==2.34.2

@@ -1,0 +1,3 @@
+// Exclusivo do KQL database sintetico M10. Nao aponta para Lakehouse/Warehouse.
+.create-merge table lab_preco_eventos (event_id:string, lab_run_id:string, posto_id:string, produto:string, unidade:string, moeda:string, event_time:datetime, sequence:long, preco:real, is_synthetic:bool, is_late_fixture:bool)
+.alter table lab_preco_eventos policy ingestiontime true

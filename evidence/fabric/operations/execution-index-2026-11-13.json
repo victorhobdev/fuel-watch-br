@@ -1,0 +1,1010 @@
+{
+  "status": "derived_from_verified_fabric_evidence",
+  "environment": "fabric",
+  "generated_at_utc": "2026-11-13T15:46:18.846709+00:00",
+  "runs": [
+    {
+      "root_run_id": "3ceb55a5-8026-4950-97fb-c2eb229d6c1d",
+      "job_status": "Completed",
+      "fault_stage": "none",
+      "invoke_type": null,
+      "start_utc": null,
+      "end_utc": null,
+      "bronze_run_id": "3ceb55a5-8026-4950-97fb-c2eb229d6c1d_1bbf4759-74b8-4e88-8b1b-6672723119a1",
+      "bronze_rows": 422418,
+      "raw_bytes": 8488624,
+      "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+      "silver_run_id": "149de5f9-982f-46d9-91ee-b73e1725aca5",
+      "silver_status": "m03_official_selection_validated",
+      "silver_counts": {
+        "selected": 8052,
+        "invalid": 0,
+        "exact_duplicate_excess": 0,
+        "conflicting_rows_after_exact_dedup": 0,
+        "accepted": 8052,
+        "received_full_file": 422418,
+        "outside_slice": 414366
+      },
+      "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+      "export_batch_id": "fc756f7e-a703-40b3-b8d5-c9d338679af8",
+      "export_status": "m04_transfer_ready",
+      "publication": [
+        {
+          "batch_id": "fc756f7e-a703-40b3-b8d5-c9d338679af8",
+          "scope_id": "anp-2026-1-rj-gasolina",
+          "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+          "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+          "silver_delta_version": 0,
+          "is_synthetic": false,
+          "published_at_utc": "2026-11-13 13:55:03.690316",
+          "rows_published": 8052,
+          "source_table": "silver_preco_publicado",
+          "snapshot_id": "3da66482-2dad-489f-8450-b7ded2005f3d"
+        }
+      ],
+      "warehouse_attempt": [
+        {
+          "root_run_id": "3ceb55a5-8026-4950-97fb-c2eb229d6c1d",
+          "status": "validated",
+          "batch_id": "fc756f7e-a703-40b3-b8d5-c9d338679af8",
+          "captured_at_utc": "2026-11-13 13:49:40.589578",
+          "completed_at_utc": "2026-11-13 13:55:16.343068"
+        }
+      ],
+      "previous_publication_unchanged": false,
+      "activities": [
+        {
+          "activityName": "Capture_Baseline",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T13:49:31.0607379Z",
+          "activityRunEnd": "2026-11-13T13:49:44.129101Z",
+          "durationInMs": 13068,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Copy_ANP",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T13:49:45.510918Z",
+          "activityRunEnd": "2026-11-13T13:50:01.2100132Z",
+          "durationInMs": 15699,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Bronze",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T13:50:03.3693733Z",
+          "activityRunEnd": "2026-11-13T13:51:13.8600791Z",
+          "durationInMs": 70490,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Silver",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T13:51:15.4166124Z",
+          "activityRunEnd": "2026-11-13T13:53:22.5825621Z",
+          "durationInMs": 127165,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Export_Gold_Input",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T13:53:24.2278744Z",
+          "activityRunEnd": "2026-11-13T13:54:29.9015012Z",
+          "durationInMs": 65673,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Import_Gold",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T13:54:31.7677816Z",
+          "activityRunEnd": "2026-11-13T13:54:50.9393057Z",
+          "durationInMs": 19171,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Publish_Gold",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T13:54:53.141784Z",
+          "activityRunEnd": "2026-11-13T13:55:05.5021307Z",
+          "durationInMs": 12360,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Validate_Gold",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T13:55:07.7487151Z",
+          "activityRunEnd": "2026-11-13T13:55:18.2327348Z",
+          "durationInMs": 10484,
+          "retryAttempt": null
+        }
+      ],
+      "business_fingerprints": {
+        "published_business_bytes": {
+          "rows": 8052,
+          "sha256": "20d88111011deae59926a7bcdb10c612159d11e4f91d11e825b1955a2d5586e1"
+        },
+        "dim_posto": {
+          "rows": 518,
+          "sha256": "20a43ff8f74c0636860eb7e3d3ae1425de8424b173140e7c553eeb7265c90ce1"
+        },
+        "dim_data": {
+          "rows": 181,
+          "sha256": "2cc704ad147f38154aab5394c7dbbb2d41360f6e60e38ba2a0c68b3be0b22af6"
+        },
+        "dim_municipio": {
+          "rows": 92,
+          "sha256": "09f725387053e28575e1578333ffe1bd76e70baec561740412ff02e5d318bc42"
+        },
+        "dim_produto": {
+          "rows": 1,
+          "sha256": "8e8c12fbfdabcef8b2413d0b7cc56cb6bf4b1d1bf257a85e03f7f8ca1d5a2856"
+        },
+        "preco_semanal": {
+          "rows": 656,
+          "sha256": "06c7c7ebd50fe8f12bbeaffe7976dbe996b38491faca5faa2865739354352c9c"
+        }
+      },
+      "evidence_path": "evidence/fabric/orchestration/pipeline-runs/3ceb55a5-8026-4950-97fb-c2eb229d6c1d/verification.json"
+    },
+    {
+      "root_run_id": "4145ce90-e750-4109-a0c7-4637ba50a209",
+      "job_status": "Failed",
+      "fault_stage": "gold",
+      "invoke_type": null,
+      "start_utc": null,
+      "end_utc": null,
+      "bronze_run_id": "4145ce90-e750-4109-a0c7-4637ba50a209_ef4a7df3-3eca-4533-bd28-fa93318af165",
+      "bronze_rows": 422418,
+      "raw_bytes": 8488624,
+      "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+      "silver_run_id": "986a6387-68bf-46f4-a5de-95e653f109e9",
+      "silver_status": "m03_official_selection_validated",
+      "silver_counts": {
+        "selected": 8052,
+        "invalid": 0,
+        "exact_duplicate_excess": 0,
+        "conflicting_rows_after_exact_dedup": 0,
+        "accepted": 8052,
+        "received_full_file": 422418,
+        "outside_slice": 414366
+      },
+      "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+      "export_batch_id": "84cd3eb2-80fb-4933-b60c-36ead6e067a3",
+      "export_status": "m04_transfer_ready",
+      "publication": [
+        {
+          "batch_id": "0fcb39c5-4161-479b-8c40-fa5c30ca65df",
+          "scope_id": "anp-2026-1-rj-gasolina",
+          "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+          "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+          "silver_delta_version": 0,
+          "is_synthetic": false,
+          "published_at_utc": "2026-11-13 14:13:42.245800",
+          "rows_published": 8052,
+          "source_table": "silver_preco_publicado",
+          "snapshot_id": "3da66482-2dad-489f-8450-b7ded2005f3d"
+        }
+      ],
+      "warehouse_attempt": [
+        {
+          "root_run_id": "4145ce90-e750-4109-a0c7-4637ba50a209",
+          "status": "gold_failed",
+          "batch_id": "84cd3eb2-80fb-4933-b60c-36ead6e067a3",
+          "captured_at_utc": "2026-11-13 14:15:27.659971",
+          "completed_at_utc": null
+        }
+      ],
+      "previous_publication_unchanged": true,
+      "activities": [
+        {
+          "activityName": "Capture_Baseline",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:15:21.3886421Z",
+          "activityRunEnd": "2026-11-13T14:15:55.7223978Z",
+          "durationInMs": 34333,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Copy_ANP",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:15:56.9573911Z",
+          "activityRunEnd": "2026-11-13T14:16:30.2163982Z",
+          "durationInMs": 33259,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Bronze",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:16:31.6561011Z",
+          "activityRunEnd": "2026-11-13T14:18:02.3638265Z",
+          "durationInMs": 90707,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Silver",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:18:03.8862561Z",
+          "activityRunEnd": "2026-11-13T14:20:26.5250903Z",
+          "durationInMs": 142638,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Export_Gold_Input",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:20:27.8888812Z",
+          "activityRunEnd": "2026-11-13T14:21:54.8304702Z",
+          "durationInMs": 86941,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Import_Gold",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:21:56.4445253Z",
+          "activityRunEnd": "2026-11-13T14:22:13.4733215Z",
+          "durationInMs": 17028,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Publish_Gold",
+          "status": "Failed",
+          "activityRunStart": "2026-11-13T14:22:15.0733096Z",
+          "activityRunEnd": "2026-11-13T14:22:29.5963141Z",
+          "durationInMs": 14523,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Guard_Gold_Failure",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:22:31.8581905Z",
+          "activityRunEnd": "2026-11-13T14:22:41.4235725Z",
+          "durationInMs": 9565,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Fail_Gold",
+          "status": "Failed",
+          "activityRunStart": "2026-11-13T14:22:42.9050517Z",
+          "activityRunEnd": "2026-11-13T14:22:43.1198184Z",
+          "durationInMs": 214,
+          "retryAttempt": null
+        }
+      ],
+      "business_fingerprints": {
+        "published_business_bytes": {
+          "rows": 8052,
+          "sha256": "20d88111011deae59926a7bcdb10c612159d11e4f91d11e825b1955a2d5586e1"
+        },
+        "dim_posto": {
+          "rows": 518,
+          "sha256": "20a43ff8f74c0636860eb7e3d3ae1425de8424b173140e7c553eeb7265c90ce1"
+        },
+        "dim_data": {
+          "rows": 181,
+          "sha256": "2cc704ad147f38154aab5394c7dbbb2d41360f6e60e38ba2a0c68b3be0b22af6"
+        },
+        "dim_municipio": {
+          "rows": 92,
+          "sha256": "09f725387053e28575e1578333ffe1bd76e70baec561740412ff02e5d318bc42"
+        },
+        "dim_produto": {
+          "rows": 1,
+          "sha256": "8e8c12fbfdabcef8b2413d0b7cc56cb6bf4b1d1bf257a85e03f7f8ca1d5a2856"
+        },
+        "preco_semanal": {
+          "rows": 656,
+          "sha256": "06c7c7ebd50fe8f12bbeaffe7976dbe996b38491faca5faa2865739354352c9c"
+        }
+      },
+      "evidence_path": "evidence/fabric/orchestration/pipeline-runs/4145ce90-e750-4109-a0c7-4637ba50a209/verification.json"
+    },
+    {
+      "root_run_id": "5c9a3991-61b9-454a-a686-2a96c2c04c17",
+      "job_status": "Completed",
+      "fault_stage": "none",
+      "invoke_type": null,
+      "start_utc": null,
+      "end_utc": null,
+      "bronze_run_id": "5c9a3991-61b9-454a-a686-2a96c2c04c17_77f8554f-c264-46ab-b64b-ccae614113f2",
+      "bronze_rows": 422418,
+      "raw_bytes": 8488624,
+      "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+      "silver_run_id": "79e9ce16-239d-4c4f-ad94-d53d50957e09",
+      "silver_status": "m03_official_selection_validated",
+      "silver_counts": {
+        "selected": 8052,
+        "invalid": 0,
+        "exact_duplicate_excess": 0,
+        "conflicting_rows_after_exact_dedup": 0,
+        "accepted": 8052,
+        "received_full_file": 422418,
+        "outside_slice": 414366
+      },
+      "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+      "export_batch_id": "0fcb39c5-4161-479b-8c40-fa5c30ca65df",
+      "export_status": "m04_transfer_ready",
+      "publication": [
+        {
+          "batch_id": "0fcb39c5-4161-479b-8c40-fa5c30ca65df",
+          "scope_id": "anp-2026-1-rj-gasolina",
+          "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+          "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+          "silver_delta_version": 0,
+          "is_synthetic": false,
+          "published_at_utc": "2026-11-13 14:13:42.245800",
+          "rows_published": 8052,
+          "source_table": "silver_preco_publicado",
+          "snapshot_id": "3da66482-2dad-489f-8450-b7ded2005f3d"
+        }
+      ],
+      "warehouse_attempt": [
+        {
+          "root_run_id": "5c9a3991-61b9-454a-a686-2a96c2c04c17",
+          "status": "validated",
+          "batch_id": "0fcb39c5-4161-479b-8c40-fa5c30ca65df",
+          "captured_at_utc": "2026-11-13 14:07:42.066774",
+          "completed_at_utc": "2026-11-13 14:14:00.423534"
+        }
+      ],
+      "previous_publication_unchanged": false,
+      "activities": [
+        {
+          "activityName": "Capture_Baseline",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:07:31.9509087Z",
+          "activityRunEnd": "2026-11-13T14:07:46.2167925Z",
+          "durationInMs": 14265,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Copy_ANP",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:07:47.6529883Z",
+          "activityRunEnd": "2026-11-13T14:08:02.2514492Z",
+          "durationInMs": 14598,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Bronze",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:08:03.7215578Z",
+          "activityRunEnd": "2026-11-13T14:09:37.3818096Z",
+          "durationInMs": 93660,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Silver",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:09:38.6831544Z",
+          "activityRunEnd": "2026-11-13T14:11:56.403397Z",
+          "durationInMs": 137720,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Export_Gold_Input",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:11:58.2985769Z",
+          "activityRunEnd": "2026-11-13T14:13:05.7844079Z",
+          "durationInMs": 67485,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Import_Gold",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:13:07.3444798Z",
+          "activityRunEnd": "2026-11-13T14:13:26.643823Z",
+          "durationInMs": 19299,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Publish_Gold",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:13:28.2695817Z",
+          "activityRunEnd": "2026-11-13T14:13:44.5223158Z",
+          "durationInMs": 16252,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Validate_Gold",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:13:46.4674246Z",
+          "activityRunEnd": "2026-11-13T14:14:01.9943776Z",
+          "durationInMs": 15526,
+          "retryAttempt": null
+        }
+      ],
+      "business_fingerprints": {
+        "published_business_bytes": {
+          "rows": 8052,
+          "sha256": "20d88111011deae59926a7bcdb10c612159d11e4f91d11e825b1955a2d5586e1"
+        },
+        "dim_posto": {
+          "rows": 518,
+          "sha256": "20a43ff8f74c0636860eb7e3d3ae1425de8424b173140e7c553eeb7265c90ce1"
+        },
+        "dim_data": {
+          "rows": 181,
+          "sha256": "2cc704ad147f38154aab5394c7dbbb2d41360f6e60e38ba2a0c68b3be0b22af6"
+        },
+        "dim_municipio": {
+          "rows": 92,
+          "sha256": "09f725387053e28575e1578333ffe1bd76e70baec561740412ff02e5d318bc42"
+        },
+        "dim_produto": {
+          "rows": 1,
+          "sha256": "8e8c12fbfdabcef8b2413d0b7cc56cb6bf4b1d1bf257a85e03f7f8ca1d5a2856"
+        },
+        "preco_semanal": {
+          "rows": 656,
+          "sha256": "06c7c7ebd50fe8f12bbeaffe7976dbe996b38491faca5faa2865739354352c9c"
+        }
+      },
+      "evidence_path": "evidence/fabric/orchestration/pipeline-runs/5c9a3991-61b9-454a-a686-2a96c2c04c17/verification.json"
+    },
+    {
+      "root_run_id": "80575d95-2838-4b70-b9d4-1aad84ffb084",
+      "job_status": "Completed",
+      "fault_stage": "none",
+      "invoke_type": "Scheduled",
+      "start_utc": "2026-11-13T14:45:02.6941111",
+      "end_utc": "2026-11-13T14:51:34.29",
+      "bronze_run_id": "80575d95-2838-4b70-b9d4-1aad84ffb084_c1a28180-5e82-4f5e-acf5-780689fdceb5",
+      "bronze_rows": 422418,
+      "raw_bytes": 8488624,
+      "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+      "silver_run_id": "d3276004-3d9a-4347-a3a1-7da7cb22703b",
+      "silver_status": "m03_official_selection_validated",
+      "silver_counts": {
+        "selected": 8052,
+        "invalid": 0,
+        "exact_duplicate_excess": 0,
+        "conflicting_rows_after_exact_dedup": 0,
+        "accepted": 8052,
+        "received_full_file": 422418,
+        "outside_slice": 414366
+      },
+      "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+      "export_batch_id": "76bfa125-7a24-4352-97f1-93387f6213c8",
+      "export_status": "m04_transfer_ready",
+      "publication": [
+        {
+          "batch_id": "76bfa125-7a24-4352-97f1-93387f6213c8",
+          "scope_id": "anp-2026-1-rj-gasolina",
+          "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+          "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+          "silver_delta_version": 0,
+          "is_synthetic": false,
+          "published_at_utc": "2026-11-13 14:51:13.672945",
+          "rows_published": 8052,
+          "source_table": "silver_preco_publicado",
+          "snapshot_id": "3da66482-2dad-489f-8450-b7ded2005f3d"
+        }
+      ],
+      "warehouse_attempt": [
+        {
+          "root_run_id": "80575d95-2838-4b70-b9d4-1aad84ffb084",
+          "status": "validated",
+          "batch_id": "76bfa125-7a24-4352-97f1-93387f6213c8",
+          "captured_at_utc": "2026-11-13 14:45:14.551997",
+          "completed_at_utc": "2026-11-13 14:51:30.779678"
+        }
+      ],
+      "previous_publication_unchanged": false,
+      "activities": [
+        {
+          "activityName": "Capture_Baseline",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:45:07.1245527Z",
+          "activityRunEnd": "2026-11-13T14:45:19.1727713Z",
+          "durationInMs": 12048,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Copy_ANP",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:45:20.5846227Z",
+          "activityRunEnd": "2026-11-13T14:45:35.4493728Z",
+          "durationInMs": 14864,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Bronze",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:45:36.6904459Z",
+          "activityRunEnd": "2026-11-13T14:47:02.8580962Z",
+          "durationInMs": 86167,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Silver",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:47:04.3189712Z",
+          "activityRunEnd": "2026-11-13T14:49:27.7725656Z",
+          "durationInMs": 143453,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Export_Gold_Input",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:49:29.5000176Z",
+          "activityRunEnd": "2026-11-13T14:50:35.7413024Z",
+          "durationInMs": 66241,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Import_Gold",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:50:37.2183641Z",
+          "activityRunEnd": "2026-11-13T14:50:55.8262303Z",
+          "durationInMs": 18607,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Publish_Gold",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:50:59.5698217Z",
+          "activityRunEnd": "2026-11-13T14:51:15.1978411Z",
+          "durationInMs": 15628,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Validate_Gold",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:51:16.9283397Z",
+          "activityRunEnd": "2026-11-13T14:51:32.4467744Z",
+          "durationInMs": 15518,
+          "retryAttempt": null
+        }
+      ],
+      "business_fingerprints": {
+        "published_business_bytes": {
+          "rows": 8052,
+          "sha256": "20d88111011deae59926a7bcdb10c612159d11e4f91d11e825b1955a2d5586e1"
+        },
+        "dim_posto": {
+          "rows": 518,
+          "sha256": "20a43ff8f74c0636860eb7e3d3ae1425de8424b173140e7c553eeb7265c90ce1"
+        },
+        "dim_data": {
+          "rows": 181,
+          "sha256": "2cc704ad147f38154aab5394c7dbbb2d41360f6e60e38ba2a0c68b3be0b22af6"
+        },
+        "dim_municipio": {
+          "rows": 92,
+          "sha256": "09f725387053e28575e1578333ffe1bd76e70baec561740412ff02e5d318bc42"
+        },
+        "dim_produto": {
+          "rows": 1,
+          "sha256": "8e8c12fbfdabcef8b2413d0b7cc56cb6bf4b1d1bf257a85e03f7f8ca1d5a2856"
+        },
+        "preco_semanal": {
+          "rows": 656,
+          "sha256": "06c7c7ebd50fe8f12bbeaffe7976dbe996b38491faca5faa2865739354352c9c"
+        }
+      },
+      "evidence_path": "evidence/fabric/orchestration/pipeline-runs/80575d95-2838-4b70-b9d4-1aad84ffb084/verification.json"
+    },
+    {
+      "root_run_id": "b9812604-df3d-4705-bc30-5324be35779d",
+      "job_status": "Failed",
+      "fault_stage": "silver",
+      "invoke_type": null,
+      "start_utc": null,
+      "end_utc": null,
+      "bronze_run_id": "b9812604-df3d-4705-bc30-5324be35779d_093c337c-176b-403f-863b-47dcd0ed530b",
+      "bronze_rows": 422418,
+      "raw_bytes": 8488624,
+      "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+      "silver_run_id": "cc609634-ebbd-4476-83d3-0c263bc91e93",
+      "silver_status": "m03_official_selection_validated",
+      "silver_counts": {
+        "selected": 8052,
+        "invalid": 0,
+        "exact_duplicate_excess": 0,
+        "conflicting_rows_after_exact_dedup": 0,
+        "accepted": 8052,
+        "received_full_file": 422418,
+        "outside_slice": 414366
+      },
+      "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+      "export_batch_id": null,
+      "export_status": null,
+      "publication": [
+        {
+          "batch_id": "fc756f7e-a703-40b3-b8d5-c9d338679af8",
+          "scope_id": "anp-2026-1-rj-gasolina",
+          "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+          "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+          "silver_delta_version": 0,
+          "is_synthetic": false,
+          "published_at_utc": "2026-11-13 13:55:03.690316",
+          "rows_published": 8052,
+          "source_table": "silver_preco_publicado",
+          "snapshot_id": "3da66482-2dad-489f-8450-b7ded2005f3d"
+        }
+      ],
+      "warehouse_attempt": [
+        {
+          "root_run_id": "b9812604-df3d-4705-bc30-5324be35779d",
+          "status": "started",
+          "batch_id": null,
+          "captured_at_utc": "2026-11-13 13:56:46.568439",
+          "completed_at_utc": null
+        }
+      ],
+      "previous_publication_unchanged": true,
+      "activities": [
+        {
+          "activityName": "Capture_Baseline",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T13:56:39.6652317Z",
+          "activityRunEnd": "2026-11-13T13:56:50.8418015Z",
+          "durationInMs": 11176,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Copy_ANP",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T13:56:52.5718352Z",
+          "activityRunEnd": "2026-11-13T13:57:10.5912648Z",
+          "durationInMs": 18019,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Bronze",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T13:57:14.9150383Z",
+          "activityRunEnd": "2026-11-13T13:58:44.2694388Z",
+          "durationInMs": 89354,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Silver",
+          "status": "Failed",
+          "activityRunStart": "2026-11-13T13:58:45.7770999Z",
+          "activityRunEnd": "2026-11-13T14:01:09.8308453Z",
+          "durationInMs": 144053,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Guard_Silver_Failure",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:01:13.1415679Z",
+          "activityRunEnd": "2026-11-13T14:01:27.171198Z",
+          "durationInMs": 14029,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Fail_Silver",
+          "status": "Failed",
+          "activityRunStart": "2026-11-13T14:01:29.7008599Z",
+          "activityRunEnd": "2026-11-13T14:01:29.8403674Z",
+          "durationInMs": 139,
+          "retryAttempt": null
+        }
+      ],
+      "business_fingerprints": {
+        "published_business_bytes": {
+          "rows": 8052,
+          "sha256": "20d88111011deae59926a7bcdb10c612159d11e4f91d11e825b1955a2d5586e1"
+        },
+        "dim_posto": {
+          "rows": 518,
+          "sha256": "20a43ff8f74c0636860eb7e3d3ae1425de8424b173140e7c553eeb7265c90ce1"
+        },
+        "dim_data": {
+          "rows": 181,
+          "sha256": "2cc704ad147f38154aab5394c7dbbb2d41360f6e60e38ba2a0c68b3be0b22af6"
+        },
+        "dim_municipio": {
+          "rows": 92,
+          "sha256": "09f725387053e28575e1578333ffe1bd76e70baec561740412ff02e5d318bc42"
+        },
+        "dim_produto": {
+          "rows": 1,
+          "sha256": "8e8c12fbfdabcef8b2413d0b7cc56cb6bf4b1d1bf257a85e03f7f8ca1d5a2856"
+        },
+        "preco_semanal": {
+          "rows": 656,
+          "sha256": "06c7c7ebd50fe8f12bbeaffe7976dbe996b38491faca5faa2865739354352c9c"
+        }
+      },
+      "evidence_path": "evidence/fabric/orchestration/pipeline-runs/b9812604-df3d-4705-bc30-5324be35779d/verification.json"
+    },
+    {
+      "root_run_id": "bc036008-ccea-404e-9362-ce9dc081db6b",
+      "job_status": "Completed",
+      "fault_stage": "none",
+      "invoke_type": "Manual",
+      "start_utc": "2026-11-13T14:33:31.9772451",
+      "end_utc": "2026-11-13T14:40:46.2033333",
+      "bronze_run_id": "bc036008-ccea-404e-9362-ce9dc081db6b_b3946289-9dd3-4deb-b8f4-3ab9de421c00",
+      "bronze_rows": 422418,
+      "raw_bytes": 8488624,
+      "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+      "silver_run_id": "be1f70ef-d4d6-4fda-a3dd-a308d61d36cb",
+      "silver_status": "m03_official_selection_validated",
+      "silver_counts": {
+        "selected": 8052,
+        "invalid": 0,
+        "exact_duplicate_excess": 0,
+        "conflicting_rows_after_exact_dedup": 0,
+        "accepted": 8052,
+        "received_full_file": 422418,
+        "outside_slice": 414366
+      },
+      "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+      "export_batch_id": "eba89348-6db1-4862-bfa2-38307893d3fc",
+      "export_status": "m04_transfer_ready",
+      "publication": [
+        {
+          "batch_id": "eba89348-6db1-4862-bfa2-38307893d3fc",
+          "scope_id": "anp-2026-1-rj-gasolina",
+          "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+          "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+          "silver_delta_version": 0,
+          "is_synthetic": false,
+          "published_at_utc": "2026-11-13 14:40:21.255175",
+          "rows_published": 8052,
+          "source_table": "silver_preco_publicado",
+          "snapshot_id": "3da66482-2dad-489f-8450-b7ded2005f3d"
+        }
+      ],
+      "warehouse_attempt": [
+        {
+          "root_run_id": "bc036008-ccea-404e-9362-ce9dc081db6b",
+          "status": "validated",
+          "batch_id": "eba89348-6db1-4862-bfa2-38307893d3fc",
+          "captured_at_utc": "2026-11-13 14:33:45.888510",
+          "completed_at_utc": "2026-11-13 14:40:42.049266"
+        }
+      ],
+      "previous_publication_unchanged": false,
+      "activities": [
+        {
+          "activityName": "Capture_Baseline",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:33:38.7545359Z",
+          "activityRunEnd": "2026-11-13T14:33:50.5060829Z",
+          "durationInMs": 11751,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Copy_ANP",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:33:51.7475402Z",
+          "activityRunEnd": "2026-11-13T14:34:09.0196439Z",
+          "durationInMs": 17272,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Bronze",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:34:15.7815248Z",
+          "activityRunEnd": "2026-11-13T14:35:47.0962145Z",
+          "durationInMs": 91314,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Silver",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:35:48.6311794Z",
+          "activityRunEnd": "2026-11-13T14:37:57.3053783Z",
+          "durationInMs": 128674,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Export_Gold_Input",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:37:58.7323842Z",
+          "activityRunEnd": "2026-11-13T14:39:03.8920231Z",
+          "durationInMs": 65159,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Import_Gold",
+          "status": "Failed",
+          "activityRunStart": "2026-11-13T14:39:05.4429842Z",
+          "activityRunEnd": "2026-11-13T14:39:16.985568Z",
+          "durationInMs": 11542,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Import_Gold",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:39:48.264112Z",
+          "activityRunEnd": "2026-11-13T14:40:06.6477462Z",
+          "durationInMs": 18383,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Publish_Gold",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:40:08.5146986Z",
+          "activityRunEnd": "2026-11-13T14:40:23.1274257Z",
+          "durationInMs": 14612,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Validate_Gold",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:40:25.5569919Z",
+          "activityRunEnd": "2026-11-13T14:40:44.1014929Z",
+          "durationInMs": 18544,
+          "retryAttempt": null
+        }
+      ],
+      "business_fingerprints": {
+        "published_business_bytes": {
+          "rows": 8052,
+          "sha256": "20d88111011deae59926a7bcdb10c612159d11e4f91d11e825b1955a2d5586e1"
+        },
+        "dim_posto": {
+          "rows": 518,
+          "sha256": "20a43ff8f74c0636860eb7e3d3ae1425de8424b173140e7c553eeb7265c90ce1"
+        },
+        "dim_data": {
+          "rows": 181,
+          "sha256": "2cc704ad147f38154aab5394c7dbbb2d41360f6e60e38ba2a0c68b3be0b22af6"
+        },
+        "dim_municipio": {
+          "rows": 92,
+          "sha256": "09f725387053e28575e1578333ffe1bd76e70baec561740412ff02e5d318bc42"
+        },
+        "dim_produto": {
+          "rows": 1,
+          "sha256": "8e8c12fbfdabcef8b2413d0b7cc56cb6bf4b1d1bf257a85e03f7f8ca1d5a2856"
+        },
+        "preco_semanal": {
+          "rows": 656,
+          "sha256": "06c7c7ebd50fe8f12bbeaffe7976dbe996b38491faca5faa2865739354352c9c"
+        }
+      },
+      "evidence_path": "evidence/fabric/orchestration/pipeline-runs/bc036008-ccea-404e-9362-ce9dc081db6b/verification.json"
+    },
+    {
+      "root_run_id": "dc94cb54-4930-427f-9e08-6ea8b4996747",
+      "job_status": "Completed",
+      "fault_stage": "none",
+      "invoke_type": "Manual",
+      "start_utc": "2026-11-13T14:25:07.0496206",
+      "end_utc": "2026-11-13T14:31:59.2966667",
+      "bronze_run_id": "dc94cb54-4930-427f-9e08-6ea8b4996747_4140c647-aba1-4006-9cb1-f27736859f31",
+      "bronze_rows": 422418,
+      "raw_bytes": 8488624,
+      "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+      "silver_run_id": "ae5d424a-f569-40f1-b63c-dc4273735619",
+      "silver_status": "m03_official_selection_validated",
+      "silver_counts": {
+        "selected": 8052,
+        "invalid": 0,
+        "exact_duplicate_excess": 0,
+        "conflicting_rows_after_exact_dedup": 0,
+        "accepted": 8052,
+        "received_full_file": 422418,
+        "outside_slice": 414366
+      },
+      "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+      "export_batch_id": "38cd0578-e1c5-4e7b-8c4a-7c2c7e7ea8ed",
+      "export_status": "m04_transfer_ready",
+      "publication": [
+        {
+          "batch_id": "38cd0578-e1c5-4e7b-8c4a-7c2c7e7ea8ed",
+          "scope_id": "anp-2026-1-rj-gasolina",
+          "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+          "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+          "silver_delta_version": 0,
+          "is_synthetic": false,
+          "published_at_utc": "2026-11-13 14:31:36.751440",
+          "rows_published": 8052,
+          "source_table": "silver_preco_publicado",
+          "snapshot_id": "3da66482-2dad-489f-8450-b7ded2005f3d"
+        }
+      ],
+      "warehouse_attempt": [
+        {
+          "root_run_id": "dc94cb54-4930-427f-9e08-6ea8b4996747",
+          "status": "validated",
+          "batch_id": "38cd0578-e1c5-4e7b-8c4a-7c2c7e7ea8ed",
+          "captured_at_utc": "2026-11-13 14:25:22.479122",
+          "completed_at_utc": "2026-11-13 14:31:52.740986"
+        }
+      ],
+      "previous_publication_unchanged": false,
+      "activities": [
+        {
+          "activityName": "Capture_Baseline",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:25:13.9765237Z",
+          "activityRunEnd": "2026-11-13T14:25:26.3602464Z",
+          "durationInMs": 12383,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Copy_ANP",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:25:27.9416338Z",
+          "activityRunEnd": "2026-11-13T14:25:43.4436003Z",
+          "durationInMs": 15501,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Bronze",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:25:44.6482321Z",
+          "activityRunEnd": "2026-11-13T14:27:12.1957769Z",
+          "durationInMs": 87547,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Silver",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:27:13.4299982Z",
+          "activityRunEnd": "2026-11-13T14:29:36.02383Z",
+          "durationInMs": 142593,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Export_Gold_Input",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:29:37.5490227Z",
+          "activityRunEnd": "2026-11-13T14:31:03.5222157Z",
+          "durationInMs": 85973,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Import_Gold",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:31:06.5640072Z",
+          "activityRunEnd": "2026-11-13T14:31:21.3584488Z",
+          "durationInMs": 14794,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Publish_Gold",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:31:23.5212519Z",
+          "activityRunEnd": "2026-11-13T14:31:38.9441672Z",
+          "durationInMs": 15422,
+          "retryAttempt": null
+        },
+        {
+          "activityName": "Validate_Gold",
+          "status": "Succeeded",
+          "activityRunStart": "2026-11-13T14:31:41.3604635Z",
+          "activityRunEnd": "2026-11-13T14:31:56.2952763Z",
+          "durationInMs": 14934,
+          "retryAttempt": null
+        }
+      ],
+      "business_fingerprints": {
+        "published_business_bytes": {
+          "rows": 8052,
+          "sha256": "20d88111011deae59926a7bcdb10c612159d11e4f91d11e825b1955a2d5586e1"
+        },
+        "dim_posto": {
+          "rows": 518,
+          "sha256": "20a43ff8f74c0636860eb7e3d3ae1425de8424b173140e7c553eeb7265c90ce1"
+        },
+        "dim_data": {
+          "rows": 181,
+          "sha256": "2cc704ad147f38154aab5394c7dbbb2d41360f6e60e38ba2a0c68b3be0b22af6"
+        },
+        "dim_municipio": {
+          "rows": 92,
+          "sha256": "09f725387053e28575e1578333ffe1bd76e70baec561740412ff02e5d318bc42"
+        },
+        "dim_produto": {
+          "rows": 1,
+          "sha256": "8e8c12fbfdabcef8b2413d0b7cc56cb6bf4b1d1bf257a85e03f7f8ca1d5a2856"
+        },
+        "preco_semanal": {
+          "rows": 656,
+          "sha256": "06c7c7ebd50fe8f12bbeaffe7976dbe996b38491faca5faa2865739354352c9c"
+        }
+      },
+      "evidence_path": "evidence/fabric/orchestration/pipeline-runs/dc94cb54-4930-427f-9e08-6ea8b4996747/verification.json"
+    }
+  ],
+  "null_semantics": "Nao registrado/não produzido; nunca assumir zero.",
+  "performance_baseline_claimed": false
+}

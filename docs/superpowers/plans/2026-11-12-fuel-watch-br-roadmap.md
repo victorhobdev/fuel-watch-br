@@ -1,6 +1,6 @@
 # Roadmap do Fuel Watch BR — marcos verificáveis
 
-Atualizado em **13/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M06 aceitos no Fabric; M07 em preparação e M08 com destino remoto pendente. Planejamento, testes locais e execução validada são identificados separadamente.
+Atualizado em **13/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M06 aceitos no Fabric; M07 com fixtures reais e leitor pendente, M08 com destino remoto pendente e M09 validado em dev, aguardando revalidação após M08. Planejamento, testes locais e execução validada são identificados separadamente.
 
 **Objetivo:** concluir um observatório explicável de preços de combustíveis no Microsoft Fabric, com fluxo batch confiável, segurança e implantação demonstradas, laboratório sintético de streaming e consumo mínimo.
 
@@ -27,9 +27,9 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 | M04 | Gold dimensional e histórico observado do posto | CONCLUÍDO | M03 |
 | M05 | Pipeline mestre e recuperação entre camadas | CONCLUÍDO | M04 |
 | M06 | Exercício delimitado de Dataflow Gen2 | CONCLUÍDO | M02 |
-| M07 | Acessos e governança com testes reais | PLANEJADO | M04 |
-| M08 | Git do workspace e implantação entre ambientes | PLANEJADO | M05; M06 para implantar esse item |
-| M09 | Monitoramento, diagnóstico e desempenho medido | PLANEJADO | M05; repetir verificações após M08 |
+| M07 | Acessos e governança com testes reais | EM ANDAMENTO | M04 |
+| M08 | Git do workspace e implantação entre ambientes | PREPARADO LOCALMENTE | M05; M06 para implantar esse item |
+| M09 | Monitoramento, diagnóstico e desempenho medido | VALIDADO DEV; REVALIDAR APÓS M08 | M05; repetir verificações após M08 |
 | M10 | Streaming sintético, KQL e alerta | PLANEJADO | M05 e condições operacionais de M09 |
 | M11 | Consumo mínimo e encerramento reproduzível | PLANEJADO | M06–M10 e núcleo batch |
 
@@ -172,7 +172,7 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 
 **Passos:** inventariar papéis e acessos; definir matriz de testes; validar com identidade de leitura sem privilégios administrativos; separar SQL e OneLake/Spark; executar laboratório de mascaramento e, se disponíveis, rótulos.
 
-- [ ] Matriz explica Admin/Member/Contributor/Viewer e compartilhamento de itens; seis casos de acesso são definidos antes do teste, cobrindo leitura, escrita, itens e caminhos SQL/OneLake.
+- [x] Matriz explica Admin/Member/Contributor/Viewer e compartilhamento de itens; seis casos de acesso são definidos antes do teste, cobrindo leitura, escrita, itens e caminhos SQL/OneLake.
 - [ ] Os seis casos são executados com identidades e papéis apropriados, com resultados esperados registrados; não usar sessão administrativa como prova de restrição de leitor.
 - [ ] RLS regional testada com identidade de leitura e fixture de pelo menos duas UFs em tabela de laboratório separada: linhas permitidas visíveis, linhas restritas invisíveis; CNPJ oficial não é artificialmente classificado como segredo.
 - [ ] Mascaramento de campo fictício demonstrado e distinguido de autorização/anonimização. Uma restrição SQL não é apresentada como proteção automática aos arquivos.
@@ -181,6 +181,8 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 **Métrica de saída:** 6/6 casos da matriz e teste RLS aprovados. Falta de identidade de leitura bloqueia esse aceite; teste administrativo simulado não substitui essa condição.
 
 **Arquivos previstos:** `sql/labs/security.sql`, `docs/security-matrix.md`, `evidence/fabric/security/`. Usar aliases de papel nas evidências versionadas, sem dados pessoais de conta.
+
+**Checkpoint 13/11:** 1/5 critérios. Matriz definida; policy/máscara e fixtures compilados/lidos no Fabric como autor. Leitor ainda não testado e nenhum papel concedido. [Setup real](../../../evidence/fabric/security/author-setup-2026-11-13.json).
 
 ## M08 — Git e implantação real
 
@@ -198,21 +200,25 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 
 **Arquivos previstos:** `fabric/`, `config/environments.example.json`, `docs/deployment.md`, configuração de CI do provedor efetivamente escolhido, `evidence/fabric/deployment/`.
 
+**Preparação 13/11:** workflow manual, runner local efêmero proposto, lock e 34 testes portáteis aprovados em venv novo. Isso não é execução GitHub nem integração de workspace. Destino privado proposto aguarda aprovação; [runbook](../../deployment.md).
+
 ## M09 — Operação, diagnóstico e otimização medida
 
 **Resultado:** localizar uma falha e avaliar uma intervenção com evidência de antes/depois.
 
 **Passos:** acompanhar runs, bytes, linhas, duração e rejeições desde M02; revisar Monitoring hub e Job management; inventariar Spark pool/capacidade; escolher um problema observado; medir intervenção pertinente.
 
-- [ ] Visão de execução relaciona run_id, origem/versão, contagens, rejeições, duração e estado de publicação; uma execução normal e uma falha são localizáveis por esse registro.
-- [ ] Incidente operacional é explicado por evidência de sessão/job/capacidade quando disponível. O HTTP 430 já registrado é ponto de partida, mas sua causa não pode ser declarada confirmada sem essa inspeção.
-- [ ] Protocolo de desempenho fixa consulta/job, dados, runtime/pool e condições de cache; captura três medições de baseline e três após uma intervenção escolhida com motivo.
-- [ ] Relatório informa mediana, volume/lidas/arquivos ou plano pertinente, custo/consumo quando disponível e reconciliação dos dados. Ganho nulo ou regressão são resultados válidos se medidos honestamente; manter a mudança só quando justificada.
-- [ ] Runbook cobre sessão Spark, falhas, retenção, consumo e encerramento dos laboratórios. OPTIMIZE/VACUUM, particionamento e V-Order só são aplicados com justificativa e explicação de efeitos, especialmente sobre time travel.
+- [x] Visão de execução relaciona run_id, origem/versão, contagens, rejeições, duração e estado de publicação; uma execução normal e uma falha são localizáveis por esse registro.
+- [x] Incidente operacional é explicado por evidência de sessão/job/capacidade quando disponível. O HTTP 430 já registrado é ponto de partida, mas sua causa não pode ser declarada confirmada sem essa inspeção.
+- [x] Protocolo de desempenho fixa consulta/job, dados, runtime/pool e condições de cache; captura três medições de baseline e três após uma intervenção escolhida com motivo.
+- [x] Relatório informa mediana, volume/lidas/arquivos ou plano pertinente, custo/consumo quando disponível e reconciliação dos dados. Ganho nulo ou regressão são resultados válidos se medidos honestamente; manter a mudança só quando justificada.
+- [x] Runbook cobre sessão Spark, falhas, retenção, consumo e encerramento dos laboratórios. OPTIMIZE/VACUUM, particionamento e V-Order só são aplicados com justificativa e explicação de efeitos, especialmente sobre time travel.
 
 **Métrica de saída:** um diagnóstico reproduzível, um experimento com seis medições e nenhuma divergência de negócio causada pela intervenção. Registrar duração/volume do pipeline e do consumo Gold, mesmo que o experimento priorizado esteja em outro componente.
 
 **Arquivos previstos:** `docs/operations.md`, `docs/performance.md`, consultas/notebooks específicos do experimento, `evidence/fabric/operations/` e `evidence/fabric/performance/`.
+
+**Checkpoint 13/11:** 5/5 critérios verificados em dev; marco ainda depende da revalidação pertinente após M08 para aceite final. Índice de sete runs, diagnóstico, seis medições e reconciliação integral de 656 grupos/13 colunas. Medianas 0,5170 s → 0,2444 s com cache quente; tarefas iguais, sem alterar configuração produtiva ou alegar economia de CU. [Evidência](../../../evidence/fabric/operations/m09-dev-checkpoint-2026-11-13.json), [relatório e limites](../../performance.md).
 
 ## M10 — Streaming sintético, KQL e Activator
 
@@ -264,15 +270,13 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 
 **Fora do escopo inicial:** clima/INMET, população, predição, API/backend, frontend próprio, carga nacional de vários anos e operação permanente. Não usar essas extensões como requisito para concluir o projeto atual.
 
-## Próximo bloco concreto: M05
+## Próximo bloco concreto: M07/M08
 
-1. Preservar M00–M04 e o lote Gold aprovado; remover do notebook 07 o bootstrap operacional de transporte antes da integração Git.
-2. Ligar recebimento, Bronze, seleção Silver e Gold em pipeline mestre parametrizado, com auditorias relacionadas por execução.
-3. Executar um caminho verde e comprovar o estado publicado de ponta a ponta.
-4. Provocar falhas delimitadas em Silver e Gold, comprovar proteção da publicação anterior, recuperar e repetir sem duplicação.
-5. Exercitar uma execução agendada/evento delimitada, desativar ao fim e registrar definições reais e runbook.
-
-M04 concluído. O aceite não demonstra uma transação única entre Lakehouse e Warehouse nem substitui os testes de recuperação do pipeline mestre.
+1. Confirmar a conta leitora criada, autenticar em cache separado e executar os seis casos/RLS/máscara. Não usar o autor como prova de negação.
+2. Aprovar destino Git privado, revisar histórico e executar CI no provedor com runner efêmero, sem contratação de compute.
+3. Conectar workspace dev ao Git e promover/restaurar versão em workspace de teste na capacidade trial existente, reconciliando dados/bindings.
+4. Repetir as verificações operacionais pertinentes de M09 no destino; manter evidência dev separada.
+5. Executar M10 sintético e M11 conforme seus critérios; 7/12 marcos estão aceitos, sem declarar o projeto concluído.
 
 ## Registro de acompanhamento
 
@@ -297,6 +301,9 @@ Em cada sessão, acrescentar uma linha. As mudanças de estado exigem links para
 | 13/11/2026 | M05 | PARCIAL — sem aceite Fabric | Notebook 08 e cópia do pipeline criados; 57 testes locais; editor de notebooks preso no carregamento. [Estado](../../../evidence/fabric/orchestration/preparation-status.json) | Recuperar editor, conferir parâmetros e executar orquestração/falhas; 5/12 marcos |
 | 13/11/2026 | M05 | CONCLUÍDO — 5/5 critérios | Carga completa, falhas Silver/Gold, recuperações, repetição e agendamento real desabilitado; auditoria REST/OneLake/SQL | M06 em execução; 6/12 marcos concluídos |
 | 13/11/2026 | M06 | CONCLUÍDO — 5/5 critérios | Dataflow Gen2 real: 92 municípios, repetição sem duplicação, erro sintético e recuperação, definição nativa relida | M07 leitor pendente; M08 remoto pendente; 7/12 marcos |
+| 13/11/2026 | M07 | EM ANDAMENTO — 1/5 | Matriz + fixtures/RLS/máscara reais como autor; leitor pendente | Login leitor e seis casos |
+| 13/11/2026 | M08 | PREPARADO LOCALMENTE | Workflow/lock + 34 checks em venv novo; nenhum remoto criado | Aprovar destino remoto |
+| 13/11/2026 | M09 | VALIDADO DEV — revalidar após M08 | Seis medições reais e 13 colunas/656 grupos iguais ao Gold; configuração restaurada | Conferir destino após implantação |
 
 ## Dependências e referências oficiais
 
