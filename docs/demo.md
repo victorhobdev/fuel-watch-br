@@ -28,4 +28,4 @@ No M10, mostrar o manifesto do lote `daf2320c-b0bc-4eef-b908-a2dd80939088`, quat
 
 ## Limites a declarar
 
-Não demonstramos concorrência entre publicadores nem uma transação única Lakehouse/Warehouse. O ensaio de desempenho mede uma agregação em cache; não comprova economia monetária ou aceleração do pipeline completo. O usuário dispensou a segunda conta e aceitou revisão de implementação M07; negação/RLS/DDM com leitor não foram testados. Integração Git do workspace exige a autenticação GitHub solicitada ao usuário e não pode ser inferida do push/CI.
+Não demonstramos concorrência entre publicadores nem uma transação única Lakehouse/Warehouse. O ensaio de desempenho mede uma agregação em cache; não comprova economia monetária ou aceleração do pipeline completo. O usuário dispensou a segunda conta e aceitou revisão de implementação M07; negação/RLS/DDM com leitor não foram testados. Integração Git nativa foi exercitada seletivamente no notebook 08, commit `6a30720`, além do push/CI. Não foi feito envio nativo de todos os itens.

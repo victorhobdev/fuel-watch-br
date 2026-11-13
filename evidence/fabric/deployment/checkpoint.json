@@ -1,7 +1,7 @@
 {
-  "status": "deployment_change_recovery_and_rollback_validated_pending_native_git",
+  "status": "m08_accepted",
   "environment": "fabric",
-  "native_git_state": "NotConnected",
+  "native_git_state": "ConnectedAndInitialized",
   "remote_private_repository": "victorhobdev/fuel-watch-br",
   "github_ci_run": "https://github.com/victorhobdev/fuel-watch-br/actions/runs/43476635718",
   "github_ci_commit": "e373d1e",
@@ -19,9 +19,12 @@
   "restored_test_run": "b2af85ca-f7d0-490f-9822-fcba828796c2",
   "dataflow_test_run": "bd8c9637-4368-40f3-8221-08bcb69c546e",
   "oauth_identity_note": "generic authorized Lakehouse OAuth reused; target workspace/Lakehouse M parameters remapped and run verified",
-  "checked_at_utc": "2026-11-13T19:18:31.344117+00:00",
-  "full_m08_accepted": false,
+  "checked_at_utc": "2026-11-13T21:28:39.356412+00:00",
+  "full_m08_accepted": true,
   "rollback_execution_status": "Completed",
   "rollback_business_equal": true,
-  "remaining_acceptance": "Native Git connection and real item synchronization"
+  "remaining_acceptance": null,
+  "native_git_commit": "6a307200d7ebf85cad9892d561f06df890096380",
+  "native_git_evidence": "native-git-verification.json",
+  "criteria_verified": 5
 }

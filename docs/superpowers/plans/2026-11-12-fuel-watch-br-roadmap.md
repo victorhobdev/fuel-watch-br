@@ -1,6 +1,6 @@
 # Roadmap do Fuel Watch BR — marcos verificáveis
 
-Atualizado em **13/11/2026**, America/Sao_Paulo. M00–M06 aceitos; M10 aceito com disparo real. M07 aceito por revisão no escopo alterado pelo usuário; M08 teve CI e promoção reais, com Git nativo pendente; M09 aceito em dev/test e M11 tem relatório/medidas verificados.
+Atualizado em **13/11/2026**, America/Sao_Paulo. M00–M06 aceitos; M10 aceito com disparo real. M07 aceito por revisão no escopo alterado pelo usuário; M08 aceito com Git nativo, CI e promoção/restauração reais; M09 aceito em dev/test e M11 aceito com relatório/medidas e revisão final.
 
 **Objetivo:** concluir um observatório explicável de preços de combustíveis no Microsoft Fabric, com fluxo batch confiável, segurança e implantação demonstradas, laboratório sintético de streaming e consumo mínimo.
 
@@ -10,7 +10,7 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. M00–M06 aceitos; M10 aceito c
 
 ## Como acompanhar
 
-- **Estado atual: 10 de 12 marcos concluídos no escopo vigente.** Isso conta entregas aceitas, não representa percentual de esforço ou de tempo.
+- **Estado atual: 12 de 12 marcos concluídos no escopo vigente.** Isso conta entregas aceitas, não representa percentual de esforço ou de tempo.
 - Cada marco tem cinco critérios de aceite. Marcar uma caixa exige uma evidência identificada: execução, consulta, comparação, matriz ou documento verificado.
 - Código preparado, teste local e execução no Fabric são estados distintos. Uma etapa que depende de Fabric não fica concluída apenas por passar localmente.
 - Evidências M00–M02 e laboratório M03 foram fornecidas pelo usuário e conferidas localmente. A seleção oficial M03 e o M04 foram executados pelo agente na guia Fabric autorizada, com saídas observadas diretamente. A proveniência acompanha cada registro; não houve consulta independente fora dos notebooks.
@@ -28,10 +28,10 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. M00–M06 aceitos; M10 aceito c
 | M05 | Pipeline mestre e recuperação entre camadas | CONCLUÍDO | M04 |
 | M06 | Exercício delimitado de Dataflow Gen2 | CONCLUÍDO | M02 |
 | M07 | Segurança: revisão do código e configuração real | CONCLUÍDO — ESCOPO REVISADO | M04 |
-| M08 | Git do workspace e implantação entre ambientes | IMPLANTADO; GIT NATIVO PENDENTE | M05; M06 para implantar esse item |
+| M08 | Git do workspace e implantação entre ambientes | CONCLUÍDO | M05; M06 para implantar esse item |
 | M09 | Monitoramento, diagnóstico e desempenho medido | CONCLUÍDO | M05; repetir verificações após M08 |
 | M10 | Streaming sintético, KQL e alerta | CONCLUÍDO | M05 e condições operacionais de M09 |
-| M11 | Consumo mínimo e encerramento reproduzível | CONSUMO VALIDADO; REVISÃO FINAL EM ANDAMENTO | M06–M10 e núcleo batch |
+| M11 | Consumo mínimo e encerramento reproduzível | CONCLUÍDO | M06–M10 e núcleo batch |
 
 **Ordem principal:** M00 → M01 → M02 → M03 → M04 → M05 → M08 → M09 → M10 → M11. Encaixar M06 depois de M02 e M07 depois de M04, antes do aceite final. Essa ordem é de execução; versionamento, auditoria e revisão de acessos começam antes dos seus marcos finais.
 
@@ -186,7 +186,7 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. M00–M06 aceitos; M10 aceito c
 
 **Passos:** começar a preparar integração já em M02; definir destino remoto privado e autorizações quando essa ação for necessária; consultar suporte por tipo de item; conectar dev; implantar para um workspace de teste na capacidade disponível. Não pressupor três ambientes ou outra capacidade paga.
 
-- [ ] Repositório remoto/destino aprovado e workspace dev conectado ao Git; uma alteração de item real é sincronizada e seu commit identificado. O Git local já existente é a base, não prova de integração do workspace.
+- [x] Repositório remoto/destino aprovado e workspace dev conectado ao Git; uma alteração de item real é sincronizada e seu commit identificado. O Git local já existente é a base, não prova de integração do workspace.
 - [x] Duas áreas de trabalho distintas (dev e teste) têm configurações/conexões separadas; nenhum segredo ou identificador pessoal fica no código, e o suporte de cada item à implantação é registrado.
 - [x] Uma mudança dos itens suportados é promovida por deployment pipeline e executada no destino, com reconciliação da fatia e comparação dos resultados esperados.
 - [x] Uma versão anterior é restaurada e testada no destino; recuperação documentada sem depender de apagar ambientes ou dados para fingir rollback.
@@ -196,7 +196,7 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. M00–M06 aceitos; M10 aceito c
 
 **Arquivos previstos:** `fabric/`, `config/environments.example.json`, `docs/deployment.md`, configuração de CI do provedor efetivamente escolhido, `evidence/fabric/deployment/`.
 
-**Checkpoint 13/11:** 4/5 critérios. Repositório privado e CI real aprovados/executados; duas áreas na mesma FTL4, deploy e execução reconciliada, revisão de auditoria observada, recuperação do mesmo lote e restauração executada com igualdade integral. Dataflow test: 92 municípios iguais. Falta a sincronização Git nativa, cujo login foi solicitado diretamente no Fabric. [Evidência](../../../evidence/fabric/deployment/checkpoint.json), [runbook](../../deployment.md).
+**Aceite 13/11:** 5/5 critérios. Git nativo seletivo do notebook 08 no commit `6a30720`, item sem pendência e código exportado igual por AST; CI real, dois ambientes na mesma FTL4, promoção, execução reconciliada e restauração. Dataflow test com 92 municípios iguais. Outros 23 itens não foram sincronizados por esse envio. [Git nativo](../../../evidence/fabric/deployment/native-git-verification.json), [aceite](../../../evidence/fabric/deployment/checkpoint.json).
 
 ## M09 — Operação, diagnóstico e otimização medida
 
@@ -250,7 +250,7 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. M00–M06 aceitos; M10 aceito c
 
 **Arquivos previstos:** modelo/relatório reais em `fabric/` conforme suporte, `docs/demo.md`, `docs/data-dictionary.md`, atualização do README e índice final `evidence/README.md`.
 
-**Checkpoint 13/11:** 5/5 entregas próprias verificadas; aceite global permanece condicionado a M08, que não foram ocultados nem simulados. Cinco medidas DAX/SQL em quatro recortes, PDF real em português conferido, três demonstrações documentadas, índice/dicionário/runbooks atualizados. Inventário: zero jobs/sessões/agendas de pipeline ativos nos dois workspaces; regra Activator parada e destinos pausados. Leitor dispensado por decisão explícita; Git nativo pendente. [Consumo](../../consumption.md), [inventário](../../../evidence/fabric/operations/resource-audit-2026-11-13.json).
+**Aceite 13/11:** 5/5 entregas verificadas, dependências M07/M08 aceitas no escopo vigente. Cinco medidas DAX/SQL em quatro recortes, PDF real conferido, três demonstrações documentadas, índice/dicionário/runbooks atualizados. Zero jobs/sessões/agendas de pipeline ativos; regra Activator parada e destinos pausados. [Aceite](../../../evidence/fabric/consumption/m11-acceptance.json), [inventário](../../../evidence/fabric/operations/resource-audit-2026-11-13.json).
 
 ## Frentes que acompanham os marcos
 
@@ -270,11 +270,9 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. M00–M06 aceitos; M10 aceito c
 
 **Fora do escopo inicial:** clima/INMET, população, predição, API/backend, frontend próprio, carga nacional de vários anos e operação permanente. Não usar essas extensões como requisito para concluir o projeto atual.
 
-## Próximo bloco concreto: Git nativo do M08
+## Encerramento do escopo vigente
 
-1. Concluir autenticação GitHub diretamente no Fabric para o repositório privado aprovado, branch `codex/primeira-fatia`, pasta `fabric/workspace`.
-2. Conferir sincronização inicial antes de escolher direção; sincronizar uma alteração real de item e registrar commit/readback.
-3. Consolidar aceite M08 e M11, cuja implantação/restauração, consumo, documentação e recursos já foram verificados. M07 não exige nova conta no escopo revisado.
+Todos os marcos foram aceitos. Não há nova conta, capacidade paga ou enriquecimento exigido para concluir. M07 foi reduzido pelo usuário para revisão de implementação, sem teste restrito. O Git nativo demonstrou sincronização seletiva, não versionamento de todos os itens. Preservar evidências e retomar somente extensões explicitamente escolhidas.
 
 ## Registro de acompanhamento
 
@@ -309,6 +307,8 @@ Em cada sessão, acrescentar uma linha. As mudanças de estado exigem links para
 | 13/11/2026 | M11 | ENTREGAS VERIFICADAS — aceite global pendente | Relatório/medidas/render, demonstrações, docs e revisão de recursos | Fechar M07/M08 quando houver identidades/autenticação |
 
 | 13/11/2026 | M07 | CONCLUÍDO — escopo revisado pelo usuário | Fonte + catálogo Fabric + papéis/GRANTs revisados; cinco critérios ajustados. Testes restritos dispensados, não executados | Git nativo M08; 10/12 marcos no escopo vigente |
+
+| 13/11/2026 | M08/M11 | CONCLUÍDOS — 12/12 no escopo vigente | Git nativo 6a30720; export AST igual, aceites e recursos conferidos; leitor dispensado, não simulado | Projeto concluído; extensões opcionais |
 
 ## Dependências e referências oficiais
 

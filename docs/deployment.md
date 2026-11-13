@@ -4,7 +4,7 @@ Estado em 13/11/2026: **repositório privado criado e histórico revisado enviad
 
 A deployment pipeline dev → test usa a mesma capacidade trial FTL4. Promoção nativa, bootstrap das entradas imutáveis e execução completa em test foram reconciliados integralmente com dev. Uma revisão de auditoria foi promovida e observada no recibo real; seu pipeline falhou ao esgotar retries de visibilidade do manifesto no SQL endpoint. A publicação anterior foi preservada e a recuperação CLI usou o **mesmo lote**, com igualdade das seis projeções de negócio. A falha original continua `Failed`, sem reclassificação. O código original já foi restaurado e relido em ambos os ambientes; a execução restaurada terminou com oito etapas bem-sucedidas e seis projeções de negócio integralmente iguais.
 
-**Pendente:** integração Git nativa do workspace, que exige autenticação GitHub diretamente no Fabric. O usuário foi orientado a autorizar somente este repositório. A credencial ampla da CLI não foi transferida para o Fabric. A implantação por API não substitui o aceite da sincronização Git.
+**Integração nativa concluída:** conexão GitHub `ConnectedAndInitialized`, branch `codex/primeira-fatia`, diretório `/fabric/workspace`. Envio seletivo do item real `08_pipeline_stage` gerou o commit `6a30720`; código exportado igual ao notebook revisado por comparação AST, e item sem pendência após o envio. Os demais 23 itens permaneceram não sincronizados por essa operação. [Verificação](../evidence/fabric/deployment/native-git-verification.json). M08: 5/5 critérios aceitos.
 
 ## Destino aprovado
 
@@ -51,3 +51,6 @@ O ambiente vazio precisou executar `03_ibge_reference` e `04_bronze_to_silver` a
 O deploy remapeou o Lakehouse padrão dos notebooks, mas reteve referências literais de dev no M e nos endpoints SQL de atividades. `m08_bindings.py` corrige e relê essas referências antes da execução. O HTTP de teste tem conexão anônima própria; o OAuth genérico do Lakehouse reutiliza a identidade autorizada, sem alegar isolamento de identidade OAuth. Dados Delta e recibos de dev não foram copiados: somente bundles imutáveis de entrada tiveram bytes e SHA conferidos após cópia.
 
 Para operar em test, definir `FUELWATCH_ENV_FILE` com o caminho privado `.local/m08-api/environment-test.json` somente no processo desejado. O padrão permanece dev; `warehouse.connect(config)` permite seleção explícita. Não trocar o arquivo padrão para simular promoção.
+
+
+O usuário habilitou o provedor e configurou o PAT diretamente no Fabric. Nenhum token foi lido ou gravado no repositório. Os arquivos nativos em `fabric/workspace` incluem bindings de ambiente gerados pelo serviço e pertencem ao repositório privado aprovado; antes de publicação externa, produzir uma cópia sanitizada. Os exports de portfólio em `fabric/m11` continuam separados. Não alegar sincronização completa dos 24 itens a partir deste commit seletivo.

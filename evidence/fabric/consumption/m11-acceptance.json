@@ -1,0 +1,13 @@
+{
+  "status": "m11_accepted",
+  "criteria_verified": 5,
+  "environment": "fabric",
+  "measures_reconciled": 5,
+  "filter_cases": 4,
+  "visual_review": "visual-review.json",
+  "operational_demos": "../../../docs/demo.md",
+  "security_scope": "user replaced reader tests with implementation review; restricted behavior not tested",
+  "native_git_commit": "6a307200d7ebf85cad9892d561f06df890096380",
+  "project_status": "../../project-status-2026-11-13.json",
+  "checked_at_utc": "2026-11-13T21:28:39.356412+00:00"
+}

@@ -1,0 +1,17 @@
+{
+  "status": "native_git_item_synchronized",
+  "connection_state": "ConnectedAndInitialized",
+  "repository": "victorhobdev/fuel-watch-br",
+  "branch": "codex/primeira-fatia",
+  "directory": "/fabric/workspace",
+  "commit": "6a307200d7ebf85cad9892d561f06df890096380",
+  "remote_equals_workspace_head": true,
+  "item": "08_pipeline_stage",
+  "exported_code_ast_matches_reviewed_notebook": true,
+  "exported_file_sha256": "e8d2057df16de888a7f97ff8987badc7bcc38caeeff8b5c5aa4fc37986b360f1",
+  "source_before_commit_sha256": "f79dade259b7dcc278c663be274da57c67ff1805ee426f2b286db0ecc6b17dec",
+  "remaining_uncommitted_items": 23,
+  "commit_mode": "Selective",
+  "uncommitted_items_not_claimed_synchronized": true,
+  "checked_at_utc": "2026-11-13T21:27:07.533437+00:00"
+}

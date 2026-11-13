@@ -1,5 +1,5 @@
 {
-  "status": "independent_blocks_verified_human_dependencies_remaining",
+  "status": "project_accepted_under_user_revised_scope",
   "accepted_milestones": [
     "M00",
     "M01",
@@ -9,10 +9,12 @@
     "M05",
     "M06",
     "M07",
+    "M08",
     "M09",
-    "M10"
+    "M10",
+    "M11"
   ],
-  "accepted_count": 10,
+  "accepted_count": 12,
   "total_milestones": 12,
   "m07": {
     "status": "accepted_under_user_revised_scope",
@@ -23,13 +25,16 @@
     "remaining": null
   },
   "m08": {
-    "criteria_verified": 4,
-    "remaining": "native workspace Git authentication and real item sync",
-    "deployment_execution_rollback_verified": true
+    "criteria_verified": 5,
+    "remaining": null,
+    "deployment_execution_rollback_verified": true,
+    "status": "accepted",
+    "native_git_commit": "6a307200d7ebf85cad9892d561f06df890096380",
+    "native_git_evidence": "fabric/deployment/native-git-verification.json"
   },
   "m11": {
     "own_deliverables_verified": 5,
-    "acceptance": "gated by M08 native Git",
+    "acceptance": "accepted",
     "render_evidence": "fabric/consumption/visual-review.json"
   },
   "local_full_suite_tests": 73,
@@ -38,5 +43,14 @@
   "resource_audit": "fabric/operations/resource-audit-2026-11-13.json",
   "activator_shutdown": "fabric/streaming/daf2320c-b0bc-4eef-b908-a2dd80939088/mcp-shutdown-verification.json",
   "paid_capacity_created": false,
-  "checked_at_utc": "2026-11-13T19:27:22.192243+00:00"
+  "checked_at_utc": "2026-11-13T21:28:39.356412+00:00",
+  "local_checks_refreshed_at_utc": "2026-11-13T21:28:39.356412+00:00",
+  "local_checks": {
+    "full_suite": 73,
+    "portable": 31,
+    "transport": 10,
+    "note": "suites overlap; not summed as unique tests"
+  },
+  "native_git_remaining_uncommitted_items": 23,
+  "remaining_uncommitted_items_not_required_for_selective_sync_acceptance": true
 }
