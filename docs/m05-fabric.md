@@ -56,6 +56,16 @@ O backup REST também revelou célula remota truncada e sintaticamente inválida
 
 O acesso direto passa por `tools/fabric/client.py` e `tools/fabric/m05_job.py`. `--start none|silver|gold` inicia uma tentativa; `--watch <job_id>` acompanha uma já iniciada, sem repetir o POST. Os bindings e saídas nativas ficam em `.local/`, ignorados pelo Git. Essa automação usa o trial existente, sem provisionar recursos pagos.
 
+### Admissão Spark e compartilhamento de sessão
+
+A nova tentativa `4821bccb-88c5-42fe-bc2a-eddc56247c03` passou em Copy/Bronze/Silver, mas a exportação recebeu HTTP 430 ao criar a sessão Livy, antes de executar o wrapper. O guard SQL comparou integralmente a publicação anterior e passou. Isso é uma falha operacional de admissão, distinta do erro anterior de nome do recibo. [Falha e guard](../evidence/fabric/orchestration/pipeline-runs/4821bccb-88c5-42fe-bc2a-eddc56247c03/capacity-failure.json).
+
+A inspeção dos nove notebooks não encontrou sessões ativas esquecidas. As sessões Bronze/Silver constam como encerradas pelo sistema; a causa específica da contenção naquele instante não foi estabelecida. Portanto, não foi cancelado nenhum job presumidamente ocioso.
+
+O workspace tinha `notebookPipelineRunEnabled=false` e cada atividade usou uma sessão diferente. Foi habilitado compartilhamento de sessão para pipelines, com a mesma `sessionTag=fuelwatch_m05_serial` nas três atividades. Pool, runtime e capacidade permaneceram iguais. A definição foi relida e comparada; o reaproveitamento e o resultado precisam ser medidos na execução seguinte. [Antes/depois](../evidence/fabric/orchestration/api-recovery-2026-11-13/session-sharing.json). Referência: [configuração de high concurrency em pipelines](https://learn.microsoft.com/en-us/fabric/data-engineering/configure-high-concurrency-session-notebooks-in-pipelines).
+
 O workspace contém os notebooks 01/06/07, Lakehouse, endpoint SQL, Warehouse e pipeline `pl_anp_landing`. A interface do pipeline oferece `Exibir → Editar código JSON`; o recebimento atual foi lido por essa interface e preservado.
 
 Referências oficiais consultadas: [Notebook activity e parâmetros](https://learn.microsoft.com/en-us/fabric/data-factory/notebook-activity), [NotebookUtils: referência e retorno](https://learn.microsoft.com/en-us/fabric/data-engineering/notebookutils/notebookutils-notebook-run), [Script activity e Warehouse](https://learn.microsoft.com/en-us/fabric/data-factory/script-activity). A configuração final e o caminho real do retorno serão confirmados na execução.
+
+A primeira tag usou hifens e foi rejeitada pelo servico com HTTP 400 antes de criar Spark (tentativa `2de93141-e32e-48f3-a859-1c87fc7e9deb`). O nome foi corrigido para letras/underscores, relido na definicao e coberto por teste de formato. O guard comprovou Gold intacta tambem nessa tentativa; isso nao conta como ensaio de falha Silver/Gold aprovado.

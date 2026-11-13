@@ -57,6 +57,7 @@ def notebook(name, phase, previous):
               "p_scope_id": expression("@pipeline().parameters.p_scope_id"),
               "p_source_sha256": expression("@pipeline().parameters.p_source_sha256")}
     item["typeProperties"]["parameters"] = {k: {"value": v, "type": "string"} for k, v in values.items()}
+    item["typeProperties"]["sessionTag"] = "fuelwatch_m05_serial"
     return item
 
 

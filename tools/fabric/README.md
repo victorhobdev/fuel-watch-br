@@ -52,3 +52,21 @@ Antes de retomar M05: obter e preservar a definicao remota do notebook 08, compa
 
 Referencias: [Fabric CLI](https://microsoft.github.io/fabric-cli/), [Microsoft Fabric MCP](https://github.com/microsoft/mcp/blob/main/servers/Fabric.Mcp.Server/README.md), [Codex MCP](https://developers.openai.com/codex/mcp/).
 
+## Operacao M05 por linha de comando
+
+Copiar `environment.example.json` para `.local/fabric-environment.json` e preencher os bindings do ambiente autorizado. O arquivo local nao entra no Git. Executar a partir da raiz:
+
+```powershell
+.local/fabric-tools/Scripts/python.exe tools/fabric/m05_job.py --start none
+# Se a observacao for interrompida, acompanhar o MESMO job, sem outro --start:
+.local/fabric-tools/Scripts/python.exe tools/fabric/m05_job.py --watch <job-id>
+# Somente depois de o job terminar:
+.local/fabric-tools/Scripts/python.exe tools/fabric/check_m05.py <job-id> --fault none
+```
+
+`--start silver` e `--start gold` sao ensaios de falha intencional, que exigem pipeline sem outro publicador ativo e baseline previamente valido. `check_m05.py --fault silver|gold` verifica o erro esperado e o guard SQL da publicacao anterior; uma falha operacional diferente nao conta como ensaio aprovado. `--same-business-as <verification.json>` compara os fingerprints integrais do negocio entre duas tentativas.
+
+As saidas nativas ficam em `.local/m05-api/runs/<job-id>/`. `accepted.json` comprova somente aceite HTTP, `job.json` traz estado do job e `activities.json` os estados por atividade. `verification.json` so e escrito apos conferencia de atividades, recibos OneLake, lote publicado e tabelas Gold. Logs brutos nao devem ser versionados sem revisar dados de ambiente/identidade.
+
+O modulo `warehouse.py` usa ODBC 18 e token Entra, com criptografia e verificacao do certificado. O cliente REST preserva o identificador da operacao longa e aceita os endpoints regionais Microsoft retornados em `Location`; nao repete automaticamente escritas quando uma observacao falha.
+

@@ -173,7 +173,8 @@
               },
               "type": "string"
             }
-          }
+          },
+          "sessionTag": "fuelwatch_m05_serial"
         }
       },
       {
@@ -230,7 +231,8 @@
               },
               "type": "string"
             }
-          }
+          },
+          "sessionTag": "fuelwatch_m05_serial"
         }
       },
       {
@@ -287,7 +289,8 @@
               },
               "type": "string"
             }
-          }
+          },
+          "sessionTag": "fuelwatch_m05_serial"
         }
       },
       {

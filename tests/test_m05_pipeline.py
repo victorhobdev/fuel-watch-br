@@ -32,6 +32,8 @@ class PipelineGraphTests(unittest.TestCase):
             self.assertEqual(params["p_phase"]["value"], phase)
             self.assertEqual(params["p_root_run_id"]["value"]["value"], "@pipeline().RunId")
             self.assertEqual(items[name]["typeProperties"]["notebookId"], "{{NOTEBOOK_08_ID}}")
+            self.assertRegex(items[name]["typeProperties"]["sessionTag"], r"^[A-Za-z0-9_]+$")
+        self.assertEqual(len({items[name]["typeProperties"]["sessionTag"] for name in ["Bronze", "Silver", "Export_Gold_Input"]}), 1)
         sql = items["Import_Gold"]["typeProperties"]["scripts"][0]["text"]["value"]
         self.assertIn("json(activity('Export_Gold_Input').output.result.exitValue).batch_id", sql)
         self.assertNotIn("COLAR_BATCH", sql)

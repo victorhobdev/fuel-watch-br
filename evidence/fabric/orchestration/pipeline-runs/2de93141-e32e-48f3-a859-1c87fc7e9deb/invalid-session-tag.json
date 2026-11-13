@@ -1,0 +1,24 @@
+{
+  "job_id": "2de93141-e32e-48f3-a859-1c87fc7e9deb",
+  "environment": "fabric",
+  "status": "Failed",
+  "failed_activity": "Bronze",
+  "error": {
+    "errorCode": "2458",
+    "message": "Job failed to start: Notebook service rejected the request with http status code - 'BadRequest', additional details - '{\r\n  \"code\": 400,\r\n  \"message\": \"Failed to run notebook due to invalid request. [Error: Session tag can only contain letters, numbers, and underscores. (Parameter 'HighConcurrencyModeOptions.SessionTag')]\",\r\n  \"result\": {\r\n    \"errorMessage\": null,\r\n    \"details\": null\r\n  }\r\n}'",
+    "failureType": "UserError",
+    "target": "Bronze",
+    "details": []
+  },
+  "spark_started": false,
+  "previous_publication_unchanged": true,
+  "guard_resultsets": [
+    [
+      {
+        "status": "m05_previous_publication_unchanged",
+        "root_run_id": "2de93141-e32e-48f3-a859-1c87fc7e9deb"
+      }
+    ]
+  ],
+  "correction": "fuelwatch_m05_serial replaces rejected hyphens"
+}

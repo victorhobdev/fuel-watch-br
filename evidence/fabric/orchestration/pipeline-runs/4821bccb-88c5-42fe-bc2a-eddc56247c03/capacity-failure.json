@@ -1,0 +1,18 @@
+{
+  "environment": "fabric",
+  "job_id": "4821bccb-88c5-42fe-bc2a-eddc56247c03",
+  "status": "Failed",
+  "cause": "TooManyRequestsForCapacity",
+  "http_status": 430,
+  "failed_activity": "Export_Gold_Input",
+  "failed_before_notebook_started": true,
+  "successful_activities": [
+    "Capture_Baseline",
+    "Copy_ANP",
+    "Bronze",
+    "Silver"
+  ],
+  "gold_import_and_publish_not_executed": true,
+  "session_id": null,
+  "message": "Failed to create Livy session for executing notebook. Error: [TooManyRequestsForCapacity] [TooManyRequestsForCapacity] HTTP Response code 430: This Spark job can't be run because you've hit spark overall capacity compute limit. To proceed, cancel an active Spark job through the Monitoring hub, choose a larger capacity SKU, or try again later. For more visibility and control, go to Workspace settings \u2192 Job management (Job Concurrency & Queue Monitoring) to review running and queued Spark jobs, understand capacity contention, and take action as needed. [Learn more at 'https://go.microsoft.com/fwlink/?linkid=2356970&clcid=0x409']. HTTP status code: 430."
+}

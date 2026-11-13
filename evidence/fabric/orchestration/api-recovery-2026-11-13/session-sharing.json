@@ -1,0 +1,59 @@
+{
+  "environment": "fabric",
+  "diagnostic_run": "4821bccb-88c5-42fe-bc2a-eddc56247c03",
+  "all_notebooks_checked_for_active_sessions": [
+    {
+      "notebook": "01_landing_to_bronze",
+      "active_sessions": 0
+    },
+    {
+      "notebook": "02_verify_bronze_replay",
+      "active_sessions": 0
+    },
+    {
+      "notebook": "03_ibge_reference",
+      "active_sessions": 0
+    },
+    {
+      "notebook": "04_bronze_to_silver",
+      "active_sessions": 0
+    },
+    {
+      "notebook": "05_source_versions_backfill",
+      "active_sessions": 0
+    },
+    {
+      "notebook": "06_export_gold_input",
+      "active_sessions": 0
+    },
+    {
+      "notebook": "06_official_source_selection",
+      "active_sessions": 0
+    },
+    {
+      "notebook": "07_export_gold_input",
+      "active_sessions": 0
+    },
+    {
+      "notebook": "08_pipeline_stage",
+      "active_sessions": 0
+    }
+  ],
+  "notebook08_completed_sessions_stopped_by_system": true,
+  "specific_cause_of_capacity_contention": "not established; admission limit confirmed",
+  "high_concurrency_before": {
+    "notebookInteractiveRunEnabled": true,
+    "notebookPipelineRunEnabled": false
+  },
+  "high_concurrency_after": {
+    "notebookInteractiveRunEnabled": true,
+    "notebookPipelineRunEnabled": true
+  },
+  "pool_changed": false,
+  "runtime_changed": false,
+  "pipeline_notebook_session_tag": "fuelwatch_m05_serial",
+  "pipeline_readback_matches": true,
+  "effect_on_runtime": "pending new run",
+  "rejected_session_tag": "fuelwatch-m05-serial",
+  "session_tag_validation": "Fabric returned 400 for hyphens; corrected definition read back successfully"
+}

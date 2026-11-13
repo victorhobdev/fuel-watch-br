@@ -1,0 +1,13 @@
+{
+  "environment": "fabric",
+  "job_id": "4821bccb-88c5-42fe-bc2a-eddc56247c03",
+  "status": "previous_publication_unchanged",
+  "guard_resultsets": [
+    [
+      {
+        "status": "m05_previous_publication_unchanged",
+        "root_run_id": "4821bccb-88c5-42fe-bc2a-eddc56247c03"
+      }
+    ]
+  ]
+}
