@@ -6,6 +6,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from types import SimpleNamespace
 import unittest
+from unittest.mock import patch
 from uuid import uuid4
 
 SOURCE = Path("notebooks/m05_sources/08_pipeline_stage.py").read_text(encoding="utf-8")
@@ -13,11 +14,27 @@ SHA = "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c"
 
 
 class StageContractTests(unittest.TestCase):
-    def run_stage(self, phase, fault="none", child_status=None, child_raises=False):
+    def run_stage(self, phase, fault="none", child_status=None, child_raises=False, stale_mount=False, receipt_count=1):
         with TemporaryDirectory() as folder:
             root = Path(folder)
             exited = []
             calls = []
+            original_glob = Path.glob
+            old = root / "audit/m04/old-batch/transfer.json"
+            old.parent.mkdir(parents=True)
+            old.write_text(json.dumps({"status": "m04_transfer_ready", "environment": "fabric", "batch_id": "old-batch"}))
+
+            def mounted_glob(directory, pattern):
+                if stale_mount and directory == root / "audit/m04":
+                    return iter([])
+                return original_glob(directory, pattern)
+
+            def remote_path(path):
+                return root / path.removeprefix("Files/")
+
+            def remote_ls(path):
+                return [SimpleNamespace(name=p.name, isDir=p.is_dir(), path=path.rstrip("/") + "/" + p.name)
+                        for p in remote_path(path).iterdir()]
 
             def run(name, timeout, args=None):
                 calls.append((name, args))
@@ -28,18 +45,22 @@ class StageContractTests(unittest.TestCase):
                     summary = {"status": "bronze_validated", "source_sha256": SHA,
                                "source_rows": 422418, "bronze_rows_for_version": 422418}
                 else:
-                    target = root / ("audit/m03_official" if phase == "silver" else "audit/m04") / str(uuid4()) / "summary.json"
+                    target = root / ("audit/m03_official" if phase == "silver" else "audit/m04") / str(uuid4()) / ("summary.json" if phase == "silver" else "transfer.json")
                     summary = {"status": child_status or ("m03_official_selection_validated" if phase == "silver" else "m04_transfer_ready"),
                                "environment": "fabric", "consumer_contract": {"snapshot_id": "fixture"},
                                "batch_id": "new-batch", "source_delta_version": 0, "snapshot_id": "fixture"}
-                target.parent.mkdir(parents=True, exist_ok=True)
-                target.write_text(json.dumps(summary), encoding="utf-8")
+                for index in range(receipt_count):
+                    output = target if index == 0 else target.parent.parent / str(uuid4()) / target.name
+                    output.parent.mkdir(parents=True, exist_ok=True)
+                    output.write_text(json.dumps(summary), encoding="utf-8")
 
             values = {"p_root_run_id": str(uuid4()), "p_phase": phase, "p_fault_stage": fault,
                       "p_scope_id": "anp-2026-1-rj-gasolina", "p_source_sha256": SHA,
-                      "notebookutils": SimpleNamespace(notebook=SimpleNamespace(run=run, exit=exited.append))}
+                      "notebookutils": SimpleNamespace(notebook=SimpleNamespace(run=run, exit=exited.append),
+                          fs=SimpleNamespace(ls=remote_ls, exists=lambda p: remote_path(p).exists(),
+                                             head=lambda p, size: remote_path(p).read_text(encoding="utf-8")))}
             error = None
-            with contextlib.redirect_stdout(io.StringIO()):
+            with contextlib.redirect_stdout(io.StringIO()), patch.object(Path, "glob", mounted_glob):
                 try:
                     exec(compile(SOURCE.replace('Path("/lakehouse/default/Files")', f"Path({folder!r})"), "stage", "exec"), values)
                 except Exception as caught:
@@ -67,9 +88,16 @@ class StageContractTests(unittest.TestCase):
         self.assertIsNone(error)
         self.assertEqual(json.loads(exited[0])["batch_id"], "new-batch")
         self.assertEqual(receipts[0]["status"], "stage_validated")
+        self.assertTrue(receipts[0]["child_audit_relative_path"].endswith("/transfer.json"))
+
+    def test_remote_receipt_remains_discoverable_when_mounted_listing_is_stale(self):
+        error, exited, _, receipts = self.run_stage("export", stale_mount=True)
+        self.assertIsNone(error)
+        self.assertEqual(json.loads(exited[0])["batch_id"], "new-batch")
+        self.assertEqual(receipts[0]["status"], "stage_validated")
 
     def test_failed_or_missing_child_receipt_never_succeeds(self):
-        for options in [{"child_status": "failed"}, {"child_raises": True}]:
+        for options in [{"child_status": "failed"}, {"child_raises": True}, {"receipt_count": 0}, {"receipt_count": 2}]:
             with self.subTest(options=options):
                 error, exited, _, receipts = self.run_stage("export", **options)
                 self.assertIsNotNone(error)

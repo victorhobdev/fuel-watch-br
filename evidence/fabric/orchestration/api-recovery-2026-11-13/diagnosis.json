@@ -1,0 +1,28 @@
+{
+  "environment": "fabric",
+  "transport": "REST and OneLake SDK",
+  "diagnosis": {
+    "failed_run": "da5169bf-3a48-4deb-87c6-938180c62031",
+    "expected_by_old_wrapper": "summary.json",
+    "actual_export_receipt": "transfer.json",
+    "export_batch": "53e462be-7f74-41dd-a0e7-42a8c4682c5b",
+    "export_status": "m04_transfer_ready",
+    "cache_as_root_cause_confirmed": false
+  },
+  "notebook08": {
+    "before_body_syntax_error": "unterminated triple-quoted string literal (detected at line 22) (remote-before, line 22)",
+    "backup_private_path": ".local/m05-api/backup08",
+    "restored_source_sha256": "713cad2ed35c42ddba2b6993b118e419047d56e56e6b63ff9dcdacce9883b078",
+    "readback_source_matches": true,
+    "parameters_tag_preserved": true,
+    "lakehouse_dependency_preserved": true,
+    "zero_uuid_default_restored": true
+  },
+  "local_tests": {
+    "passed": 62,
+    "command": "python -m unittest discover -v",
+    "runtime": "Python 3.13.5",
+    "fabric_execution_proven_by_local_tests": false
+  },
+  "full_pipeline_validation": "pending"
+}

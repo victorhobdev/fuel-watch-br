@@ -31,19 +31,29 @@ def save():
     receipt_path.write_text(json.dumps(receipt, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
-def child_summary(folder, notebook, expected_status):
+def child_summary(folder, notebook, expected_status, filename="summary.json"):
     """Execucao serial: exigir exatamente um recibo novo e bem-sucedido do filho."""
-    directory = files / folder
-    before = set(directory.glob("*/summary.json"))
+    directory = "Files/" + folder
+
+    def receipts():
+        if not notebookutils.fs.exists(directory):
+            return set()
+        return {folder + "/" + entry.name.rstrip("/") + "/" + filename
+                for entry in notebookutils.fs.ls(directory) if entry.isDir
+                if notebookutils.fs.exists(directory + "/" + entry.name.rstrip("/") + "/" + filename)}
+
+    before = receipts()
     notebookutils.notebook.run(notebook, 900)
-    added = set(directory.glob("*/summary.json")) - before
+    added = receipts() - before
     if len(added) != 1:
-        raise ValueError("Execucao filha sem recibo novo unico")
+        receipt["child_receipt_discovery"] = {"filename": filename, "before_count": len(before),
+                                              "new_paths": sorted(added)}
+        raise ValueError(f"Execucao filha sem recibo novo unico; filename={filename}; new_count={len(added)}")
     path = added.pop()
-    result = json.loads(path.read_text(encoding="utf-8"))
+    result = json.loads(notebookutils.fs.head("Files/" + path, 1024 * 1024))
     if result.get("status") != expected_status or result.get("environment") != "fabric":
         raise ValueError("Recibo filho nao aprovado")
-    receipt["child_audit_relative_path"] = path.relative_to(files).as_posix()
+    receipt["child_audit_relative_path"] = path
     return result
 
 
@@ -68,7 +78,7 @@ try:
         if p_fault_stage == "silver":
             raise RuntimeError("M05_INJECTED_SILVER_FAILURE_AFTER_VALIDATION: bloquear export e Gold")
     else:
-        result = child_summary("audit/m04", "07_export_gold_input", "m04_transfer_ready")
+        result = child_summary("audit/m04", "07_export_gold_input", "m04_transfer_ready", "transfer.json")
         receipt.update(batch_id=result["batch_id"], source_delta_version=result["source_delta_version"],
                        snapshot_id=result["snapshot_id"])
     receipt.update(status="stage_validated", finished_at_utc=datetime.now(timezone.utc).isoformat())
