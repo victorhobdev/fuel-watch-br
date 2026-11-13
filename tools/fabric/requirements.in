@@ -1,0 +1,6 @@
+# Ferramentas operacionais isoladas; nao alteram o runtime dos notebooks Fabric.
+ms-fabric-cli
+azure-identity
+azure-storage-file-datalake
+pyodbc
+mcp
