@@ -12,4 +12,4 @@ A [conferência DAX/SQL](../evidence/fabric/consumption/measure-verification-202
 
 As definições nativas relidas estão em `fabric/m11/`, com identificadores de ambiente substituídos por placeholders. Elas documentam o resultado; os comandos `m11_model.py` e `m11_report.py` usam bindings privados para materializar um ambiente autorizado. `--update` atualiza somente os itens identificados e guarda a definição anterior. `check_m11.py` consulta medidas reais; um arquivo PBIR aceito, sozinho, não prova que os visuais funcionam.
 
-O aceite global de M11 ainda depende da identidade leitora de M07 e da sincronização Git nativa de M08. O índice, a documentação e o inventário final já foram conferidos. Não confundir o consumo já validado com todos os marcos concluídos.
+O aceite global de M11 ainda depende da sincronização Git nativa de M08. M07 foi aceito por revisão de implementação no escopo alterado pelo usuário; testes com leitor não foram executados. O índice, a documentação e o inventário final já foram conferidos. Não confundir o consumo já validado com todos os marcos concluídos.

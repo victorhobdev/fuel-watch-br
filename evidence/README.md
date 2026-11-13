@@ -6,7 +6,7 @@ Resultados reais do Fabric, separados de testes locais e fixtures. Bindings, cre
 - [Versões oficiais](fabric/versioning/official/README.md): seleção por versão, repetição e correções.
 - [Orquestração](fabric/orchestration/): M05 e sete tentativas; a execução de teste do M08 tem identificação própria.
 - [Dataflow Gen2](fabric/dataflow/): baseline, replay, contrato inválido e recuperação.
-- [Segurança](fabric/security/): setup de autor e limites de governança; testes com leitor pendentes.
+- [Segurança](fabric/security/): revisão fonte/catálogo aceita no escopo alterado pelo usuário; testes de leitor dispensados e não executados.
 - [Implantação](fabric/deployment/): promoção, execução em test, revisão, recuperação do mesmo lote e restauração; Git nativo pendente.
 - [Desempenho](fabric/performance/): amostras individuais, planos e reconciliação; não representam economia medida de CU.
 - [Streaming](fabric/streaming/): transporte finito, consultas, ação Activator e desligamento confirmado.

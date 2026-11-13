@@ -1,6 +1,6 @@
 # Roadmap do Fuel Watch BR — marcos verificáveis
 
-Atualizado em **13/11/2026**, America/Sao_Paulo. M00–M06 aceitos; M10 aceito com disparo real. M07 aguarda leitor adiado pelo usuário; M08 teve CI e promoção reais, com Git nativo pendente; M09 aceito em dev/test e M11 tem relatório/medidas verificados.
+Atualizado em **13/11/2026**, America/Sao_Paulo. M00–M06 aceitos; M10 aceito com disparo real. M07 aceito por revisão no escopo alterado pelo usuário; M08 teve CI e promoção reais, com Git nativo pendente; M09 aceito em dev/test e M11 tem relatório/medidas verificados.
 
 **Objetivo:** concluir um observatório explicável de preços de combustíveis no Microsoft Fabric, com fluxo batch confiável, segurança e implantação demonstradas, laboratório sintético de streaming e consumo mínimo.
 
@@ -10,7 +10,7 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. M00–M06 aceitos; M10 aceito c
 
 ## Como acompanhar
 
-- **Estado atual: 9 de 12 marcos concluídos.** Isso conta entregas aceitas, não representa percentual de esforço ou de tempo.
+- **Estado atual: 10 de 12 marcos concluídos no escopo vigente.** Isso conta entregas aceitas, não representa percentual de esforço ou de tempo.
 - Cada marco tem cinco critérios de aceite. Marcar uma caixa exige uma evidência identificada: execução, consulta, comparação, matriz ou documento verificado.
 - Código preparado, teste local e execução no Fabric são estados distintos. Uma etapa que depende de Fabric não fica concluída apenas por passar localmente.
 - Evidências M00–M02 e laboratório M03 foram fornecidas pelo usuário e conferidas localmente. A seleção oficial M03 e o M04 foram executados pelo agente na guia Fabric autorizada, com saídas observadas diretamente. A proveniência acompanha cada registro; não houve consulta independente fora dos notebooks.
@@ -27,7 +27,7 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. M00–M06 aceitos; M10 aceito c
 | M04 | Gold dimensional e histórico observado do posto | CONCLUÍDO | M03 |
 | M05 | Pipeline mestre e recuperação entre camadas | CONCLUÍDO | M04 |
 | M06 | Exercício delimitado de Dataflow Gen2 | CONCLUÍDO | M02 |
-| M07 | Acessos e governança com testes reais | EM ANDAMENTO | M04 |
+| M07 | Segurança: revisão do código e configuração real | CONCLUÍDO — ESCOPO REVISADO | M04 |
 | M08 | Git do workspace e implantação entre ambientes | IMPLANTADO; GIT NATIVO PENDENTE | M05; M06 para implantar esse item |
 | M09 | Monitoramento, diagnóstico e desempenho medido | CONCLUÍDO | M05; repetir verificações após M08 |
 | M10 | Streaming sintético, KQL e alerta | CONCLUÍDO | M05 e condições operacionais de M09 |
@@ -168,21 +168,17 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. M00–M06 aceitos; M10 aceito c
 
 ## M07 — Segurança e governança
 
-**Resultado:** demonstrar quem pode fazer o quê, por qual caminho de acesso.
+**Escopo revisado por solicitação expressa do usuário em 13/11:** dispensar segunda conta e substituir os testes de leitor por revisão de implementação/configuração. O requisito original foi reduzido; não há afirmação de que seus testes foram realizados.
 
-**Passos:** inventariar papéis e acessos; definir matriz de testes; validar com identidade de leitura sem privilégios administrativos; separar SQL e OneLake/Spark; executar laboratório de mascaramento e, se disponíveis, rótulos.
+- [x] Matriz separa Workspace roles, item permissions, SQL e OneLake, com resultados esperados documentados.
+- [x] Fonte e função RLS real coincidem; função schema-bound, policy habilitada/schema-bound e alvo correto confirmados por catálogo SQL.
+- [x] Regra fixa RJ e bypass CONTROL revisados; não confundir com mapeamento por usuário ou bloqueio de INSERT.
+- [x] Máscara email(), dois fixtures sintéticos e contexto privilegiado conferidos; limites de DDM e ausência de teste restrito explícitos.
+- [x] Papéis do workspace e GRANTs públicos inventariados; governança, segredos, licenciamento e limites de visibilidade registrados.
 
-- [x] Matriz explica Admin/Member/Contributor/Viewer e compartilhamento de itens; seis casos de acesso são definidos antes do teste, cobrindo leitura, escrita, itens e caminhos SQL/OneLake.
-- [ ] Os seis casos são executados com identidades e papéis apropriados, com resultados esperados registrados; não usar sessão administrativa como prova de restrição de leitor.
-- [ ] RLS regional testada com identidade de leitura e fixture de pelo menos duas UFs em tabela de laboratório separada: linhas permitidas visíveis, linhas restritas invisíveis; CNPJ oficial não é artificialmente classificado como segredo.
-- [ ] Mascaramento de campo fictício demonstrado e distinguido de autorização/anonimização. Uma restrição SQL não é apresentada como proteção automática aos arquivos.
-- [x] Registro de governança contém responsabilidades, conexões/segredos fora do Git e condições de rótulos/auditoria administrativa; aplicar rótulo se houver permissão/licença, ou registrar a limitação como NÃO APLICÁVEL sem reivindicar execução.
+**Métrica de saída:** cinco verificações acima aceitas. A01–A06 e RLS/DDM com identidade restrita: NÃO EXECUTADOS, fora do aceite revisado. Não atribuir automaticamente diferenças futuras à Microsoft.
 
-**Métrica de saída:** 6/6 casos da matriz e teste RLS aprovados. Falta de identidade de leitura bloqueia esse aceite; teste administrativo simulado não substitui essa condição.
-
-**Arquivos previstos:** `sql/labs/security.sql`, `docs/security-matrix.md`, `evidence/fabric/security/`. Usar aliases de papel nas evidências versionadas, sem dados pessoais de conta.
-
-**Checkpoint 13/11:** 2/5 critérios; matriz e governança documentadas, labels não aplicáveis nas permissões/licença observadas. Matriz definida; policy/máscara e fixtures compilados/lidos no Fabric como autor. Leitor ainda não testado e nenhum papel concedido. [Setup real](../../../evidence/fabric/security/author-setup-2026-11-13.json).
+**Aceite 13/11:** revisão real somente leitura, sem novas identidades ou acessos. Uma atribuição Admin; public com concessões explícitas apenas em objetos de sistema. [Revisão](../../../evidence/fabric/security/implementation-review-2026-11-13.json), [matriz e limites](../../security-matrix.md). O histórico abaixo preserva os checkpoints do escopo anterior.
 
 ## M08 — Git e implantação real
 
@@ -254,7 +250,7 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. M00–M06 aceitos; M10 aceito c
 
 **Arquivos previstos:** modelo/relatório reais em `fabric/` conforme suporte, `docs/demo.md`, `docs/data-dictionary.md`, atualização do README e índice final `evidence/README.md`.
 
-**Checkpoint 13/11:** 5/5 entregas próprias verificadas; aceite global permanece condicionado a M07/M08, que não foram ocultados nem simulados. Cinco medidas DAX/SQL em quatro recortes, PDF real em português conferido, três demonstrações documentadas, índice/dicionário/runbooks atualizados. Inventário: zero jobs/sessões/agendas de pipeline ativos nos dois workspaces; regra Activator parada e destinos pausados. Leitor adiado e Git nativo pendente. [Consumo](../../consumption.md), [inventário](../../../evidence/fabric/operations/resource-audit-2026-11-13.json).
+**Checkpoint 13/11:** 5/5 entregas próprias verificadas; aceite global permanece condicionado a M08, que não foram ocultados nem simulados. Cinco medidas DAX/SQL em quatro recortes, PDF real em português conferido, três demonstrações documentadas, índice/dicionário/runbooks atualizados. Inventário: zero jobs/sessões/agendas de pipeline ativos nos dois workspaces; regra Activator parada e destinos pausados. Leitor dispensado por decisão explícita; Git nativo pendente. [Consumo](../../consumption.md), [inventário](../../../evidence/fabric/operations/resource-audit-2026-11-13.json).
 
 ## Frentes que acompanham os marcos
 
@@ -274,13 +270,11 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. M00–M06 aceitos; M10 aceito c
 
 **Fora do escopo inicial:** clima/INMET, população, predição, API/backend, frontend próprio, carga nacional de vários anos e operação permanente. Não usar essas extensões como requisito para concluir o projeto atual.
 
-## Próximo bloco concreto: M07/M08
+## Próximo bloco concreto: Git nativo do M08
 
-1. Confirmar a conta leitora criada, autenticar em cache separado e executar os seis casos/RLS/máscara. Não usar o autor como prova de negação.
-2. Aprovar destino Git privado, revisar histórico e executar CI no provedor com runner efêmero, sem contratação de compute.
-3. Conectar workspace dev ao Git e promover/restaurar versão em workspace de teste na capacidade trial existente, reconciliando dados/bindings.
-4. Repetir as verificações operacionais pertinentes de M09 no destino; manter evidência dev separada.
-5. Executar M10 sintético e M11 conforme seus critérios; 7/12 marcos estão aceitos, sem declarar o projeto concluído.
+1. Concluir autenticação GitHub diretamente no Fabric para o repositório privado aprovado, branch `codex/primeira-fatia`, pasta `fabric/workspace`.
+2. Conferir sincronização inicial antes de escolher direção; sincronizar uma alteração real de item e registrar commit/readback.
+3. Consolidar aceite M08 e M11, cuja implantação/restauração, consumo, documentação e recursos já foram verificados. M07 não exige nova conta no escopo revisado.
 
 ## Registro de acompanhamento
 
@@ -313,6 +307,8 @@ Em cada sessão, acrescentar uma linha. As mudanças de estado exigem links para
 | 13/11/2026 | M09 | CONCLUÍDO — 5/5 | Seis medições dev e seis test, reconciliação integral e configuração restaurada | 9/12 marcos aceitos |
 | 13/11/2026 | M10 | CONCLUÍDO — 5/5 | 1.000 IDs, vinte duplicatas, dez atrasados, quatro consultas e ativação real; encerrado | Laboratório separado preservado |
 | 13/11/2026 | M11 | ENTREGAS VERIFICADAS — aceite global pendente | Relatório/medidas/render, demonstrações, docs e revisão de recursos | Fechar M07/M08 quando houver identidades/autenticação |
+
+| 13/11/2026 | M07 | CONCLUÍDO — escopo revisado pelo usuário | Fonte + catálogo Fabric + papéis/GRANTs revisados; cinco critérios ajustados. Testes restritos dispensados, não executados | Git nativo M08; 10/12 marcos no escopo vigente |
 
 ## Dependências e referências oficiais
 

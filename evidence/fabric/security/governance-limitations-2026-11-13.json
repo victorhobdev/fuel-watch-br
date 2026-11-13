@@ -1,7 +1,7 @@
 {
   "tenant_settings_http_status": 403,
   "tenant_settings_read": "not_authorized",
-  "reader_tests": "deferred_by_user",
+  "reader_tests": "waived_by_user_scope_change_not_executed",
   "labels_applied": false,
   "admin_audit_events_queried": false,
   "observed_license_sku_part_numbers": [

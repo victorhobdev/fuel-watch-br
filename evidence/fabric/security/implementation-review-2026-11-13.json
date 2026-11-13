@@ -1,0 +1,36 @@
+{
+  "status": "implementation_review_passed",
+  "environment": "fabric",
+  "review_method": "source plus live SQL catalog and workspace role assignments, author identity, read-only",
+  "checked_at_utc": "2026-11-13T20:57:53.539587+00:00",
+  "function_matches_source": true,
+  "function_definition_sha256": "d5c1e5243deb06b1f46397f8724b21b5bca7d7981ad6837006d1e930766108b2",
+  "rls_policy_enabled_schema_bound": true,
+  "rls_target": "lab_m07.access_fixture",
+  "predicate_type": "FILTER",
+  "mask": {
+    "name": "contato_ficticio",
+    "is_masked": true,
+    "masking_function": "email()"
+  },
+  "synthetic_rows": 2,
+  "author_context": {
+    "has_control": 1,
+    "is_db_owner": 0
+  },
+  "workspace_role_counts": {
+    "Admin": 1
+  },
+  "public_explicit_grant_count": 274,
+  "public_grants_only_system_objects": true,
+  "reader_identity_created": false,
+  "restricted_identity_tests_executed": false,
+  "scope_decision": "User replaced reader acceptance tests with implementation review; no second account required",
+  "limits": [
+    "No end-to-end permission denial, RLS or masking test with nonprivileged identity",
+    "RJ is a fixed lab rule for any non-CONTROL SQL caller, not a per-user region mapping",
+    "FILTER predicate is not a write-blocking policy; no writer regional isolation claimed",
+    "Warehouse RLS and masking do not automatically secure OneLake files or other tables",
+    "Workspace role inventory does not prove absence of all item-level or inherited access grants"
+  ]
+}

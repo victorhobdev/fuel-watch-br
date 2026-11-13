@@ -1,19 +1,19 @@
-# M07 — matriz antes dos testes
+# M07 — revisão da implementação
 
-Estado: **fixtures verificados no Fabric como autor; testes com leitor ainda não executados**. A consulta ao diretório de 13/11 ainda encontrou somente a conta autora do projeto. A conta autora não pode ser usada como prova de restrição de leitura.
+Estado: **aceito no escopo revisado pelo usuário em 13/11/2026**. A exigência de criar uma conta leitora e executar os testes negativos foi substituída por revisão do código e leitura da configuração real no Fabric. Isso não reclassifica os casos de leitor como executados. [Revisão real](../evidence/fabric/security/implementation-review-2026-11-13.json).
 
 O setup real criou duas linhas sintéticas, compilou a função/policy RLS e a máscara, criou o notebook de autorização e gravou/leu o arquivo sintético no OneLake. O autor viu RJ/SP e o contato original, conforme [evidência](../evidence/fabric/security/author-setup-2026-11-13.json). Nenhum papel foi concedido por esse setup. Isso não prova filtragem ou negação para o leitor.
 
 ## Identidades e escopo
 
-Em 13/11 o usuário informou que não fornecerá a conta leitora agora e autorizou continuar as outras frentes. Os casos de leitor/RLS/máscara permanecem pendentes; isso não equivale a aprovação dos testes ou aceite completo do M07.
+Em 13/11 o usuário dispensou expressamente a segunda conta e solicitou validar a implementação existente. O aceite M07 passa a ser revisão de implementação/configuração; não há pendência de criar identidade. A01–A06 e o resultado de RLS/DDM sob identidade restrita ficam **NÃO EXECUTADOS — fora do aceite revisado**.
 
 - `AUTOR`: administra somente os itens do projeto nesta execução e prepara os fixtures.
 - `LEITOR_RJ`: segunda conta organizacional, sem papel administrativo, proposta como Viewer do workspace `fuelwatch-dev`, sem ReadAll adicional, Write, Reshare ou UNMASK.
 - Objetos de teste: tabela `lab_m07.access_fixture`, notebook `lab_m07_permission_probe` e arquivos em `Files/lab_m07/`. As tentativas de escrita não apontam para dados oficiais.
 - Contas/IDs/tokens ficam em `.local/`; a evidência versionada usa aliases. O login do leitor terá cache Azure separado do autor.
 
-## Seis casos de acesso
+## Seis casos de acesso — referência opcional, não executados
 
 | Caso | Ação com LEITOR_RJ | Resultado esperado | Evidência necessária |
 |---|---|---|---|
@@ -44,8 +44,24 @@ Responsabilidades: o proprietário do projeto autoriza custo/destinos e guarda c
 
 Referências de licenciamento: [identificadores de produtos](https://learn.microsoft.com/en-us/entra/identity/users/licensing-service-plan-reference), [requisitos para rótulos](https://learn.microsoft.com/en-us/fabric/enterprise/powerbi/service-security-apply-data-sensitivity-labels).
 
-## Login separado
+## Login separado — somente se o laboratório opcional for retomado
 
 Depois de confirmar que a conta leitora existe, fazer seu login interativo em um processo separado, com `AZURE_CONFIG_DIR=.local/azure-reader`. Para scripts Python, `FUELWATCH_IDENTITY=reader` seleciona esse cache; autor usa `author`/`.local/azure`. O shell operacional padrão restaura explicitamente a identidade autora. Não alternar identidades em um mesmo processo Python com tokens em memória. Se o login leitor retornar a conta autora, interromper antes dos testes; nunca interpretar o resultado como permissão do leitor.
 
 Referências: [workspace roles](https://learn.microsoft.com/en-us/fabric/fundamentals/roles-workspaces), [lakehouse sharing](https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-sharing), [RLS Warehouse](https://learn.microsoft.com/en-us/fabric/data-warehouse/row-level-security), [dynamic data masking](https://learn.microsoft.com/en-us/fabric/data-warehouse/dynamic-data-masking).
+
+## Resultado da revisão, 13/11/2026
+
+`tools/fabric/m07_review.py` usa somente SELECTs e GET de workspace roles, sem mudar dados, identidades ou concessões. A leitura do catálogo confirmou:
+
+- A função `lab_m07.allow_uf` coincide com o código versionado e está schema-bound.
+- A policy `lab_m07.uf_filter` está habilitada/schema-bound e aplica um FILTER à coluna `uf` da tabela `lab_m07.access_fixture`.
+- A coluna `contato_ficticio` tem exatamente a máscara `email()`; os dois registros são sintéticos, RJ/SP.
+- O autor tem CONTROL=1 e db_owner=0, compatível com o bypass explícito. Workspace: uma atribuição Admin; nenhum leitor foi criado ou recebeu acesso.
+- Os GRANTs explícitos de `public` encontrados apontam somente para objetos de sistema; não há concessão explícita a public de CONTROL, UNMASK ou escrita no inventário consultado.
+
+**Conclusão:** nenhum desvio encontrado entre fonte e objetos implantados no escopo do laboratório. A regra RJ é fixa para qualquer chamador SQL sem CONTROL, não um mapeamento de regiões por identidade. O FILTER não é um bloqueio de INSERT; não se afirma isolamento regional de escritores. RLS/máscara do Warehouse não protegem automaticamente arquivos OneLake ou outras tabelas. DDM reduz exposição visual e não é anonimização nem defesa contra inferência por consultas.
+
+O inventário de workspace roles não é uma auditoria completa de compartilhamentos de itens/grupos. Não foram exercitados A01–A06, RLS ou DDM com identidade restrita. Uma divergência futura exige investigar implementação, acessos herdados e configuração antes de atribuir causa ao fornecedor. Esses limites ficam registrados, mas não exigem nova conta no escopo escolhido.
+
+Referências da revisão: [RLS](https://learn.microsoft.com/en-us/fabric/data-warehouse/row-level-security), [DDM](https://learn.microsoft.com/en-us/fabric/data-warehouse/dynamic-data-masking), [workspace roles](https://learn.microsoft.com/en-us/fabric/fundamentals/roles-workspaces).
