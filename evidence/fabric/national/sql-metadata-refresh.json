@@ -1,0 +1,53 @@
+{
+  "value": [
+    {
+      "tableName": "dbo.br_transfer_manifest",
+      "status": "NotRun",
+      "startDateTime": "2026-11-13T23:48:09.9792972Z",
+      "endDateTime": "2026-11-13T23:48:10.1669804Z",
+      "lastSuccessfulSyncDateTime": "2026-11-13T23:46:16.4640143Z"
+    },
+    {
+      "tableName": "dbo.silver_preco_brasil",
+      "status": "NotRun",
+      "startDateTime": "2026-11-13T23:48:09.9792972Z",
+      "endDateTime": "2026-11-13T23:48:10.1669804Z",
+      "lastSuccessfulSyncDateTime": "2026-11-13T23:46:17.9533524Z"
+    },
+    {
+      "tableName": "dbo.ref_municipio_ibge_brasil",
+      "status": "NotRun",
+      "startDateTime": "2026-11-13T23:48:09.9792972Z",
+      "endDateTime": "2026-11-13T23:48:10.1669804Z",
+      "lastSuccessfulSyncDateTime": "2026-11-13T23:46:16.4483872Z"
+    },
+    {
+      "tableName": "dbo.br_transfer_calendar",
+      "status": "NotRun",
+      "startDateTime": "2026-11-13T23:48:09.9792972Z",
+      "endDateTime": "2026-11-13T23:48:10.1669804Z",
+      "lastSuccessfulSyncDateTime": "2026-11-13T23:46:17.1830028Z"
+    },
+    {
+      "tableName": "dbo.br_expected_posto",
+      "status": "NotRun",
+      "startDateTime": "2026-11-13T23:48:09.9792972Z",
+      "endDateTime": "2026-11-13T23:48:10.1669804Z",
+      "lastSuccessfulSyncDateTime": "2026-11-13T23:46:19.250595Z"
+    },
+    {
+      "tableName": "dbo.br_expected_weekly",
+      "status": "NotRun",
+      "startDateTime": "2026-11-13T23:48:09.9792972Z",
+      "endDateTime": "2026-11-13T23:48:10.1669804Z",
+      "lastSuccessfulSyncDateTime": "2026-11-13T23:46:18.5941205Z"
+    },
+    {
+      "tableName": "dbo.ref_limites_iqr_brasil",
+      "status": "NotRun",
+      "startDateTime": "2026-11-13T23:48:09.9792972Z",
+      "endDateTime": "2026-11-13T23:48:10.1669804Z",
+      "lastSuccessfulSyncDateTime": "2026-11-13T23:46:18.5785202Z"
+    }
+  ]
+}

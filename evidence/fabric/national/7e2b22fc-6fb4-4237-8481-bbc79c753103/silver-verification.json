@@ -1,0 +1,46 @@
+{
+  "run_id": "7e2b22fc-6fb4-4237-8481-bbc79c753103",
+  "environment": "fabric",
+  "scope": {
+    "scope_id": "anp-2026-1-br-todos",
+    "date_start": "2026-01-01",
+    "date_end": "2026-06-30",
+    "contract_version": "national-1.0",
+    "product_units": {
+      "DIESEL": "R$ / litro",
+      "DIESEL S10": "R$ / litro",
+      "ETANOL": "R$ / litro",
+      "GASOLINA": "R$ / litro",
+      "GASOLINA ADITIVADA": "R$ / litro",
+      "GNV": "R$ / m\u00b3"
+    }
+  },
+  "status": "national_silver_validated",
+  "started_at_utc": "2026-11-13T23:41:26.921423+00:00",
+  "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+  "ibge_sha256": "d9eec8439bc8c5dc2f7db6332a8e5569f5a3f637988e26aebc513412d4069d5c",
+  "spark_version": "4.1.1.5.5.20260929.238183312",
+  "manifest_sha256": "d8f755a68467c63883c3454a7c2e2861867f03fc9a64dff1e61eb0f119968ac8",
+  "scope_id": "anp-2026-1-br-todos",
+  "silver_delta_version": 0,
+  "expected_rows": 422412,
+  "expected_stations": 7963,
+  "expected_municipalities": 417,
+  "expected_history": 8159,
+  "expected_weekly": 50965,
+  "expected_unusual": 11366,
+  "counts": {
+    "selected": 422418,
+    "invalid": 0,
+    "exact_duplicate_excess": 6,
+    "conflicting_rows_after_exact_dedup": 0,
+    "accepted": 422412
+  },
+  "ufs": 27,
+  "products": 6,
+  "previous_delta_version": null,
+  "same_business_as_previous": false,
+  "full_business_comparison_passed": true,
+  "iqr_not_evaluated_rows": 8657,
+  "finished_at_utc": "2026-11-13T23:44:08.654845+00:00"
+}

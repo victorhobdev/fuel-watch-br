@@ -15,3 +15,5 @@ Resultados reais do Fabric, separados de testes locais e fixtures. Bindings, cre
 Uma operação aceita pela API não equivale a uma execução concluída. Falhas originais e recuperações são preservadas separadamente; contagens isoladas não substituem os fingerprints de negócio.
 
 [Status consolidado de 13/11](project-status-2026-11-13.json) inclui critérios aceitos, dependências humanas e CI real.
+
+[Ampliação nacional](fabric/national/): 27 UFs, seis produtos, Silver/Gold completas, repetição e exportação real. [Guia](../docs/dados-nacionais.md).

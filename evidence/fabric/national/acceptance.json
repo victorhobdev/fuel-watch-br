@@ -1,0 +1,33 @@
+{
+  "status": "national_processing_validated",
+  "environment": "fabric",
+  "scope_id": "anp-2026-1-br-todos",
+  "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+  "ibge_sha256": "d9eec8439bc8c5dc2f7db6332a8e5569f5a3f637988e26aebc513412d4069d5c",
+  "counts": {
+    "received": 422418,
+    "invalid": 0,
+    "exact_duplicate_excess": 6,
+    "conflicting_rows": 0,
+    "accepted": 422412
+  },
+  "ufs": 27,
+  "products": 6,
+  "stations": 7963,
+  "municipalities": 417,
+  "station_versions": 8159,
+  "weekly_groups": 50965,
+  "silver_table": "silver_preco_brasil",
+  "warehouse_view": "gold_br.coletas",
+  "spark_job_id": "e0777690-df6b-4317-ab22-b11e76be43ed",
+  "publication_run_id": "7e2b22fc-6fb4-4237-8481-bbc79c753103",
+  "warehouse_replay_verified": true,
+  "local_full_suite_passed": 78,
+  "portable_checks_passed": 36,
+  "transport_checks_passed": 10,
+  "local_export_evidence": "export-verification.json",
+  "legacy_rj_baseline_preserved": true,
+  "power_bi_expanded": false,
+  "national_schedule_enabled": false,
+  "checked_at_utc": "2026-11-13T23:55:16.431376+00:00"
+}

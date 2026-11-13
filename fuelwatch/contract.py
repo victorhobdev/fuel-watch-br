@@ -45,8 +45,12 @@ def validate_row(raw, lookup, scope):
         price = Decimal(raw["Valor de Venda"].replace(",", ".")).quantize(Decimal("0.001"))
         if price <= 0:
             reasons.append("preco_nao_positivo")
-    if raw["Unidade de Medida"].strip() != "R$ / litro":
-        reasons.append("unidade_incompativel_com_gasolina")
+    units = scope.get("product_units")
+    expected_unit = units.get(raw["Produto"].strip()) if units else "R$ / litro"
+    if units and expected_unit is None:
+        reasons.append("produto_fora_do_contrato")
+    elif raw["Unidade de Medida"].strip() != expected_unit:
+        reasons.append("unidade_incompativel_com_produto" if units else "unidade_incompativel_com_gasolina")
     codes = lookup.get((raw["Estado - Sigla"].strip(), normalize_name(raw["Municipio"])), [])
     if len(codes) != 1:
         reasons.append("municipio_ambiguo" if codes else "municipio_sem_correspondencia")
@@ -54,7 +58,8 @@ def validate_row(raw, lookup, scope):
         return None, reasons
     return {
         "cnpj": cnpj, "cnpj_origem": cnpj_source, "produto": raw["Produto"].strip(),
-        "data_coleta": collected, "preco_venda": price, "moeda": "BRL", "unidade": "litro",
+        "data_coleta": collected, "preco_venda": price, "moeda": "BRL",
+        "unidade": "m3" if expected_unit == "R$ / m³" else "litro",
         "uf": raw["Estado - Sigla"].strip(), "municipio_ibge": codes[0],
         "municipio_origem": raw["Municipio"], "revenda_observada": raw["Revenda"].strip(),
         "bandeira_observada": raw["Bandeira"].strip(),

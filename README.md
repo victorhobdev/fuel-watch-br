@@ -2,6 +2,14 @@
 
 Projeto pessoal para aprender Microsoft Fabric e praticar competências da DP-700 com dados públicos de preços de combustíveis. Explicações e registros em português; nomes de ferramentas preservados como aparecem na interface.
 
+## Ampliação nacional — dados disponíveis
+
+O mesmo arquivo ANP de jan–jun/2026 já está tratado para **todas as 27 UFs e os seis produtos presentes**: **422.412 coletas válidas, 7.963 postos e 417 municípios observados**. Seis duplicatas exatas separadas; GNV em BRL/m3, demais produtos em BRL/litro.
+
+No Fabric: Lakehouse `lh_fuelwatch`, tabela `silver_preco_brasil`; Warehouse `wh_fuelwatch`, view **`gold_br.coletas`**, dimensões e agregado `gold_br.preco_semanal`. Silver/Gold, referência independente completa, repetição da publicação e exportação real foram validadas. [Guia dos dados, consultas e arquivos Parquet/CSV](docs/dados-nacionais.md), [evidências](evidence/fabric/national/).
+
+O restante deste README conserva o encerramento da fase 1 RJ/GASOLINA. O relatório e pipeline mestre antigos ainda usam esse baseline; as novas tabelas nacionais e os exports locais já estão prontos para trabalhar.
+
 ## Estado verificado em 13/11/2026
 
 O processamento oficial está validado no Fabric: ANP preservada por SHA-256, Bronze com 422.418 registros, Silver com **8.052 coletas, 502 postos e 27 municípios**, Gold com 518 versões observadas de posto e 656 grupos semanais. A coleta individual permanece disponível antes da agregação semanal. A primeira fatia é GASOLINA, RJ, janeiro a junho de 2026.

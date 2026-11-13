@@ -1,0 +1,52 @@
+{
+  "status": "warehouse_export_verified",
+  "source": "wh_fuelwatch.gold_br.coletas",
+  "rows": 422412,
+  "columns": [
+    "cnpj",
+    "cnpj_origem",
+    "produto",
+    "data_coleta",
+    "preco_venda",
+    "moeda",
+    "unidade",
+    "uf",
+    "municipio_ibge",
+    "municipio_origem",
+    "revenda_observada",
+    "bandeira_observada",
+    "preco_incomum_iqr",
+    "municipio_ibge_nome",
+    "inicio_semana_iso",
+    "iqr_avaliado",
+    "classificacao_preco"
+  ],
+  "file": "data/processed/anp_brasil_2026_1.csv.gz",
+  "sha256": "f5cae9cc520ff4c6775aa78c26b7d67bb1f89cedeb962f135ba34a94f6dfe7e4",
+  "bytes": 10159479,
+  "counts_and_sums_by_uf_product_unit_equal": true,
+  "quality_counts": [
+    {
+      "classificacao_preco": "incomum_valido",
+      "coletas": 11366
+    },
+    {
+      "classificacao_preco": "valido_sem_sinal",
+      "coletas": 402389
+    },
+    {
+      "classificacao_preco": "nao_avaliado",
+      "coletas": 8657
+    }
+  ],
+  "checked_at_utc": "2026-11-13T23:51:20.604192+00:00",
+  "parquet": {
+    "file": "data/processed/anp_brasil_2026_1.parquet",
+    "rows": 422412,
+    "bytes": 6016147,
+    "sha256": "4f4a35115d4799c4e171c461819777d0bc8df7a23c85fb0ffac1729c2a08a0f0",
+    "schema": "cnpj: string not null\ncnpj_origem: string not null\nproduto: string not null\ndata_coleta: date32[day] not null\npreco_venda: decimal128(10, 3) not null\nmoeda: string not null\nunidade: string not null\nuf: string not null\nmunicipio_ibge: string not null\nmunicipio_origem: string not null\nrevenda_observada: string not null\nbandeira_observada: string not null\npreco_incomum_iqr: bool not null\nmunicipio_ibge_nome: string not null\ninicio_semana_iso: date32[day] not null\niqr_avaliado: bool not null\nclassificacao_preco: string not null",
+    "roundtrip_counts_sums_cnpj_and_units_passed": true
+  },
+  "parquet_verified_at_utc": "2026-11-13T23:52:19.162929+00:00"
+}

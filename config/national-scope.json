@@ -1,0 +1,14 @@
+{
+  "scope_id": "anp-2026-1-br-todos",
+  "date_start": "2026-01-01",
+  "date_end": "2026-06-30",
+  "contract_version": "national-1.0",
+  "product_units": {
+    "DIESEL": "R$ / litro",
+    "DIESEL S10": "R$ / litro",
+    "ETANOL": "R$ / litro",
+    "GASOLINA": "R$ / litro",
+    "GASOLINA ADITIVADA": "R$ / litro",
+    "GNV": "R$ / m³"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "status": "national_relational_reference_passed",
+  "environment": "local_duckdb_not_fabric",
+  "coletas": 422412,
+  "station_versions": 8159,
+  "weekly_groups": 50965,
+  "products": 6,
+  "full_history_and_weekly_equal": true
+}
