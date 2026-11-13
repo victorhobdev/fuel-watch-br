@@ -1,0 +1,21 @@
+{
+  "state": "m05_partial",
+  "environment": "fabric",
+  "observed_local_date": "2026-11-13",
+  "master_pipeline_created": true,
+  "wrapper_notebook_created": true,
+  "original_landing_pipeline_preserved": true,
+  "wrapper_initial_body_copy_back_matched": true,
+  "latest_local_wrapper_needs_editor_update": true,
+  "pending_local_update": "Reject zero UUID when Pipeline RunId has not been received",
+  "parameter_cell_runtime_validation": false,
+  "master_pipeline_executed": false,
+  "warehouse_m05_sql_executed": false,
+  "recovery_experiments_executed": false,
+  "schedule_created": false,
+  "paid_capacity_created": false,
+  "local_tests_passed": 57,
+  "blocker": "Notebook editor remains on Fabric loading logo after reload and opening a fresh tab; workspace list works and shows created items",
+  "evidence": "notebook-editor-loading.jpg",
+  "next_action": "Restore notebook editor, apply current local 08, verify parameter cell with pipeline run, complete native SQL activities and success dependencies before running full master"
+}

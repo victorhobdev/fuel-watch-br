@@ -25,7 +25,7 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 | M02 | IBGE e Silver tipada/validada no Fabric | CONCLUÍDO | M01 |
 | M03 | Versões de origem, correções antigas e backfill | CONCLUÍDO | M02 |
 | M04 | Gold dimensional e histórico observado do posto | CONCLUÍDO | M03 |
-| M05 | Pipeline mestre e recuperação entre camadas | PLANEJADO | M04 |
+| M05 | Pipeline mestre e recuperação entre camadas | EM DESENVOLVIMENTO | M04 |
 | M06 | Exercício delimitado de Dataflow Gen2 | PLANEJADO | M02 |
 | M07 | Acessos e governança com testes reais | PLANEJADO | M04 |
 | M08 | Git do workspace e implantação entre ambientes | PLANEJADO | M05; M06 para implantar esse item |
@@ -289,6 +289,8 @@ Em cada sessão, acrescentar uma linha. As mudanças de estado exigem links para
 | 12/11/2026 | M04 | PREPARAÇÃO LOCAL | T-SQL e fixtures preparados; núcleo relacional e SCD2 verificados localmente sobre o snapshot M02 | Concluir M03; validar laboratório Warehouse e integrar snapshot aprovado |
 | 12/11/2026 | M03 | CONCLUÍDO — 5/5 critérios | Run 6929bb98 executado na guia Fabric: 34 checks, 8.052 coletas, seleção Delta 0 → 0 no replay, M02 preservado e sessão encerrada | M04 — Gold/Warehouse; 4/12 marcos concluídos |
 | 12/11/2026 | M04 | CONCLUÍDO — 5/5 critérios | Sete cenários Warehouse; lote 4ef52958; duas validações de 8.052 fatos/518 versões/656 semanas e soma 52.777,200 reconciliada | M05; 5/12 marcos concluídos |
+
+| 13/11/2026 | M05 | PARCIAL — sem aceite Fabric | Notebook 08 e cópia do pipeline criados; 57 testes locais; editor de notebooks preso no carregamento. [Estado](../../../evidence/fabric/orchestration/preparation-status.json) | Recuperar editor, conferir parâmetros e executar orquestração/falhas; 5/12 marcos |
 
 ## Dependências e referências oficiais
 
