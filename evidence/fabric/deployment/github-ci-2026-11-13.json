@@ -1,0 +1,76 @@
+{
+  "conclusion": "success",
+  "headSha": "4e8cf2a7d61f13e47ab357e935c75829fa8d043e",
+  "jobs": [
+    {
+      "completedAt": "2026-11-13T19:25:48Z",
+      "conclusion": "success",
+      "databaseId": 132115130358,
+      "name": "portable-tests",
+      "startedAt": "2026-11-13T19:24:49Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-11-13T19:25:05Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-11-13T19:25:03Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-13T19:25:14Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "number": 2,
+          "startedAt": "2026-11-13T19:25:05Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-13T19:25:54Z",
+          "conclusion": "success",
+          "name": "Prepare isolated Python",
+          "number": 3,
+          "startedAt": "2026-11-13T19:25:14Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-13T19:25:57Z",
+          "conclusion": "success",
+          "name": "Run portable tests",
+          "number": 4,
+          "startedAt": "2026-11-13T19:25:54Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-13T19:25:59Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "number": 8,
+          "startedAt": "2026-11-13T19:25:57Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-13T19:25:59Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 9,
+          "startedAt": "2026-11-13T19:25:59Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/victorhobdev/fuel-watch-br/actions/runs/43491949901/job/132115130358"
+    }
+  ],
+  "status": "completed",
+  "url": "https://github.com/victorhobdev/fuel-watch-br/actions/runs/43491949901",
+  "test_counts": [
+    31,
+    10
+  ],
+  "total_ci_checks": 41,
+  "runner_type": "ephemeral local Windows, repository-only",
+  "registered_runners_after_job": 0,
+  "runner_credentials_removed": true,
+  "checked_at_utc": "2026-11-13T19:27:22.191564+00:00"
+}

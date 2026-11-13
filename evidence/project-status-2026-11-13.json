@@ -1,0 +1,37 @@
+{
+  "status": "independent_blocks_verified_human_dependencies_remaining",
+  "accepted_milestones": [
+    "M00",
+    "M01",
+    "M02",
+    "M03",
+    "M04",
+    "M05",
+    "M06",
+    "M09",
+    "M10"
+  ],
+  "accepted_count": 9,
+  "total_milestones": 12,
+  "m07": {
+    "criteria_verified": 2,
+    "remaining": "reader identity deferred by user; six access cases, RLS and masking restrictions not tested"
+  },
+  "m08": {
+    "criteria_verified": 4,
+    "remaining": "native workspace Git authentication and real item sync",
+    "deployment_execution_rollback_verified": true
+  },
+  "m11": {
+    "own_deliverables_verified": 5,
+    "acceptance": "gated by M07/M08",
+    "render_evidence": "fabric/consumption/visual-review.json"
+  },
+  "local_full_suite_tests": 73,
+  "ci_checks": 41,
+  "ci_url": "https://github.com/victorhobdev/fuel-watch-br/actions/runs/43491949901",
+  "resource_audit": "fabric/operations/resource-audit-2026-11-13.json",
+  "activator_shutdown": "fabric/streaming/daf2320c-b0bc-4eef-b908-a2dd80939088/mcp-shutdown-verification.json",
+  "paid_capacity_created": false,
+  "checked_at_utc": "2026-11-13T19:27:22.192243+00:00"
+}

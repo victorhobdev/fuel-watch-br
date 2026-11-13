@@ -13,3 +13,5 @@ Resultados reais do Fabric, separados de testes locais e fixtures. Bindings, cre
 - [Consumo](fabric/consumption/): reconciliação DAX/SQL e PDF/PNG reais do relatório.
 
 Uma operação aceita pela API não equivale a uma execução concluída. Falhas originais e recuperações são preservadas separadamente; contagens isoladas não substituem os fingerprints de negócio.
+
+[Status consolidado de 13/11](project-status-2026-11-13.json) inclui critérios aceitos, dependências humanas e CI real.

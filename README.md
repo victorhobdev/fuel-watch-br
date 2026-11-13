@@ -19,7 +19,9 @@ O processamento oficial está validado no Fabric: ANP preservada por SHA-256, Br
 
 O laboratório sintético é separado dos dados oficiais. A regra Activator foi desligada e os destinos Eventstream pausados após a verificação. Usa-se a capacidade trial existente; não foi contratada capacidade paga. A data de expiração da trial e o consumo em CU não foram verificados.
 
-A execução usa CLI/API, OneLake e ODBC, com bindings e tokens fora do Git. Consulte [roadmap](docs/superpowers/plans/2026-11-12-fuel-watch-br-roadmap.md), [índice de evidências](evidence/README.md), [implantação](docs/deployment.md), [segurança](docs/security-matrix.md), [consumo](docs/consumption.md), [dicionário](docs/data-dictionary.md) e [demonstração](docs/demo.md). As pendências humanas não são contabilizadas como aprovadas.
+A execução usa CLI/API, OneLake e ODBC, com bindings e tokens fora do Git. Consulte [roadmap](docs/superpowers/plans/2026-11-12-fuel-watch-br-roadmap.md), [índice de evidências](evidence/README.md), [implantação](docs/deployment.md), [segurança](docs/security-matrix.md), [consumo](docs/consumption.md), [dicionário](docs/data-dictionary.md) e [demonstração](docs/demo.md). As pendências humanas não são contabilizadas como aprovadas: **9/12 marcos aceitos**; M11 tem suas cinco entregas verificadas, mas aguarda M07/M08. [Status consolidado](evidence/project-status-2026-11-13.json).
+
+Verificação: 73 testes na suíte local completa e [41 checks no GitHub](https://github.com/victorhobdev/fuel-watch-br/actions/runs/43491949901), commit `4e8cf2a`. Runner efêmero removido; zero jobs/sessões Spark/agendas de pipeline ativos nos workspaces no inventário final.
 
 Os dados são amostrais. Ausência de observação não representa preço zero nem cobertura de todos os postos. SCD2 registra mudança observada na referência, sem inferir a data histórica real de mudança do estabelecimento.
 
