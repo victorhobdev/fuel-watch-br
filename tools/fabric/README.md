@@ -44,10 +44,11 @@ O probe testa initialize/list_tools, sem executar operacoes remotas. Seu resulta
 - Fabric CLI `--version`: validado.
 - MCP initialize/list_tools: validado, servidor 1.8.0.
 - Registro MCP local: validado por `codex mcp get fabric`.
-- Login no cache isolado: iniciado; depende da autenticacao do usuario.
-- SQL, REST e OneLake remotos: ainda nao validados com esse novo login.
+- Login no cache isolado: concluido pelo usuario. Fabric CLI recebeu login via Azure CLI.
+- REST: lista real de itens do workspace validada. OneLake: listagem real de Files validada. SQL: SELECT 1 no Warehouse validado com token Entra. Evidencia: evidence/fabric/tooling/setup-2026-11-13.json.
 - Nenhum job de dados ou recurso Azure pago foi criado por esta configuracao.
 
 Antes de retomar M05: obter e preservar a definicao remota do notebook 08, comparar com o fonte local e corrigir a descoberta de recibos. O ultimo teste local dessa area ainda tem uma falha conhecida; instalacao das ferramentas nao resolve nem valida esse comportamento.
 
 Referencias: [Fabric CLI](https://microsoft.github.io/fabric-cli/), [Microsoft Fabric MCP](https://github.com/microsoft/mcp/blob/main/servers/Fabric.Mcp.Server/README.md), [Codex MCP](https://developers.openai.com/codex/mcp/).
+

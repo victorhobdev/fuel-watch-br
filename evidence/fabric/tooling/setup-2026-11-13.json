@@ -1,0 +1,11 @@
+{
+  "environment": "fabric",
+  "checks": {
+    "onelake_read": true,
+    "sql_select_1": true
+  },
+  "checked_at_utc": "2026-11-13T13:02:35.3202847Z",
+  "workspace_items_read": true,
+  "mcp_protocol_initialized": true,
+  "mcp_loaded_in_current_chat": false
+}
