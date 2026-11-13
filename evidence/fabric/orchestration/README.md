@@ -12,4 +12,10 @@ Em `sql-component-2026-11-13/` está a execução real do componente Warehouse, 
 
 Limites: execução manual no Warehouse, reutilizando o lote M04 já aprovado. Não executamos o pipeline mestre, Copy, Spark ou agendamento nesse experimento. O status do script foi nomeado `m05_gold_attempt_validated` para não sugerir que a execução SQL isolada comprove o pipeline completo. M05 continua parcial e o projeto permanece com 5/12 marcos aceitos.
 
-O erro SQL 15802 em `02-before-guard.txt` veio de uma consulta auxiliar com `FOR JSON` em subconsulta. A linha 38 corresponde a essa consulta; os 36 comandos/linhas do guard foram mantidos. A versão corrigida usa `FOR JSON` no nível externo, conforme [T-SQL surface area](https://learn.microsoft.com/en-us/fabric/data-warehouse/tsql-surface-area), e consta em `03-before-guard-validated.txt`.
+O erro SQL 15802 em `02-before-guard.txt` veio de uma consulta auxiliar com `FOR JSON` em subconsulta. A linha 38 corresponde a essa consulta; as 36 linhas do guard foram mantidas. A versão corrigida usa `FOR JSON` no nível externo, conforme [T-SQL surface area](https://learn.microsoft.com/en-us/fabric/data-warehouse/tsql-surface-area), e consta em `03-before-guard-validated.txt`.
+
+## Autoria nativa do pipeline
+
+`pipeline-authoring-status.json` e `pipeline-authoring-validated.jpg` registram a validação de autoria sem erros. O mestre tem 12 atividades, dependências de sucesso no caminho oficial e tratamento de falhas com guard seguido de `Fail`. A definição foi salva, relida e comparada semanticamente; apenas a ordem das propriedades JSON foi normalizada pelo Fabric. `pipeline-master-saved.jpg` mostra o grafo salvo.
+
+O export real está em `fabric/m05/pipeline.definition.redacted.json`, com bindings substituídos e sem identificação pessoal do editor. Não contém o destino concreto do ambiente. Não houve execução do mestre, portanto esses arquivos não fecham critérios M05 nem comprovam Git/implantação M08.

@@ -22,7 +22,17 @@ Limite operacional: laboratório serial, um publicador por vez. Ainda não há g
 - `python -m unittest tests.test_m05_stage -v`: quatro testes locais com filhos simulados verificam propagação do caminho/hash, bloqueio sem retorno de sucesso, lote exato e falha/ausência de recibo.
 - Os testes não executam Spark, Copy ou SQL. O aceite depende de execuções reais no Fabric.
 - `python scripts/build_m05_sql.py` prepara seis scripts, incluindo baseline imutável por tentativa, comparação das duas direções com cardinalidade e textos em bytes, importação do lote exato, publicação com falha opcional e validação correlacionada. O dialeto ainda não foi executado no Warehouse.
-- Suíte local atual: 57 testes aprovados. [Runbook preparado](runbooks/recovery.md).
+- Suíte local atual: 61 testes aprovados, incluindo dependências do grafo e propagação de parâmetros. [Runbook preparado](runbooks/recovery.md).
+
+## Pipeline nativo salvo — execução ainda pendente
+
+O mestre foi configurado com 12 atividades e quatro parâmetros explícitos. O caminho é `Capture_Baseline → Copy_ANP → Bronze → Silver → Export_Gold_Input → Import_Gold → Publish_Gold → Validate_Gold`. Silver e Gold possuem caminhos de erro que primeiro verificam a proteção da publicação anterior e depois executam uma `Fail activity`, preservando o resultado de falha do pipeline.
+
+Somente a importação tem três retries, com intervalo de 30 segundos, para sincronização do endpoint SQL. Falhas injetadas não possuem retry automático. O lote vem de `Export_Gold_Input.output.result.exitValue`; esse caminho de retorno ainda exige confirmação em runtime, assim como a recepção dos parâmetros no notebook 08.
+
+A interface retornou **“Seu pipeline foi validado. Nenhum erro foi encontrado.”** A definição foi salva e relida pelo editor JSON; atividades e parâmetros coincidem semanticamente com o preparado. Essa validação é de autoria, não comprova execução. [Prova de autoria](../evidence/fabric/orchestration/pipeline-authoring-status.json).
+
+As definições dos tipos Copy, TridentNotebook e Script vieram do próprio editor Fabric: [atividades-base](../fabric/m05/activity-baselines.json). O [export nativo salvo](../fabric/m05/pipeline.definition.redacted.json) troca bindings do ambiente por placeholders e remove identificação do editor. `scripts/build_m05_pipeline.py` prepara o template em `data/artifacts/m05/`, sem aplicar bindings nem executar serviços. Não é uma integração Git nativa de workspace; ela permanece M08.
 
 ## Componente SQL executado no Fabric — 13/11/2026
 

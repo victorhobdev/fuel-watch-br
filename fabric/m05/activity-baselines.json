@@ -1,0 +1,127 @@
+{
+  "provenance": "Captured from native Fabric pipeline JSON editor; environment bindings replaced by placeholders; not an executed master pipeline",
+  "activities": [
+    {
+      "name": "cp_anp_zip",
+      "type": "Copy",
+      "dependsOn": [],
+      "policy": {
+        "timeout": "0.12:00:00",
+        "retry": 0,
+        "retryIntervalInSeconds": 30,
+        "secureOutput": false,
+        "secureInput": false
+      },
+      "typeProperties": {
+        "source": {
+          "type": "BinarySource",
+          "storeSettings": {
+            "type": "HttpReadSettings",
+            "requestMethod": "GET"
+          },
+          "formatSettings": {
+            "type": "BinaryReadSettings"
+          },
+          "datasetSettings": {
+            "annotations": [],
+            "type": "Binary",
+            "typeProperties": {
+              "location": {
+                "type": "HttpServerLocation",
+                "relativeUrl": "/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/shpc/dsas/ca/ca-2026-01.zip"
+              }
+            },
+            "externalReferences": {
+              "connection": "{{HTTP_ANP_CONNECTION}}"
+            }
+          }
+        },
+        "sink": {
+          "type": "BinarySink",
+          "storeSettings": {
+            "type": "LakehouseWriteSettings"
+          },
+          "datasetSettings": {
+            "annotations": [],
+            "linkedService": {
+              "name": "lh_fuelwatch",
+              "properties": {
+                "annotations": [],
+                "type": "Lakehouse",
+                "typeProperties": {
+                  "workspaceId": "{{WORKSPACE_ID}}",
+                  "artifactId": "{{LAKEHOUSE_ID}}",
+                  "rootFolder": "Files"
+                }
+              }
+            },
+            "type": "Binary",
+            "typeProperties": {
+              "location": {
+                "type": "LakehouseLocation",
+                "fileName": "ca-2026-01.zip",
+                "folderPath": {
+                  "value": "@concat('landing/anp/2026-1/', pipeline().RunId)",
+                  "type": "Expression"
+                }
+              }
+            }
+          }
+        },
+        "enableStaging": false
+      }
+    },
+    {
+      "name": "Notebook1",
+      "type": "TridentNotebook",
+      "dependsOn": [],
+      "policy": {
+        "timeout": "0.12:00:00",
+        "retry": 0,
+        "retryIntervalInSeconds": 30,
+        "secureOutput": false,
+        "secureInput": false
+      },
+      "typeProperties": {
+        "notebookId": "{{NOTEBOOK_08_ID}}",
+        "workspaceId": "{{WORKSPACE_ID}}"
+      }
+    },
+    {
+      "name": "Script1",
+      "type": "Script",
+      "dependsOn": [],
+      "policy": {
+        "timeout": "0.12:00:00",
+        "retry": 0,
+        "retryIntervalInSeconds": 30,
+        "secureOutput": false,
+        "secureInput": false
+      },
+      "linkedService": {
+        "name": "wh_fuelwatch",
+        "properties": {
+          "annotations": [],
+          "type": "DataWarehouse",
+          "typeProperties": {
+            "endpoint": "{{WAREHOUSE_ENDPOINT}}",
+            "artifactId": "{{WAREHOUSE_ID}}",
+            "workspaceId": "{{WORKSPACE_ID}}"
+          }
+        }
+      },
+      "typeProperties": {
+        "scripts": [
+          {
+            "type": "Query",
+            "text": {
+              "value": "SELECT 'm05_connection_probe' AS status;",
+              "type": "Expression"
+            }
+          }
+        ],
+        "scriptBlockExecutionTimeout": "02:00:00"
+      }
+    }
+  ]
+}

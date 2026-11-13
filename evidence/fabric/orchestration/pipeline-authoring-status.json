@@ -1,0 +1,14 @@
+{
+  "status": "native_pipeline_saved_authoring_validated",
+  "checked_at_utc": "2026-11-13T11:37:43.615Z",
+  "validation_message": "Seu pipeline foi validado. Nenhum erro foi encontrado.",
+  "checks": {
+    "twelve_activities": true,
+    "activities_match_prepared": true,
+    "parameters_match_prepared": true
+  },
+  "pipeline_executed": false,
+  "notebook_editor_blocker_still_unresolved": true,
+  "completed_milestones": 5,
+  "total_milestones": 12
+}

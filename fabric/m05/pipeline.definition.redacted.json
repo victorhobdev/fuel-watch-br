@@ -1,0 +1,560 @@
+{
+  "name": "pl_fuelwatch_master",
+  "objectId": "{{PIPELINE_ID}}",
+  "properties": {
+    "activities": [
+      {
+        "name": "Capture_Baseline",
+        "type": "Script",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.00:30:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "linkedService": {
+          "name": "wh_fuelwatch",
+          "properties": {
+            "annotations": [],
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "endpoint": "{{WAREHOUSE_ENDPOINT}}",
+              "artifactId": "{{WAREHOUSE_ID}}",
+              "workspaceId": "{{WORKSPACE_ID}}"
+            }
+          }
+        },
+        "typeProperties": {
+          "scripts": [
+            {
+              "type": "Query",
+              "text": {
+                "value": "@concat('IF SCHEMA_ID(''m05'') IS NULL EXEC(''CREATE SCHEMA m05'');\nIF OBJECT_ID(''m05.attempt'') IS NULL\nCREATE TABLE m05.attempt (root_run_id varchar(36) NOT NULL, status varchar(30) NOT NULL,\n    batch_id varchar(80) NULL, captured_at_utc datetime2(6) NOT NULL, completed_at_utc datetime2(6) NULL);\nIF OBJECT_ID(''m05.guard_facts'') IS NULL\nCREATE TABLE m05.guard_facts AS SELECT CAST('''' AS varchar(36)) AS root_run_id, *\nFROM gold.published_business_bytes WHERE 1=0;\nIF OBJECT_ID(''m05.guard_posto'') IS NULL\nCREATE TABLE m05.guard_posto AS SELECT CAST('''' AS varchar(36)) AS root_run_id, *\nFROM (SELECT CAST(posto_sk AS varbinary(8000)) AS posto_sk,CAST(cnpj AS varbinary(8000)) AS cnpj,CAST(revenda_observada AS varbinary(8000)) AS revenda_observada,CAST(bandeira_observada AS varbinary(8000)) AS bandeira_observada,CAST(municipio_ibge AS varbinary(8000)) AS municipio_ibge,CAST(uf AS varbinary(8000)) AS uf,observado_desde,observado_ate FROM gold.dim_posto) AS current_state WHERE 1=0;\nIF OBJECT_ID(''m05.guard_publication'') IS NULL\nCREATE TABLE m05.guard_publication AS SELECT CAST('''' AS varchar(36)) AS root_run_id, *\nFROM (SELECT CAST(batch_id AS varbinary(8000)) AS batch_id,CAST(scope_id AS varbinary(8000)) AS scope_id,CAST(source_sha256 AS varbinary(8000)) AS source_sha256,CAST(ibge_sha256 AS varbinary(8000)) AS ibge_sha256,silver_delta_version,is_synthetic,published_at_utc,rows_published,CAST(source_table AS varbinary(8000)) AS source_table,CAST(snapshot_id AS varbinary(8000)) AS snapshot_id FROM gold.publication) AS current_state WHERE 1=0;\nIF OBJECT_ID(''m05.guard_calendar'') IS NULL\nCREATE TABLE m05.guard_calendar AS SELECT CAST('''' AS varchar(36)) AS root_run_id, *\nFROM (SELECT data_sk,data,inicio_semana_iso,ano_iso,semana_iso FROM gold.dim_data) AS current_state WHERE 1=0;\nIF OBJECT_ID(''m05.guard_municipios'') IS NULL\nCREATE TABLE m05.guard_municipios AS SELECT CAST('''' AS varchar(36)) AS root_run_id, *\nFROM (SELECT CAST(municipio_ibge AS varbinary(8000)) AS municipio_ibge,CAST(nome AS varbinary(8000)) AS nome,CAST(uf AS varbinary(8000)) AS uf FROM gold.dim_municipio) AS current_state WHERE 1=0;\nIF OBJECT_ID(''m05.guard_produtos'') IS NULL\nCREATE TABLE m05.guard_produtos AS SELECT CAST('''' AS varchar(36)) AS root_run_id, *\nFROM (SELECT produto_sk,CAST(produto AS varbinary(8000)) AS produto,CAST(moeda AS varbinary(8000)) AS moeda,CAST(unidade AS varbinary(8000)) AS unidade FROM gold.dim_produto) AS current_state WHERE 1=0;\n\nDECLARE @root varchar(36) = ''',pipeline().RunId,''';\nIF TRY_CONVERT(uniqueidentifier,@root) IS NULL\n    THROW 51600, ''Pipeline RunId invalido.'', 1;\nIF EXISTS (SELECT 1 FROM m05.attempt WHERE root_run_id=@root)\n    THROW 51601, ''Nao sobrescrever baseline de uma tentativa existente.'', 1;\nBEGIN TRY\n    BEGIN TRANSACTION;\n    INSERT INTO m05.attempt VALUES (@root,''started'',NULL,CAST(SYSUTCDATETIME() AS datetime2(6)),NULL);\n    INSERT INTO m05.guard_facts SELECT @root,* FROM gold.published_business_bytes;\n    INSERT INTO m05.guard_posto SELECT @root,* FROM (SELECT CAST(posto_sk AS varbinary(8000)) AS posto_sk,CAST(cnpj AS varbinary(8000)) AS cnpj,CAST(revenda_observada AS varbinary(8000)) AS revenda_observada,CAST(bandeira_observada AS varbinary(8000)) AS bandeira_observada,CAST(municipio_ibge AS varbinary(8000)) AS municipio_ibge,CAST(uf AS varbinary(8000)) AS uf,observado_desde,observado_ate FROM gold.dim_posto) AS current_state;\n    INSERT INTO m05.guard_publication SELECT @root,* FROM (SELECT CAST(batch_id AS varbinary(8000)) AS batch_id,CAST(scope_id AS varbinary(8000)) AS scope_id,CAST(source_sha256 AS varbinary(8000)) AS source_sha256,CAST(ibge_sha256 AS varbinary(8000)) AS ibge_sha256,silver_delta_version,is_synthetic,published_at_utc,rows_published,CAST(source_table AS varbinary(8000)) AS source_table,CAST(snapshot_id AS varbinary(8000)) AS snapshot_id FROM gold.publication) AS current_state;\n    INSERT INTO m05.guard_calendar SELECT @root,* FROM (SELECT data_sk,data,inicio_semana_iso,ano_iso,semana_iso FROM gold.dim_data) AS current_state;\n    INSERT INTO m05.guard_municipios SELECT @root,* FROM (SELECT CAST(municipio_ibge AS varbinary(8000)) AS municipio_ibge,CAST(nome AS varbinary(8000)) AS nome,CAST(uf AS varbinary(8000)) AS uf FROM gold.dim_municipio) AS current_state;\n    INSERT INTO m05.guard_produtos SELECT @root,* FROM (SELECT produto_sk,CAST(produto AS varbinary(8000)) AS produto,CAST(moeda AS varbinary(8000)) AS moeda,CAST(unidade AS varbinary(8000)) AS unidade FROM gold.dim_produto) AS current_state;\n    COMMIT TRANSACTION;\nEND TRY\nBEGIN CATCH\n    IF @@TRANCOUNT>0 ROLLBACK TRANSACTION;\n    THROW;\nEND CATCH;\nSELECT ''m05_baseline_captured'' AS status,@root AS root_run_id;\n')",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "00:10:00"
+        }
+      },
+      {
+        "name": "Copy_ANP",
+        "type": "Copy",
+        "dependsOn": [
+          {
+            "activity": "Capture_Baseline",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.00:30:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "source": {
+            "type": "BinarySource",
+            "storeSettings": {
+              "type": "HttpReadSettings",
+              "requestMethod": "GET"
+            },
+            "formatSettings": {
+              "type": "BinaryReadSettings"
+            },
+            "datasetSettings": {
+              "annotations": [],
+              "type": "Binary",
+              "typeProperties": {
+                "location": {
+                  "type": "HttpServerLocation",
+                  "relativeUrl": {
+                    "value": "@pipeline().parameters.p_source_relative_url",
+                    "type": "Expression"
+                  }
+                }
+              },
+              "externalReferences": {
+                "connection": "{{HTTP_ANP_CONNECTION}}"
+              }
+            }
+          },
+          "sink": {
+            "type": "BinarySink",
+            "storeSettings": {
+              "type": "LakehouseWriteSettings"
+            },
+            "datasetSettings": {
+              "annotations": [],
+              "linkedService": {
+                "name": "lh_fuelwatch",
+                "properties": {
+                  "annotations": [],
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "workspaceId": "{{WORKSPACE_ID}}",
+                    "artifactId": "{{LAKEHOUSE_ID}}",
+                    "rootFolder": "Files"
+                  }
+                }
+              },
+              "type": "Binary",
+              "typeProperties": {
+                "location": {
+                  "type": "LakehouseLocation",
+                  "fileName": "ca-2026-01.zip",
+                  "folderPath": {
+                    "value": "@concat('landing/anp/2026-1/', pipeline().RunId)",
+                    "type": "Expression"
+                  }
+                }
+              }
+            }
+          },
+          "enableStaging": false
+        }
+      },
+      {
+        "name": "Bronze",
+        "type": "TridentNotebook",
+        "dependsOn": [
+          {
+            "activity": "Copy_ANP",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.00:30:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "{{NOTEBOOK_08_ID}}",
+          "workspaceId": "{{WORKSPACE_ID}}",
+          "parameters": {
+            "p_root_run_id": {
+              "value": {
+                "value": "@pipeline().RunId",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "p_phase": {
+              "value": "bronze",
+              "type": "string"
+            },
+            "p_fault_stage": {
+              "value": {
+                "value": "@pipeline().parameters.p_fault_stage",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "p_scope_id": {
+              "value": {
+                "value": "@pipeline().parameters.p_scope_id",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "p_source_sha256": {
+              "value": {
+                "value": "@pipeline().parameters.p_source_sha256",
+                "type": "Expression"
+              },
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "Silver",
+        "type": "TridentNotebook",
+        "dependsOn": [
+          {
+            "activity": "Bronze",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.00:30:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "{{NOTEBOOK_08_ID}}",
+          "workspaceId": "{{WORKSPACE_ID}}",
+          "parameters": {
+            "p_root_run_id": {
+              "value": {
+                "value": "@pipeline().RunId",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "p_phase": {
+              "value": "silver",
+              "type": "string"
+            },
+            "p_fault_stage": {
+              "value": {
+                "value": "@pipeline().parameters.p_fault_stage",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "p_scope_id": {
+              "value": {
+                "value": "@pipeline().parameters.p_scope_id",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "p_source_sha256": {
+              "value": {
+                "value": "@pipeline().parameters.p_source_sha256",
+                "type": "Expression"
+              },
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "Export_Gold_Input",
+        "type": "TridentNotebook",
+        "dependsOn": [
+          {
+            "activity": "Silver",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.00:30:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "{{NOTEBOOK_08_ID}}",
+          "workspaceId": "{{WORKSPACE_ID}}",
+          "parameters": {
+            "p_root_run_id": {
+              "value": {
+                "value": "@pipeline().RunId",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "p_phase": {
+              "value": "export",
+              "type": "string"
+            },
+            "p_fault_stage": {
+              "value": {
+                "value": "@pipeline().parameters.p_fault_stage",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "p_scope_id": {
+              "value": {
+                "value": "@pipeline().parameters.p_scope_id",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "p_source_sha256": {
+              "value": {
+                "value": "@pipeline().parameters.p_source_sha256",
+                "type": "Expression"
+              },
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "Import_Gold",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "Export_Gold_Input",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.00:30:00",
+          "retry": 3,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "linkedService": {
+          "name": "wh_fuelwatch",
+          "properties": {
+            "annotations": [],
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "endpoint": "{{WAREHOUSE_ENDPOINT}}",
+              "artifactId": "{{WAREHOUSE_ID}}",
+              "workspaceId": "{{WORKSPACE_ID}}"
+            }
+          }
+        },
+        "typeProperties": {
+          "scripts": [
+            {
+              "type": "Query",
+              "text": {
+                "value": "@concat('-- Executar no Warehouse APÓS notebook 07. Alterar somente os três valores abaixo.\nDECLARE @lakehouse sysname = ''lh_fuelwatch'';\nDECLARE @lakehouse_schema sysname = ''dbo'';\nDECLARE @batch_id varchar(80) = ''',json(activity('Export_Gold_Input').output.result.exitValue).batch_id,''';\nIF TRY_CONVERT(uniqueidentifier, @batch_id) IS NULL\n    THROW 51200, ''Preencher batch_id do JSON m04_transfer_ready.'', 1;\nDECLARE @source nvarchar(520) = QUOTENAME(@lakehouse) + ''.'' + QUOTENAME(@lakehouse_schema) + ''.'';\nDECLARE @sql nvarchar(max) = N''\nBEGIN TRY\n    BEGIN TRANSACTION;\n    IF (SELECT COUNT_BIG(*) FROM {source}m04_transfer_manifest WHERE batch_id=@batch) <> 1\n        THROW 51201, ''''Manifesto nao visivel ou duplicado. Aguardar sync do SQL endpoint.'''', 1;\n    IF NOT EXISTS (SELECT 1 FROM {source}m04_transfer_manifest WHERE batch_id=@batch\n        AND source_sha256=''''a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c''''\n        AND ibge_sha256=''''2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0''''\n        AND silver_delta_version>=0 AND source_table=''''silver_preco_publicado''''\n        AND TRY_CONVERT(uniqueidentifier,snapshot_id) IS NOT NULL\n        AND is_synthetic=0 AND scope_id=''''anp-2026-1-rj-gasolina''''\n        AND expected_rows=8052 AND expected_stations=502 AND expected_municipalities=27 AND expected_unusual=26)\n        THROW 51202, ''''Manifesto fora do baseline M02 aprovado.'''', 1;\n    IF (SELECT COUNT_BIG(*) FROM {source}m04_transfer_coletas WHERE batch_id=@batch) <> 8052\n        OR (SELECT COUNT_BIG(*) FROM {source}m04_transfer_municipios WHERE batch_id=@batch) <> 92\n        OR (SELECT COUNT_BIG(*) FROM {source}m04_transfer_calendar WHERE batch_id=@batch) <> 181\n        OR (SELECT COUNT_BIG(*) FROM {source}m04_transfer_expected_posto WHERE batch_id=@batch) <> 518\n        OR (SELECT COUNT_BIG(*) FROM {source}m04_transfer_expected_weekly WHERE batch_id=@batch) <> 656\n        THROW 51203, ''''Transferencia ainda incompleta no SQL endpoint. Nao publicar.'''', 1;\n    DELETE FROM gold.stage_coleta;\n    DELETE FROM gold.stage_manifest;\n    DELETE FROM gold.dim_data;\n    DELETE FROM gold.dim_municipio;\n    INSERT INTO gold.stage_coleta\n        SELECT cnpj, cnpj_origem, produto, data_coleta, preco_venda, moeda, unidade, uf,\n            municipio_ibge, municipio_origem, revenda_observada, bandeira_observada, preco_incomum_iqr\n        FROM {source}m04_transfer_coletas WHERE batch_id=@batch;\n    INSERT INTO gold.stage_manifest\n        SELECT batch_id, scope_id, source_sha256, ibge_sha256, silver_delta_version, is_synthetic,\n            expected_rows, expected_stations, expected_municipalities, expected_unusual, source_table, snapshot_id\n        FROM {source}m04_transfer_manifest WHERE batch_id=@batch;\n    INSERT INTO gold.dim_data SELECT data_sk, data, inicio_semana_iso, ano_iso, semana_iso\n        FROM {source}m04_transfer_calendar WHERE batch_id=@batch;\n    INSERT INTO gold.dim_municipio SELECT municipio_ibge, nome, uf\n        FROM {source}m04_transfer_municipios WHERE batch_id=@batch;\n    IF EXISTS (SELECT * FROM gold.stage_business_bytes EXCEPT\n        SELECT CAST(cnpj AS varbinary(8000)), CAST(cnpj_origem AS varbinary(8000)), CAST(produto AS varbinary(8000)),\n            data_coleta, preco_venda, CAST(moeda AS varbinary(8000)), CAST(unidade AS varbinary(8000)),\n            CAST(uf AS varbinary(8000)), CAST(municipio_ibge AS varbinary(8000)), CAST(municipio_origem AS varbinary(8000)),\n            CAST(revenda_observada AS varbinary(8000)), CAST(bandeira_observada AS varbinary(8000)), preco_incomum_iqr\n        FROM {source}m04_transfer_coletas WHERE batch_id=@batch)\n        THROW 51204, ''''Valores do stage divergem da transferencia.'''', 1;\n    IF (SELECT COUNT_BIG(*) FROM gold.stage_coleta) <> 8052 OR EXISTS (\n        SELECT cnpj, produto, data_coleta, unidade FROM gold.stage_coleta\n        GROUP BY cnpj, produto, data_coleta, unidade HAVING COUNT_BIG(*) <> 1)\n        THROW 51205, ''''Cardinalidade do stage divergiu.'''', 1;\n    DELETE FROM gold.expected_posto;\n    DELETE FROM gold.expected_weekly;\n    INSERT INTO gold.expected_posto\n        SELECT posto_sk, cnpj, revenda_observada, bandeira_observada, municipio_ibge, uf, observado_desde, observado_ate\n        FROM {source}m04_transfer_expected_posto WHERE batch_id=@batch;\n    INSERT INTO gold.expected_weekly\n        SELECT inicio_semana_iso, ano_iso, semana_iso, municipio_ibge, produto, moeda, unidade,\n            coletas, postos_observados, soma_precos, preco_minimo, preco_maximo, precos_incomuns\n        FROM {source}m04_transfer_expected_weekly WHERE batch_id=@batch;\n    COMMIT TRANSACTION;\n    SELECT ''''m04_stage_ready'''' AS status, * FROM gold.stage_manifest;\nEND TRY\nBEGIN CATCH\n    IF @@TRANCOUNT > 0 ROLLBACK TRANSACTION;\n    THROW;\nEND CATCH;'';\nSET @sql = REPLACE(@sql, ''{source}'', @source);\nEXEC sp_executesql @sql, N''@batch varchar(80)'', @batch=@batch_id;\n')",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "00:10:00"
+        }
+      },
+      {
+        "name": "Publish_Gold",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "Import_Gold",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.00:30:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "linkedService": {
+          "name": "wh_fuelwatch",
+          "properties": {
+            "annotations": [],
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "endpoint": "{{WAREHOUSE_ENDPOINT}}",
+              "artifactId": "{{WAREHOUSE_ID}}",
+              "workspaceId": "{{WORKSPACE_ID}}"
+            }
+          }
+        },
+        "typeProperties": {
+          "scripts": [
+            {
+              "type": "Query",
+              "text": {
+                "value": "@concat('DECLARE @root varchar(36) = ''',pipeline().RunId,''';\nIF TRY_CONVERT(uniqueidentifier,@root) IS NULL\n    THROW 51600, ''Pipeline RunId invalido.'', 1;\nDECLARE @batch varchar(80) = ''',json(activity('Export_Gold_Input').output.result.exitValue).batch_id,''';\nDECLARE @fault varchar(20) = ''',pipeline().parameters.p_fault_stage,''';\nIF TRY_CONVERT(uniqueidentifier,@batch) IS NULL OR @fault NOT IN (''none'',''silver'',''gold'')\n    THROW 51604, ''Parametros de publicacao invalidos.'', 1;\nIF NOT EXISTS (SELECT 1 FROM m05.attempt WHERE root_run_id=@root)\n    THROW 51602, ''Baseline ausente.'', 1;\nDECLARE @inject bit = CASE WHEN @fault=''gold'' THEN 1 ELSE 0 END;\nBEGIN TRY\n    EXEC gold.publish_gold @batch_id=@batch,@inject_fail_before_commit=@inject;\n    UPDATE m05.attempt SET status=''published'',batch_id=@batch WHERE root_run_id=@root;\nEND TRY\nBEGIN CATCH\n    UPDATE m05.attempt SET status=''gold_failed'',batch_id=@batch WHERE root_run_id=@root;\n    THROW;\nEND CATCH;\n')",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "00:10:00"
+        }
+      },
+      {
+        "name": "Validate_Gold",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "Publish_Gold",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.00:30:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "linkedService": {
+          "name": "wh_fuelwatch",
+          "properties": {
+            "annotations": [],
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "endpoint": "{{WAREHOUSE_ENDPOINT}}",
+              "artifactId": "{{WAREHOUSE_ID}}",
+              "workspaceId": "{{WORKSPACE_ID}}"
+            }
+          }
+        },
+        "typeProperties": {
+          "scripts": [
+            {
+              "type": "Query",
+              "text": {
+                "value": "@concat('DECLARE @root varchar(36) = ''',pipeline().RunId,''';\nIF TRY_CONVERT(uniqueidentifier,@root) IS NULL\n    THROW 51600, ''Pipeline RunId invalido.'', 1;\nIF EXISTS (SELECT CAST(posto_sk AS varbinary(8000)), CAST(cnpj AS varbinary(8000)), CAST(revenda_observada AS varbinary(8000)), CAST(bandeira_observada AS varbinary(8000)), CAST(municipio_ibge AS varbinary(8000)), CAST(uf AS varbinary(8000)), observado_desde, observado_ate FROM gold.dim_posto EXCEPT SELECT CAST(posto_sk AS varbinary(8000)), CAST(cnpj AS varbinary(8000)), CAST(revenda_observada AS varbinary(8000)), CAST(bandeira_observada AS varbinary(8000)), CAST(municipio_ibge AS varbinary(8000)), CAST(uf AS varbinary(8000)), observado_desde, observado_ate FROM gold.expected_posto) OR EXISTS (SELECT CAST(posto_sk AS varbinary(8000)), CAST(cnpj AS varbinary(8000)), CAST(revenda_observada AS varbinary(8000)), CAST(bandeira_observada AS varbinary(8000)), CAST(municipio_ibge AS varbinary(8000)), CAST(uf AS varbinary(8000)), observado_desde, observado_ate FROM gold.expected_posto EXCEPT SELECT CAST(posto_sk AS varbinary(8000)), CAST(cnpj AS varbinary(8000)), CAST(revenda_observada AS varbinary(8000)), CAST(bandeira_observada AS varbinary(8000)), CAST(municipio_ibge AS varbinary(8000)), CAST(uf AS varbinary(8000)), observado_desde, observado_ate FROM gold.dim_posto) OR EXISTS (SELECT inicio_semana_iso, ano_iso, semana_iso, CAST(municipio_ibge AS varbinary(8000)), CAST(produto AS varbinary(8000)), CAST(moeda AS varbinary(8000)), CAST(unidade AS varbinary(8000)), coletas, postos_observados, soma_precos, preco_minimo, preco_maximo, precos_incomuns FROM gold.preco_semanal EXCEPT SELECT inicio_semana_iso, ano_iso, semana_iso, CAST(municipio_ibge AS varbinary(8000)), CAST(produto AS varbinary(8000)), CAST(moeda AS varbinary(8000)), CAST(unidade AS varbinary(8000)), coletas, postos_observados, soma_precos, preco_minimo, preco_maximo, precos_incomuns FROM gold.expected_weekly) OR EXISTS (SELECT inicio_semana_iso, ano_iso, semana_iso, CAST(municipio_ibge AS varbinary(8000)), CAST(produto AS varbinary(8000)), CAST(moeda AS varbinary(8000)), CAST(unidade AS varbinary(8000)), coletas, postos_observados, soma_precos, preco_minimo, preco_maximo, precos_incomuns FROM gold.expected_weekly EXCEPT SELECT inicio_semana_iso, ano_iso, semana_iso, CAST(municipio_ibge AS varbinary(8000)), CAST(produto AS varbinary(8000)), CAST(moeda AS varbinary(8000)), CAST(unidade AS varbinary(8000)), coletas, postos_observados, soma_precos, preco_minimo, preco_maximo, precos_incomuns FROM gold.preco_semanal) OR EXISTS (SELECT CAST(cnpj AS varbinary(8000)), CAST(cnpj_origem AS varbinary(8000)), CAST(produto AS varbinary(8000)), data_coleta, preco_venda, CAST(moeda AS varbinary(8000)), CAST(unidade AS varbinary(8000)), CAST(uf AS varbinary(8000)), CAST(municipio_ibge AS varbinary(8000)), CAST(municipio_origem AS varbinary(8000)), CAST(revenda_observada AS varbinary(8000)), CAST(bandeira_observada AS varbinary(8000)), preco_incomum_iqr FROM gold.business_published EXCEPT SELECT CAST(cnpj AS varbinary(8000)), CAST(cnpj_origem AS varbinary(8000)), CAST(produto AS varbinary(8000)), data_coleta, preco_venda, CAST(moeda AS varbinary(8000)), CAST(unidade AS varbinary(8000)), CAST(uf AS varbinary(8000)), CAST(municipio_ibge AS varbinary(8000)), CAST(municipio_origem AS varbinary(8000)), CAST(revenda_observada AS varbinary(8000)), CAST(bandeira_observada AS varbinary(8000)), preco_incomum_iqr FROM gold.stage_coleta) OR EXISTS (SELECT CAST(cnpj AS varbinary(8000)), CAST(cnpj_origem AS varbinary(8000)), CAST(produto AS varbinary(8000)), data_coleta, preco_venda, CAST(moeda AS varbinary(8000)), CAST(unidade AS varbinary(8000)), CAST(uf AS varbinary(8000)), CAST(municipio_ibge AS varbinary(8000)), CAST(municipio_origem AS varbinary(8000)), CAST(revenda_observada AS varbinary(8000)), CAST(bandeira_observada AS varbinary(8000)), preco_incomum_iqr FROM gold.stage_coleta EXCEPT SELECT CAST(cnpj AS varbinary(8000)), CAST(cnpj_origem AS varbinary(8000)), CAST(produto AS varbinary(8000)), data_coleta, preco_venda, CAST(moeda AS varbinary(8000)), CAST(unidade AS varbinary(8000)), CAST(uf AS varbinary(8000)), CAST(municipio_ibge AS varbinary(8000)), CAST(municipio_origem AS varbinary(8000)), CAST(revenda_observada AS varbinary(8000)), CAST(bandeira_observada AS varbinary(8000)), preco_incomum_iqr FROM gold.business_published)\n    THROW 51500, ''Gold diverge da referencia integral.'', 1;\nIF (SELECT COUNT_BIG(*) FROM gold.business_published) <> 8052\n    OR (SELECT COUNT_BIG(*) FROM gold.dim_posto) <> 518 OR (SELECT COUNT_BIG(*) FROM gold.preco_semanal) <> 656\n    OR (SELECT SUM(coletas) FROM gold.preco_semanal) <> 8052\n    OR (SELECT SUM(soma_precos) FROM gold.preco_semanal) <> CAST(52777.200 AS decimal(38,3))\n    OR (SELECT COUNT_BIG(*) FROM gold.publication) <> 1\n    THROW 51501, ''Contagens ou publicacao nao reconciliam.'', 1;\nIF (SELECT COUNT(DISTINCT cnpj) FROM gold.business_published) <> 502\n    OR (SELECT COUNT(DISTINCT municipio_ibge) FROM gold.business_published) <> 27\n    OR (SELECT SUM(CAST(preco_incomum_iqr AS bigint)) FROM gold.business_published) <> 26\n    THROW 51502, ''Cobertura ou precos incomuns divergiram.'', 1;\nIF EXISTS (SELECT 1 FROM gold.fato_preco_coletado f JOIN gold.dim_posto p ON f.posto_sk=p.posto_sk\n    JOIN gold.dim_data d ON f.data_sk=d.data_sk WHERE d.data < p.observado_desde\n    OR (p.observado_ate IS NOT NULL AND d.data >= p.observado_ate))\n    THROW 51503, ''Associacao temporal invalida.'', 1;\nIF EXISTS (SELECT 1 FROM gold.preco_semanal\n    WHERE ABS(preco_medio - soma_precos / CAST(coletas AS decimal(18,0))) > CAST(0.000001 AS decimal(10,6)))\n    THROW 51504, ''Media semanal nao reconciliou.'', 1;\nIF EXISTS (SELECT 1 FROM gold.dim_data WHERE semana_iso <> DATEPART(ISO_WEEK, data)\n    OR ano_iso <> YEAR(DATEADD(day,3,inicio_semana_iso))\n    OR data_sk <> YEAR(data)*10000+MONTH(data)*100+DAY(data)\n    OR DATEDIFF(day,CAST(''1900-01-01'' AS date),inicio_semana_iso) % 7 <> 0\n    OR data < inicio_semana_iso OR data >= DATEADD(day,7,inicio_semana_iso))\n    THROW 51505, ''Calendario ISO invalido.'', 1;\nSELECT ''m04_gold_snapshot_validated'' AS status, batch_id, scope_id, source_table, snapshot_id, source_sha256, ibge_sha256,\n    silver_delta_version, is_synthetic, rows_published AS observations,\n    502 AS stations, 27 AS municipalities, 26 AS unusual_prices, 518 AS station_versions,\n    656 AS weekly_groups, 13 AS business_columns_compared, CAST(1 AS bit) AS full_row_comparison_passed,\n    CAST(SYSUTCDATETIME() AS datetime2(6)) AS checked_at_utc\nFROM gold.publication FOR JSON PATH, WITHOUT_ARRAY_WRAPPER;\n\nIF NOT EXISTS (SELECT 1 FROM m05.attempt a JOIN gold.publication p ON a.batch_id=p.batch_id\n    WHERE a.root_run_id=@root AND a.status=''published'')\n    THROW 51605, ''Lote publicado nao corresponde a tentativa.'', 1;\nUPDATE m05.attempt SET status=''validated'',completed_at_utc=CAST(SYSUTCDATETIME() AS datetime2(6))\n    WHERE root_run_id=@root;\nSELECT ''m05_gold_attempt_validated'' AS status,* FROM m05.attempt WHERE root_run_id=@root;\n')",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "00:10:00"
+        }
+      },
+      {
+        "name": "Guard_Silver_Failure",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "Silver",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.00:30:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "linkedService": {
+          "name": "wh_fuelwatch",
+          "properties": {
+            "annotations": [],
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "endpoint": "{{WAREHOUSE_ENDPOINT}}",
+              "artifactId": "{{WAREHOUSE_ID}}",
+              "workspaceId": "{{WORKSPACE_ID}}"
+            }
+          }
+        },
+        "typeProperties": {
+          "scripts": [
+            {
+              "type": "Query",
+              "text": {
+                "value": "@concat('DECLARE @root varchar(36) = ''',pipeline().RunId,''';\nIF TRY_CONVERT(uniqueidentifier,@root) IS NULL\n    THROW 51600, ''Pipeline RunId invalido.'', 1;\nIF NOT EXISTS (SELECT 1 FROM m05.attempt WHERE root_run_id=@root)\n    THROW 51602, ''Baseline ausente.'', 1;\nIF (SELECT COUNT_BIG(*) FROM m05.guard_facts WHERE root_run_id=@root)\n       <> (SELECT COUNT_BIG(*) FROM gold.published_business_bytes)\n    OR EXISTS (SELECT * FROM m05.guard_facts WHERE root_run_id=@root EXCEPT SELECT @root,* FROM gold.published_business_bytes)\n    OR EXISTS (SELECT @root,* FROM gold.published_business_bytes EXCEPT SELECT * FROM m05.guard_facts WHERE root_run_id=@root)\n    THROW 51603, ''Publicacao anterior mudou: facts.'', 1;\nIF (SELECT COUNT_BIG(*) FROM m05.guard_posto WHERE root_run_id=@root)\n       <> (SELECT COUNT_BIG(*) FROM (SELECT CAST(posto_sk AS varbinary(8000)) AS posto_sk,CAST(cnpj AS varbinary(8000)) AS cnpj,CAST(revenda_observada AS varbinary(8000)) AS revenda_observada,CAST(bandeira_observada AS varbinary(8000)) AS bandeira_observada,CAST(municipio_ibge AS varbinary(8000)) AS municipio_ibge,CAST(uf AS varbinary(8000)) AS uf,observado_desde,observado_ate FROM gold.dim_posto) AS current_state)\n    OR EXISTS (SELECT * FROM m05.guard_posto WHERE root_run_id=@root EXCEPT SELECT @root,* FROM (SELECT CAST(posto_sk AS varbinary(8000)) AS posto_sk,CAST(cnpj AS varbinary(8000)) AS cnpj,CAST(revenda_observada AS varbinary(8000)) AS revenda_observada,CAST(bandeira_observada AS varbinary(8000)) AS bandeira_observada,CAST(municipio_ibge AS varbinary(8000)) AS municipio_ibge,CAST(uf AS varbinary(8000)) AS uf,observado_desde,observado_ate FROM gold.dim_posto) AS current_state)\n    OR EXISTS (SELECT @root,* FROM (SELECT CAST(posto_sk AS varbinary(8000)) AS posto_sk,CAST(cnpj AS varbinary(8000)) AS cnpj,CAST(revenda_observada AS varbinary(8000)) AS revenda_observada,CAST(bandeira_observada AS varbinary(8000)) AS bandeira_observada,CAST(municipio_ibge AS varbinary(8000)) AS municipio_ibge,CAST(uf AS varbinary(8000)) AS uf,observado_desde,observado_ate FROM gold.dim_posto) AS current_state EXCEPT SELECT * FROM m05.guard_posto WHERE root_run_id=@root)\n    THROW 51603, ''Publicacao anterior mudou: posto.'', 1;\nIF (SELECT COUNT_BIG(*) FROM m05.guard_publication WHERE root_run_id=@root)\n       <> (SELECT COUNT_BIG(*) FROM (SELECT CAST(batch_id AS varbinary(8000)) AS batch_id,CAST(scope_id AS varbinary(8000)) AS scope_id,CAST(source_sha256 AS varbinary(8000)) AS source_sha256,CAST(ibge_sha256 AS varbinary(8000)) AS ibge_sha256,silver_delta_version,is_synthetic,published_at_utc,rows_published,CAST(source_table AS varbinary(8000)) AS source_table,CAST(snapshot_id AS varbinary(8000)) AS snapshot_id FROM gold.publication) AS current_state)\n    OR EXISTS (SELECT * FROM m05.guard_publication WHERE root_run_id=@root EXCEPT SELECT @root,* FROM (SELECT CAST(batch_id AS varbinary(8000)) AS batch_id,CAST(scope_id AS varbinary(8000)) AS scope_id,CAST(source_sha256 AS varbinary(8000)) AS source_sha256,CAST(ibge_sha256 AS varbinary(8000)) AS ibge_sha256,silver_delta_version,is_synthetic,published_at_utc,rows_published,CAST(source_table AS varbinary(8000)) AS source_table,CAST(snapshot_id AS varbinary(8000)) AS snapshot_id FROM gold.publication) AS current_state)\n    OR EXISTS (SELECT @root,* FROM (SELECT CAST(batch_id AS varbinary(8000)) AS batch_id,CAST(scope_id AS varbinary(8000)) AS scope_id,CAST(source_sha256 AS varbinary(8000)) AS source_sha256,CAST(ibge_sha256 AS varbinary(8000)) AS ibge_sha256,silver_delta_version,is_synthetic,published_at_utc,rows_published,CAST(source_table AS varbinary(8000)) AS source_table,CAST(snapshot_id AS varbinary(8000)) AS snapshot_id FROM gold.publication) AS current_state EXCEPT SELECT * FROM m05.guard_publication WHERE root_run_id=@root)\n    THROW 51603, ''Publicacao anterior mudou: publication.'', 1;\nIF (SELECT COUNT_BIG(*) FROM m05.guard_calendar WHERE root_run_id=@root)\n       <> (SELECT COUNT_BIG(*) FROM (SELECT data_sk,data,inicio_semana_iso,ano_iso,semana_iso FROM gold.dim_data) AS current_state)\n    OR EXISTS (SELECT * FROM m05.guard_calendar WHERE root_run_id=@root EXCEPT SELECT @root,* FROM (SELECT data_sk,data,inicio_semana_iso,ano_iso,semana_iso FROM gold.dim_data) AS current_state)\n    OR EXISTS (SELECT @root,* FROM (SELECT data_sk,data,inicio_semana_iso,ano_iso,semana_iso FROM gold.dim_data) AS current_state EXCEPT SELECT * FROM m05.guard_calendar WHERE root_run_id=@root)\n    THROW 51603, ''Publicacao anterior mudou: calendar.'', 1;\nIF (SELECT COUNT_BIG(*) FROM m05.guard_municipios WHERE root_run_id=@root)\n       <> (SELECT COUNT_BIG(*) FROM (SELECT CAST(municipio_ibge AS varbinary(8000)) AS municipio_ibge,CAST(nome AS varbinary(8000)) AS nome,CAST(uf AS varbinary(8000)) AS uf FROM gold.dim_municipio) AS current_state)\n    OR EXISTS (SELECT * FROM m05.guard_municipios WHERE root_run_id=@root EXCEPT SELECT @root,* FROM (SELECT CAST(municipio_ibge AS varbinary(8000)) AS municipio_ibge,CAST(nome AS varbinary(8000)) AS nome,CAST(uf AS varbinary(8000)) AS uf FROM gold.dim_municipio) AS current_state)\n    OR EXISTS (SELECT @root,* FROM (SELECT CAST(municipio_ibge AS varbinary(8000)) AS municipio_ibge,CAST(nome AS varbinary(8000)) AS nome,CAST(uf AS varbinary(8000)) AS uf FROM gold.dim_municipio) AS current_state EXCEPT SELECT * FROM m05.guard_municipios WHERE root_run_id=@root)\n    THROW 51603, ''Publicacao anterior mudou: municipios.'', 1;\nIF (SELECT COUNT_BIG(*) FROM m05.guard_produtos WHERE root_run_id=@root)\n       <> (SELECT COUNT_BIG(*) FROM (SELECT produto_sk,CAST(produto AS varbinary(8000)) AS produto,CAST(moeda AS varbinary(8000)) AS moeda,CAST(unidade AS varbinary(8000)) AS unidade FROM gold.dim_produto) AS current_state)\n    OR EXISTS (SELECT * FROM m05.guard_produtos WHERE root_run_id=@root EXCEPT SELECT @root,* FROM (SELECT produto_sk,CAST(produto AS varbinary(8000)) AS produto,CAST(moeda AS varbinary(8000)) AS moeda,CAST(unidade AS varbinary(8000)) AS unidade FROM gold.dim_produto) AS current_state)\n    OR EXISTS (SELECT @root,* FROM (SELECT produto_sk,CAST(produto AS varbinary(8000)) AS produto,CAST(moeda AS varbinary(8000)) AS moeda,CAST(unidade AS varbinary(8000)) AS unidade FROM gold.dim_produto) AS current_state EXCEPT SELECT * FROM m05.guard_produtos WHERE root_run_id=@root)\n    THROW 51603, ''Publicacao anterior mudou: produtos.'', 1;\nSELECT ''m05_previous_publication_unchanged'' AS status,@root AS root_run_id;\n')",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "00:10:00"
+        }
+      },
+      {
+        "name": "Fail_Silver",
+        "type": "Fail",
+        "dependsOn": [
+          {
+            "activity": "Guard_Silver_Failure",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "typeProperties": {
+          "message": "Falha preservada: consultar a atividade original e o guard da publicacao anterior.",
+          "errorCode": "M05_SILVER_FAILED"
+        }
+      },
+      {
+        "name": "Guard_Gold_Failure",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "Publish_Gold",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.00:30:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "linkedService": {
+          "name": "wh_fuelwatch",
+          "properties": {
+            "annotations": [],
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "endpoint": "{{WAREHOUSE_ENDPOINT}}",
+              "artifactId": "{{WAREHOUSE_ID}}",
+              "workspaceId": "{{WORKSPACE_ID}}"
+            }
+          }
+        },
+        "typeProperties": {
+          "scripts": [
+            {
+              "type": "Query",
+              "text": {
+                "value": "@concat('DECLARE @root varchar(36) = ''',pipeline().RunId,''';\nIF TRY_CONVERT(uniqueidentifier,@root) IS NULL\n    THROW 51600, ''Pipeline RunId invalido.'', 1;\nIF NOT EXISTS (SELECT 1 FROM m05.attempt WHERE root_run_id=@root)\n    THROW 51602, ''Baseline ausente.'', 1;\nIF (SELECT COUNT_BIG(*) FROM m05.guard_facts WHERE root_run_id=@root)\n       <> (SELECT COUNT_BIG(*) FROM gold.published_business_bytes)\n    OR EXISTS (SELECT * FROM m05.guard_facts WHERE root_run_id=@root EXCEPT SELECT @root,* FROM gold.published_business_bytes)\n    OR EXISTS (SELECT @root,* FROM gold.published_business_bytes EXCEPT SELECT * FROM m05.guard_facts WHERE root_run_id=@root)\n    THROW 51603, ''Publicacao anterior mudou: facts.'', 1;\nIF (SELECT COUNT_BIG(*) FROM m05.guard_posto WHERE root_run_id=@root)\n       <> (SELECT COUNT_BIG(*) FROM (SELECT CAST(posto_sk AS varbinary(8000)) AS posto_sk,CAST(cnpj AS varbinary(8000)) AS cnpj,CAST(revenda_observada AS varbinary(8000)) AS revenda_observada,CAST(bandeira_observada AS varbinary(8000)) AS bandeira_observada,CAST(municipio_ibge AS varbinary(8000)) AS municipio_ibge,CAST(uf AS varbinary(8000)) AS uf,observado_desde,observado_ate FROM gold.dim_posto) AS current_state)\n    OR EXISTS (SELECT * FROM m05.guard_posto WHERE root_run_id=@root EXCEPT SELECT @root,* FROM (SELECT CAST(posto_sk AS varbinary(8000)) AS posto_sk,CAST(cnpj AS varbinary(8000)) AS cnpj,CAST(revenda_observada AS varbinary(8000)) AS revenda_observada,CAST(bandeira_observada AS varbinary(8000)) AS bandeira_observada,CAST(municipio_ibge AS varbinary(8000)) AS municipio_ibge,CAST(uf AS varbinary(8000)) AS uf,observado_desde,observado_ate FROM gold.dim_posto) AS current_state)\n    OR EXISTS (SELECT @root,* FROM (SELECT CAST(posto_sk AS varbinary(8000)) AS posto_sk,CAST(cnpj AS varbinary(8000)) AS cnpj,CAST(revenda_observada AS varbinary(8000)) AS revenda_observada,CAST(bandeira_observada AS varbinary(8000)) AS bandeira_observada,CAST(municipio_ibge AS varbinary(8000)) AS municipio_ibge,CAST(uf AS varbinary(8000)) AS uf,observado_desde,observado_ate FROM gold.dim_posto) AS current_state EXCEPT SELECT * FROM m05.guard_posto WHERE root_run_id=@root)\n    THROW 51603, ''Publicacao anterior mudou: posto.'', 1;\nIF (SELECT COUNT_BIG(*) FROM m05.guard_publication WHERE root_run_id=@root)\n       <> (SELECT COUNT_BIG(*) FROM (SELECT CAST(batch_id AS varbinary(8000)) AS batch_id,CAST(scope_id AS varbinary(8000)) AS scope_id,CAST(source_sha256 AS varbinary(8000)) AS source_sha256,CAST(ibge_sha256 AS varbinary(8000)) AS ibge_sha256,silver_delta_version,is_synthetic,published_at_utc,rows_published,CAST(source_table AS varbinary(8000)) AS source_table,CAST(snapshot_id AS varbinary(8000)) AS snapshot_id FROM gold.publication) AS current_state)\n    OR EXISTS (SELECT * FROM m05.guard_publication WHERE root_run_id=@root EXCEPT SELECT @root,* FROM (SELECT CAST(batch_id AS varbinary(8000)) AS batch_id,CAST(scope_id AS varbinary(8000)) AS scope_id,CAST(source_sha256 AS varbinary(8000)) AS source_sha256,CAST(ibge_sha256 AS varbinary(8000)) AS ibge_sha256,silver_delta_version,is_synthetic,published_at_utc,rows_published,CAST(source_table AS varbinary(8000)) AS source_table,CAST(snapshot_id AS varbinary(8000)) AS snapshot_id FROM gold.publication) AS current_state)\n    OR EXISTS (SELECT @root,* FROM (SELECT CAST(batch_id AS varbinary(8000)) AS batch_id,CAST(scope_id AS varbinary(8000)) AS scope_id,CAST(source_sha256 AS varbinary(8000)) AS source_sha256,CAST(ibge_sha256 AS varbinary(8000)) AS ibge_sha256,silver_delta_version,is_synthetic,published_at_utc,rows_published,CAST(source_table AS varbinary(8000)) AS source_table,CAST(snapshot_id AS varbinary(8000)) AS snapshot_id FROM gold.publication) AS current_state EXCEPT SELECT * FROM m05.guard_publication WHERE root_run_id=@root)\n    THROW 51603, ''Publicacao anterior mudou: publication.'', 1;\nIF (SELECT COUNT_BIG(*) FROM m05.guard_calendar WHERE root_run_id=@root)\n       <> (SELECT COUNT_BIG(*) FROM (SELECT data_sk,data,inicio_semana_iso,ano_iso,semana_iso FROM gold.dim_data) AS current_state)\n    OR EXISTS (SELECT * FROM m05.guard_calendar WHERE root_run_id=@root EXCEPT SELECT @root,* FROM (SELECT data_sk,data,inicio_semana_iso,ano_iso,semana_iso FROM gold.dim_data) AS current_state)\n    OR EXISTS (SELECT @root,* FROM (SELECT data_sk,data,inicio_semana_iso,ano_iso,semana_iso FROM gold.dim_data) AS current_state EXCEPT SELECT * FROM m05.guard_calendar WHERE root_run_id=@root)\n    THROW 51603, ''Publicacao anterior mudou: calendar.'', 1;\nIF (SELECT COUNT_BIG(*) FROM m05.guard_municipios WHERE root_run_id=@root)\n       <> (SELECT COUNT_BIG(*) FROM (SELECT CAST(municipio_ibge AS varbinary(8000)) AS municipio_ibge,CAST(nome AS varbinary(8000)) AS nome,CAST(uf AS varbinary(8000)) AS uf FROM gold.dim_municipio) AS current_state)\n    OR EXISTS (SELECT * FROM m05.guard_municipios WHERE root_run_id=@root EXCEPT SELECT @root,* FROM (SELECT CAST(municipio_ibge AS varbinary(8000)) AS municipio_ibge,CAST(nome AS varbinary(8000)) AS nome,CAST(uf AS varbinary(8000)) AS uf FROM gold.dim_municipio) AS current_state)\n    OR EXISTS (SELECT @root,* FROM (SELECT CAST(municipio_ibge AS varbinary(8000)) AS municipio_ibge,CAST(nome AS varbinary(8000)) AS nome,CAST(uf AS varbinary(8000)) AS uf FROM gold.dim_municipio) AS current_state EXCEPT SELECT * FROM m05.guard_municipios WHERE root_run_id=@root)\n    THROW 51603, ''Publicacao anterior mudou: municipios.'', 1;\nIF (SELECT COUNT_BIG(*) FROM m05.guard_produtos WHERE root_run_id=@root)\n       <> (SELECT COUNT_BIG(*) FROM (SELECT produto_sk,CAST(produto AS varbinary(8000)) AS produto,CAST(moeda AS varbinary(8000)) AS moeda,CAST(unidade AS varbinary(8000)) AS unidade FROM gold.dim_produto) AS current_state)\n    OR EXISTS (SELECT * FROM m05.guard_produtos WHERE root_run_id=@root EXCEPT SELECT @root,* FROM (SELECT produto_sk,CAST(produto AS varbinary(8000)) AS produto,CAST(moeda AS varbinary(8000)) AS moeda,CAST(unidade AS varbinary(8000)) AS unidade FROM gold.dim_produto) AS current_state)\n    OR EXISTS (SELECT @root,* FROM (SELECT produto_sk,CAST(produto AS varbinary(8000)) AS produto,CAST(moeda AS varbinary(8000)) AS moeda,CAST(unidade AS varbinary(8000)) AS unidade FROM gold.dim_produto) AS current_state EXCEPT SELECT * FROM m05.guard_produtos WHERE root_run_id=@root)\n    THROW 51603, ''Publicacao anterior mudou: produtos.'', 1;\nSELECT ''m05_previous_publication_unchanged'' AS status,@root AS root_run_id;\n')",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "00:10:00"
+        }
+      },
+      {
+        "name": "Fail_Gold",
+        "type": "Fail",
+        "dependsOn": [
+          {
+            "activity": "Guard_Gold_Failure",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "typeProperties": {
+          "message": "Falha preservada: consultar a atividade original e o guard da publicacao anterior.",
+          "errorCode": "M05_GOLD_FAILED"
+        }
+      }
+    ],
+    "parameters": {
+      "p_source_relative_url": {
+        "type": "string",
+        "defaultValue": "/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/shpc/dsas/ca/ca-2026-01.zip"
+      },
+      "p_source_sha256": {
+        "type": "string",
+        "defaultValue": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c"
+      },
+      "p_scope_id": {
+        "type": "string",
+        "defaultValue": "anp-2026-1-rj-gasolina"
+      },
+      "p_fault_stage": {
+        "type": "string",
+        "defaultValue": "none"
+      }
+    }
+  }
+}
