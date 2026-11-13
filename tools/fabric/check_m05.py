@@ -104,6 +104,9 @@ report = {"environment": "fabric", "job_id": args.job_id, "fault_stage": args.fa
           "status": "m05_attempt_verified", "job_status": job["status"],
           "checked_at_utc": datetime.now(timezone.utc).isoformat(),
           "activities": [{key: item.get(key) for key in ["activityName", "status", "activityRunStart", "activityRunEnd", "durationInMs", "retryAttempt"]} for item in activities],
+          "spark_sessions": [{"activity": item["activityName"], "session_id": item["output"]["result"].get("sessionId"),
+                              "sharing": item["output"]["result"].get("highConcurrencyModeStatus")}
+                             for item in activities if item.get("output") and "result" in item["output"]],
           "receipts": receipts, "warehouse_attempt": attempt, "publication": publication,
           "business_fingerprints": fingerprints,
           "previous_publication_unchanged": args.fault != "none",

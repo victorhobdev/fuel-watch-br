@@ -1,10 +1,18 @@
 # M05 — Pipeline mestre e recuperação
 
-Estado: **em desenvolvimento; nenhuma execução completa do pipeline mestre validada ainda**. M00–M04 permanecem aceitos; o checkpoint M04 é `86f0969`. O mestre nativo tem 12 atividades. A primeira execução real completou Copy, Bronze e Silver, mas falhou na descoberta do recibo da exportação, antes de importar/publicar Gold. A recuperação do notebook 08 por REST foi conferida por leitura independente; uma nova tentativa sem falha injetada está em acompanhamento.
+Estado: **primeira execução completa validada; ensaios de falha/recuperação em andamento**. M00–M04 permanecem aceitos; o checkpoint M04 é `86f0969`. O mestre nativo tem 12 atividades e concluiu as oito atividades do caminho normal na tentativa `3ceb55a5-8026-4950-97fb-c2eb229d6c1d`. O aceite M05 ainda depende dos ensaios Silver/Gold, recuperações, repetição e agendamento delimitado.
 
 Atualização de 13/11: o editor voltou a abrir nos notebooks 06 e 08, sem causa confirmada para o carregamento anterior. A versão local do wrapper foi aplicada e comparada integralmente pelo comando de copiar a célula; a proteção do UUID zero e o badge `Parameters` foram conferidos, com confirmação de salvamento. [Prova do wrapper](../evidence/fabric/orchestration/notebook08-ready.json). A validação runtime ainda depende do resultado do pipeline.
 
 ## Contrato desta primeira integração
+
+### Primeira execução completa — 13/11/2026
+
+O job `3ceb55a5-8026-4950-97fb-c2eb229d6c1d` terminou `Completed` com `Capture_Baseline`, `Copy_ANP`, `Bronze`, `Silver`, `Export_Gold_Input`, `Import_Gold`, `Publish_Gold` e `Validate_Gold` em `Succeeded`. O lote publicado é `fc756f7e-a703-40b3-b8d5-c9d338679af8`; o registro Warehouse está `validated` e coincide com o recibo de exportação e o marcador publicado.
+
+A conferência independente por API/OneLake/SQL passou: 422.418 linhas Bronze, 8.052 coletas Gold, 518 versões de posto, 656 grupos semanais, 181 datas, 92 municípios na referência dimensional e um produto. Os três estágios Spark retornaram o mesmo sessionId, com `created` no Bronze e `attached` nos seguintes. [Prova da tentativa e fingerprints](../evidence/fabric/orchestration/pipeline-runs/3ceb55a5-8026-4950-97fb-c2eb229d6c1d/verification.json).
+
+Isso fecha os dois primeiros critérios M05. Uma execução normal não comprova bloqueio em Silver, rollback Gold ou recuperação; os cinco ensaios seguintes são serializados e interrompidos no primeiro resultado inesperado.
 
 O recebimento continua HTTP/Binary da ANP, em caminho por `Pipeline RunId`. O hash aprovado e o escopo são parâmetros explícitos. Esta primeira integração aceita somente o snapshot já revisado; uma republicação diferente deve falhar no hash e passar pelo processo de revisão M03, nunca ser promovida automaticamente.
 
