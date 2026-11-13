@@ -1,0 +1,5 @@
+Row number String status String warehouse_name
+1 m04_lab_setup_ready wh_fuelwatch
+m04_lab_setup_ready
+Bem-sucedido (2 seg 395 ms)
+Bem-sucedido (2 seg 395 ms)

@@ -1,0 +1,2 @@
+Row number Int coletas_fato Int coletas_semanal Decimal soma_fato Decimal soma_semanal
+1 4 4 26.200 26.200

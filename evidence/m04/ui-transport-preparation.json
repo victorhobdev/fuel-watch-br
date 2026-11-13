@@ -1,0 +1,17 @@
+{
+  "prepared_at": "2026-11-12",
+  "execution_method": "Fabric editor, prepared notebook cells with manifest-checked transport bootstrap",
+  "prepared_notebook_sha256": "4e6f7cbf0d33fc913dc532a5f0298e668651f88528e1ae7f166ab4548b90c71d",
+  "ui_code_sha256": "7f09057b1e76b346144bd212b5d26c5b4154a50a865414a480c77f62c622839e",
+  "ui_code_bytes": 173378,
+  "bundle_manifest_sha256": "bbc35790faa9d2997abd8d71112392167a91748c616ebed48772998b194daee7",
+  "payload_files": [
+    "expected_history.parquet",
+    "expected_weekly.parquet",
+    "fuelwatch_rules.zip",
+    "municipios-rj.http.gz",
+    "reference.parquet",
+    "manifest.json"
+  ],
+  "spark_executed": false
+}

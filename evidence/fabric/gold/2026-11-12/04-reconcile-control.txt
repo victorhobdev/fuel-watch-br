@@ -1,0 +1,2 @@
+Row number String batch_id String scope_id String source_sha256 String ibge_sha256 Int silver_delta_version Boolean is_synthetic Date published_at_utc Int rows_published String source_table String snapshot_id
+1 lab-m04-price_only lab_m04_2026_1_rj_gasolina b357d10d4422317f470420954e1a2175e6308721c48209e5110be4ec14dcbdc0 2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0 0 1 2026-11-13 00:15:23.398461 4 lab_m04_fixture fixture-price_only

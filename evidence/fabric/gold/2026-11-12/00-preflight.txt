@@ -1,0 +1,4 @@
+Row number String item_name String collation_name
+1 wh_fuelwatch Latin1_General_100_BIN2_UTF8
+Bem-sucedido (0 seg 603 ms)
+Bem-sucedido (0 seg 603 ms)

@@ -1,0 +1,8 @@
+Row number String experiment_id String scenario String status Int observations Int station_versions Date checked_at_utc
+1 C1DC436D-CFB1-461F-924A-3A249E73E41C base verified 4 2 2026-11-13 00:14:57.958972
+2 C1DC436D-CFB1-461F-924A-3A249E73E41C replay verified 4 2 2026-11-13 00:15:06.712812
+3 C1DC436D-CFB1-461F-924A-3A249E73E41C late_attribute verified 5 4 2026-11-13 00:15:12.881908
+4 C1DC436D-CFB1-461F-924A-3A249E73E41C attribute_correction verified 4 1 2026-11-13 00:15:18.960227
+5 C1DC436D-CFB1-461F-924A-3A249E73E41C price_only verified 4 2 2026-11-13 00:15:25.125836
+6 C1DC436D-CFB1-461F-924A-3A249E73E41C rejected_conflict verified 4 2 2026-11-13 00:15:28.345810
+7 C1DC436D-CFB1-461F-924A-3A249E73E41C rollback_after_writes verified 4 2 2026-11-13 00:15:34.537043

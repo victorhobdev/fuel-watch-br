@@ -21,17 +21,17 @@ O projeto começou nesta pasta, que continha somente um Git vazio, sem commits e
 | Lakehouse | Criação informada pelo usuário; detalhes da capacidade e do workspace ainda não registrados |
 | Pipeline / Copy | Status Bem-sucedido informado pelo usuário; ZIP de landing identificado na auditoria Bronze recebida |
 | Silver Delta | Duas execuções validadas pelos JSONs recebidos: Delta 0 → 1, 8.052 coletas, 502 postos, 27 municípios e mesmo negócio; comparação integral local sem diferenças |
-| Warehouse Gold | Ainda não implementado/validado no Fabric |
-| M04 — Gold e SCD2 | [Roteiro completo e pacote preparados](docs/m04-fabric.md): notebook 07 consome o contrato oficial M03; sete cenários Warehouse e publicação/validação Gold; ensaio local sem diferenças; execução Fabric pendente |
+| Warehouse Gold | Publicado e validado no Fabric: 8.052 fatos, 518 versões observadas e 656 grupos semanais |
+| M04 — Gold e SCD2 | CONCLUÍDO: [sete cenários, reconciliação integral e repetição no Warehouse](evidence/fabric/gold/README.md); cinco critérios aceitos |
 | M02 — IBGE e Silver | CONCLUÍDO: IBGE, fixture distribuído, primeira Silver e repetição validados; cinco de cinco critérios aceitos |
 | M03 — Versões e backfill | CONCLUÍDO: 17 cenários sintéticos e [seleção oficial/repetição validadas no Fabric](evidence/fabric/versioning/official/README.md); cinco critérios aceitos |
 | SCD2, segurança, implantação e streaming | Etapas posteriores; sem resultado reivindicado |
 
 Os dados são amostrais. Ausência de observação não representa preço zero nem cobertura de todos os postos. A saída inicial preserva a coleta individual; não é uma fato semanal.
 
-M00–M03 concluídos. A seleção oficial está em `silver_preco_publicado`, Delta 0, com 8.052 coletas e repetição sem novo commit. Entradas M02 preservadas e sessão Spark encerrada. Próximo marco: M04, Gold no Warehouse, consumindo o contrato de versão aprovado. O [resumo de 11/11](docs/retomada-2026-11-11.md) conserva o checkpoint anterior.
+M00–M04 concluídos. A Gold preserva as 8.052 coletas do snapshot oficial selecionado no M03; histórico e grupos semanais foram reconciliados e a publicação repetida sem diferenças de negócio. Entradas anteriores preservadas e sessão Spark encerrada. Próximo marco: M05, orquestração e recuperação entre camadas. O [resumo de 11/11](docs/retomada-2026-11-11.md) conserva o checkpoint anterior.
 
-[Roadmap completo e acompanhamento por marcos](docs/superpowers/plans/2026-11-12-fuel-watch-br-roadmap.md): 4 de 12 marcos concluídos; M04 preparado, ainda sem aceite Fabric.
+[Roadmap completo e acompanhamento por marcos](docs/superpowers/plans/2026-11-12-fuel-watch-br-roadmap.md): 5 de 12 marcos concluídos; execução continua no M05.
 
 ## Reproduzir o bloco local
 

@@ -1,0 +1,2 @@
+Row number Int coletas Int postos Int municipios Int precos_incomuns
+1 4 1 1 0

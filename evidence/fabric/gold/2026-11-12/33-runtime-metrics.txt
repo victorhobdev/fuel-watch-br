@@ -1,0 +1,4 @@
+Row number Int observations Int station_versions Int weekly_groups Decimal fact_price_sum Decimal weekly_price_sum Int weekly_observations
+1 8052 518 656 52777.200 52777.200 8052
+Bem-sucedido (0 seg 863 ms)
+Bem-sucedido (0 seg 863 ms)

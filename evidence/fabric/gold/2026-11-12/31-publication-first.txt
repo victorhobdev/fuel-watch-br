@@ -1,0 +1,4 @@
+Row number String status String batch_id String scope_id String source_sha256 String ibge_sha256 Int silver_delta_version Boolean is_synthetic Date published_at_utc Int rows_published String source_table String snapshot_id
+1 gold_published 4ef52958-b66b-40de-92df-68da53783740 anp-2026-1-rj-gasolina a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c 2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0 0 0 2026-11-13 00:30:39.803791 8052 silver_preco_publicado 3da66482-2dad-489f-8450-b7ded2005f3d
+Bem-sucedido (8 seg 754 ms)
+Bem-sucedido (8 seg 754 ms)

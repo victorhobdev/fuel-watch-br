@@ -1,6 +1,6 @@
 # Roadmap do Fuel Watch BR — marcos verificáveis
 
-Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M03 aceitos no Fabric e M04 preparado para execução. Planejamento, testes locais e execução validada são identificados separadamente.
+Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M04 aceitos no Fabric; próximo bloco M05, orquestração e recuperação. Planejamento, testes locais e execução validada são identificados separadamente.
 
 **Objetivo:** concluir um observatório explicável de preços de combustíveis no Microsoft Fabric, com fluxo batch confiável, segurança e implantação demonstradas, laboratório sintético de streaming e consumo mínimo.
 
@@ -10,10 +10,10 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 
 ## Como acompanhar
 
-- **Estado atual: 4 de 12 marcos concluídos.** Isso conta entregas aceitas, não representa percentual de esforço ou de tempo.
+- **Estado atual: 5 de 12 marcos concluídos.** Isso conta entregas aceitas, não representa percentual de esforço ou de tempo.
 - Cada marco tem cinco critérios de aceite. Marcar uma caixa exige uma evidência identificada: execução, consulta, comparação, matriz ou documento verificado.
 - Código preparado, teste local e execução no Fabric são estados distintos. Uma etapa que depende de Fabric não fica concluída apenas por passar localmente.
-- Evidências M00–M02 e laboratório M03 foram fornecidas pelo usuário e conferidas localmente. A seleção oficial M03 foi executada pelo agente na guia Fabric autorizada, com saída observada diretamente. A proveniência acompanha cada registro; não houve consulta independente fora dos notebooks.
+- Evidências M00–M02 e laboratório M03 foram fornecidas pelo usuário e conferidas localmente. A seleção oficial M03 e o M04 foram executados pelo agente na guia Fabric autorizada, com saídas observadas diretamente. A proveniência acompanha cada registro; não houve consulta independente fora dos notebooks.
 - Para concluir um marco: fechar seus cinco critérios, registrar evidências, atualizar status/data/commit e indicar o próximo. Falha deixa o marco aberto e preserva a última etapa verde.
 - Dependência indisponível recebe **BLOQUEADO**, com condição de desbloqueio. Recurso condicionado pode receber **NÃO APLICÁVEL**, com justificativa explícita; isso não significa funcionalidade praticada.
 - Não há calendário contratado. Atualizar a previsão de blocos após executar M02 e medir o ritmo real. Registrar data exata de expiração e capacidade do trial; os 60 dias foram informados, não têm vencimento confirmado neste repositório.
@@ -24,7 +24,7 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 | M01 | Ingestão e Bronze com repetição validada no Fabric | CONCLUÍDO | M00 |
 | M02 | IBGE e Silver tipada/validada no Fabric | CONCLUÍDO | M01 |
 | M03 | Versões de origem, correções antigas e backfill | CONCLUÍDO | M02 |
-| M04 | Gold dimensional e histórico observado do posto | PREPARAÇÃO LOCAL | M03 para integração/execução Fabric |
+| M04 | Gold dimensional e histórico observado do posto | CONCLUÍDO | M03 |
 | M05 | Pipeline mestre e recuperação entre camadas | PLANEJADO | M04 |
 | M06 | Exercício delimitado de Dataflow Gen2 | PLANEJADO | M02 |
 | M07 | Acessos e governança com testes reais | PLANEJADO | M04 |
@@ -114,11 +114,11 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 
 **Passos:** confirmar que o item é Warehouse independente, e não apenas SQL analytics endpoint; definir dimensões e vigências; carregar por T-SQL; associar fatos às versões; reconciliar com Silver. Investigar os 14 CNPJs com múltiplas bandeiras observados localmente antes de usar casos reais como evidência de SCD2.
 
-- [ ] Warehouse contém dimensões de data, produto, município e posto, além da fato de preço coletado; granularidade e chaves documentadas, com unidade em toda comparação.
-- [ ] Fato reconcilia integralmente com a Silver aprovada; zero chaves de fato duplicadas e zero referências dimensionais inválidas sem tratamento documentado.
-- [ ] SCD2 com intervalos [início, fim), zero sobreposições e exatamente uma versão apropriada para cada fato; fixture demonstra mudança de bandeira/nome com significado de observação, não de data jurídica.
-- [ ] Chegada atrasada/correção de atributo ajusta intervalos e associações dos fatos; repetição não abre versões extras. Comparação esperada versus obtida aprovada.
-- [ ] Agregação semanal usa calendário ISO explicitado e reconcilia com a fato; apresenta número de coletas/postos e cobertura. Média ponderada pela quantidade de observações quando derivada de agregados, sem inventar ponderação por volume vendido.
+- [x] Warehouse contém dimensões de data, produto, município e posto, além da fato de preço coletado; granularidade e chaves documentadas, com unidade em toda comparação.
+- [x] Fato reconcilia integralmente com a Silver aprovada; zero chaves de fato duplicadas e zero referências dimensionais inválidas sem tratamento documentado.
+- [x] SCD2 com intervalos [início, fim), zero sobreposições e exatamente uma versão apropriada para cada fato; fixture demonstra mudança de bandeira/nome com significado de observação, não de data jurídica.
+- [x] Chegada atrasada/correção de atributo ajusta intervalos e associações dos fatos; repetição não abre versões extras. Comparação esperada versus obtida aprovada.
+- [x] Agregação semanal usa calendário ISO explicitado e reconcilia com a fato; apresenta número de coletas/postos e cobertura. Média ponderada pela quantidade de observações quando derivada de agregados, sem inventar ponderação por volume vendido.
 
 **Métrica de saída:** diferenças de preço/contagem inexplicadas = 0; sobreposições SCD2 = 0; associações temporais ambíguas = 0.
 
@@ -127,6 +127,8 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 **Preparação em 12/11:** [modelo e roteiro M04](../../data-model.md), quatro scripts T-SQL, oito testes locais e [ensaio relacional real](../../../evidence/m04/local-gold.json). Reconciliação local de 8.052 coletas e 518 versões observadas; nenhuma execução Fabric. Adaptador da versão oficial depende do contrato aceito no M03; os cinco critérios permanecem abertos.
 
 **Pacote operacional M04:** [roteiro completo](../../m04-fabric.md), notebook **07** que consome o `consumer_contract` do **06 oficial M03**, seis arquivos de upload, nove scripts Warehouse em ordem e sete cenários sintéticos com comparação integral/rollback. Entrada, publicação oficial, validação e repetição estão preparadas. [Verificação do pacote](../../../evidence/m04/execution-package.json); execução Fabric e aceite continuam pendentes.
+
+**Aceite em 12/11:** [Gold executada no Warehouse](../../../evidence/fabric/gold/README.md), lote 4ef52958: sete cenários SCD2/rollback, 8.052 fatos, 518 versões, 656 grupos semanais, 13 campos reconciliados e publicação/validação repetidas sem diferenças. Métricas consultadas: soma de preços 52.777,200 na fato e no semanal; 8.052 coletas somadas no semanal. Cinco critérios aceitos; sessão Spark encerrada.
 
 ## M05 — Orquestração e recuperação entre camadas
 
@@ -258,15 +260,15 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 
 **Fora do escopo inicial:** clima/INMET, população, predição, API/backend, frontend próprio, carga nacional de vários anos e operação permanente. Não usar essas extensões como requisito para concluir o projeto atual.
 
-## Próximo bloco concreto: M04
+## Próximo bloco concreto: M05
 
-1. Preservar os aceites M00–M03 e consumir o contrato oficial do run 6929bb98: silver_preco_publicado, Delta 0, snapshot 3da66482.
-2. Seguir o roteiro M04 já preparado e conferir as dependências do Warehouse antes de criar/executar itens.
-3. Reconciliar o export da versão selecionada, executar os cenários sintéticos e publicar o modelo dimensional somente após seus checks.
-4. Validar SCD2 observado, fato de coleta, consumo semanal e repetição no Warehouse com evidências reais.
-5. Registrar os resultados M04 sem estender os aceites anteriores a etapas ainda não executadas.
+1. Preservar M00–M04 e o lote Gold aprovado; remover do notebook 07 o bootstrap operacional de transporte antes da integração Git.
+2. Ligar recebimento, Bronze, seleção Silver e Gold em pipeline mestre parametrizado, com auditorias relacionadas por execução.
+3. Executar um caminho verde e comprovar o estado publicado de ponta a ponta.
+4. Provocar falhas delimitadas em Silver e Gold, comprovar proteção da publicação anterior, recuperar e repetir sem duplicação.
+5. Exercitar uma execução agendada/evento delimitada, desativar ao fim e registrar definições reais e runbook.
 
-M03 concluído: 17 cenários sintéticos mais seleção oficial/repetição no Fabric. Sessão Spark encerrada. Próxima execução é M04, não repetir M03 sem motivo.
+M04 concluído. O aceite não demonstra uma transação única entre Lakehouse e Warehouse nem substitui os testes de recuperação do pipeline mestre.
 
 ## Registro de acompanhamento
 
@@ -286,6 +288,7 @@ Em cada sessão, acrescentar uma linha. As mudanças de estado exigem links para
 | 12/11/2026 | M02 | CONCLUÍDO — 5/5 critérios | JSON 5f55cb03 conferido: Delta 0 → 1, same_business_as_previous=true, contagens estáveis e comparação integral sem diferenças | Parar sessão 04; próximo marco M03, notebook 05 pendente |
 | 12/11/2026 | M04 | PREPARAÇÃO LOCAL | T-SQL e fixtures preparados; núcleo relacional e SCD2 verificados localmente sobre o snapshot M02 | Concluir M03; validar laboratório Warehouse e integrar snapshot aprovado |
 | 12/11/2026 | M03 | CONCLUÍDO — 5/5 critérios | Run 6929bb98 executado na guia Fabric: 34 checks, 8.052 coletas, seleção Delta 0 → 0 no replay, M02 preservado e sessão encerrada | M04 — Gold/Warehouse; 4/12 marcos concluídos |
+| 12/11/2026 | M04 | CONCLUÍDO — 5/5 critérios | Sete cenários Warehouse; lote 4ef52958; duas validações de 8.052 fatos/518 versões/656 semanas e soma 52.777,200 reconciliada | M05; 5/12 marcos concluídos |
 
 ## Dependências e referências oficiais
 

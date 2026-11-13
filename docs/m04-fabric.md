@@ -1,6 +1,6 @@
 # Executar M04 no Fabric — roteiro completo da seleção oficial
 
-**Pacote preparado e testado localmente; execução M04 no Fabric ainda não validada.** Este é o roteiro operacional. O [modelo e a semântica SCD2](data-model.md) explicam as decisões. Não usar os artefatos antigos de `data/artifacts/m04/<run_id>` como sequência manual: o pacote abaixo já contém instalação, testes e validação agrupados.
+**M04 executado e validado no Fabric: cinco critérios aceitos.** [Evidências reais](../evidence/fabric/gold/README.md): sete cenários, transferência oficial, publicação, reconciliação integral e repetição. Este roteiro permite reproduzir a execução. O [modelo e a semântica SCD2](data-model.md) explicam as decisões. Não usar os artefatos antigos de `data/artifacts/m04/<run_id>` como sequência manual: o pacote abaixo já contém instalação, testes e validação agrupados.
 
 O notebook **05** cobre o laboratório M03; o **06_official_source_selection** seleciona a origem oficial e devolve um `consumer_contract`. O M04 consome esse contrato na tabela **silver_preco_publicado**, fixando a versão Delta e o `snapshot_id` aprovados. Ele também reconcilia os 13 campos com o baseline revisado no M02. Não confundir a versão Delta dessa nova tabela com a versão 1 de `silver_preco_coletado`: tabelas diferentes têm históricos distintos. Uma mudança de conteúdo requer revisão do pacote; não alterar hashes/versão para forçar execução.
 
@@ -126,7 +126,7 @@ Criar um registro por execução, associado ao pacote/commit. Enviar os JSONs re
 | Atraso/correção/repetição | Suíte sintética aprovada, rollback observado e 31/32 repetidos sem alteração de negócio |
 | Semana ISO e agregação | 656 grupos reconciliados integralmente, calendário válido e soma/quantidade corretas |
 
-Esta preparação não declara M03 ou M04 executados. O estado dos marcos segue as evidências aceitas no roadmap. O início do M04 exige o recibo oficial do notebook 06; seus testes locais não substituem essa execução.
+O M04 foi aceito pelos resultados reais registrados: lote 4ef52958, duas validações completas sem diferenças e sete cenários Warehouse. O estado dos demais marcos segue suas próprias evidências; o aceite M04 não comprova orquestração, segurança ou implantação. Em uma reprodução, exigir novamente o recibo oficial do notebook 06.
 
 ## Regerar localmente, somente antes de iniciar a execução
 

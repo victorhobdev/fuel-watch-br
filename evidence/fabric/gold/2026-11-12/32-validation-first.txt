@@ -1,0 +1,4 @@
+Row number String JSON_F52E2B61-18A1-11d1-B105-00805F49916B
+1 {"status":"m04_gold_snapshot_validated","batch_id":"4ef52958-b66b-40de-92df-68da53783740","scope_id":"anp-2026-1-rj-gasolina","source_table":"silver_preco_publicado","snapshot_id":"3da66482-2dad-489f-8450-b7ded2005f3d","source_sha256":"a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c","ibge_sha256":"2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0","silver_delta_version":0,"is_synthetic":false,"observations":8052,"stations":502,"municipalities":27,"unusual_prices"…
+Bem-sucedido (7 seg 709 ms)
+Bem-sucedido (7 seg 709 ms)

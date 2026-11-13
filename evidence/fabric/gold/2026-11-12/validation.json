@@ -1,0 +1,78 @@
+{
+  "verified_at_utc": "2026-11-13T00:37:24.809817+00:00",
+  "state": "m04_complete",
+  "evidence_source": "agent_executed_notebook_and_sql_via_authorized_fabric_browser_ui",
+  "warehouse_alias": "project_gold_warehouse",
+  "checks": {
+    "warehouse_collation": true,
+    "lab_setup": true,
+    "reference_seed": true,
+    "seven_fixture_scenarios": true,
+    "fixture_summary": true,
+    "lab_business_checks": true,
+    "lab_iso_calendar": true,
+    "lab_metrics": true,
+    "lab_weekly_additivity": true,
+    "transfer_ready": true,
+    "transfer_count": true,
+    "transfer_tables": true,
+    "source_identity": true,
+    "source_preserved": true,
+    "stage_ready": true,
+    "first_publication": true,
+    "replay_publication": true,
+    "first_validation": true,
+    "replay_validation": true,
+    "business_replay_equal": true,
+    "same_transfer_batch": true,
+    "snapshot_lineage": true,
+    "source_hashes": true,
+    "official_flag": true,
+    "coverage": true,
+    "dimensional_history": true,
+    "weekly_groups": true,
+    "integral_comparison": true,
+    "dynamic_warehouse_metrics": true,
+    "screenshot_valid": true
+  },
+  "checks_passed": 30,
+  "fixture_experiment_id": "C1DC436D-CFB1-461F-924A-3A249E73E41C",
+  "fixture_results": {
+    "base": {
+      "observations": 4,
+      "station_versions": 2
+    },
+    "replay": {
+      "observations": 4,
+      "station_versions": 2
+    },
+    "late_attribute": {
+      "observations": 5,
+      "station_versions": 4
+    },
+    "attribute_correction": {
+      "observations": 4,
+      "station_versions": 1
+    },
+    "price_only": {
+      "observations": 4,
+      "station_versions": 2
+    },
+    "rejected_conflict": {
+      "observations": 4,
+      "station_versions": 2
+    },
+    "rollback_after_writes": {
+      "observations": 4,
+      "station_versions": 2
+    }
+  },
+  "batch_id": "4ef52958-b66b-40de-92df-68da53783740",
+  "m04_acceptance_criteria_met": 5,
+  "m04_acceptance_criteria_total": 5,
+  "completed_milestones": 5,
+  "total_milestones": 12,
+  "spark_session_stopped": true,
+  "paid_capacity_created": false,
+  "limits": "Trial workspace used; no concurrency, continuous operation, security matrix or deployment claimed by this M04 proof."
+}

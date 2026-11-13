@@ -1,0 +1,9 @@
+Row number String check_name Int errors
+1 missing_business_rows 0
+2 extra_business_rows 0
+3 duplicate_business_keys 0
+4 invalid_fact_references 0
+5 overlapping_station_intervals 0
+6 invalid_temporal_assignments 0
+Bem-sucedido (2 seg 589 ms)
+Bem-sucedido (2 seg 589 ms)
