@@ -1,0 +1,22 @@
+{
+  "scope": "Read-only assessment before changing automation approach",
+  "local_date": "2026-11-13",
+  "azure_cli_installed": true,
+  "azure_cli_cached_context_readable": true,
+  "cached_tenant_matches_fabric": true,
+  "cached_identity_matches_fabric_user": false,
+  "fabric_api_read_succeeded": false,
+  "authentication_error_code": "AADSTS700082",
+  "interactive_login_attempted": false,
+  "fabric_cli_installed": false,
+  "sqlcmd_installed": true,
+  "odbc_driver_17_installed": true,
+  "odbc_driver_18_installed": true,
+  "warehouse_sql_connection_tested": false,
+  "node_version": "v22.22.2",
+  "fabric_mcp_connected_in_session": false,
+  "packages_installed_during_assessment": false,
+  "jobs_started_during_assessment": false,
+  "resources_created_during_assessment": false,
+  "tokens_or_account_identifiers_recorded": false
+}
