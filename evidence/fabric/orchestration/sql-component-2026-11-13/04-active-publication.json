@@ -1,0 +1,8 @@
+{
+  "batch_id": "4ef52958-b66b-40de-92df-68da53783740",
+  "scope_id": "anp-2026-1-rj-gasolina",
+  "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+  "rows_published": 8052,
+  "source_table": "silver_preco_publicado",
+  "snapshot_id": "3da66482-2dad-489f-8450-b7ded2005f3d"
+}

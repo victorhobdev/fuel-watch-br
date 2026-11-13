@@ -87,7 +87,7 @@ IF NOT EXISTS (SELECT 1 FROM m05.attempt a JOIN gold.publication p ON a.batch_id
     THROW 51605, 'Lote publicado nao corresponde a tentativa.', 1;
 UPDATE m05.attempt SET status='validated',completed_at_utc=CAST(SYSUTCDATETIME() AS datetime2(6))
     WHERE root_run_id=@root;
-SELECT 'm05_pipeline_validated' AS status,* FROM m05.attempt WHERE root_run_id=@root;
+SELECT 'm05_gold_attempt_validated' AS status,* FROM m05.attempt WHERE root_run_id=@root;
 """
 for name, content in {"00_setup.sql": setup, "01_capture.sql": capture, "30_import.sql": import_sql,
                       "31_publish.sql": publish, "32_validate.sql": validate, "90_assert_unchanged.sql": unchanged}.items():

@@ -1,0 +1,51 @@
+6 text Pular para o conteúdo principal
+14 text Carregando...
+22 text field (settable) Pesquisa Global
+24 text Avaliações ativadas:
+25 text 58 dias restantes
+34 text Página Inicial
+36 text Workspaces
+744 text Power BI Copilot
+748 text Catálogo do OneLake
+752 text Monitoramento
+756 text Em tempo real
+760 text Cargas de trabalho
+62 text fuelwatch-dev
+67 text Meu workspace
+70 text Fabric
+112 text Para usar o Copilot, peça ao administrador do workspace para ativá-lo para este workspace.
+116 text Analisar dados com
+120 text Explorar
+129 text Schemas
+131 text Security
+135 text Queries
+137 text My queries
+717 text Visualização
+719 text O Copilot usa IA. Erros podem acontecer. Verifique as sugestões de código antes de executá-las.
+789 text status
+795 text batch_id
+801 text scope_id
+807 text source_sha256
+813 text ibge_sha256
+819 text silver_delta_version
+825 text is_synthetic
+830 text published_at_utc
+836 text rows_published
+842 text source_table
+848 text snapshot_id
+850 row 1 gold_published 4ef52958-b66b-40de-92df-68da53783740 anp-2026-1-rj-gasolina a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c 2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0 0 0 2026-11-13 11:20:35.097334 8052 silver_preco_publicado 3da66482-2dad-489f-8450-b7ded2005f3d
+852 text 1
+854 text gold_published
+856 text 4ef52958-b66b-40de-92df-68da53783740
+858 text anp-2026-1-rj-gasolina
+860 text a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c
+862 text 2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0
+864 text 0
+866 text 0
+868 text 2026-11-13 11:20:35.097334
+870 text 8052
+872 text silver_preco_publicado
+874 text 3da66482-2dad-489f-8450-b7ded2005f3d
+740 text Bem-sucedido (4 seg 651 ms)
+199 text Assistência de código: objetos atualizados (atualizado há há 2 min.)
+875 text Colunas: 11 Linhas: 1

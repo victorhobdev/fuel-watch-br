@@ -1,0 +1,33 @@
+6 text Pular para o conteúdo principal
+14 text Carregando...
+22 text field (settable) Pesquisa Global
+24 text Avaliações ativadas:
+25 text 58 dias restantes
+34 text Página Inicial
+36 text Workspaces
+620 text Power BI Copilot
+624 text Catálogo do OneLake
+628 text Monitoramento
+632 text Em tempo real
+636 text Cargas de trabalho
+62 text fuelwatch-dev
+67 text Meu workspace
+70 text Fabric
+112 text Para usar o Copilot, peça ao administrador do workspace para ativá-lo para este workspace.
+116 text Analisar dados com
+120 text Explorar
+129 text Schemas
+131 text Security
+135 text Queries
+137 text My queries
+593 text Visualização
+595 text O Copilot usa IA. Erros podem acontecer. Verifique as sugestões de código antes de executá-las.
+665 text status
+671 text root_run_id
+672 row 1 m05_previous_publication_unchanged 9b58a7fd-f29a-4d26-b807-e1045f95528a
+674 text 1
+676 text m05_previous_publication_unchanged
+678 text 9b58a7fd-f29a-4d26-b807-e1045f95528a
+616 text Bem-sucedido (1 seg 612 ms)
+199 text Assistência de código: objetos atualizados (atualizado há há 1 min.)
+679 text Colunas: 2 Linhas: 1

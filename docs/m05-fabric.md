@@ -24,6 +24,14 @@ Limite operacional: laboratório serial, um publicador por vez. Ainda não há g
 - `python scripts/build_m05_sql.py` prepara seis scripts, incluindo baseline imutável por tentativa, comparação das duas direções com cardinalidade e textos em bytes, importação do lote exato, publicação com falha opcional e validação correlacionada. O dialeto ainda não foi executado no Warehouse.
 - Suíte local atual: 57 testes aprovados. [Runbook preparado](runbooks/recovery.md).
 
+## Componente SQL executado no Fabric — 13/11/2026
+
+O Warehouse permaneceu disponível apesar do carregamento do editor de notebooks. Foram executados setup, captura de baseline, seis comparações de proteção, falha 51999 após escritas/antes do commit, nova comparação sem diferenças, recuperação em tentativa separada e reconciliação completa. Os recibos registram `gold_failed` e `validated`; o resultado preserva 8.052 coletas, 518 versões, 656 grupos semanais e soma 52.777,200 nas duas projeções.
+
+Evidência: [validation.json](../evidence/fabric/orchestration/sql-component-2026-11-13/validation.json). Isso valida **somente o componente SQL por execução manual na interface**. Copy, Spark, propagação dos parâmetros, dependências do pipeline mestre, falha Silver e agendamento continuam pendentes. Nenhum critério de ponta a ponta M05 foi marcado como completo.
+
+A consulta auxiliar inicial usou `FOR JSON` em subconsulta e recebeu erro 15802 na linha 38. A execução corrigida posicionou `FOR JSON` no último operador e passou; o erro e o resultado foram preservados. Esse diagnóstico não exigiu alteração dos scripts Gold M04 nem das seis comparações de proteção.
+
 ## Dependências confirmadas
 
 O workspace contém os notebooks 01/06/07, Lakehouse, endpoint SQL, Warehouse e pipeline `pl_anp_landing`. A interface do pipeline oferece `Exibir → Editar código JSON`; o recebimento atual foi lido por essa interface e preservado.

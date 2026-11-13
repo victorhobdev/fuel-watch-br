@@ -1,0 +1,35 @@
+6 text Pular para o conteúdo principal
+14 text Carregando...
+22 text field (settable) Pesquisa Global
+24 text Avaliações ativadas:
+25 text 58 dias restantes
+34 text Página Inicial
+36 text Workspaces
+326 text Power BI Copilot
+330 text Catálogo do OneLake
+334 text Monitoramento
+338 text Em tempo real
+342 text Cargas de trabalho
+62 text fuelwatch-dev
+67 text Meu workspace
+70 text Fabric
+112 text Para usar o Copilot, peça ao administrador do workspace para ativá-lo para este workspace.
+116 text Analisar dados com
+120 text Explorar
+129 text Schemas
+131 text Security
+135 text Queries
+137 text My queries
+299 text Visualização
+301 text O Copilot usa IA. Erros podem acontecer. Verifique as sugestões de código antes de executá-las.
+312 text Copiar mensagens
+350 text 8:16:04 AM
+352 text Iniciada a execução na linha 1
+354 text Mensagem 15802, Nível 16, Estado 16, Linha 38
+356 text Request to perform an external distributed computation has failed with error "Unable to find Visit method for logical operator: UnSupportedLogicalOperation".
+358 text Mensagem 15806, Nível 0, Estado 1, Linha 38
+360 text Statement ID: {D8B6409C-AB62-4EF3-8AFE-C1CC6E2AC74C} | Query hash: 0xFE82ADFC719A3B66 | Distributed request ID: {70A207F3-91A2-4F26-B280-9DFC51FBADCC}
+362 text 8:16:13 AM
+364 text Tempo de execução da consulta: 00:00:08.207 | Tempo para processar e renderizar resultados: 00:00:00.636 | Duração total: 00:00:08.843
+322 text Concluído com erros (8 seg 843 ms)
+199 text Assistência de código: objetos atualizados

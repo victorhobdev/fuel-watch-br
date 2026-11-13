@@ -1,0 +1,27 @@
+[
+  {
+    "root_run_id": "9b58a7fd-f29a-4d26-b807-e1045f95528a",
+    "attempt_status": "gold_failed",
+    "batch_id": "4ef52958-b66b-40de-92df-68da53783740",
+    "captured_at_utc": "2026-11-13T11:15:31.029079",
+    "rows_published": 8052,
+    "snapshot_id": "3da66482-2dad-489f-8450-b7ded2005f3d",
+    "station_versions": 518,
+    "weekly_groups": 656,
+    "fact_price_sum": 52777.2,
+    "weekly_price_sum": 52777.2
+  },
+  {
+    "root_run_id": "fe96f77b-d853-4ab7-8433-325a8ce73ccf",
+    "attempt_status": "validated",
+    "batch_id": "4ef52958-b66b-40de-92df-68da53783740",
+    "captured_at_utc": "2026-11-13T11:20:06.658210",
+    "completed_at_utc": "2026-11-13T11:21:08.848070",
+    "rows_published": 8052,
+    "snapshot_id": "3da66482-2dad-489f-8450-b7ded2005f3d",
+    "station_versions": 518,
+    "weekly_groups": 656,
+    "fact_price_sum": 52777.2,
+    "weekly_price_sum": 52777.2
+  }
+]

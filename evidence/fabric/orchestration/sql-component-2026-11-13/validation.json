@@ -1,0 +1,22 @@
+{
+  "status": "m05_sql_component_validated",
+  "environment": "fabric",
+  "checked_at_utc": "2026-11-13T11:22:41.042Z",
+  "checks": {
+    "setup_succeeded": true,
+    "failure_after_writes": true,
+    "all_six_guards_unchanged": true,
+    "recovery_integral_validation": true,
+    "failure_recorded": true,
+    "recovery_recorded": true,
+    "distinct_attempts": true,
+    "metrics_reconcile": true
+  },
+  "fault_attempt": "9b58a7fd-f29a-4d26-b807-e1045f95528a",
+  "recovery_attempt": "fe96f77b-d853-4ab7-8433-325a8ce73ccf",
+  "execution_mode": "manual_warehouse_ui",
+  "pipeline_executed": false,
+  "scope": "Warehouse rollback and recovery component only; no Copy or Spark execution in this experiment",
+  "completed_milestones": 5,
+  "total_milestones": 12
+}
