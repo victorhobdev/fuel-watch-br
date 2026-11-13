@@ -1,0 +1,11 @@
+{
+  "tenant_settings_http_status": 403,
+  "tenant_settings_read": "not_authorized",
+  "reader_tests": "deferred_by_user",
+  "labels_applied": false,
+  "admin_audit_events_queried": false,
+  "observed_license_sku_part_numbers": [
+    "POWER_BI_STANDARD"
+  ],
+  "label_prerequisites": "Pro/PPU e AIP nao observados; tenant settings retornou 403"
+}

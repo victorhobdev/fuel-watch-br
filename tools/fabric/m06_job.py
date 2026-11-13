@@ -6,14 +6,14 @@ import time
 from datetime import datetime, timezone
 from uuid import uuid4
 
-from client import ROOT, definition_operation, request
+from client import ROOT, definition_operation, request, environment_config
 
 parser = argparse.ArgumentParser()
 mode = parser.add_mutually_exclusive_group(required=True)
 mode.add_argument("--start", choices=["baseline", "replay", "invalid", "recovery"])
 mode.add_argument("--watch")
 args = parser.parse_args()
-config = json.loads((ROOT / ".local/fabric-environment.json").read_text())
+config = environment_config()
 workspace, item = config["workspace_id"], config["dataflow_m06_id"]
 base = f"workspaces/{workspace}/dataflows/{item}"
 jobs = f"workspaces/{workspace}/items/{item}/jobs/instances"

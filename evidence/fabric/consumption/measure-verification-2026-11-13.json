@@ -1,0 +1,36 @@
+{
+  "status": "five_measures_reconciled",
+  "environment": "fabric",
+  "checks": [
+    {
+      "case": "total",
+      "groups": 1,
+      "measures_compared": 5,
+      "all_equal": true
+    },
+    {
+      "case": "weekly",
+      "groups": 27,
+      "measures_compared": 5,
+      "all_equal": true
+    },
+    {
+      "case": "municipal",
+      "groups": 27,
+      "measures_compared": 5,
+      "all_equal": true
+    },
+    {
+      "case": "january",
+      "groups": 1,
+      "measures_compared": 5,
+      "all_equal": true
+    }
+  ],
+  "source": "Gold DirectQuery collection grain",
+  "weighted_mean": "SUM(preco_venda)/COUNTROWS(Coletas)",
+  "approximate_float_tolerance": 1e-08,
+  "checked_at_utc": "2026-11-13T19:17:10.396851+00:00",
+  "report_visual_review": "separate_render_evidence",
+  "full_m11_accepted": false
+}

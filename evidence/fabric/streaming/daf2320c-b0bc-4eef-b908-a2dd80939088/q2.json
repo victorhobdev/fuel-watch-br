@@ -1,0 +1,57 @@
+[
+  {
+    "janela": "2026-11-13T15:45:00Z",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "coletas": 28,
+    "soma_precos": 170.79999999999993,
+    "preco_medio": 6.099999999999997,
+    "preco_minimo": 6.1,
+    "preco_maximo": 6.1
+  },
+  {
+    "janela": "2026-11-13T15:50:00Z",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "coletas": 300,
+    "soma_precos": 1829.9999999999907,
+    "preco_medio": 6.099999999999969,
+    "preco_minimo": 6.1,
+    "preco_maximo": 6.1
+  },
+  {
+    "janela": "2026-11-13T15:55:00Z",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "coletas": 300,
+    "soma_precos": 1829.9999999999907,
+    "preco_medio": 6.099999999999969,
+    "preco_minimo": 6.1,
+    "preco_maximo": 6.1
+  },
+  {
+    "janela": "2026-11-13T16:00:00Z",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "coletas": 300,
+    "soma_precos": 1829.9999999999907,
+    "preco_medio": 6.099999999999969,
+    "preco_minimo": 6.1,
+    "preco_maximo": 6.1
+  },
+  {
+    "janela": "2026-11-13T16:05:00Z",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "coletas": 72,
+    "soma_precos": 440.60000000000053,
+    "preco_medio": 6.119444444444452,
+    "preco_minimo": 6.1,
+    "preco_maximo": 7.5
+  }
+]

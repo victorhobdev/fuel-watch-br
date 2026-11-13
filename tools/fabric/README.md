@@ -91,3 +91,21 @@ O experimento M09 ja executado usa `m09_job.py --prepare`, `--start` e `--watch 
 
 O workflow M08 usa `tools/ci/check.ps1` com Python de CI separado e dependencias fixadas. Nao recebe caches Azure nem acessa Fabric. Testes locais nao contam como execucao no GitHub, sincronizacao Git do workspace ou implantacao entre ambientes.
 
+
+
+## Seleção explícita de ambiente e ferramentas finais
+
+O padrão é `.local/fabric-environment.json` (dev). Para test, definir somente no processo:
+
+```powershell
+$env:FUELWATCH_ENV_FILE = Join-Path (Get-Location) '.local/m08-api/environment-test.json'
+.local/fabric-tools/Scripts/python.exe tools/fabric/m05_job.py --watch <job-id-aceito>
+.local/fabric-tools/Scripts/python.exe tools/fabric/check_m05.py <job-id-aceito> --same-business-as <verification.json>
+Remove-Item Env:FUELWATCH_ENV_FILE
+```
+
+`client.environment_config()` aceita apenas arquivo sob `.local`; `warehouse.connect(config)` também permite binding explícito. Não copiar o binding test sobre o arquivo dev. Execuções Dataflow e benchmark usam a mesma seleção; o benchmark exige snapshot aprovado do ambiente alvo.
+
+O laboratório Activator usa MCP remoto oficial autenticado com token Fabric em memória. `m10_monitor.py` consulta regra/histórico; `--shutdown` para a regra e pausa destinos, relendo o estado. Custom endpoint passivo pode permanecer Running; não afirmar que foi pausado. O SDK requer mcp 2.3/httpx2 e os locks do laboratório, separados do transporte Event Hubs.
+
+`m11_model.py`, `m11_report.py`, `check_m11.py` e `m11_render.py` criam/relêem os itens, reconciliam DAX/SQL e exportam o relatório real. No tenant observado, PNG via API retorna 403; PDF funciona e o PNG de conferência foi renderizado localmente desse PDF. Não mudar política global do tenant para contornar essa limitação.

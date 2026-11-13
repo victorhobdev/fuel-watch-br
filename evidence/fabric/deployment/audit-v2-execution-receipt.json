@@ -1,0 +1,17 @@
+{
+  "root_run_id": "96bd92e8-66a0-42e0-b047-1d397d54fded",
+  "attempt_id": "847dde88-87e7-46d5-9286-f7ff1e87b00e",
+  "phase": "export",
+  "scope_id": "anp-2026-1-rj-gasolina",
+  "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+  "fault_stage": "none",
+  "environment": "fabric",
+  "status": "stage_validated",
+  "started_at_utc": "2026-11-13T18:54:51.247974+00:00",
+  "code_release": "m08_audit_v2",
+  "child_audit_relative_path": "audit/m04/6535cf07-75de-47cc-bc3b-1c5e0153f0d3/transfer.json",
+  "batch_id": "6535cf07-75de-47cc-bc3b-1c5e0153f0d3",
+  "source_delta_version": 0,
+  "snapshot_id": "2b2db7dc-49c3-424d-acd8-0abe30c74191",
+  "finished_at_utc": "2026-11-13T18:55:34.394559+00:00"
+}

@@ -1,0 +1,34 @@
+{
+  "workspace_alias": "test",
+  "capacity_sku": "FTL4",
+  "capacity_state": "Active",
+  "spark_settings": {
+    "automaticLog": {
+      "enabled": true
+    },
+    "highConcurrency": {
+      "notebookInteractiveRunEnabled": true,
+      "notebookPipelineRunEnabled": true
+    },
+    "pool": {
+      "customizeComputeEnabled": true,
+      "defaultPool": {
+        "name": "Starter Pool",
+        "type": "Workspace"
+      },
+      "starterPool": {
+        "maxNodeCount": 10,
+        "maxExecutors": 9
+      }
+    },
+    "environment": {
+      "runtimeVersion": "2.0"
+    },
+    "job": {
+      "conservativeJobAdmissionEnabled": false,
+      "sessionTimeoutInMinutes": 20
+    }
+  },
+  "captured_at_utc": "2026-11-13T18:56:09.462234+00:00",
+  "configured_limits_are_not_observed_allocations": true
+}

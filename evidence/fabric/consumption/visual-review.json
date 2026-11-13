@@ -1,0 +1,28 @@
+{
+  "status": "render_visually_reviewed",
+  "source": "actual Power BI PDF export, pt-BR; local Poppler rendering",
+  "files": [
+    {
+      "file": "powerbi-render-ptbr-2026-11-13.pdf",
+      "sha256": "78a1b8f6eee4457bfab846ffeb31e4851d7e85b4ac094bfc93a03c096f3e9985"
+    },
+    {
+      "file": "powerbi-render-ptbr-2026-11-13.png",
+      "sha256": "5e64a4ad46185e1458bddebcdb4be5e9b38ecd25504909e4d04c08b97cd846b0"
+    }
+  ],
+  "observed": [
+    "8052 coletas",
+    "502 postos",
+    "27 municipios",
+    "R$ 6,555",
+    "weekly line",
+    "municipal bars",
+    "coverage table",
+    "scope and BRL/litro explicit"
+  ],
+  "limits": [
+    "static export does not test every interactive click",
+    "image export API disabled by tenant; PDF export succeeded"
+  ]
+}

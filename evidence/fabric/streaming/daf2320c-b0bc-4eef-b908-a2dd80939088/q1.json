@@ -1,0 +1,92 @@
+[
+  {
+    "posto_id": "SYNTHETIC_001",
+    "produto": "GASOLINA",
+    "preco": 6.1,
+    "moeda": "BRL",
+    "unidade": "litro",
+    "event_time": "2026-11-13T16:06:02Z",
+    "event_id": "4253b821-9db8-5eb6-9428-8229cdd1f168"
+  },
+  {
+    "posto_id": "SYNTHETIC_002",
+    "produto": "GASOLINA",
+    "preco": 6.1,
+    "moeda": "BRL",
+    "unidade": "litro",
+    "event_time": "2026-11-13T16:06:03Z",
+    "event_id": "90b00b4e-e45e-5b5e-80b1-06a226dc9691"
+  },
+  {
+    "posto_id": "SYNTHETIC_003",
+    "produto": "GASOLINA",
+    "preco": 6.1,
+    "moeda": "BRL",
+    "unidade": "litro",
+    "event_time": "2026-11-13T16:06:04Z",
+    "event_id": "164b776c-b8bc-55f0-a82f-3076d526d237"
+  },
+  {
+    "posto_id": "SYNTHETIC_004",
+    "produto": "GASOLINA",
+    "preco": 6.1,
+    "moeda": "BRL",
+    "unidade": "litro",
+    "event_time": "2026-11-13T16:06:05Z",
+    "event_id": "f8fd48c9-69b1-5846-9bfb-58e3a2bcd04d"
+  },
+  {
+    "posto_id": "SYNTHETIC_005",
+    "produto": "GASOLINA",
+    "preco": 6.1,
+    "moeda": "BRL",
+    "unidade": "litro",
+    "event_time": "2026-11-13T16:06:06Z",
+    "event_id": "a03fcbce-873a-520c-a956-91830eea3a7a"
+  },
+  {
+    "posto_id": "SYNTHETIC_006",
+    "produto": "GASOLINA",
+    "preco": 6.1,
+    "moeda": "BRL",
+    "unidade": "litro",
+    "event_time": "2026-11-13T16:06:07Z",
+    "event_id": "fe579901-53e2-5d71-9fa5-67705a2a8de7"
+  },
+  {
+    "posto_id": "SYNTHETIC_007",
+    "produto": "GASOLINA",
+    "preco": 6.1,
+    "moeda": "BRL",
+    "unidade": "litro",
+    "event_time": "2026-11-13T16:06:08Z",
+    "event_id": "70f150e2-b20d-5eb6-8717-28aa75767e0a"
+  },
+  {
+    "posto_id": "SYNTHETIC_008",
+    "produto": "GASOLINA",
+    "preco": 6.1,
+    "moeda": "BRL",
+    "unidade": "litro",
+    "event_time": "2026-11-13T16:06:09Z",
+    "event_id": "c66da08d-4a11-52b0-9e07-ae90d66332b3"
+  },
+  {
+    "posto_id": "SYNTHETIC_009",
+    "produto": "GASOLINA",
+    "preco": 6.1,
+    "moeda": "BRL",
+    "unidade": "litro",
+    "event_time": "2026-11-13T16:06:10Z",
+    "event_id": "741be0d8-14ff-5129-9ff3-6bc5e3970ff5"
+  },
+  {
+    "posto_id": "SYNTHETIC_010",
+    "produto": "GASOLINA",
+    "preco": 7.5,
+    "moeda": "BRL",
+    "unidade": "litro",
+    "event_time": "2026-11-13T16:06:11Z",
+    "event_id": "bd2817ad-2ce6-530c-8afa-76a6cecd6672"
+  }
+]

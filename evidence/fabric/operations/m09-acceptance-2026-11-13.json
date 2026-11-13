@@ -1,0 +1,12 @@
+{
+  "status": "m09_accepted",
+  "criteria_passed": 5,
+  "criteria_total": 5,
+  "dev_experiment": "b8c3587a-73a8-4a97-9e5e-f0e1261bbdac",
+  "test_experiment": "34a25824-703c-40f7-b14b-e6a641aa75c1",
+  "test_job": "89e00ad2-07e3-4691-8c1a-515f93b57ada",
+  "post_deployment_revalidation": true,
+  "business_equal_across_environments": true,
+  "production_configuration_changed": false,
+  "cost_or_cu_measured": false
+}

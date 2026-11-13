@@ -7,11 +7,13 @@ from datetime import datetime, timezone
 
 from azure.storage.filedatalake import DataLakeServiceClient
 
-from client import ROOT, credential, request
+from client import ROOT, credential, request, environment_config
 from warehouse import connect
 
-folder = ROOT / '.local/m09-api'
-config = json.loads((ROOT / '.local/fabric-environment.json').read_text())
+config = environment_config()
+alias = config.get('benchmark_workspace_alias', 'dev')
+assert alias in {'dev', 'test'}
+folder = ROOT / ('.local/m09-test-api' if alias == 'test' else '.local/m09-api')
 binding = json.loads((folder / 'binding.json').read_text())
 accepted = json.loads((folder / 'accepted.json').read_text())
 job = request('GET', f"workspaces/{config['workspace_id']}/items/{binding['notebook_id']}/jobs/instances/{accepted['job_id']}").json()
@@ -54,6 +56,7 @@ for phase, partitions in [('baseline', 200), ('intervention', 8)]:
     assert statistics.median(s['seconds'] for s in samples) == audit['medians_seconds'][phase]
 baseline, changed = (audit['medians_seconds'][phase] for phase in ['baseline', 'intervention'])
 verification = {'status': 'benchmark_reconciled', 'environment': 'fabric', 'job_id': accepted['job_id'],
+    'workspace_alias': alias,
     'experiment_id': audit['experiment_id'], 'checked_at_utc': datetime.now(timezone.utc).isoformat(),
     'measured_samples': 6, 'excluded_warmups': 2, 'source_rows': audit['input_rows'],
     'weekly_groups': len(weekly), 'full_columns_compared': fields, 'full_sql_comparison_passed': True,

@@ -1,0 +1,218 @@
+[
+  {
+    "Coletas[Municipio]": "NITEROI",
+    "[Coletas]": 408,
+    "[Postos]": 31,
+    "[Municipios]": 1,
+    "[Soma]": 2588.91,
+    "[PrecoMedio]": 6.345367647058823
+  },
+  {
+    "Coletas[Municipio]": "ARARUAMA",
+    "[Coletas]": 172,
+    "[Postos]": 7,
+    "[Municipios]": 1,
+    "[Soma]": 1165.06,
+    "[PrecoMedio]": 6.77360465116279
+  },
+  {
+    "Coletas[Municipio]": "CABO FRIO",
+    "[Coletas]": 208,
+    "[Postos]": 9,
+    "[Municipios]": 1,
+    "[Soma]": 1409.28,
+    "[PrecoMedio]": 6.775384615384615
+  },
+  {
+    "Coletas[Municipio]": "VALENCA",
+    "[Coletas]": 140,
+    "[Postos]": 8,
+    "[Municipios]": 1,
+    "[Soma]": 948.65,
+    "[PrecoMedio]": 6.776071428571428
+  },
+  {
+    "Coletas[Municipio]": "NOVA FRIBURGO",
+    "[Coletas]": 273,
+    "[Postos]": 13,
+    "[Municipios]": 1,
+    "[Soma]": 1880.64,
+    "[PrecoMedio]": 6.8887912087912095
+  },
+  {
+    "Coletas[Municipio]": "BARRA DO PIRAI",
+    "[Coletas]": 168,
+    "[Postos]": 8,
+    "[Municipios]": 1,
+    "[Soma]": 1150.95,
+    "[PrecoMedio]": 6.850892857142857
+  },
+  {
+    "Coletas[Municipio]": "ITABORAI",
+    "[Coletas]": 251,
+    "[Postos]": 15,
+    "[Municipios]": 1,
+    "[Soma]": 1597.81,
+    "[PrecoMedio]": 6.3657768924302784
+  },
+  {
+    "Coletas[Municipio]": "RIO BONITO",
+    "[Coletas]": 161,
+    "[Postos]": 7,
+    "[Municipios]": 1,
+    "[Soma]": 1046.47,
+    "[PrecoMedio]": 6.499813664596274
+  },
+  {
+    "Coletas[Municipio]": "BARRA MANSA",
+    "[Coletas]": 259,
+    "[Postos]": 14,
+    "[Municipios]": 1,
+    "[Soma]": 1724.36,
+    "[PrecoMedio]": 6.6577606177606174
+  },
+  {
+    "Coletas[Municipio]": "BELFORD ROXO",
+    "[Coletas]": 190,
+    "[Postos]": 11,
+    "[Municipios]": 1,
+    "[Soma]": 1191.41,
+    "[PrecoMedio]": 6.2705789473684215
+  },
+  {
+    "Coletas[Municipio]": "SAQUAREMA",
+    "[Coletas]": 167,
+    "[Postos]": 12,
+    "[Municipios]": 1,
+    "[Soma]": 1125.56,
+    "[PrecoMedio]": 6.739880239520958
+  },
+  {
+    "Coletas[Municipio]": "MACAE",
+    "[Coletas]": 193,
+    "[Postos]": 9,
+    "[Municipios]": 1,
+    "[Soma]": 1292.27,
+    "[PrecoMedio]": 6.695699481865285
+  },
+  {
+    "Coletas[Municipio]": "ITAPERUNA",
+    "[Coletas]": 126,
+    "[Postos]": 6,
+    "[Municipios]": 1,
+    "[Soma]": 875.95,
+    "[PrecoMedio]": 6.951984126984128
+  },
+  {
+    "Coletas[Municipio]": "SAO JOAO DE MERITI",
+    "[Coletas]": 244,
+    "[Postos]": 12,
+    "[Municipios]": 1,
+    "[Soma]": 1533.49,
+    "[PrecoMedio]": 6.284795081967213
+  },
+  {
+    "Coletas[Municipio]": "DUQUE DE CAXIAS",
+    "[Coletas]": 301,
+    "[Postos]": 23,
+    "[Municipios]": 1,
+    "[Soma]": 1908.81,
+    "[PrecoMedio]": 6.3415614617940195
+  },
+  {
+    "Coletas[Municipio]": "TRES RIOS",
+    "[Coletas]": 133,
+    "[Postos]": 8,
+    "[Municipios]": 1,
+    "[Soma]": 939.57,
+    "[PrecoMedio]": 7.0644360902255645
+  },
+  {
+    "Coletas[Municipio]": "MARICA",
+    "[Coletas]": 179,
+    "[Postos]": 12,
+    "[Municipios]": 1,
+    "[Soma]": 1162.37,
+    "[PrecoMedio]": 6.493687150837988
+  },
+  {
+    "Coletas[Municipio]": "CAMPOS DOS GOYTACAZES",
+    "[Coletas]": 89,
+    "[Postos]": 17,
+    "[Municipios]": 1,
+    "[Soma]": 604.04,
+    "[PrecoMedio]": 6.7869662921348315
+  },
+  {
+    "Coletas[Municipio]": "RIO DE JANEIRO",
+    "[Coletas]": 2141,
+    "[Postos]": 143,
+    "[Municipios]": 1,
+    "[Soma]": 13726.94,
+    "[PrecoMedio]": 6.411461933675852
+  },
+  {
+    "Coletas[Municipio]": "RESENDE",
+    "[Coletas]": 208,
+    "[Postos]": 11,
+    "[Municipios]": 1,
+    "[Soma]": 1345.6,
+    "[PrecoMedio]": 6.4692307692307685
+  },
+  {
+    "Coletas[Municipio]": "VOLTA REDONDA",
+    "[Coletas]": 286,
+    "[Postos]": 16,
+    "[Municipios]": 1,
+    "[Soma]": 1947.64,
+    "[PrecoMedio]": 6.80993006993007
+  },
+  {
+    "Coletas[Municipio]": "PETROPOLIS",
+    "[Coletas]": 338,
+    "[Postos]": 26,
+    "[Municipios]": 1,
+    "[Soma]": 2387.05,
+    "[PrecoMedio]": 7.062278106508876
+  },
+  {
+    "Coletas[Municipio]": "SANTO ANTONIO DE PADUA",
+    "[Coletas]": 248,
+    "[Postos]": 10,
+    "[Municipios]": 1,
+    "[Soma]": 1629.61,
+    "[PrecoMedio]": 6.571008064516128
+  },
+  {
+    "Coletas[Municipio]": "SAO GONCALO",
+    "[Coletas]": 441,
+    "[Postos]": 27,
+    "[Municipios]": 1,
+    "[Soma]": 2831.92,
+    "[PrecoMedio]": 6.4215873015873015
+  },
+  {
+    "Coletas[Municipio]": "ANGRA DOS REIS",
+    "[Coletas]": 204,
+    "[Postos]": 14,
+    "[Municipios]": 1,
+    "[Soma]": 1433.74,
+    "[PrecoMedio]": 7.028137254901961
+  },
+  {
+    "Coletas[Municipio]": "NILOPOLIS",
+    "[Coletas]": 178,
+    "[Postos]": 8,
+    "[Municipios]": 1,
+    "[Soma]": 1129.69,
+    "[PrecoMedio]": 6.346573033707865
+  },
+  {
+    "Coletas[Municipio]": "NOVA IGUACU",
+    "[Coletas]": 346,
+    "[Postos]": 25,
+    "[Municipios]": 1,
+    "[Soma]": 2199.41,
+    "[PrecoMedio]": 6.356676300578035
+  }
+]

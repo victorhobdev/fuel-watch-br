@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "kpi_0",
+  "position": {
+    "x": 24,
+    "y": 70,
+    "z": 5,
+    "height": 120,
+    "width": 336,
+    "tabOrder": 5
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Coletas"
+                    }
+                  },
+                  "Property": "Coletas"
+                }
+              },
+              "queryRef": "Coletas.Coletas",
+              "nativeQueryRef": "Coletas"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Coletas de preco'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

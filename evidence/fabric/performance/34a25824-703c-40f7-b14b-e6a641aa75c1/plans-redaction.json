@@ -1,0 +1,50 @@
+[
+  {
+    "file": "baseline-1-plan.txt",
+    "original_sha256": "62a33c350e6db4a900d0d95fa4c675a18da09e37977c3d857255a5a79d1050bf",
+    "redacted_sha256": "154cc1cda253256f949b50e3a3ba0c8351a931638da25231bb4d69304450e0ac",
+    "replaced_environment_identifiers": true
+  },
+  {
+    "file": "baseline-2-plan.txt",
+    "original_sha256": "539be59f40274ad1d609ec882c32d09b096037b5328fea5f7eff126119e0ace1",
+    "redacted_sha256": "1dcdafa3b72358b95a0a25396cc1651d0a9c76412d48251030e21ddfa8d2eec2",
+    "replaced_environment_identifiers": true
+  },
+  {
+    "file": "baseline-3-plan.txt",
+    "original_sha256": "eaf9e733a2aa40379b244870c16a71a32d277ef446b702619967e1c934f45c60",
+    "redacted_sha256": "7c5be70e31cf61000ccc6f2d51fae84d5f9d1cf53867ecb49d7a59db077c36af",
+    "replaced_environment_identifiers": true
+  },
+  {
+    "file": "intervention-1-plan.txt",
+    "original_sha256": "fc4fa152ce856824676dbf8aa89e8f92dacf29850a88688b0823b9606f3bc8f7",
+    "redacted_sha256": "f25f901f02ac4cacc449eec927421dec37e186f5c519de73895285f8a7be2f35",
+    "replaced_environment_identifiers": true
+  },
+  {
+    "file": "intervention-2-plan.txt",
+    "original_sha256": "7c51fabf0df41e494fbef9640aa2d767c001aa453616491535253a032873435a",
+    "redacted_sha256": "25c86ba5dd163df3641bc37562951cc2b4e1b9076632675edfb252771e591c69",
+    "replaced_environment_identifiers": true
+  },
+  {
+    "file": "intervention-3-plan.txt",
+    "original_sha256": "d7e2cf174ca4f855917c60f7af9093312cbda5b63d63d587d59203c6547722cf",
+    "redacted_sha256": "7a7570e328476038f9de75513ffc471b80a94b11bc39910aba5d09fde0b219e2",
+    "replaced_environment_identifiers": true
+  },
+  {
+    "file": "baseline-0-plan.txt",
+    "original_sha256": "2d3d764d160b80b8ee6b3d27a2e7bdf8af5d82afdf3375f1b80791e4081ad62a",
+    "redacted_sha256": "1bdb6cd8d64558bc96420d081605f62cd4a131f805ea146d5661dbaec3025667",
+    "replaced_environment_identifiers": true
+  },
+  {
+    "file": "intervention-0-plan.txt",
+    "original_sha256": "a0472e6665c9e653e7196ec603bc75c9d4317de5288a2e324788cd7d045029f7",
+    "redacted_sha256": "dd5a76fb60e28fb31ea629f696a67aa62ab34b5d1aab98071bd6df3ff85a99c6",
+    "replaced_environment_identifiers": true
+  }
+]

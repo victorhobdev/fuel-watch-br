@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "weekly",
+  "position": {
+    "x": 24,
+    "y": 210,
+    "z": 9,
+    "height": 350,
+    "width": 820,
+    "tabOrder": 9
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Coletas"
+                    }
+                  },
+                  "Property": "Semana"
+                }
+              },
+              "queryRef": "Coletas.Semana",
+              "nativeQueryRef": "Semana"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Coletas"
+                    }
+                  },
+                  "Property": "Preco medio"
+                }
+              },
+              "queryRef": "Coletas.Preco medio",
+              "nativeQueryRef": "Preco medio"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Evolucao semanal — media das coletas, R$/litro'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

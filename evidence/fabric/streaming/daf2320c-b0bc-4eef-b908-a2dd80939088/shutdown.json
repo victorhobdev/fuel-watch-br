@@ -1,0 +1,8 @@
+{
+  "rule_stopped_readback": true,
+  "emitter_finite_and_all_phases_acknowledged": true,
+  "runner_remaining": 0,
+  "eventstream_all_destinations_paused": true,
+  "custom_endpoint_status": "Running",
+  "custom_endpoint_note": "Endpoint passivo rejeita pausa individual; emissor terminou, todos destinos pausados."
+}

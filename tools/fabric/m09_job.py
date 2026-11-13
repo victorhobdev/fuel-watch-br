@@ -5,7 +5,7 @@ import json
 import time
 from datetime import datetime, timezone
 
-from client import ROOT, definition_operation, request
+from client import ROOT, definition_operation, request, environment_config
 
 parser = argparse.ArgumentParser()
 action = parser.add_mutually_exclusive_group(required=True)
@@ -14,13 +14,16 @@ action.add_argument('--start', action='store_true')
 action.add_argument('--watch')
 parser.add_argument('--retry-terminal', action='store_true', help='Nova tentativa somente apos verificar falha terminal anterior')
 args = parser.parse_args()
-config = json.loads((ROOT / '.local/fabric-environment.json').read_text())
+config = environment_config()
 workspace = config['workspace_id']
-folder = ROOT / '.local/m09-api'
+alias = config.get('benchmark_workspace_alias', 'dev')
+assert alias in {'dev', 'test'}
+folder = ROOT / ('.local/m09-test-api' if alias == 'test' else '.local/m09-api')
 folder.mkdir(exist_ok=True)
 binding = folder / 'binding.json'
 
 if args.prepare:
+    notebook_name = '09_weekly_benchmark_test' if alias == 'test' else '09_weekly_benchmark'
     workspace_info = request('GET', f'workspaces/{workspace}').json()
     capacity = next(c for c in request('GET', 'capacities').json()['value'] if c['id'] == workspace_info['capacityId'])
     assert capacity['state'] == 'Active' and capacity['sku'].startswith('FTL'), 'Somente capacidade trial ativa autorizada'
@@ -40,12 +43,12 @@ if args.prepare:
             assert time.monotonic() < deadline, 'Continuar o mesmo Location; nao recriar item'
             time.sleep(10)
     if not state.get('notebook_id'):
-        matches = [item for item in items if item['displayName'] == '09_weekly_benchmark']
+        matches = [item for item in items if item['displayName'] == notebook_name]
         assert len(matches) <= 1
         if matches:
             state['notebook_id'] = matches[0]['id']
         else:
-            response = request('POST', f'workspaces/{workspace}/notebooks', {'displayName': '09_weekly_benchmark',
+            response = request('POST', f'workspaces/{workspace}/notebooks', {'displayName': notebook_name,
                 'description': 'M09 controlled read-only weekly benchmark; no official table writes'})
             state['create_location'] = response.headers.get('Location')
             if response.status_code == 201:
@@ -55,6 +58,8 @@ if args.prepare:
                 raise SystemExit('Criacao aceita. Retomar --prepare para acompanhar o mesmo Location.')
     binding.write_text(json.dumps(state, indent=2))
     notebook = json.loads((ROOT / 'notebooks/09_weekly_benchmark.ipynb').read_text(encoding='utf-8'))
+    if config.get('benchmark_snapshot_id'):
+        notebook['cells'][0]['source'] = ['p_snapshot_id = ' + json.dumps(config['benchmark_snapshot_id']) + '\n']
     notebook['metadata']['dependencies'] = {'lakehouse': {'default_lakehouse': config['lakehouse_id'],
         'default_lakehouse_name': 'lh_fuelwatch', 'default_lakehouse_workspace_id': workspace,
         'known_lakehouses': [{'id': config['lakehouse_id']}]}}
@@ -67,7 +72,7 @@ if args.prepare:
     parts = actual['definition']['parts']
     content = next(part for part in parts if part['path'].endswith('.ipynb'))
     actual_nb = json.loads(base64.b64decode(content['payload']))
-    assert ''.join(actual_nb['cells'][0]['source']) == ''.join(notebook['cells'][0]['source'])
+    assert [''.join(cell['source']) for cell in actual_nb['cells']] == [''.join(cell['source']) for cell in notebook['cells']]
     assert actual_nb['metadata']['dependencies']['lakehouse']['default_lakehouse'] == config['lakehouse_id']
     (folder / 'definition-readback.json').write_text(json.dumps(actual, indent=2))
     print('M09 preparado e relido; nenhum job iniciado', flush=True)

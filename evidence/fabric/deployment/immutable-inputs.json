@@ -1,0 +1,58 @@
+{
+  "status": "immutable_inputs_copied",
+  "environment": "fabric_test",
+  "files": [
+    {
+      "path": "m02_input/fuelwatch_rules.zip",
+      "bytes": 5703,
+      "sha256": "2284a0d113a715125a9f79e5b99e7c1af7237f6afccfeac48531a47804119744"
+    },
+    {
+      "path": "m02_input/manifest.json",
+      "bytes": 2039,
+      "sha256": "01d587c6927b4d2aa93fea09acdfe61b2332508225c9aba554998d12d37e1aaa"
+    },
+    {
+      "path": "m02_input/municipios-rj.http.gz",
+      "bytes": 2105,
+      "sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0"
+    },
+    {
+      "path": "m02_input/reference.parquet",
+      "bytes": 72657,
+      "sha256": "e8455f401fa4fc281622249f9cd2f8e1733d093460717361f2627a97b4e2a5f2"
+    },
+    {
+      "path": "m04_input/expected_history.parquet",
+      "bytes": 25083,
+      "sha256": "ebcc23248d2a2bab06feb1a92a9addef7bf58eaef4b51b330d9bab1518c8d551"
+    },
+    {
+      "path": "m04_input/expected_weekly.parquet",
+      "bytes": 13338,
+      "sha256": "7bb2e24db7e44b23a186589c62b3fbf0b1a126899e44e8929367a13ee9bcc73b"
+    },
+    {
+      "path": "m04_input/fuelwatch_rules.zip",
+      "bytes": 5703,
+      "sha256": "2284a0d113a715125a9f79e5b99e7c1af7237f6afccfeac48531a47804119744"
+    },
+    {
+      "path": "m04_input/manifest.json",
+      "bytes": 2262,
+      "sha256": "bbc35790faa9d2997abd8d71112392167a91748c616ebed48772998b194daee7"
+    },
+    {
+      "path": "m04_input/municipios-rj.http.gz",
+      "bytes": 2105,
+      "sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0"
+    },
+    {
+      "path": "m04_input/reference.parquet",
+      "bytes": 72657,
+      "sha256": "e8455f401fa4fc281622249f9cd2f8e1733d093460717361f2627a97b4e2a5f2"
+    }
+  ],
+  "tables_or_execution_receipts_copied": false,
+  "checked_at_utc": "2026-11-13T18:22:58.478193+00:00"
+}

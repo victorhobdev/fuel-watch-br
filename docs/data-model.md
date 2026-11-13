@@ -1,6 +1,6 @@
 # M04 — Gold dimensional e histórico observado
 
-**Estado em 12/11/2026: pacote de execução preparado; núcleo relacional testado localmente; nenhuma execução M04 no Fabric.** O pacote consome o `consumer_contract` oficial do M03, fixa `silver_preco_publicado` por versão Delta/snapshot_id e reconcilia seu conteúdo com o baseline revisado no M02. Esta preparação não altera notebooks, regras ou evidências M02/M03. Para executar, seguir o [roteiro completo M04](m04-fabric.md).
+**Estado em 13/11/2026: M04 executado e aceito no Fabric.** Sete cenários, reconciliação integral e repetição estão em [evidências Gold](../evidence/fabric/gold/README.md). O desenho abaixo registra as decisões do pacote; a Gold oficial tem 8.052 coletas, 518 versões observadas e 656 grupos semanais. O pacote consome o contrato oficial M03 e fixa a Silver por versão Delta/snapshot. Para reproduzir, seguir o [roteiro M04](m04-fabric.md).
 
 ## Decisões e verificações
 

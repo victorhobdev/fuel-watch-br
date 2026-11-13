@@ -38,6 +38,12 @@ Admin gerencia o workspace e seus acessos; Member pode compartilhar/adicionar pa
 
 Atribuir o Viewer ao leitor é a única concessão de workspace proposta para esse laboratório. Os fixtures e a policy ficam separados de Gold. Rótulos de sensibilidade e auditoria administrativa dependem de disponibilidade/licença/permissões; sua ausência deve ser documentada, sem reivindicar execução. Não há licença paga autorizada nem necessidade de nova capacidade para os testes.
 
+Em 13/11 a API administrativa de tenant respondeu HTTP 403 à conta autora. A consulta Graph da própria conta retornou somente `POWER_BI_STANDARD`, identificado pela referência Microsoft como Fabric (Free); não foram observadas licenças Pro/PPU/AIP atribuídas. Aplicação de rótulos fica **NÃO APLICÁVEL nas condições atuais de licença/permissão**, sem alegar criação de política Purview. A auditoria de jobs/receipts do projeto foi consultada; auditoria administrativa do tenant não foi executada. Nenhuma configuração global foi alterada. [Limites observados](../evidence/fabric/security/governance-limitations-2026-11-13.json).
+
+Responsabilidades: o proprietário do projeto autoriza custo/destinos e guarda credenciais; o autor mantém código, contratos, auditoria e recuperação; o futuro leitor valida menor privilégio; administração do tenant controla habilitação Git/exports/MIP e políticas globais. Conexões de origem usam anonimato para dados públicos ou OAuth delegado, sem segredo no Git. Endpoint SQL, IDs e caches operacionais ficam em `.local`; as definições de portfólio são redigidas antes do push.
+
+Referências de licenciamento: [identificadores de produtos](https://learn.microsoft.com/en-us/entra/identity/users/licensing-service-plan-reference), [requisitos para rótulos](https://learn.microsoft.com/en-us/fabric/enterprise/powerbi/service-security-apply-data-sensitivity-labels).
+
 ## Login separado
 
 Depois de confirmar que a conta leitora existe, fazer seu login interativo em um processo separado, com `AZURE_CONFIG_DIR=.local/azure-reader`. Para scripts Python, `FUELWATCH_IDENTITY=reader` seleciona esse cache; autor usa `author`/`.local/azure`. O shell operacional padrão restaura explicitamente a identidade autora. Não alternar identidades em um mesmo processo Python com tokens em memória. Se o login leitor retornar a conta autora, interromper antes dos testes; nunca interpretar o resultado como permissão do leitor.

@@ -1,0 +1,35 @@
+{
+  "status": "prepared_not_emitted",
+  "is_synthetic": true,
+  "lab_run_id": "daf2320c-b0bc-4eef-b908-a2dd80939088",
+  "prepared_at_utc": "2026-11-13T16:06:12.611925+00:00",
+  "unique_event_ids": 1000,
+  "reinjected_events": 20,
+  "late_fixture_events": 10,
+  "stations": 10,
+  "controlled_transition": {
+    "posto_id": "SYNTHETIC_010",
+    "from": "6.100",
+    "to": "7.500",
+    "threshold": "7.000"
+  },
+  "files": {
+    "seed.jsonl": {
+      "rows": 10,
+      "sha256": "183ec539a08923be3de4e9d3184a16d70059e3b63954b38faffe716edfc92a30"
+    },
+    "baseline.jsonl": {
+      "rows": 989,
+      "sha256": "a26b68c1848bb2bb5031e250de115cc51683ec3a4be8bee39c69e3162ef0eb57"
+    },
+    "transition.jsonl": {
+      "rows": 1,
+      "sha256": "66193a52989527a1fdb50a6816f93fe7254e19c2b1c9048cc502ffb6b5f1fc5e"
+    },
+    "reinject.jsonl": {
+      "rows": 20,
+      "sha256": "84180f9a9a3b64f6f62d1541be827ad9ef04c32b8a7938e3eeab04caad33b78b"
+    }
+  },
+  "source_is_anp": false
+}

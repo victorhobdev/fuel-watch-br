@@ -52,7 +52,7 @@ try:
     source = spark.sql('SELECT * FROM silver_preco_publicado VERSION AS OF 0').where(
         F.col('scope_id') == 'anp-2026-1-rj-gasolina')
     provenance = source.select('snapshot_id', 'source_sha256', 'ibge_sha256', 'is_synthetic').distinct().collect()
-    expected = ('3da66482-2dad-489f-8450-b7ded2005f3d',
+    expected = (p_snapshot_id,
                 'a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c',
                 '2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0', False)
     assert len(provenance) == 1 and tuple(provenance[0]) == expected, 'Snapshot/proveniencia divergente'

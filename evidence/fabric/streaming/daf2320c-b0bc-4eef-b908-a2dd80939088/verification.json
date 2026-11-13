@@ -1,0 +1,26 @@
+{
+  "status": "m10_accepted",
+  "environment": "fabric",
+  "lab_run_id": "daf2320c-b0bc-4eef-b908-a2dd80939088",
+  "received_unique_ids": 1000,
+  "full_payload_comparison": true,
+  "reinjection_excess": 20,
+  "late_fixture_events": 10,
+  "queries_verified": 4,
+  "activations": [
+    {
+      "activationTime": "2026-11-13T18:04:23Z",
+      "ruleId": "0c3cf9db-e655-4ee5-ad09-21dfcc57eef5",
+      "actionType": "FabricItem"
+    }
+  ],
+  "alert_pipeline_run_id": "17476695-2e1c-42ab-a7db-6734d24a73d3",
+  "alert_sql_row_verified": true,
+  "external_notifications_sent": false,
+  "source_is_anp": false,
+  "transport_exactly_once_claimed": false,
+  "checked_at_utc": "2026-11-13T18:09:54.506188+00:00",
+  "criteria_passed": 5,
+  "criteria_total": 5,
+  "shutdown_verified": true
+}

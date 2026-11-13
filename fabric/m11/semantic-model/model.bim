@@ -1,0 +1,121 @@
+{
+  "compatibilityLevel": 1604,
+  "model": {
+    "culture": "pt-BR",
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "discourageImplicitMeasures": true,
+    "sourceQueryCulture": "pt-BR",
+    "tables": [
+      {
+        "name": "Coletas",
+        "columns": [
+          {
+            "name": "cnpj",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "cnpj",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "produto",
+            "dataType": "string",
+            "sourceColumn": "produto",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "data_coleta",
+            "dataType": "dateTime",
+            "sourceColumn": "data_coleta",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "preco_venda",
+            "dataType": "decimal",
+            "sourceColumn": "preco_venda",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "moeda",
+            "dataType": "string",
+            "sourceColumn": "moeda",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "unidade",
+            "dataType": "string",
+            "sourceColumn": "unidade",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "uf",
+            "dataType": "string",
+            "sourceColumn": "uf",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "municipio_ibge",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "municipio_ibge",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Semana",
+            "dataType": "dateTime",
+            "sourceColumn": "inicio_semana_iso",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Municipio",
+            "dataType": "string",
+            "sourceColumn": "municipio_origem",
+            "summarizeBy": "none"
+          }
+        ],
+        "measures": [
+          {
+            "name": "Coletas",
+            "expression": "COUNTROWS(Coletas)",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Postos observados",
+            "expression": "DISTINCTCOUNT(Coletas[cnpj])",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Municipios observados",
+            "expression": "DISTINCTCOUNT(Coletas[municipio_ibge])",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Preco medio",
+            "expression": "DIVIDE(CONVERT(SUM(Coletas[preco_venda]), DOUBLE), [Coletas])",
+            "formatString": "R$ #,0.000"
+          },
+          {
+            "name": "Soma precos",
+            "expression": "SUM(Coletas[preco_venda])",
+            "formatString": "#,0.000"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Gold",
+            "mode": "directQuery",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Sql.Database(\"{{WAREHOUSE_SERVER}}\", \"wh_fuelwatch\"),",
+                "    Coletas = Source{[Schema=\"gold\",Item=\"powerbi_coletas\"]}[Data]",
+                "in",
+                "    Coletas"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

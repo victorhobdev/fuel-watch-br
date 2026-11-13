@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "kpi_2",
+  "position": {
+    "x": 732,
+    "y": 70,
+    "z": 7,
+    "height": 120,
+    "width": 336,
+    "tabOrder": 7
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Coletas"
+                    }
+                  },
+                  "Property": "Municipios observados"
+                }
+              },
+              "queryRef": "Coletas.Municipios observados",
+              "nativeQueryRef": "Municipios observados"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Municipios com coleta'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

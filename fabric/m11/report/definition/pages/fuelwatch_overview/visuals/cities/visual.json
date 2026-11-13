@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "cities",
+  "position": {
+    "x": 866,
+    "y": 210,
+    "z": 10,
+    "height": 650,
+    "width": 550,
+    "tabOrder": 10
+  },
+  "visual": {
+    "visualType": "barChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Coletas"
+                    }
+                  },
+                  "Property": "Municipio"
+                }
+              },
+              "queryRef": "Coletas.Municipio",
+              "nativeQueryRef": "Municipio"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Coletas"
+                    }
+                  },
+                  "Property": "Preco medio"
+                }
+              },
+              "queryRef": "Coletas.Preco medio",
+              "nativeQueryRef": "Preco medio"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Comparacao municipal — R$/litro'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,12 +1,16 @@
 # M08 — implantação entre ambientes
 
-Estado: **repositório privado criado após aprovação explícita em 13/11/2026**: https://github.com/victorhobdev/fuel-watch-br . Push, runner, integração Git do workspace e implantação ainda pendentes. O aceite exige sincronização Git, promoção, execução reconciliada e restauração reais.
+Estado em 13/11/2026: **repositório privado criado e histórico revisado enviado após aprovação explícita**. O [CI real](https://github.com/victorhobdev/fuel-watch-br/actions/runs/43476635718), commit `e373d1e`, passou com 37 checks naquela revisão; runner local efêmero encerrado e removido. A revisão atual tem checks adicionais, com validação registrada separadamente.
 
-## Destino proposto para aprovação
+A deployment pipeline dev → test usa a mesma capacidade trial FTL4. Promoção nativa, bootstrap das entradas imutáveis e execução completa em test foram reconciliados integralmente com dev. Uma revisão de auditoria foi promovida e observada no recibo real; seu pipeline falhou ao esgotar retries de visibilidade do manifesto no SQL endpoint. A publicação anterior foi preservada e a recuperação CLI usou o **mesmo lote**, com igualdade das seis projeções de negócio. A falha original continua `Failed`, sem reclassificação. O código original já foi restaurado e relido em ambos os ambientes; a execução restaurada terminou com oito etapas bem-sucedidas e seis projeções de negócio integralmente iguais.
+
+**Pendente:** integração Git nativa do workspace, que exige autenticação GitHub diretamente no Fabric. O usuário foi orientado a autorizar somente este repositório. A credencial ampla da CLI não foi transferida para o Fabric. A implantação por API não substitui o aceite da sincronização Git.
+
+## Destino aprovado
 
 Repositório novo **privado** `victorhobdev/fuel-watch-br`, mantendo o histórico local do Fuel Watch. A integração do workspace usará o diretório `fabric/workspace` em branch própria, evitando misturar as definições geradas pelo Fabric com os exports/documentos do projeto. O diretório deve começar vazio e ser preenchido pela primeira sincronização do workspace.
 
-A criação/push aguarda aprovação do destino. Antes do primeiro push, revisar tanto os arquivos atuais quanto o histórico alcançável, porque remover um segredo só do último commit não o retira dos anteriores. Não publicar `.local`, caches Azure, conexões com tokens, senhas ou screenshots de contas.
+Criação e push foram aprovados e executados. Antes do primeiro push, revisar tanto os arquivos atuais quanto o histórico alcançável, porque remover um segredo só do último commit não o retira dos anteriores. Não publicar `.local`, caches Azure, conexões com tokens, senhas ou screenshots de contas.
 
 O GitHub autenticado na CLI serve para criar o repositório e fazer push. Sua credencial ampla não será copiada para uma conexão Fabric. Para a integração nativa, preferir PAT fine-grained limitado ao repositório aprovado, com Contents read/write, informado pelo usuário diretamente no fluxo seguro da plataforma. Nunca pedir token no chat. Se a conexão não puder ser criada por CLI sem expor o segredo, orientar somente esse passo pela interface.
 
@@ -31,10 +35,19 @@ O job tem `contents: read`, checkout por SHA imutável, sem credencial persistid
 
 ## Particularidades já observadas
 
-- M06 é Dataflow Gen2 com definição nativa e suporte atual a CI/CD. Ainda não foi promovido entre ambientes. Seu Execute API preview usado no projeto requer identidade delegada; não afirmar suporte a service principal apenas porque outras APIs o aceitam.
+- M06 é Dataflow Gen2 com definição nativa e suporte atual a CI/CD. Foi promovido, teve referências M remapeadas e foi executado no destino e reconciliou 92 municípios nas três colunas. Seu Execute API preview usado no projeto requer identidade delegada; não afirmar suporte a service principal apenas porque outras APIs o aceitam.
 - As referências GUID no M e os bindings de conexões não podem ser tratados como automaticamente remapeados sem leitura do destino.
 - Dataflow criou staging Lakehouse/Warehouse na capacidade atual; dependências não devem ser apagadas como lixo do projeto.
 - A policy/fixture de segurança M07 é laboratório separado; identidade leitora e permissões de dev não devem ser propagadas silenciosamente para test.
 - Os checks CI propostos não executam Spark nem promovem recursos; a validação de implantação é uma etapa separada com autenticação própria.
 
 Referências: [Git integration](https://learn.microsoft.com/en-us/fabric/cicd/git-integration/git-get-started), [deployment process](https://learn.microsoft.com/en-us/fabric/cicd/deployment-pipelines/understand-the-deployment-process), [Dataflow CI/CD](https://learn.microsoft.com/en-us/fabric/data-factory/dataflow-gen2-cicd-and-git-integration), [GitHub Actions billing](https://docs.github.com/en/billing/concepts/product-billing/github-actions).
+
+
+## Dependências e comportamento observado no destino
+
+O ambiente vazio precisou executar `03_ibge_reference` e `04_bronze_to_silver` antes do mestre: a seleção oficial depende do histórico Silver. A primeira tentativa falhou nessa dependência e preservou a publicação; o bootstrap resolveu a causa sem remover a proteção.
+
+O deploy remapeou o Lakehouse padrão dos notebooks, mas reteve referências literais de dev no M e nos endpoints SQL de atividades. `m08_bindings.py` corrige e relê essas referências antes da execução. O HTTP de teste tem conexão anônima própria; o OAuth genérico do Lakehouse reutiliza a identidade autorizada, sem alegar isolamento de identidade OAuth. Dados Delta e recibos de dev não foram copiados: somente bundles imutáveis de entrada tiveram bytes e SHA conferidos após cópia.
+
+Para operar em test, definir `FUELWATCH_ENV_FILE` com o caminho privado `.local/m08-api/environment-test.json` somente no processo desejado. O padrão permanece dev; `warehouse.connect(config)` permite seleção explícita. Não trocar o arquivo padrão para simular promoção.

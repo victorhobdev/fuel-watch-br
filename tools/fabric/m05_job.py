@@ -4,14 +4,14 @@ import json
 import time
 from datetime import datetime, timedelta, timezone
 
-from client import ROOT, request
+from client import ROOT, request, environment_config
 
 parser = argparse.ArgumentParser()
 action = parser.add_mutually_exclusive_group(required=True)
 action.add_argument("--start", choices=["none", "silver", "gold"])
 action.add_argument("--watch", help="ID de uma tentativa ja iniciada")
 args = parser.parse_args()
-config = json.loads((ROOT / ".local/fabric-environment.json").read_text())
+config = environment_config()
 workspace, pipeline = config["workspace_id"], config["pipeline_id"]
 base = f"workspaces/{workspace}/items/{pipeline}/jobs"
 

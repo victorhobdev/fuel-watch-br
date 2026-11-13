@@ -1,0 +1,102 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "coverage",
+  "position": {
+    "x": 24,
+    "y": 580,
+    "z": 11,
+    "height": 280,
+    "width": 820,
+    "tabOrder": 11
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Coletas"
+                    }
+                  },
+                  "Property": "Municipio"
+                }
+              },
+              "queryRef": "Coletas.Municipio",
+              "nativeQueryRef": "Municipio"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Coletas"
+                    }
+                  },
+                  "Property": "Coletas"
+                }
+              },
+              "queryRef": "Coletas.Coletas",
+              "nativeQueryRef": "Coletas"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Coletas"
+                    }
+                  },
+                  "Property": "Postos observados"
+                }
+              },
+              "queryRef": "Coletas.Postos observados",
+              "nativeQueryRef": "Postos observados"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Coletas"
+                    }
+                  },
+                  "Property": "Preco medio"
+                }
+              },
+              "queryRef": "Coletas.Preco medio",
+              "nativeQueryRef": "Preco medio"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Cobertura por municipio — observacoes da pesquisa'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

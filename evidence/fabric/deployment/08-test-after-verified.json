@@ -1,0 +1,5 @@
+{
+  "source_sha256": "ed1fb219ecc9909af2d5bef403ad01e60c99dcecc18fd6a13bd6d4d796e04ca9",
+  "expected_revision": "after",
+  "test_lakehouse_verified": true
+}

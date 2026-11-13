@@ -1,0 +1,120 @@
+[
+  {
+    "case": "first",
+    "id": "d7ffcb65-29bf-4070-9d19-f9bce8151209",
+    "type": "Deploy",
+    "status": "Succeeded",
+    "executionStartTime": "2026-11-13T18:14:13.837",
+    "executionEndTime": "2026-11-13T18:15:54.693",
+    "steps": [
+      {
+        "item_type": "Dataflow",
+        "item_name": "df_m06_ibge_lab",
+        "status": "Succeeded",
+        "pre_deployment_diff_state": "New"
+      },
+      {
+        "item_type": "Lakehouse",
+        "item_name": "lh_fuelwatch",
+        "status": "Succeeded",
+        "pre_deployment_diff_state": "New"
+      },
+      {
+        "item_type": "Warehouse",
+        "item_name": "wh_fuelwatch",
+        "status": "Succeeded",
+        "pre_deployment_diff_state": "New"
+      },
+      {
+        "item_type": "DataPipeline",
+        "item_name": "pl_anp_landing",
+        "status": "Succeeded",
+        "pre_deployment_diff_state": "New"
+      },
+      {
+        "item_type": "Notebook",
+        "item_name": "01_landing_to_bronze",
+        "status": "Succeeded",
+        "pre_deployment_diff_state": "New"
+      },
+      {
+        "item_type": "Notebook",
+        "item_name": "03_ibge_reference",
+        "status": "Succeeded",
+        "pre_deployment_diff_state": "New"
+      },
+      {
+        "item_type": "Notebook",
+        "item_name": "06_official_source_selection",
+        "status": "Succeeded",
+        "pre_deployment_diff_state": "New"
+      },
+      {
+        "item_type": "Notebook",
+        "item_name": "07_export_gold_input",
+        "status": "Succeeded",
+        "pre_deployment_diff_state": "New"
+      },
+      {
+        "item_type": "Notebook",
+        "item_name": "08_pipeline_stage",
+        "status": "Succeeded",
+        "pre_deployment_diff_state": "New"
+      },
+      {
+        "item_type": "DataPipeline",
+        "item_name": "pl_fuelwatch_master",
+        "status": "Succeeded",
+        "pre_deployment_diff_state": "New"
+      }
+    ]
+  },
+  {
+    "case": "bootstrap04",
+    "id": "8d5062b5-fbe5-4810-8598-9b83c9188184",
+    "type": "Deploy",
+    "status": "Succeeded",
+    "executionStartTime": "2026-11-13T18:35:09.05",
+    "executionEndTime": "2026-11-13T18:35:12.88",
+    "steps": [
+      {
+        "item_type": "Notebook",
+        "item_name": "04_bronze_to_silver",
+        "status": "Succeeded",
+        "pre_deployment_diff_state": "New"
+      }
+    ]
+  },
+  {
+    "case": "audit_change",
+    "id": "ffd16364-7aeb-4bd3-a802-91224d680a54",
+    "type": "Deploy",
+    "status": "Succeeded",
+    "executionStartTime": "2026-11-13T18:49:28.293",
+    "executionEndTime": "2026-11-13T18:49:29.95",
+    "steps": [
+      {
+        "item_type": "Notebook",
+        "item_name": "08_pipeline_stage",
+        "status": "Succeeded",
+        "pre_deployment_diff_state": "Different"
+      }
+    ]
+  },
+  {
+    "case": "rollback",
+    "id": "c9d6c54f-3f39-4c79-85ca-137d473162fd",
+    "type": "Deploy",
+    "status": "Succeeded",
+    "executionStartTime": "2026-11-13T19:08:47.29",
+    "executionEndTime": "2026-11-13T19:08:48.867",
+    "steps": [
+      {
+        "item_type": "Notebook",
+        "item_name": "08_pipeline_stage",
+        "status": "Succeeded",
+        "pre_deployment_diff_state": "Different"
+      }
+    ]
+  }
+]

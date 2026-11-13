@@ -1,6 +1,6 @@
 # Roadmap do Fuel Watch BR — marcos verificáveis
 
-Atualizado em **13/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M06 aceitos no Fabric; M07 com fixtures reais e leitor pendente, M08 com destino remoto pendente e M09 validado em dev, aguardando revalidação após M08. Planejamento, testes locais e execução validada são identificados separadamente.
+Atualizado em **13/11/2026**, America/Sao_Paulo. M00–M06 aceitos; M10 aceito com disparo real. M07 aguarda leitor adiado pelo usuário; M08 teve CI e promoção reais, com Git nativo pendente; M09 aceito em dev/test e M11 tem relatório/medidas verificados.
 
 **Objetivo:** concluir um observatório explicável de preços de combustíveis no Microsoft Fabric, com fluxo batch confiável, segurança e implantação demonstradas, laboratório sintético de streaming e consumo mínimo.
 
@@ -10,7 +10,7 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 
 ## Como acompanhar
 
-- **Estado atual: 7 de 12 marcos concluídos.** Isso conta entregas aceitas, não representa percentual de esforço ou de tempo.
+- **Estado atual: 9 de 12 marcos concluídos.** Isso conta entregas aceitas, não representa percentual de esforço ou de tempo.
 - Cada marco tem cinco critérios de aceite. Marcar uma caixa exige uma evidência identificada: execução, consulta, comparação, matriz ou documento verificado.
 - Código preparado, teste local e execução no Fabric são estados distintos. Uma etapa que depende de Fabric não fica concluída apenas por passar localmente.
 - Evidências M00–M02 e laboratório M03 foram fornecidas pelo usuário e conferidas localmente. A seleção oficial M03 e o M04 foram executados pelo agente na guia Fabric autorizada, com saídas observadas diretamente. A proveniência acompanha cada registro; não houve consulta independente fora dos notebooks.
@@ -28,10 +28,10 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 | M05 | Pipeline mestre e recuperação entre camadas | CONCLUÍDO | M04 |
 | M06 | Exercício delimitado de Dataflow Gen2 | CONCLUÍDO | M02 |
 | M07 | Acessos e governança com testes reais | EM ANDAMENTO | M04 |
-| M08 | Git do workspace e implantação entre ambientes | PREPARADO LOCALMENTE | M05; M06 para implantar esse item |
-| M09 | Monitoramento, diagnóstico e desempenho medido | VALIDADO DEV; REVALIDAR APÓS M08 | M05; repetir verificações após M08 |
-| M10 | Streaming sintético, KQL e alerta | PLANEJADO | M05 e condições operacionais de M09 |
-| M11 | Consumo mínimo e encerramento reproduzível | PLANEJADO | M06–M10 e núcleo batch |
+| M08 | Git do workspace e implantação entre ambientes | IMPLANTADO; GIT NATIVO PENDENTE | M05; M06 para implantar esse item |
+| M09 | Monitoramento, diagnóstico e desempenho medido | CONCLUÍDO | M05; repetir verificações após M08 |
+| M10 | Streaming sintético, KQL e alerta | CONCLUÍDO | M05 e condições operacionais de M09 |
+| M11 | Consumo mínimo e encerramento reproduzível | CONSUMO VALIDADO; REVISÃO FINAL EM ANDAMENTO | M06–M10 e núcleo batch |
 
 **Ordem principal:** M00 → M01 → M02 → M03 → M04 → M05 → M08 → M09 → M10 → M11. Encaixar M06 depois de M02 e M07 depois de M04, antes do aceite final. Essa ordem é de execução; versionamento, auditoria e revisão de acessos começam antes dos seus marcos finais.
 
@@ -176,13 +176,13 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 - [ ] Os seis casos são executados com identidades e papéis apropriados, com resultados esperados registrados; não usar sessão administrativa como prova de restrição de leitor.
 - [ ] RLS regional testada com identidade de leitura e fixture de pelo menos duas UFs em tabela de laboratório separada: linhas permitidas visíveis, linhas restritas invisíveis; CNPJ oficial não é artificialmente classificado como segredo.
 - [ ] Mascaramento de campo fictício demonstrado e distinguido de autorização/anonimização. Uma restrição SQL não é apresentada como proteção automática aos arquivos.
-- [ ] Registro de governança contém responsabilidades, conexões/segredos fora do Git e condições de rótulos/auditoria administrativa; aplicar rótulo se houver permissão/licença, ou registrar a limitação como NÃO APLICÁVEL sem reivindicar execução.
+- [x] Registro de governança contém responsabilidades, conexões/segredos fora do Git e condições de rótulos/auditoria administrativa; aplicar rótulo se houver permissão/licença, ou registrar a limitação como NÃO APLICÁVEL sem reivindicar execução.
 
 **Métrica de saída:** 6/6 casos da matriz e teste RLS aprovados. Falta de identidade de leitura bloqueia esse aceite; teste administrativo simulado não substitui essa condição.
 
 **Arquivos previstos:** `sql/labs/security.sql`, `docs/security-matrix.md`, `evidence/fabric/security/`. Usar aliases de papel nas evidências versionadas, sem dados pessoais de conta.
 
-**Checkpoint 13/11:** 1/5 critérios. Matriz definida; policy/máscara e fixtures compilados/lidos no Fabric como autor. Leitor ainda não testado e nenhum papel concedido. [Setup real](../../../evidence/fabric/security/author-setup-2026-11-13.json).
+**Checkpoint 13/11:** 2/5 critérios; matriz e governança documentadas, labels não aplicáveis nas permissões/licença observadas. Matriz definida; policy/máscara e fixtures compilados/lidos no Fabric como autor. Leitor ainda não testado e nenhum papel concedido. [Setup real](../../../evidence/fabric/security/author-setup-2026-11-13.json).
 
 ## M08 — Git e implantação real
 
@@ -191,16 +191,16 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 **Passos:** começar a preparar integração já em M02; definir destino remoto privado e autorizações quando essa ação for necessária; consultar suporte por tipo de item; conectar dev; implantar para um workspace de teste na capacidade disponível. Não pressupor três ambientes ou outra capacidade paga.
 
 - [ ] Repositório remoto/destino aprovado e workspace dev conectado ao Git; uma alteração de item real é sincronizada e seu commit identificado. O Git local já existente é a base, não prova de integração do workspace.
-- [ ] Duas áreas de trabalho distintas (dev e teste) têm configurações/conexões separadas; nenhum segredo ou identificador pessoal fica no código, e o suporte de cada item à implantação é registrado.
-- [ ] Uma mudança dos itens suportados é promovida por deployment pipeline e executada no destino, com reconciliação da fatia e comparação dos resultados esperados.
-- [ ] Uma versão anterior é restaurada e testada no destino; recuperação documentada sem depender de apagar ambientes ou dados para fingir rollback.
-- [ ] Validação automática do provedor escolhido executa os checks locais pertinentes; runbook permite repetir a implantação. Se um item não tiver suporte nativo, exercitar a alternativa real e registrar a diferença; integração nativa bloqueada não é marcada como praticada.
+- [x] Duas áreas de trabalho distintas (dev e teste) têm configurações/conexões separadas; nenhum segredo ou identificador pessoal fica no código, e o suporte de cada item à implantação é registrado.
+- [x] Uma mudança dos itens suportados é promovida por deployment pipeline e executada no destino, com reconciliação da fatia e comparação dos resultados esperados.
+- [x] Uma versão anterior é restaurada e testada no destino; recuperação documentada sem depender de apagar ambientes ou dados para fingir rollback.
+- [x] Validação automática do provedor escolhido executa os checks locais pertinentes; runbook permite repetir a implantação. Se um item não tiver suporte nativo, exercitar a alternativa real e registrar a diferença; integração nativa bloqueada não é marcada como praticada.
 
 **Métrica de saída:** uma sincronização Git, uma implantação dev → teste, uma restauração e uma execução reconciliada em teste, todos vinculados a versões.
 
 **Arquivos previstos:** `fabric/`, `config/environments.example.json`, `docs/deployment.md`, configuração de CI do provedor efetivamente escolhido, `evidence/fabric/deployment/`.
 
-**Preparação 13/11:** workflow manual, runner local efêmero proposto, lock e 34 testes portáteis aprovados em venv novo. Isso não é execução GitHub nem integração de workspace. Destino privado proposto aguarda aprovação; [runbook](../../deployment.md).
+**Checkpoint 13/11:** 4/5 critérios. Repositório privado e CI real aprovados/executados; duas áreas na mesma FTL4, deploy e execução reconciliada, revisão de auditoria observada, recuperação do mesmo lote e restauração executada com igualdade integral. Dataflow test: 92 municípios iguais. Falta a sincronização Git nativa, cujo login foi solicitado diretamente no Fabric. [Evidência](../../../evidence/fabric/deployment/checkpoint.json), [runbook](../../deployment.md).
 
 ## M09 — Operação, diagnóstico e otimização medida
 
@@ -218,7 +218,7 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 
 **Arquivos previstos:** `docs/operations.md`, `docs/performance.md`, consultas/notebooks específicos do experimento, `evidence/fabric/operations/` e `evidence/fabric/performance/`.
 
-**Checkpoint 13/11:** 5/5 critérios verificados em dev; marco ainda depende da revalidação pertinente após M08 para aceite final. Índice de sete runs, diagnóstico, seis medições e reconciliação integral de 656 grupos/13 colunas. Medianas 0,5170 s → 0,2444 s com cache quente; tarefas iguais, sem alterar configuração produtiva ou alegar economia de CU. [Evidência](../../../evidence/fabric/operations/m09-dev-checkpoint-2026-11-13.json), [relatório e limites](../../performance.md).
+**Aceite 13/11:** 5/5 critérios, com revalidação após implantação/restauração M08. Seis medições em dev e seis em test, 656 grupos/13 colunas iguais a Gold e mesmo fingerprint entre ambientes; configuração restaurada, nenhuma escrita oficial ou economia de CU alegada. [Aceite](../../../evidence/fabric/operations/m09-acceptance-2026-11-13.json), [relatório](../../performance.md).
 
 ## M10 — Streaming sintético, KQL e Activator
 
@@ -226,15 +226,17 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 
 **Passos:** definir contrato com event_id, posto sintético, produto, unidade, event_time UTC, preço e is_synthetic=true; emitir lote finito; conectar Eventstream e Eventhouse; consultar em KQL; exercitar regra Activator e encerrar o emissor.
 
-- [ ] Gerador emite 1.000 event_ids válidos e únicos, termina automaticamente e registra a emissão. Itens/tabelas sintéticos ficam separados dos dados oficiais; endpoints/credenciais ficam protegidos.
-- [ ] Eventstream → Eventhouse/KQL executado de verdade; comparar conjuntos de IDs emitidos e recebidos após estabilizar a ingestão, sem perdas inexplicadas e com duplicatas contabilizadas.
-- [ ] Reinjetar 20 eventos e incluir eventos fora de ordem; consulta deduplicada conserva 1.000 IDs únicos. Documentar comportamento de event_time versus ingestion_time, sem prometer exactly-once do transporte.
-- [ ] Quatro consultas KQL verificadas: preço mais recente por posto/produto, janela temporal agregada, cobertura/contagem e duplicatas/atrasos.
-- [ ] Regra Activator dispara na transição controlada de um limiar e registra o resultado; canal/destinatário de eventual notificação ao próprio usuário definidos antes de habilitar envio. Guardar evidência do disparo e encerrar emissor/execuções persistentes do laboratório.
+- [x] Gerador emite 1.000 event_ids válidos e únicos, termina automaticamente e registra a emissão. Itens/tabelas sintéticos ficam separados dos dados oficiais; endpoints/credenciais ficam protegidos.
+- [x] Eventstream → Eventhouse/KQL executado de verdade; comparar conjuntos de IDs emitidos e recebidos após estabilizar a ingestão, sem perdas inexplicadas e com duplicatas contabilizadas.
+- [x] Reinjetar 20 eventos e incluir eventos fora de ordem; consulta deduplicada conserva 1.000 IDs únicos. Documentar comportamento de event_time versus ingestion_time, sem prometer exactly-once do transporte.
+- [x] Quatro consultas KQL verificadas: preço mais recente por posto/produto, janela temporal agregada, cobertura/contagem e duplicatas/atrasos.
+- [x] Regra Activator dispara na transição controlada de um limiar e registra o resultado; canal/destinatário de eventual notificação ao próprio usuário definidos antes de habilitar envio. Guardar evidência do disparo e encerrar emissor/execuções persistentes do laboratório.
 
 **Métrica de saída:** 1.000 IDs únicos reconciliados, reinjeções tratadas, quatro consultas corretas e pelo menos um disparo controlado observado. Se Activator ou a integração necessária estiver indisponível, registrar bloqueio e decidir o escopo explicitamente; uma simulação Python não vale como execução Activator.
 
 **Arquivos previstos:** `scripts/generate_synthetic_events.py`, `kql/fuelwatch_lab.kql`, `config/streaming.example.json`, definições reais em `fabric/`, `evidence/fabric/streaming/`.
+
+**Aceite 13/11:** 5/5 critérios reais. 1.000 IDs/payloads, vinte duplicatas, dez fora de ordem, quatro consultas e uma ativação com ação SQL. Regra parada e destinos pausados, emissor finito encerrado. [Evidência](../../../evidence/fabric/streaming/daf2320c-b0bc-4eef-b908-a2dd80939088/verification.json).
 
 ## M11 — Consumo e entrega final
 
@@ -242,15 +244,17 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 
 **Passos:** construir modelo semântico e uma página Power BI; confrontar medidas com T-SQL; revisar dicionário, operação e evidências; executar roteiro final. Publicação externa é uma decisão separada.
 
-- [ ] Uma página Power BI responde evolução semanal, comparação municipal/regional e cobertura, sempre com produto, unidade, período e quantidade de observações explícitos.
-- [ ] Pelo menos três medidas do relatório reconciliam com consultas T-SQL de referência; filtros e agregação semanal preservam o denominador correto, sem média de médias indevida.
-- [ ] Três demonstrações finais documentadas: carga válida, repetição e falha seguida de recuperação; versões de código/origem, runs e resultados podem ser rastreados.
-- [ ] README, dicionário de dados, desenho, configuração, recuperação e implantação permitem reproduzir a fatia em outro ambiente autorizado; segredos/contas ficam fora dos artefatos e limitações de trial são registradas.
-- [ ] Revisão final confere critérios do roadmap, pendências e recursos ativos; cada experiência de currículo/portfólio se apoia em execução/evidência real. Nenhuma afirmação de resultado, economia ou desempenho é inventada.
+- [x] Uma página Power BI responde evolução semanal, comparação municipal/regional e cobertura, sempre com produto, unidade, período e quantidade de observações explícitos.
+- [x] Pelo menos três medidas do relatório reconciliam com consultas T-SQL de referência; filtros e agregação semanal preservam o denominador correto, sem média de médias indevida.
+- [x] Três demonstrações finais documentadas: carga válida, repetição e falha seguida de recuperação; versões de código/origem, runs e resultados podem ser rastreados.
+- [x] README, dicionário de dados, desenho, configuração, recuperação e implantação permitem reproduzir a fatia em outro ambiente autorizado; segredos/contas ficam fora dos artefatos e limitações de trial são registradas.
+- [x] Revisão final confere critérios do roadmap, pendências e recursos ativos; cada experiência de currículo/portfólio se apoia em execução/evidência real. Nenhuma afirmação de resultado, economia ou desempenho é inventada.
 
 **Métrica de saída:** três perguntas de negócio respondidas, três medidas reconciliadas, três cenários operacionais demonstrados e nenhum bloqueio obrigatório oculto.
 
 **Arquivos previstos:** modelo/relatório reais em `fabric/` conforme suporte, `docs/demo.md`, `docs/data-dictionary.md`, atualização do README e índice final `evidence/README.md`.
+
+**Checkpoint 13/11:** 5/5 entregas próprias verificadas; aceite global permanece condicionado a M07/M08, que não foram ocultados nem simulados. Cinco medidas DAX/SQL em quatro recortes, PDF real em português conferido, três demonstrações documentadas, índice/dicionário/runbooks atualizados. Inventário: zero jobs/sessões/agendas de pipeline ativos nos dois workspaces; regra Activator parada e destinos pausados. Leitor adiado e Git nativo pendente. [Consumo](../../consumption.md), [inventário](../../../evidence/fabric/operations/resource-audit-2026-11-13.json).
 
 ## Frentes que acompanham os marcos
 
@@ -304,6 +308,11 @@ Em cada sessão, acrescentar uma linha. As mudanças de estado exigem links para
 | 13/11/2026 | M07 | EM ANDAMENTO — 1/5 | Matriz + fixtures/RLS/máscara reais como autor; leitor pendente | Login leitor e seis casos |
 | 13/11/2026 | M08 | PREPARADO LOCALMENTE | Workflow/lock + 34 checks em venv novo; nenhum remoto criado | Aprovar destino remoto |
 | 13/11/2026 | M09 | VALIDADO DEV — revalidar após M08 | Seis medições reais e 13 colunas/656 grupos iguais ao Gold; configuração restaurada | Conferir destino após implantação |
+
+| 13/11/2026 | M08 | PARCIAL — 4/5 | CI real, quatro deploys, Dataflow test, execução e restauração com negócio igual; falha original preservada e mesmo lote recuperado | Autenticação/sincronização Git nativa |
+| 13/11/2026 | M09 | CONCLUÍDO — 5/5 | Seis medições dev e seis test, reconciliação integral e configuração restaurada | 9/12 marcos aceitos |
+| 13/11/2026 | M10 | CONCLUÍDO — 5/5 | 1.000 IDs, vinte duplicatas, dez atrasados, quatro consultas e ativação real; encerrado | Laboratório separado preservado |
+| 13/11/2026 | M11 | ENTREGAS VERIFICADAS — aceite global pendente | Relatório/medidas/render, demonstrações, docs e revisão de recursos | Fechar M07/M08 quando houver identidades/autenticação |
 
 ## Dependências e referências oficiais
 

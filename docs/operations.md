@@ -33,3 +33,13 @@ Dataflow Gen2 criou seu staging Warehouse/Lakehouse; são dependências gerencia
 O [protocolo de desempenho](performance.md) separa seis medições controladas do histórico funcional. Depois de M08, repetir inventário e verificações relevantes no workspace de teste; os resultados de dev não provam o comportamento do destino.
 
 Referências: [Spark admission/queueing](https://learn.microsoft.com/en-us/fabric/data-engineering/spark-job-concurrency-and-queueing), [Spark tuning](https://spark.apache.org/docs/latest/sql-performance-tuning.html).
+
+
+## Recuperação observada após implantação
+
+No teste M08, a tentativa `96bd92e8-66a0-42e0-b047-1d397d54fded` esgotou quatro tentativas de Import_Gold porque o manifesto ainda não estava visível no SQL endpoint. A consulta posterior confirmou exatamente um manifesto do lote `6535cf07-75de-47cc-bc3b-1c5e0153f0d3`, sem duplicação; Gold ainda apontava a publicação anterior.
+
+A recuperação conferiu `90_assert_unchanged.sql` para a tentativa, importou o comando resolvido da própria atividade com esse mesmo batch, publicou e validou. Não escolheu o lote mais recente nem refez Spark. As seis projeções de negócio ficaram iguais à execução completa de referência. A tentativa de pipeline permanece Failed; [o recibo separado](../evidence/fabric/deployment/audit-recovery.json) comprova a recuperação CLI. O prazo de sincronização não foi inferido como SLA; retries finitos protegem contra espera infinita.
+
+
+Inventário final de 13/11: [dev/test sem jobs, sessões Spark ou agendas de pipeline ativos](../evidence/fabric/operations/resource-audit-2026-11-13.json). [MCP confirmou regra parada e destinos pausados](../evidence/fabric/streaming/daf2320c-b0bc-4eef-b908-a2dd80939088/mcp-shutdown-verification.json). O Custom endpoint permanece passivo Running; não foi declarado pausado. Os itens e evidências foram preservados. A capacidade trial continua ativa, sem vencimento nem consumo de CU verificados.

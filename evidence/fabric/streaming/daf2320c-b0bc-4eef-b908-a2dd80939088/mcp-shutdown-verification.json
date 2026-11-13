@@ -1,0 +1,16 @@
+{
+  "rule_running": false,
+  "activation_count": 1,
+  "activations": [
+    {
+      "activationTime": "2026-11-13T18:04:23Z",
+      "actionType": "FabricItem"
+    }
+  ],
+  "checked_at_utc": "2026-11-13T19:21:30.225283+00:00",
+  "eventstream_destinations_paused": true,
+  "custom_endpoint_status": [
+    "Running"
+  ],
+  "custom_endpoint_note": "Endpoint passivo pode permanecer Running; emissor finito encerrado."
+}

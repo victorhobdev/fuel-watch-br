@@ -3,6 +3,8 @@ import sys
 import time
 import os
 import importlib
+import json
+import tempfile
 from pathlib import Path
 from types import SimpleNamespace
 import unittest
@@ -13,6 +15,14 @@ import client
 
 
 class ClientTests(unittest.TestCase):
+    def test_void_definition_update_does_not_fetch_nonexistent_result(self):
+        accepted = Mock(status_code=202, headers={'Location': 'https://api.fabric.microsoft.com/v1/operations/fixture', 'Retry-After': '1'})
+        terminal = Mock()
+        terminal.json.return_value = {'status': 'Succeeded'}
+        with patch.object(client, 'request', side_effect=[accepted, terminal]) as send, patch.object(client.time, 'sleep'), patch.object(Path, 'write_text'):
+            self.assertEqual(client.definition_operation('workspaces/fixture/notebooks/fixture/updateDefinition', {}), {})
+        self.assertEqual(send.call_count, 2)
+
     def setUp(self):
         self.credential = Mock()
         self.credential.get_token.return_value = SimpleNamespace(token="fixture", expires_on=time.time() + 3600)
@@ -55,6 +65,22 @@ class ClientTests(unittest.TestCase):
 
 
 class IdentityTests(unittest.TestCase):
+    def test_environment_binding_is_explicit_and_confined_to_project(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            (root / '.local').mkdir()
+            default = root / '.local/fabric-environment.json'
+            target = root / '.local/test.json'
+            default.write_text(json.dumps({'workspace_id': 'dev'}))
+            target.write_text(json.dumps({'workspace_id': 'test'}))
+            with patch.object(client, 'ROOT', root), patch.dict(os.environ, {}, clear=True):
+                self.assertEqual(client.environment_config()['workspace_id'], 'dev')
+                with patch.dict(os.environ, {'FUELWATCH_ENV_FILE': str(target)}):
+                    self.assertEqual(client.environment_config()['workspace_id'], 'test')
+                with patch.dict(os.environ, {'FUELWATCH_ENV_FILE': str(root / 'outside.json')}):
+                    with self.assertRaises(ValueError):
+                        client.environment_config()
+
     def test_reader_and_author_use_distinct_project_caches(self):
         try:
             paths = []

@@ -34,3 +34,10 @@ Foram lidos metadados de **200 arquivos, 4.938.022 bytes**, para 8.052 coletas. 
 O verificador confirmou restauração de shuffle 200 e versão Delta inalterada; nenhum dado oficial foi escrito. Não foram medidos CU nem custo. Planos físicos são preservados com hashes originais; a cópia versionada deve retirar IDs/endereços de ambiente e identificar a redação.
 
 A primeira tentativa `949da8d4-6da6-49aa-a799-abbd979526a3` foi rejeitada antes do código por ausência de `metadata.language_info.name`. Corrigido para `python` e relido antes de uma nova tentativa. Um erro de conversão ao pedir definição no formato padrão foi resolvido lendo explicitamente `getDefinition?format=ipynb`; o código publicado já estava íntegro. O verificador usa a janela do job retornada pelo serviço: a execução pode iniciar antes de o cliente receber o HTTP 202.
+
+
+## Revalidação após implantação em test
+
+Job `89e00ad2-07e3-4691-8c1a-515f93b57ada`, experimento `34a25824-703c-40f7-b14b-e6a641aa75c1`, executado depois da restauração M08. Foram seis medições e dois aquecimentos excluídos, com snapshot próprio de test fixado e dados de negócio iguais a dev. As 13 colunas dos 656 grupos coincidiram integralmente com Gold; a versão Delta e a configuração original permaneceram iguais.
+
+Medianas: baseline shuffle 200 = **0,683659 s**; intervenção shuffle 8 = **0,318294 s**, variação **−53,44% neste ensaio**. A leitura SQL de conferência levou 0,200870 s em uma observação. Os mesmos limites de cache quente, n=3, ordem fixa e capacidade compartilhada continuam valendo; não comparar dev/test como experimento causal nem concluir economia de CU. [Medições, planos e reconciliação](../evidence/fabric/performance/34a25824-703c-40f7-b14b-e6a641aa75c1/verification.json).

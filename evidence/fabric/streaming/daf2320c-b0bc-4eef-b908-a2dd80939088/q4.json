@@ -1,0 +1,242 @@
+[
+  {
+    "event_id": "14f95849-e8e4-5742-9bb2-75d1fbd2e4e4",
+    "ocorrencias": 2,
+    "primeira_chegada": "2026-11-13T16:08:06.3399916Z",
+    "ultima_chegada": "2026-11-13T18:08:46.7199673Z",
+    "maior_atraso_segundos": 8352,
+    "late_fixture": 0
+  },
+  {
+    "event_id": "17954a37-bf4e-59c2-a5ae-05dbc7f9c06b",
+    "ocorrencias": 2,
+    "primeira_chegada": "2026-11-13T18:03:48.5717452Z",
+    "ultima_chegada": "2026-11-13T18:08:46.7199673Z",
+    "maior_atraso_segundos": 8337,
+    "late_fixture": 0
+  },
+  {
+    "event_id": "1bae94f1-fe62-57e4-9554-707a31b8cf46",
+    "ocorrencias": 1,
+    "primeira_chegada": "2026-11-13T18:03:48.5717452Z",
+    "ultima_chegada": "2026-11-13T18:03:48.5717452Z",
+    "maior_atraso_segundos": 8011,
+    "late_fixture": 1
+  },
+  {
+    "event_id": "1fb36565-83ca-52ae-812c-25835326017f",
+    "ocorrencias": 2,
+    "primeira_chegada": "2026-11-13T18:03:48.5717452Z",
+    "ultima_chegada": "2026-11-13T18:08:46.7199673Z",
+    "maior_atraso_segundos": 8344,
+    "late_fixture": 0
+  },
+  {
+    "event_id": "2791f11e-58f1-55bc-9808-39b2b50e4a5e",
+    "ocorrencias": 1,
+    "primeira_chegada": "2026-11-13T18:03:48.5717452Z",
+    "ultima_chegada": "2026-11-13T18:03:48.5717452Z",
+    "maior_atraso_segundos": 8007,
+    "late_fixture": 1
+  },
+  {
+    "event_id": "3aedb3d2-8558-5346-83b9-8bc6e3c0260d",
+    "ocorrencias": 2,
+    "primeira_chegada": "2026-11-13T18:03:48.5717452Z",
+    "ultima_chegada": "2026-11-13T18:08:46.7199673Z",
+    "maior_atraso_segundos": 8343,
+    "late_fixture": 0
+  },
+  {
+    "event_id": "3dcf57ea-9c78-5be2-9f5f-6c13d4d23eaf",
+    "ocorrencias": 1,
+    "primeira_chegada": "2026-11-13T18:03:48.5717452Z",
+    "ultima_chegada": "2026-11-13T18:03:48.5717452Z",
+    "maior_atraso_segundos": 8015,
+    "late_fixture": 1
+  },
+  {
+    "event_id": "3fc2ad4a-edc6-5bcb-934e-5750e1e52c16",
+    "ocorrencias": 2,
+    "primeira_chegada": "2026-11-13T16:08:06.3399916Z",
+    "ultima_chegada": "2026-11-13T18:08:46.7199673Z",
+    "maior_atraso_segundos": 8354,
+    "late_fixture": 0
+  },
+  {
+    "event_id": "416311e4-447f-5611-ada1-7f2d653bd92e",
+    "ocorrencias": 2,
+    "primeira_chegada": "2026-11-13T18:03:48.5717452Z",
+    "ultima_chegada": "2026-11-13T18:08:46.7199673Z",
+    "maior_atraso_segundos": 8339,
+    "late_fixture": 0
+  },
+  {
+    "event_id": "43f9d684-83b5-5656-96a6-bfe248fa0cf1",
+    "ocorrencias": 2,
+    "primeira_chegada": "2026-11-13T18:03:48.5717452Z",
+    "ultima_chegada": "2026-11-13T18:08:46.7199673Z",
+    "maior_atraso_segundos": 8341,
+    "late_fixture": 0
+  },
+  {
+    "event_id": "4d319c79-0278-5666-b827-b7dcbf957ffd",
+    "ocorrencias": 2,
+    "primeira_chegada": "2026-11-13T16:08:06.3399916Z",
+    "ultima_chegada": "2026-11-13T18:08:46.7199673Z",
+    "maior_atraso_segundos": 8348,
+    "late_fixture": 0
+  },
+  {
+    "event_id": "70fb93d8-42ac-5eba-9207-e716a49c62fb",
+    "ocorrencias": 2,
+    "primeira_chegada": "2026-11-13T18:03:48.5717452Z",
+    "ultima_chegada": "2026-11-13T18:08:46.7199673Z",
+    "maior_atraso_segundos": 8335,
+    "late_fixture": 0
+  },
+  {
+    "event_id": "77b87eb9-f382-5a30-9144-484b1a1d9938",
+    "ocorrencias": 1,
+    "primeira_chegada": "2026-11-13T18:03:48.5717452Z",
+    "ultima_chegada": "2026-11-13T18:03:48.5717452Z",
+    "maior_atraso_segundos": 8013,
+    "late_fixture": 1
+  },
+  {
+    "event_id": "7fd45f85-a44a-594a-8fba-2f3c70102e84",
+    "ocorrencias": 2,
+    "primeira_chegada": "2026-11-13T18:03:48.5717452Z",
+    "ultima_chegada": "2026-11-13T18:08:46.7199673Z",
+    "maior_atraso_segundos": 8338,
+    "late_fixture": 0
+  },
+  {
+    "event_id": "824ff447-18f1-5454-9b7f-bc50481bac8a",
+    "ocorrencias": 2,
+    "primeira_chegada": "2026-11-13T18:03:48.5717452Z",
+    "ultima_chegada": "2026-11-13T18:08:46.7199673Z",
+    "maior_atraso_segundos": 8336,
+    "late_fixture": 0
+  },
+  {
+    "event_id": "8bef2f8f-9727-519d-93ec-6c7355089f11",
+    "ocorrencias": 2,
+    "primeira_chegada": "2026-11-13T16:08:06.3399916Z",
+    "ultima_chegada": "2026-11-13T18:08:46.7199673Z",
+    "maior_atraso_segundos": 8349,
+    "late_fixture": 0
+  },
+  {
+    "event_id": "962cd823-5784-5d70-ae1d-7f021b6f8a18",
+    "ocorrencias": 1,
+    "primeira_chegada": "2026-11-13T18:03:48.5717452Z",
+    "ultima_chegada": "2026-11-13T18:03:48.5717452Z",
+    "maior_atraso_segundos": 8016,
+    "late_fixture": 1
+  },
+  {
+    "event_id": "a224e9d7-8fc1-5603-9b35-c74521d6b5a8",
+    "ocorrencias": 2,
+    "primeira_chegada": "2026-11-13T16:08:06.3399916Z",
+    "ultima_chegada": "2026-11-13T18:08:46.7199673Z",
+    "maior_atraso_segundos": 8346,
+    "late_fixture": 0
+  },
+  {
+    "event_id": "a524015c-0ce0-539c-b833-7b60c38e22fb",
+    "ocorrencias": 2,
+    "primeira_chegada": "2026-11-13T16:08:06.3399916Z",
+    "ultima_chegada": "2026-11-13T18:08:46.7199673Z",
+    "maior_atraso_segundos": 8347,
+    "late_fixture": 0
+  },
+  {
+    "event_id": "ab67be72-38c4-51c6-975e-264992d9d596",
+    "ocorrencias": 2,
+    "primeira_chegada": "2026-11-13T16:08:06.3399916Z",
+    "ultima_chegada": "2026-11-13T18:08:46.7199673Z",
+    "maior_atraso_segundos": 8345,
+    "late_fixture": 0
+  },
+  {
+    "event_id": "ad67a007-25b2-5efb-ad24-832e7e9302d7",
+    "ocorrencias": 2,
+    "primeira_chegada": "2026-11-13T18:03:48.5717452Z",
+    "ultima_chegada": "2026-11-13T18:08:46.7199673Z",
+    "maior_atraso_segundos": 8340,
+    "late_fixture": 0
+  },
+  {
+    "event_id": "b62c7cb6-5d76-57dd-ae16-2fb8380a9330",
+    "ocorrencias": 1,
+    "primeira_chegada": "2026-11-13T18:03:48.5717452Z",
+    "ultima_chegada": "2026-11-13T18:03:48.5717452Z",
+    "maior_atraso_segundos": 8014,
+    "late_fixture": 1
+  },
+  {
+    "event_id": "c4009fe4-b506-5931-b3a7-89225d3b5906",
+    "ocorrencias": 2,
+    "primeira_chegada": "2026-11-13T16:08:06.3399916Z",
+    "ultima_chegada": "2026-11-13T18:08:46.7199673Z",
+    "maior_atraso_segundos": 8351,
+    "late_fixture": 0
+  },
+  {
+    "event_id": "c6a1fd94-c250-5da0-af30-2a022a22d7bc",
+    "ocorrencias": 2,
+    "primeira_chegada": "2026-11-13T18:03:48.5717452Z",
+    "ultima_chegada": "2026-11-13T18:08:46.7199673Z",
+    "maior_atraso_segundos": 8342,
+    "late_fixture": 0
+  },
+  {
+    "event_id": "c7ac96ce-2be2-53a0-a00e-30b36d0777a3",
+    "ocorrencias": 1,
+    "primeira_chegada": "2026-11-13T18:03:48.5717452Z",
+    "ultima_chegada": "2026-11-13T18:03:48.5717452Z",
+    "maior_atraso_segundos": 8010,
+    "late_fixture": 1
+  },
+  {
+    "event_id": "d2913b7a-390e-5619-abd2-81b0e3acec03",
+    "ocorrencias": 1,
+    "primeira_chegada": "2026-11-13T18:03:48.5717452Z",
+    "ultima_chegada": "2026-11-13T18:03:48.5717452Z",
+    "maior_atraso_segundos": 8008,
+    "late_fixture": 1
+  },
+  {
+    "event_id": "dd9b3ccc-056f-52db-8aa8-7a9a1e4997c9",
+    "ocorrencias": 1,
+    "primeira_chegada": "2026-11-13T18:03:48.5717452Z",
+    "ultima_chegada": "2026-11-13T18:03:48.5717452Z",
+    "maior_atraso_segundos": 8012,
+    "late_fixture": 1
+  },
+  {
+    "event_id": "f1995069-ea18-5c44-a837-75a53ac4d757",
+    "ocorrencias": 2,
+    "primeira_chegada": "2026-11-13T16:08:06.3399916Z",
+    "ultima_chegada": "2026-11-13T18:08:46.7199673Z",
+    "maior_atraso_segundos": 8350,
+    "late_fixture": 0
+  },
+  {
+    "event_id": "f38c88a3-a4d5-5dbe-bdd0-d6bc5ad81437",
+    "ocorrencias": 1,
+    "primeira_chegada": "2026-11-13T18:03:48.5717452Z",
+    "ultima_chegada": "2026-11-13T18:03:48.5717452Z",
+    "maior_atraso_segundos": 8009,
+    "late_fixture": 1
+  },
+  {
+    "event_id": "f7a52165-d3f6-5a95-bce7-9a41fdef0ab4",
+    "ocorrencias": 2,
+    "primeira_chegada": "2026-11-13T16:08:06.3399916Z",
+    "ultima_chegada": "2026-11-13T18:08:46.7199673Z",
+    "maior_atraso_segundos": 8353,
+    "late_fixture": 0
+  }
+]

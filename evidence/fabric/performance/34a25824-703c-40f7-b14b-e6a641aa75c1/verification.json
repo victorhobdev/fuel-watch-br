@@ -1,0 +1,46 @@
+{
+  "status": "benchmark_reconciled",
+  "environment": "fabric",
+  "job_id": "89e00ad2-07e3-4691-8c1a-515f93b57ada",
+  "workspace_alias": "test",
+  "experiment_id": "34a25824-703c-40f7-b14b-e6a641aa75c1",
+  "checked_at_utc": "2026-11-13T19:20:22.946315+00:00",
+  "measured_samples": 6,
+  "excluded_warmups": 2,
+  "source_rows": 8052,
+  "weekly_groups": 656,
+  "full_columns_compared": [
+    "inicio_semana_iso",
+    "ano_iso",
+    "semana_iso",
+    "municipio_ibge",
+    "produto",
+    "moeda",
+    "unidade",
+    "coletas",
+    "postos_observados",
+    "soma_precos",
+    "preco_minimo",
+    "preco_maximo",
+    "precos_incomuns"
+  ],
+  "full_sql_comparison_passed": true,
+  "business_sha256": "5225eee08052ae785aadd26df34c3ff4766ce2e8e43c2718a0cd8d7718554c9d",
+  "medians_seconds": {
+    "baseline": 0.6836594519999721,
+    "intervention": 0.31829377100001466
+  },
+  "relative_median_change_percent": -53.44264310704979,
+  "gold_select_seconds_single_observation": 0.2008695000113221,
+  "shuffle_restored": true,
+  "source_version_unchanged": true,
+  "production_configuration_changed": false,
+  "cost_or_cu_measured": false,
+  "limits": [
+    "n=3 per phase",
+    "fixed baseline then intervention order",
+    "warm cached input",
+    "same session on shared trial, not capacity isolation",
+    "no end-to-end pipeline speedup claim"
+  ]
+}

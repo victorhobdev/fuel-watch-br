@@ -1,0 +1,46 @@
+{
+  "checked_at_utc": "2026-11-13T19:20:23.757428+00:00",
+  "workspaces": [
+    {
+      "alias": "dev",
+      "capacity_sku": "FTL4",
+      "capacity_state": "Active",
+      "active_jobs": [],
+      "active_spark_sessions": [],
+      "enabled_pipeline_schedules": [],
+      "item_types": {
+        "DataPipeline": 3,
+        "Dataflow": 1,
+        "Eventhouse": 1,
+        "Eventstream": 1,
+        "KQLDatabase": 2,
+        "Lakehouse": 2,
+        "Notebook": 11,
+        "Reflex": 1,
+        "Report": 1,
+        "SQLEndpoint": 2,
+        "SemanticModel": 1,
+        "Warehouse": 2
+      }
+    },
+    {
+      "alias": "test",
+      "capacity_sku": "FTL4",
+      "capacity_state": "Active",
+      "active_jobs": [],
+      "active_spark_sessions": [],
+      "enabled_pipeline_schedules": [],
+      "item_types": {
+        "DataPipeline": 2,
+        "Dataflow": 1,
+        "Lakehouse": 2,
+        "Notebook": 7,
+        "SQLEndpoint": 2,
+        "Warehouse": 2
+      }
+    }
+  ],
+  "trial_expiration_verified": false,
+  "cost_or_cu_measured": false,
+  "batch_idle": true
+}

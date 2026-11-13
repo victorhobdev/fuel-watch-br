@@ -17,6 +17,13 @@ credential = AzureCliCredential()
 _fabric_token = None
 
 
+def environment_config():
+    path = Path(os.environ.get('FUELWATCH_ENV_FILE', ROOT / '.local/fabric-environment.json')).resolve()
+    if not path.is_relative_to((ROOT / '.local').resolve()):
+        raise ValueError('Bindings de ambiente devem ficar em .local dentro do projeto')
+    return json.loads(path.read_text())
+
+
 def request(method, path, body=None):
     global _fabric_token
     url = path if path.startswith("https://") else "https://api.fabric.microsoft.com/v1/" + path.lstrip("/")
@@ -53,6 +60,8 @@ def definition_operation(path, body=None):
             if state.get("status") == "Failed":
                 raise RuntimeError(state.get("error"))
             if state.get("status") == "Succeeded":
+                if path.split('?')[0].endswith('/updateDefinition'):
+                    return {}
                 response = request("GET", location.rstrip("/") + "/result")
                 break
     return response.json() if response.content else {}

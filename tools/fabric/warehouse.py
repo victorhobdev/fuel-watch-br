@@ -1,14 +1,13 @@
 """Conexao Warehouse com token Entra; bindings privados em .local/."""
-import json
 import struct
 
 import pyodbc
 
-from client import ROOT, credential
+from client import credential, environment_config
 
 
-def connect():
-    config = json.loads((ROOT / ".local/fabric-environment.json").read_text())
+def connect(config=None):
+    config = config or environment_config()
     token = credential.get_token("https://database.windows.net/.default").token.encode("utf-16-le")
     connection = pyodbc.connect(
         "Driver={ODBC Driver 18 for SQL Server};Server=" + config["warehouse_server"]

@@ -2,36 +2,26 @@
 
 Projeto pessoal para aprender Microsoft Fabric e praticar competências da DP-700 com dados públicos de preços de combustíveis. Explicações e registros em português; nomes de ferramentas preservados como aparecem na interface.
 
-## Estado em 12/11/2026
+## Estado verificado em 13/11/2026
 
-O projeto começou nesta pasta, que continha somente um Git vazio, sem commits e sem remoto. Nenhum outro projeto foi alterado. Nenhum recurso pago foi criado.
+O processamento oficial está validado no Fabric: ANP preservada por SHA-256, Bronze com 422.418 registros, Silver com **8.052 coletas, 502 postos e 27 municípios**, Gold com 518 versões observadas de posto e 656 grupos semanais. A coleta individual permanece disponível antes da agregação semanal. A primeira fatia é GASOLINA, RJ, janeiro a junho de 2026.
 
-| Entrega | Estado comprovado |
+| Marco | Evidência atual |
 | --- | --- |
-| ANP, IBGE e metadados oficiais | Baixados localmente; bytes preservados por SHA-256 e manifesto |
-| Perfil do CSV completo | Executado: 422.418 linhas e 16 colunas |
-| Primeira fatia | Gasolina comum, RJ, janeiro a junho de 2026 |
-| Saída local tipada | Parquet: 8.052 coletas, 502 postos, 27 municípios |
-| Idempotência local | Duas execuções reais com o mesmo hash de estado de negócio |
-| Correção antiga e recuperação | Testadas com fixtures sintéticos identificados |
-| Bronze Delta no Fabric | Saída de execução fornecida pelo usuário: bronze_validated; 422.418 registros, hash e tamanho reconciliados com o perfil local |
-| Repetição da Bronze no Fabric | Validada pelo JSON recebido: versões Delta 0 e 1, 422.418 linhas, mesmo esquema e nenhum registro ausente/adicional nas 16 colunas de origem |
-| Acesso Azure | Portal confirmado; assinatura exibida como Azure for Students e papel Owner; saldo não verificado; CLI com token expirado na última consulta |
-| Acesso ao Fabric | Login mostrado em captura do portal; avaliação de 60 dias informada pelo usuário |
-| Lakehouse | Criação informada pelo usuário; detalhes da capacidade e do workspace ainda não registrados |
-| Pipeline / Copy | Status Bem-sucedido informado pelo usuário; ZIP de landing identificado na auditoria Bronze recebida |
-| Silver Delta | Duas execuções validadas pelos JSONs recebidos: Delta 0 → 1, 8.052 coletas, 502 postos, 27 municípios e mesmo negócio; comparação integral local sem diferenças |
-| Warehouse Gold | Publicado e validado no Fabric: 8.052 fatos, 518 versões observadas e 656 grupos semanais |
-| M04 — Gold e SCD2 | CONCLUÍDO: [sete cenários, reconciliação integral e repetição no Warehouse](evidence/fabric/gold/README.md); cinco critérios aceitos |
-| M02 — IBGE e Silver | CONCLUÍDO: IBGE, fixture distribuído, primeira Silver e repetição validados; cinco de cinco critérios aceitos |
-| M03 — Versões e backfill | CONCLUÍDO: 17 cenários sintéticos e [seleção oficial/repetição validadas no Fabric](evidence/fabric/versioning/official/README.md); cinco critérios aceitos |
-| SCD2, segurança, implantação e streaming | Etapas posteriores; sem resultado reivindicado |
+| M00–M04: fontes, camadas, correções e SCD2 | Aceitos; cenários reais e sintéticos identificados nas evidências |
+| M05: orquestração | Sete tentativas reconciliadas, incluindo falhas, recuperação, repetição e agenda |
+| M06: Dataflow Gen2 | Baseline, repetição, falha de contrato e recuperação reais; 92 municípios IBGE |
+| M07: segurança | Matriz e fixture aplicados; testes negativos aguardam conta leitora, adiada pelo usuário |
+| M08: Git e implantação | Repositório privado e CI executados; promoção dev → test e execução reconciliada; restauração executada e reconciliada. Integração Git nativa aguarda autenticação |
+| M09: desempenho | Seis medições em dev e seis em test após restauração, com igualdade integral |
+| M10: streaming | 1.000 IDs reconciliados, 20 duplicatas, 10 atrasados, quatro consultas KQL e disparo real do Activator |
+| M11: consumo | Entregas verificadas: DirectQuery, cinco medidas SQL, PDF conferido, documentação e inventário; aceite global depende de M07/M08 |
 
-Os dados são amostrais. Ausência de observação não representa preço zero nem cobertura de todos os postos. A saída inicial preserva a coleta individual; não é uma fato semanal.
+O laboratório sintético é separado dos dados oficiais. A regra Activator foi desligada e os destinos Eventstream pausados após a verificação. Usa-se a capacidade trial existente; não foi contratada capacidade paga. A data de expiração da trial e o consumo em CU não foram verificados.
 
-M00–M04 concluídos. A Gold preserva as 8.052 coletas do snapshot oficial selecionado no M03; histórico e grupos semanais foram reconciliados e a publicação repetida sem diferenças de negócio. Entradas anteriores preservadas e sessão Spark encerrada. Próximo marco: M05, orquestração e recuperação entre camadas. O [resumo de 11/11](docs/retomada-2026-11-11.md) conserva o checkpoint anterior.
+A execução usa CLI/API, OneLake e ODBC, com bindings e tokens fora do Git. Consulte [roadmap](docs/superpowers/plans/2026-11-12-fuel-watch-br-roadmap.md), [índice de evidências](evidence/README.md), [implantação](docs/deployment.md), [segurança](docs/security-matrix.md), [consumo](docs/consumption.md), [dicionário](docs/data-dictionary.md) e [demonstração](docs/demo.md). As pendências humanas não são contabilizadas como aprovadas.
 
-[Roadmap completo e acompanhamento por marcos](docs/superpowers/plans/2026-11-12-fuel-watch-br-roadmap.md): 5 de 12 marcos concluídos; execução continua no M05.
+Os dados são amostrais. Ausência de observação não representa preço zero nem cobertura de todos os postos. SCD2 registra mudança observada na referência, sem inferir a data histórica real de mudança do estabelecimento.
 
 ## Reproduzir o bloco local
 

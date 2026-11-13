@@ -1,0 +1,54 @@
+{
+  "lab_run_id": "daf2320c-b0bc-4eef-b908-a2dd80939088",
+  "phases": {
+    "seed": {
+      "status": "acknowledged",
+      "started_at_utc": "2026-11-13T16:08:12.971415+00:00",
+      "rows": 10,
+      "payload_sha256": "183ec539a08923be3de4e9d3184a16d70059e3b63954b38faffe716edfc92a30",
+      "sdk_retry_total": 0,
+      "ingestion_verified": false,
+      "finished_at_utc": "2026-11-13T16:08:13.896059+00:00"
+    },
+    "baseline": {
+      "status": "acknowledged",
+      "started_at_utc": "2026-11-13T18:04:00.126450+00:00",
+      "rows": 989,
+      "payload_sha256": "a26b68c1848bb2bb5031e250de115cc51683ec3a4be8bee39c69e3162ef0eb57",
+      "sdk_retry_total": 0,
+      "ingestion_verified": false,
+      "finished_at_utc": "2026-11-13T18:04:01.252990+00:00"
+    },
+    "transition": {
+      "status": "acknowledged",
+      "started_at_utc": "2026-11-13T18:04:36.155347+00:00",
+      "rows": 1,
+      "payload_sha256": "66193a52989527a1fdb50a6816f93fe7254e19c2b1c9048cc502ffb6b5f1fc5e",
+      "sdk_retry_total": 0,
+      "ingestion_verified": false,
+      "finished_at_utc": "2026-11-13T18:04:37.107774+00:00"
+    },
+    "reinject": {
+      "status": "acknowledged",
+      "started_at_utc": "2026-11-13T18:08:57.521268+00:00",
+      "rows": 20,
+      "payload_sha256": "84180f9a9a3b64f6f62d1541be827ad9ef04c32b8a7938e3eeab04caad33b78b",
+      "sdk_retry_total": 0,
+      "ingestion_verified": false,
+      "finished_at_utc": "2026-11-13T18:08:58.469653+00:00"
+    }
+  },
+  "prior_attempts": [
+    {
+      "phase": "seed",
+      "status": "unconfirmed",
+      "started_at_utc": "2026-11-13T16:07:02.581856+00:00",
+      "rows": 10,
+      "payload_sha256": "183ec539a08923be3de4e9d3184a16d70059e3b63954b38faffe716edfc92a30",
+      "sdk_retry_total": 0,
+      "ingestion_verified": false,
+      "error_type": "ImportError",
+      "finished_at_utc": "2026-11-13T16:07:02.583456+00:00"
+    }
+  ]
+}

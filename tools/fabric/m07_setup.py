@@ -21,7 +21,7 @@ def save():
 
 sql = (ROOT / "sql/labs/security.sql").read_text(encoding="utf-8")
 batches = re.split(r"(?m)^GO\s*$", sql)
-with connect() as connection:
+with connect(config) as connection:
     for index, batch in enumerate(batches):
         if index in state["completed_sql_batches"]:
             continue

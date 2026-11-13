@@ -7,7 +7,7 @@ from decimal import Decimal
 
 from azure.storage.filedatalake import DataLakeServiceClient
 
-from client import ROOT, credential
+from client import ROOT, credential, environment_config
 from warehouse import connect, results
 
 
@@ -56,7 +56,7 @@ if args.fault != "none":
         assert "DECLARE @fault varchar(20) = 'gold';" in sql_input
         assert "@inject_fail_before_commit=@inject" in sql_input
 
-config = json.loads((ROOT / ".local/fabric-environment.json").read_text())
+config = environment_config()
 fs = DataLakeServiceClient("https://onelake.dfs.fabric.microsoft.com", credential=credential).get_file_system_client(config["workspace_id"])
 base = config["lakehouse_id"] + "/Files/"
 receipts = []

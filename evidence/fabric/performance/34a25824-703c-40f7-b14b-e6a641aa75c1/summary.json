@@ -1,0 +1,381 @@
+{
+  "experiment_id": "34a25824-703c-40f7-b14b-e6a641aa75c1",
+  "protocol": "weekly_shuffle_200_vs_8_v1",
+  "status": "benchmark_measured",
+  "environment": "fabric",
+  "started_at_utc": "2026-11-13T19:19:04.202386+00:00",
+  "spark_version": "4.1.1.5.5.20260929.238183312",
+  "python_version": "3.13.11",
+  "application_id": "application_1794597144028_0001",
+  "source_delta_version": 0,
+  "samples": [
+    {
+      "phase": "baseline",
+      "iteration": 1,
+      "shuffle_partitions": 200,
+      "seconds": 0.7273133049999956,
+      "groups": 656,
+      "business_sha256": "5225eee08052ae785aadd26df34c3ff4766ce2e8e43c2718a0cd8d7718554c9d",
+      "plan_file": "baseline-1-plan.txt",
+      "plan_sha256": "62a33c350e6db4a900d0d95fa4c675a18da09e37977c3d857255a5a79d1050bf",
+      "job_ids": [
+        25,
+        24,
+        23
+      ],
+      "stage_ids": [
+        33,
+        34,
+        35,
+        36,
+        37,
+        38
+      ],
+      "stage_tasks": 27
+    },
+    {
+      "phase": "baseline",
+      "iteration": 2,
+      "shuffle_partitions": 200,
+      "seconds": 0.5922890379999899,
+      "groups": 656,
+      "business_sha256": "5225eee08052ae785aadd26df34c3ff4766ce2e8e43c2718a0cd8d7718554c9d",
+      "plan_file": "baseline-2-plan.txt",
+      "plan_sha256": "539be59f40274ad1d609ec882c32d09b096037b5328fea5f7eff126119e0ace1",
+      "job_ids": [
+        28,
+        27,
+        26
+      ],
+      "stage_ids": [
+        39,
+        40,
+        41,
+        42,
+        43,
+        44
+      ],
+      "stage_tasks": 27
+    },
+    {
+      "phase": "baseline",
+      "iteration": 3,
+      "shuffle_partitions": 200,
+      "seconds": 0.6836594519999721,
+      "groups": 656,
+      "business_sha256": "5225eee08052ae785aadd26df34c3ff4766ce2e8e43c2718a0cd8d7718554c9d",
+      "plan_file": "baseline-3-plan.txt",
+      "plan_sha256": "eaf9e733a2aa40379b244870c16a71a32d277ef446b702619967e1c934f45c60",
+      "job_ids": [
+        31,
+        30,
+        29
+      ],
+      "stage_ids": [
+        45,
+        46,
+        47,
+        48,
+        49,
+        50
+      ],
+      "stage_tasks": 27
+    },
+    {
+      "phase": "intervention",
+      "iteration": 1,
+      "shuffle_partitions": 8,
+      "seconds": 0.31829377100001466,
+      "groups": 656,
+      "business_sha256": "5225eee08052ae785aadd26df34c3ff4766ce2e8e43c2718a0cd8d7718554c9d",
+      "plan_file": "intervention-1-plan.txt",
+      "plan_sha256": "fc4fa152ce856824676dbf8aa89e8f92dacf29850a88688b0823b9606f3bc8f7",
+      "job_ids": [
+        37,
+        36,
+        35
+      ],
+      "stage_ids": [
+        57,
+        58,
+        59,
+        60,
+        61,
+        62
+      ],
+      "stage_tasks": 27
+    },
+    {
+      "phase": "intervention",
+      "iteration": 2,
+      "shuffle_partitions": 8,
+      "seconds": 0.3189950729999964,
+      "groups": 656,
+      "business_sha256": "5225eee08052ae785aadd26df34c3ff4766ce2e8e43c2718a0cd8d7718554c9d",
+      "plan_file": "intervention-2-plan.txt",
+      "plan_sha256": "7c51fabf0df41e494fbef9640aa2d767c001aa453616491535253a032873435a",
+      "job_ids": [
+        40,
+        39,
+        38
+      ],
+      "stage_ids": [
+        63,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "stage_tasks": 27
+    },
+    {
+      "phase": "intervention",
+      "iteration": 3,
+      "shuffle_partitions": 8,
+      "seconds": 0.252211745000011,
+      "groups": 656,
+      "business_sha256": "5225eee08052ae785aadd26df34c3ff4766ce2e8e43c2718a0cd8d7718554c9d",
+      "plan_file": "intervention-3-plan.txt",
+      "plan_sha256": "d7e2cf174ca4f855917c60f7af9093312cbda5b63d63d587d59203c6547722cf",
+      "job_ids": [
+        43,
+        42,
+        41
+      ],
+      "stage_ids": [
+        69,
+        70,
+        71,
+        72,
+        73,
+        74
+      ],
+      "stage_tasks": 27
+    }
+  ],
+  "warmups": [
+    {
+      "phase": "baseline",
+      "iteration": 0,
+      "shuffle_partitions": 200,
+      "seconds": 1.416197258000011,
+      "groups": 656,
+      "business_sha256": "5225eee08052ae785aadd26df34c3ff4766ce2e8e43c2718a0cd8d7718554c9d",
+      "plan_file": "baseline-0-plan.txt",
+      "plan_sha256": "2d3d764d160b80b8ee6b3d27a2e7bdf8af5d82afdf3375f1b80791e4081ad62a",
+      "job_ids": [
+        22,
+        21,
+        20
+      ],
+      "stage_ids": [
+        27,
+        28,
+        29,
+        30,
+        31,
+        32
+      ],
+      "stage_tasks": 27
+    },
+    {
+      "phase": "intervention",
+      "iteration": 0,
+      "shuffle_partitions": 8,
+      "seconds": 0.3155562800000098,
+      "groups": 656,
+      "business_sha256": "5225eee08052ae785aadd26df34c3ff4766ce2e8e43c2718a0cd8d7718554c9d",
+      "plan_file": "intervention-0-plan.txt",
+      "plan_sha256": "a0472e6665c9e653e7196ec603bc75c9d4317de5288a2e324788cd7d045029f7",
+      "job_ids": [
+        34,
+        33,
+        32
+      ],
+      "stage_ids": [
+        51,
+        52,
+        53,
+        54,
+        55,
+        56
+      ],
+      "stage_tasks": 27
+    }
+  ],
+  "cu_or_cost_measured": false,
+  "original_shuffle_partitions": "200",
+  "aqe_enabled": "true",
+  "aqe_coalesce_enabled": "true",
+  "snapshot_id": "2b2db7dc-49c3-424d-acd8-0abe30c74191",
+  "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+  "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+  "input_files": 200,
+  "input_file_bytes": 4938022,
+  "schema": {
+    "type": "struct",
+    "fields": [
+      {
+        "name": "cnpj",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "cnpj_origem",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "produto",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "data_coleta",
+        "type": "date",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "preco_venda",
+        "type": "decimal(10,3)",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "moeda",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "unidade",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "uf",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "municipio_ibge",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "municipio_origem",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "revenda_observada",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "bandeira_observada",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "preco_incomum_iqr",
+        "type": "boolean",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "raw_row_sha256",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "raw_json",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "scope_id",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "source_id",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "source_sha256",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "ibge_sha256",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "contract_version",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "snapshot_id",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "publication_policy_sha256",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "run_id",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "is_synthetic",
+        "type": "boolean",
+        "nullable": true,
+        "metadata": {}
+      }
+    ]
+  },
+  "current_delta_version_before": 0,
+  "cache_materialization_seconds": 1.8197840259999793,
+  "input_rows": 8052,
+  "stations": 502,
+  "municipalities": 27,
+  "medians_seconds": {
+    "baseline": 0.6836594519999721,
+    "intervention": 0.31829377100001466
+  },
+  "current_delta_version_after": 0,
+  "source_version_unchanged": true,
+  "official_tables_written": false,
+  "gold_reconciliation": "pending_external_sql_comparison",
+  "production_configuration_changed": false,
+  "shuffle_restored": true,
+  "finished_at_utc": "2026-11-13T19:19:28.127809+00:00"
+}

@@ -1,6 +1,8 @@
 # M10 — laboratorio sintetico separado
 
-Estado: **itens criados na trial e dez eventos seed ingeridos no KQL**, lote `daf2320c-b0bc-4eef-b908-a2dd80939088`. Baseline restante, transição, reinjeções e regra Activator ainda pendentes. Nenhuma notificação externa foi habilitada. O destino ProcessedIngestion exigiu itemId do KQL database na resposta real do serviço; o ID do Eventhouse foi rejeitado. O seed teve falha local ImportError por websocket-client ausente; após conferir zero linhas, instalar a dependência e preservar a tentativa, o envio finito foi confirmado e a consulta retornou dez linhas.
+Estado: **aceito no Fabric**. O lote `daf2320c-b0bc-4eef-b908-a2dd80939088` teve 1.000 IDs e payloads reconciliados integralmente, vinte reinjeções contadas como duplicatas e dez eventos fora de ordem identificados. As quatro consultas KQL passaram. A transição sintética acima de 7,000 produziu uma ativação real e um job concluído no pipeline exclusivo de auditoria; a linha SQL corresponde ao lote. [Evidências](../evidence/fabric/streaming/).
+
+A regra foi parada via MCP oficial do Activator e os dois destinos Eventstream estão `Paused`, com leitura posterior confirmada. O Custom endpoint permanece `Running` como endpoint passivo; o emissor finito terminou. O Eventhouse conserva `minimumConsumptionUnits=0`. Nenhuma notificação externa foi habilitada. O texto abaixo descreve o desenho e os critérios usados; sua execução aceita está nos recibos, não apenas nas definições.
 
 O gerador produz 1.000 IDs UUID unicos/reproduziveis dentro de um `lab_run_id`, dez postos `SYNTHETIC_001`–`010`, GASOLINA/BRL/litro e `is_synthetic=true`. Nenhum registro vem da ANP ou representa preco real. `event_time` UTC fica no passado; dez eventos marcados chegam fora da ordem temporal. A emissao finita sera registrada separadamente, sem confundir preparo do arquivo com confirmacao do transporte ou da ingestao.
 
