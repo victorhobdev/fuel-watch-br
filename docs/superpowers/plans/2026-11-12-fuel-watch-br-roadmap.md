@@ -136,13 +136,15 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 
 **Passos:** ligar Copy, notebooks e carga Gold; separar tentativa de publicação válida; configurar dependências de sucesso, erros e parâmetros; provocar falhas delimitadas; recuperar.
 
-- [ ] Pipeline mestre executa recebimento → Bronze → Silver → Gold com parâmetros de fonte, hash/versão e escopo; um identificador permite relacionar as auditorias dos itens.
-- [ ] Execução verde termina com reconciliação do lote e da versão publicada; os marcadores avançam somente após a publicação válida.
+- [x] Pipeline mestre executa recebimento → Bronze → Silver → Gold com parâmetros de fonte, hash/versão e escopo; um identificador permite relacionar as auditorias dos itens.
+- [x] Execução verde termina com reconciliação do lote e da versão publicada; os marcadores avançam somente após a publicação válida.
 - [ ] Falha provocada em Silver impede atualização Gold; fatos e marcador da versão Gold anterior permanecem iguais.
 - [ ] Falha provocada na carga Gold mantém o último estado válido para consumo e permite nova tentativa controlada, sem duplicação ou perda.
 - [ ] Recuperação das duas falhas e repetição completa aprovadas; agendamento/evento delimitado exercitado uma vez e desabilitado ao fim do laboratório, com runbook de diagnóstico.
 
 **Métrica de saída:** cinco provas operacionais: execução verde, bloqueio em Silver, proteção em Gold, recuperação e repetição completa. Não presumir transação única entre Lakehouse e Warehouse.
+
+**Aceite parcial em 13/11:** 2/5 critérios. O mestre completo e a publicação correlacionada passaram no job `3ceb55a5-8026-4950-97fb-c2eb229d6c1d`, conferido por REST, OneLake e SQL. [Evidência](../../../evidence/fabric/orchestration/pipeline-runs/3ceb55a5-8026-4950-97fb-c2eb229d6c1d/verification.json). Falhas, recuperações, repetição e agendamento continuam pendentes; permanece 5/12 marcos concluídos.
 
 **Arquivos previstos:** definições reais exportadas em `fabric/` (estrutura nativa confirmada na integração), `docs/runbooks/recovery.md`, `evidence/fabric/orchestration/`.
 
