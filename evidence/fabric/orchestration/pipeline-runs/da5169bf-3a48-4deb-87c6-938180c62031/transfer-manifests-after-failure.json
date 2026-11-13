@@ -1,0 +1,14 @@
+[
+  {
+    "batch_id": "53e462be-7f74-41dd-a0e7-42a8c4682c5b",
+    "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+    "expected_rows": 8052,
+    "snapshot_id": "3da66482-2dad-489f-8450-b7ded2005f3d"
+  },
+  {
+    "batch_id": "4ef52958-b66b-40de-92df-68da53783740",
+    "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+    "expected_rows": 8052,
+    "snapshot_id": "3da66482-2dad-489f-8450-b7ded2005f3d"
+  }
+]

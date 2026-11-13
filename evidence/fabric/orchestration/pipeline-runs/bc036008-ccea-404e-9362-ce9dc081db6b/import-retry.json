@@ -1,0 +1,23 @@
+{
+  "environment": "fabric",
+  "job_id": "bc036008-ccea-404e-9362-ce9dc081db6b",
+  "observed_import_activity_runs": 2,
+  "statuses": [
+    "Failed",
+    "Succeeded"
+  ],
+  "first_error": {
+    "errorCode": "2011",
+    "message": "Manifesto nao visivel ou duplicado. Aguardar sync do SQL endpoint.",
+    "failureType": "UserError",
+    "target": "Import_Gold",
+    "details": []
+  },
+  "same_sql_input": true,
+  "same_export_batch": "eba89348-6db1-4862-bfa2-38307893d3fc",
+  "gap_seconds_between_end_and_restart": 31.278544,
+  "configured_retry_limit": 3,
+  "configured_retry_interval_seconds": 30,
+  "native_retry_attempt_field": null,
+  "recovery_used_new_export_batch": false
+}

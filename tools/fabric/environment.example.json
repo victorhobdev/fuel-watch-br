@@ -1,6 +1,7 @@
 {
   "workspace_id": "WORKSPACE_UUID",
   "pipeline_id": "MASTER_PIPELINE_UUID",
+  "notebook_stage_id": "NOTEBOOK_08_UUID",
   "lakehouse_id": "LAKEHOUSE_UUID",
   "warehouse_server": "SQL_ENDPOINT.datawarehouse.fabric.microsoft.com",
   "warehouse_database": "wh_fuelwatch"

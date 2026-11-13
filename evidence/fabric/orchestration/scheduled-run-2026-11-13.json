@@ -1,0 +1,17 @@
+{
+  "environment": "fabric",
+  "schedule_id": "077bd9bd-b441-4e8e-82f5-f5dd9ab2f3db",
+  "job_id": "80575d95-2838-4b70-b9d4-1aad84ffb084",
+  "invoke_type": "Scheduled",
+  "status": "scheduled_job_verified_and_schedule_disabled",
+  "disabled_verified": true,
+  "configuration": {
+    "startDateTime": "2026-11-13T14:44:46Z",
+    "endDateTime": "2026-11-13T14:49:46Z",
+    "localTimeZoneId": "UTC",
+    "type": "Cron",
+    "interval": 60
+  },
+  "fault_stage": "none",
+  "single_new_job_observed": true
+}

@@ -1,0 +1,183 @@
+{
+  "environment": "fabric",
+  "job_id": "b9812604-df3d-4705-bc30-5324be35779d",
+  "fault_stage": "silver",
+  "status": "m05_attempt_verified",
+  "job_status": "Failed",
+  "checked_at_utc": "2026-11-13T14:02:13.956867+00:00",
+  "activities": [
+    {
+      "activityName": "Capture_Baseline",
+      "status": "Succeeded",
+      "activityRunStart": "2026-11-13T13:56:39.6652317Z",
+      "activityRunEnd": "2026-11-13T13:56:50.8418015Z",
+      "durationInMs": 11176,
+      "retryAttempt": null
+    },
+    {
+      "activityName": "Copy_ANP",
+      "status": "Succeeded",
+      "activityRunStart": "2026-11-13T13:56:52.5718352Z",
+      "activityRunEnd": "2026-11-13T13:57:10.5912648Z",
+      "durationInMs": 18019,
+      "retryAttempt": null
+    },
+    {
+      "activityName": "Bronze",
+      "status": "Succeeded",
+      "activityRunStart": "2026-11-13T13:57:14.9150383Z",
+      "activityRunEnd": "2026-11-13T13:58:44.2694388Z",
+      "durationInMs": 89354,
+      "retryAttempt": null
+    },
+    {
+      "activityName": "Silver",
+      "status": "Failed",
+      "activityRunStart": "2026-11-13T13:58:45.7770999Z",
+      "activityRunEnd": "2026-11-13T14:01:09.8308453Z",
+      "durationInMs": 144053,
+      "retryAttempt": null
+    },
+    {
+      "activityName": "Guard_Silver_Failure",
+      "status": "Succeeded",
+      "activityRunStart": "2026-11-13T14:01:13.1415679Z",
+      "activityRunEnd": "2026-11-13T14:01:27.171198Z",
+      "durationInMs": 14029,
+      "retryAttempt": null
+    },
+    {
+      "activityName": "Fail_Silver",
+      "status": "Failed",
+      "activityRunStart": "2026-11-13T14:01:29.7008599Z",
+      "activityRunEnd": "2026-11-13T14:01:29.8403674Z",
+      "durationInMs": 139,
+      "retryAttempt": null
+    }
+  ],
+  "spark_sessions": [
+    {
+      "activity": "Bronze",
+      "session_id": "2d955476-5f78-4c09-9dcf-cdaee96502db",
+      "sharing": {
+        "sessionSource": "created",
+        "sessionTag": "fuelwatch_m05_serial"
+      }
+    },
+    {
+      "activity": "Silver",
+      "session_id": "2d955476-5f78-4c09-9dcf-cdaee96502db",
+      "sharing": {
+        "sessionSource": "attached",
+        "sessionTag": "fuelwatch_m05_serial"
+      }
+    }
+  ],
+  "receipts": [
+    {
+      "root_run_id": "b9812604-df3d-4705-bc30-5324be35779d",
+      "attempt_id": "093c337c-176b-403f-863b-47dcd0ed530b",
+      "phase": "bronze",
+      "scope_id": "anp-2026-1-rj-gasolina",
+      "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+      "fault_stage": "silver",
+      "environment": "fabric",
+      "status": "stage_validated",
+      "started_at_utc": "2026-11-13T13:57:49.058677+00:00",
+      "child_audit_relative_path": "audit/anp/b9812604-df3d-4705-bc30-5324be35779d_093c337c-176b-403f-863b-47dcd0ed530b.json",
+      "source_rows": 422418,
+      "child_run_id": "b9812604-df3d-4705-bc30-5324be35779d_093c337c-176b-403f-863b-47dcd0ed530b",
+      "finished_at_utc": "2026-11-13T13:58:32.042891+00:00"
+    },
+    {
+      "root_run_id": "b9812604-df3d-4705-bc30-5324be35779d",
+      "attempt_id": "68316e2a-2907-42b3-9a52-d8677b9bbe36",
+      "phase": "silver",
+      "scope_id": "anp-2026-1-rj-gasolina",
+      "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+      "fault_stage": "silver",
+      "environment": "fabric",
+      "status": "failed",
+      "started_at_utc": "2026-11-13T13:59:00.713983+00:00",
+      "child_audit_relative_path": "audit/m03_official/cc609634-ebbd-4476-83d3-0c263bc91e93/summary.json",
+      "consumer_contract": {
+        "table": "silver_preco_publicado",
+        "delta_version": 0,
+        "scope_id": "anp-2026-1-rj-gasolina",
+        "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+        "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+        "business_fields": [
+          "cnpj",
+          "cnpj_origem",
+          "produto",
+          "data_coleta",
+          "preco_venda",
+          "moeda",
+          "unidade",
+          "uf",
+          "municipio_ibge",
+          "municipio_origem",
+          "revenda_observada",
+          "bandeira_observada",
+          "preco_incomum_iqr"
+        ],
+        "snapshot_id": "3da66482-2dad-489f-8450-b7ded2005f3d",
+        "read_strategy": "Pin Delta version, filter scope, reconcile identity before Gold"
+      },
+      "error_type": "RuntimeError",
+      "error": "M05_INJECTED_SILVER_FAILURE_AFTER_VALIDATION: bloquear export e Gold",
+      "finished_at_utc": "2026-11-13T14:00:52.790456+00:00"
+    }
+  ],
+  "warehouse_attempt": [
+    {
+      "root_run_id": "b9812604-df3d-4705-bc30-5324be35779d",
+      "status": "started",
+      "batch_id": null,
+      "captured_at_utc": "2026-11-13 13:56:46.568439",
+      "completed_at_utc": null
+    }
+  ],
+  "publication": [
+    {
+      "batch_id": "fc756f7e-a703-40b3-b8d5-c9d338679af8",
+      "scope_id": "anp-2026-1-rj-gasolina",
+      "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+      "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+      "silver_delta_version": 0,
+      "is_synthetic": false,
+      "published_at_utc": "2026-11-13 13:55:03.690316",
+      "rows_published": 8052,
+      "source_table": "silver_preco_publicado",
+      "snapshot_id": "3da66482-2dad-489f-8450-b7ded2005f3d"
+    }
+  ],
+  "business_fingerprints": {
+    "published_business_bytes": {
+      "rows": 8052,
+      "sha256": "20d88111011deae59926a7bcdb10c612159d11e4f91d11e825b1955a2d5586e1"
+    },
+    "dim_posto": {
+      "rows": 518,
+      "sha256": "20a43ff8f74c0636860eb7e3d3ae1425de8424b173140e7c553eeb7265c90ce1"
+    },
+    "dim_data": {
+      "rows": 181,
+      "sha256": "2cc704ad147f38154aab5394c7dbbb2d41360f6e60e38ba2a0c68b3be0b22af6"
+    },
+    "dim_municipio": {
+      "rows": 92,
+      "sha256": "09f725387053e28575e1578333ffe1bd76e70baec561740412ff02e5d318bc42"
+    },
+    "dim_produto": {
+      "rows": 1,
+      "sha256": "8e8c12fbfdabcef8b2413d0b7cc56cb6bf4b1d1bf257a85e03f7f8ca1d5a2856"
+    },
+    "preco_semanal": {
+      "rows": 656,
+      "sha256": "06c7c7ebd50fe8f12bbeaffe7976dbe996b38491faca5faa2865739354352c9c"
+    }
+  },
+  "previous_publication_unchanged": true,
+  "same_business_as": ".local/m05-api/runs/3ceb55a5-8026-4950-97fb-c2eb229d6c1d/verification.json"
+}

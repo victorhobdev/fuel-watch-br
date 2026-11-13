@@ -1,0 +1,16 @@
+{
+  "run_id": "bc036008-ccea-404e-9362-ce9dc081db6b_b3946289-9dd3-4deb-b8f4-3ab9de421c00",
+  "status": "bronze_validated",
+  "environment": "fabric",
+  "started_at_utc": "2026-11-13T14:34:54.269134+00:00",
+  "landing_relative_path": "landing/anp/2026-1/bc036008-ccea-404e-9362-ce9dc081db6b/ca-2026-01.zip",
+  "source_url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/shpc/dsas/ca/ca-2026-01.zip",
+  "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+  "expected_source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+  "csv_sha256": "04406f4e411380c07fff0343a746bcc5ef693bd4b26a267101ab0698c44b76a9",
+  "csv_member": "Pre\u00e7os semestrais - AUTOMOTIVOS_2026.01.csv",
+  "raw_bytes": 8488624,
+  "source_rows": 422418,
+  "bronze_rows_for_version": 422418,
+  "finished_at_utc": "2026-11-13T14:35:25.897962+00:00"
+}

@@ -1,0 +1,59 @@
+{
+  "environment": "fabric",
+  "status": "recovery_and_replay_verified",
+  "baseline_job": "3ceb55a5-8026-4950-97fb-c2eb229d6c1d",
+  "cases": [
+    {
+      "case": "silver_failure",
+      "fault_stage": "silver",
+      "status": "verified",
+      "job_id": "b9812604-df3d-4705-bc30-5324be35779d"
+    },
+    {
+      "case": "silver_recovery",
+      "fault_stage": "none",
+      "status": "Failed",
+      "job_id": "47f25a16-8144-4a21-b293-013ae7a0a55e"
+    },
+    {
+      "case": "silver_recovery",
+      "fault_stage": "none",
+      "status": "verified",
+      "job_id": "5c9a3991-61b9-454a-a686-2a96c2c04c17"
+    },
+    {
+      "case": "gold_failure",
+      "fault_stage": "gold",
+      "status": "verified",
+      "job_id": "4145ce90-e750-4109-a0c7-4637ba50a209"
+    },
+    {
+      "case": "gold_recovery",
+      "fault_stage": "none",
+      "status": "verified",
+      "job_id": "dc94cb54-4930-427f-9e08-6ea8b4996747"
+    },
+    {
+      "case": "full_replay",
+      "fault_stage": "none",
+      "status": "verified",
+      "job_id": "bc036008-ccea-404e-9362-ce9dc081db6b"
+    }
+  ],
+  "started_at_utc": "2026-11-13T13:56:39.531232+00:00",
+  "finished_at_utc": "2026-11-13T14:41:35.418238+00:00",
+  "interruptions": [
+    {
+      "error_type": "CalledProcessError",
+      "finished_at_utc": "2026-11-13T14:03:26.840844+00:00"
+    },
+    {
+      "error_type": "RuntimeError",
+      "finished_at_utc": "2026-11-13T14:16:51.159087+00:00"
+    },
+    {
+      "error_type": "CalledProcessError",
+      "finished_at_utc": "2026-11-13T14:23:48.487766+00:00"
+    }
+  ]
+}

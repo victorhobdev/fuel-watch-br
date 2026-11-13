@@ -1,6 +1,10 @@
 # Recuperação do pipeline mestre — M05
 
-**Preparado; exercício no Fabric pendente.** Não interpretar este runbook como prova de execução.
+**M05 executado e aceito no Fabric em 13/11/2026.** Carga normal, bloqueio Silver, rollback Gold, duas recuperações, repetição e agendamento delimitado foram verificados por API/OneLake/SQL. As evidências por tentativa ficam em `evidence/fabric/orchestration/pipeline-runs/`; [bateria de recuperação](../../evidence/fabric/orchestration/recovery-cases-2026-11-13.json) e [agendamento desabilitado](../../evidence/fabric/orchestration/scheduled-run-2026-11-13.json).
+
+Para operação por CLI, usar `tools/fabric/m05_job.py --watch <job-id>` para retomar a observação de uma tentativa já aceita. Nunca usar `--start` para compensar timeout de observação. `check_m05.py` exige os estados esperados, lê recibos no OneLake e confere Gold por SQL. O sequenciador `m05_recovery_cases.py` só inicia o próximo caso após a verificação do anterior e para em qualquer falha operacional inesperada.
+
+Uma interrupção de rede ocorreu no acompanhamento da falha Gold: foi observado novamente o mesmo job, sem repetir a execução. As leituras agora têm retry finito; o POST de início não é repetido automaticamente. O cliente também aguarda o encerramento Livy e 60 segundos de estabilização antes de nova tentativa. O estado terminal do pipeline pode anteceder a liberação de Spark, como observado no laboratório.
 
 1. No `Monitoring hub`, identificar a execução raiz e a primeira atividade com falha. Guardar a saída/erro real e os tempos; não repetir todos os itens por hábito.
 2. Relacionar o `Pipeline RunId` com `Files/audit/m05/<root_run_id>` e os caminhos dos recibos filhos. Recibo `started` não significa publicação válida; `failed` deve conservar a causa. O lote exportado precisa vir da execução atual, nunca do último arquivo encontrado indiscriminadamente.
@@ -13,4 +17,8 @@
 
 Não existe uma transação única entre Copy, Delta e Warehouse. Os guards protegem a verificação da publicação anterior, não garantem concorrência; este laboratório executa um publicador por vez. A referência municipal e o calendário permanecem fixos nesta primeira integração revisada.
 
-Ao testar agendamento, usar uma janela delimitada e desabilitar após a execução comprovada. Registrar o estado final desabilitado e verificar que nenhum job ficou ativo. Nenhum agendamento foi criado nesta preparação.
+Ao testar agendamento, usar uma janela delimitada, desabilitar após o disparo observado e então validar o job. O ensaio real usou intervalo de 60 minutos em janela de cinco minutos; o único job observado foi `80575d95-2838-4b70-b9d4-1aad84ffb084`, com `invokeType=Scheduled`. A agenda foi desabilitada e relida antes do acompanhamento do job, que terminou validado.
+
+Na repetição `bc036008-ccea-404e-9362-ce9dc081db6b`, a primeira importação retornou a mensagem de manifesto não visível/duplicado; a segunda passou com SQL e lote idênticos após o intervalo configurado. [Prova do retry](../../evidence/fabric/orchestration/pipeline-runs/bc036008-ccea-404e-9362-ce9dc081db6b/import-retry.json). Não transformar essa mensagem ambígua em prova isolada de duplicação ou em certeza de causa interna.
+
+Depois de uma recuperação válida, o guard antigo contra a Gold atual deve detectar o avanço legítimo do marcador. Para auditar a tentativa anterior, comparar seus baselines imutáveis com os capturados antes da recuperação, nas duas direções e com cardinalidade. Não alegar proteção histórica a partir de uma leitura atual fora desse recorte temporal.

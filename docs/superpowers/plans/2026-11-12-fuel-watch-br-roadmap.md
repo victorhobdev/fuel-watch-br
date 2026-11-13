@@ -1,6 +1,6 @@
 # Roadmap do Fuel Watch BR — marcos verificáveis
 
-Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M04 aceitos no Fabric; próximo bloco M05, orquestração e recuperação. Planejamento, testes locais e execução validada são identificados separadamente.
+Atualizado em **13/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M05 aceitos no Fabric; M06 em execução e M07 em preparação. Planejamento, testes locais e execução validada são identificados separadamente.
 
 **Objetivo:** concluir um observatório explicável de preços de combustíveis no Microsoft Fabric, com fluxo batch confiável, segurança e implantação demonstradas, laboratório sintético de streaming e consumo mínimo.
 
@@ -10,7 +10,7 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 
 ## Como acompanhar
 
-- **Estado atual: 5 de 12 marcos concluídos.** Isso conta entregas aceitas, não representa percentual de esforço ou de tempo.
+- **Estado atual: 6 de 12 marcos concluídos.** Isso conta entregas aceitas, não representa percentual de esforço ou de tempo.
 - Cada marco tem cinco critérios de aceite. Marcar uma caixa exige uma evidência identificada: execução, consulta, comparação, matriz ou documento verificado.
 - Código preparado, teste local e execução no Fabric são estados distintos. Uma etapa que depende de Fabric não fica concluída apenas por passar localmente.
 - Evidências M00–M02 e laboratório M03 foram fornecidas pelo usuário e conferidas localmente. A seleção oficial M03 e o M04 foram executados pelo agente na guia Fabric autorizada, com saídas observadas diretamente. A proveniência acompanha cada registro; não houve consulta independente fora dos notebooks.
@@ -25,8 +25,8 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 | M02 | IBGE e Silver tipada/validada no Fabric | CONCLUÍDO | M01 |
 | M03 | Versões de origem, correções antigas e backfill | CONCLUÍDO | M02 |
 | M04 | Gold dimensional e histórico observado do posto | CONCLUÍDO | M03 |
-| M05 | Pipeline mestre e recuperação entre camadas | EM DESENVOLVIMENTO | M04 |
-| M06 | Exercício delimitado de Dataflow Gen2 | PLANEJADO | M02 |
+| M05 | Pipeline mestre e recuperação entre camadas | CONCLUÍDO | M04 |
+| M06 | Exercício delimitado de Dataflow Gen2 | EM DESENVOLVIMENTO | M02 |
 | M07 | Acessos e governança com testes reais | PLANEJADO | M04 |
 | M08 | Git do workspace e implantação entre ambientes | PLANEJADO | M05; M06 para implantar esse item |
 | M09 | Monitoramento, diagnóstico e desempenho medido | PLANEJADO | M05; repetir verificações após M08 |
@@ -138,13 +138,13 @@ Atualizado em **12/11/2026**, America/Sao_Paulo. Base do acompanhamento: M00–M
 
 - [x] Pipeline mestre executa recebimento → Bronze → Silver → Gold com parâmetros de fonte, hash/versão e escopo; um identificador permite relacionar as auditorias dos itens.
 - [x] Execução verde termina com reconciliação do lote e da versão publicada; os marcadores avançam somente após a publicação válida.
-- [ ] Falha provocada em Silver impede atualização Gold; fatos e marcador da versão Gold anterior permanecem iguais.
-- [ ] Falha provocada na carga Gold mantém o último estado válido para consumo e permite nova tentativa controlada, sem duplicação ou perda.
-- [ ] Recuperação das duas falhas e repetição completa aprovadas; agendamento/evento delimitado exercitado uma vez e desabilitado ao fim do laboratório, com runbook de diagnóstico.
+- [x] Falha provocada em Silver impede atualização Gold; fatos e marcador da versão Gold anterior permanecem iguais.
+- [x] Falha provocada na carga Gold mantém o último estado válido para consumo e permite nova tentativa controlada, sem duplicação ou perda.
+- [x] Recuperação das duas falhas e repetição completa aprovadas; agendamento/evento delimitado exercitado uma vez e desabilitado ao fim do laboratório, com runbook de diagnóstico.
 
 **Métrica de saída:** cinco provas operacionais: execução verde, bloqueio em Silver, proteção em Gold, recuperação e repetição completa. Não presumir transação única entre Lakehouse e Warehouse.
 
-**Aceite parcial em 13/11:** 2/5 critérios. O mestre completo e a publicação correlacionada passaram no job `3ceb55a5-8026-4950-97fb-c2eb229d6c1d`, conferido por REST, OneLake e SQL. [Evidência](../../../evidence/fabric/orchestration/pipeline-runs/3ceb55a5-8026-4950-97fb-c2eb229d6c1d/verification.json). Falhas, recuperações, repetição e agendamento continuam pendentes; permanece 5/12 marcos concluídos.
+**Aceite em 13/11:** 5/5 critérios. Carga normal, falhas Silver/Gold, recuperações, repetição e um disparo agendado foram conferidos por REST/OneLake/SQL. A agenda está desabilitada. [Bateria](../../../evidence/fabric/orchestration/recovery-cases-2026-11-13.json), [disparo e desativação](../../../evidence/fabric/orchestration/scheduled-run-2026-11-13.json). Permanece a fatia de 8.052 coletas; 6/12 marcos concluídos.
 
 **Arquivos previstos:** definições reais exportadas em `fabric/` (estrutura nativa confirmada na integração), `docs/runbooks/recovery.md`, `evidence/fabric/orchestration/`.
 
@@ -293,6 +293,7 @@ Em cada sessão, acrescentar uma linha. As mudanças de estado exigem links para
 | 12/11/2026 | M04 | CONCLUÍDO — 5/5 critérios | Sete cenários Warehouse; lote 4ef52958; duas validações de 8.052 fatos/518 versões/656 semanas e soma 52.777,200 reconciliada | M05; 5/12 marcos concluídos |
 
 | 13/11/2026 | M05 | PARCIAL — sem aceite Fabric | Notebook 08 e cópia do pipeline criados; 57 testes locais; editor de notebooks preso no carregamento. [Estado](../../../evidence/fabric/orchestration/preparation-status.json) | Recuperar editor, conferir parâmetros e executar orquestração/falhas; 5/12 marcos |
+| 13/11/2026 | M05 | CONCLUÍDO — 5/5 critérios | Carga completa, falhas Silver/Gold, recuperações, repetição e agendamento real desabilitado; auditoria REST/OneLake/SQL | M06 em execução; 6/12 marcos concluídos |
 
 ## Dependências e referências oficiais
 

@@ -1,0 +1,20 @@
+{
+  "run_id": "da5169bf-3a48-4deb-87c6-938180c62031",
+  "environment": "fabric",
+  "phase": "export",
+  "pipeline_status": "Failed",
+  "error": {
+    "ename": "ValueError",
+    "evalue": "Execucao filha sem recibo novo unico",
+    "traceback": [
+      "---------------------------------------------------------------------------",
+      "ValueError Traceback (most recent call last)",
+      "Cell In[15], line 80\n 76 except Exception as error:\n 77 receipt.update(status=\"failed\", error_type=type(error).__name__, error=str(error),\n 78 finished_at_utc=datetime.now(timezone.utc).isoformat())\n 79 save()\n---> 80 raise\n 81 \n 82 print(json.dumps(receipt, ensure_ascii=False))\n 83 # exit fora de try/except: Fabric usa uma excecao propria para devolver o valor.\n",
+      "Cell In[15], line 41, in child_summary(folder, notebook, expected_status)\n 37 before = set(directory.glob(\"*/summary.json\"))\n 38 notebookutils.notebook.run(notebook, 900)\n 39 added = set(directory.glob(\"*/summary.json\")) - before\n 40 if len(added) != 1:\n---> 41 raise ValueError(\"Execucao filha sem recibo novo unico\")\n 42 path = added.pop()\n 43 result = json.loads(path.read_text(encoding=\"utf-8\"))\n 44 if result.get(\"status\") != expected_status or result.get(\"environment\") != \"fabric\":\n",
+      "ValueError: Execucao filha sem recibo novo unico"
+    ]
+  },
+  "observed_at_utc": "2026-11-13T11:57:13.309Z",
+  "gold_publication_executed": false,
+  "root_cause_confirmed": false
+}

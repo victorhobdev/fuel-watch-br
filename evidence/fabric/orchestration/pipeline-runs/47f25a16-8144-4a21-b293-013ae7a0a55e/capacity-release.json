@@ -1,0 +1,47 @@
+{
+  "environment": "fabric",
+  "job_id": "47f25a16-8144-4a21-b293-013ae7a0a55e",
+  "status": "Failed",
+  "failed_activity": "Bronze",
+  "error_excerpt": "Failed to create Livy session for executing notebook. Error: [TooManyRequestsForCapacity] [TooManyRequestsForCapacity] HTTP Response code 430: This Spark job can't be run because you've hit spark overall capacity compute limit. To proceed, cancel an active Spark job through the Monitoring hub, choose a larger capacity SKU, or try again later. For more visibility and control, go to Workspace settings \u2192 Job management (Job Concurrency & Queue Monitoring) to review running and queued Spark jobs, understand capacity contention, and take action as needed. [Learn more at 'https://go.microsoft.com/fwlink/?linkid=2356970&clcid=0x409']. HTTP status code: 430.",
+  "previous_publication_protected_after_failure": true,
+  "proof_method": "Compare immutable captured guards of failed attempt with successful recovery pre-publication guards, because live Gold has since advanced legitimately",
+  "next_recovery_root": "5c9a3991-61b9-454a-a686-2a96c2c04c17",
+  "checks": {
+    "facts": {
+      "same_rows": true,
+      "same_multiset_in_both_directions": true,
+      "rows": 8052
+    },
+    "posto": {
+      "same_rows": true,
+      "same_multiset_in_both_directions": true,
+      "rows": 518
+    },
+    "publication": {
+      "same_rows": true,
+      "same_multiset_in_both_directions": true,
+      "rows": 1
+    },
+    "calendar": {
+      "same_rows": true,
+      "same_multiset_in_both_directions": true,
+      "rows": 181
+    },
+    "municipios": {
+      "same_rows": true,
+      "same_multiset_in_both_directions": true,
+      "rows": 92
+    },
+    "produtos": {
+      "same_rows": true,
+      "same_multiset_in_both_directions": true,
+      "rows": 1
+    }
+  },
+  "previous_livy_end_utc": "2026-11-13T14:02:46Z",
+  "new_bronze_start_utc": "2026-11-13T14:02:44.725737Z",
+  "new_livy_admission_start_utc": "2026-11-13T14:02:50.3712877Z",
+  "diagnostic_conclusion": "Pipeline completion preceded Livy termination; exact internal capacity release delay not measured",
+  "mitigation": "Wait for terminal Livy states plus 60s settling before new attempt"
+}

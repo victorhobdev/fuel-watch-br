@@ -1,0 +1,166 @@
+{
+  "run_id": "be1f70ef-d4d6-4fda-a3dd-a308d61d36cb",
+  "status": "m03_official_selection_validated",
+  "environment": "fabric",
+  "is_synthetic": false,
+  "started_at_utc": "2026-11-13T14:36:13.092921+00:00",
+  "scope": {
+    "anp_source_id": "anp_2026_1",
+    "contract_version": "0.1",
+    "date_end": "2026-06-30",
+    "date_start": "2026-01-01",
+    "ibge_source_id": "ibge_municipios_rj",
+    "produto": "GASOLINA",
+    "scope_id": "anp-2026-1-rj-gasolina",
+    "uf": "RJ"
+  },
+  "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+  "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+  "bundle_manifest_sha256": "01d587c6927b4d2aa93fea09acdfe61b2332508225c9aba554998d12d37e1aaa",
+  "publication_policy_sha256": "eb59c881d944523b045de54811a398ac76fcf1807ea7a7404dcc477f47065215",
+  "policy": {
+    "policy_version": "official-initial-v1",
+    "is_synthetic": false,
+    "complete_snapshot": true,
+    "scope": {
+      "anp_source_id": "anp_2026_1",
+      "contract_version": "0.1",
+      "date_end": "2026-06-30",
+      "date_start": "2026-01-01",
+      "ibge_source_id": "ibge_municipios_rj",
+      "produto": "GASOLINA",
+      "scope_id": "anp-2026-1-rj-gasolina",
+      "uf": "RJ"
+    },
+    "source_id": "anp_2026_1",
+    "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+    "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+    "expected_previous_identity": null,
+    "approved_delta": {
+      "inserted": 8052,
+      "removed": 0,
+      "updated": 0
+    }
+  },
+  "spark_version": "4.1.1.5.5.20260929.238183312",
+  "python_version": "3.13.11",
+  "limits": "Serial reviewed snapshot; no cross-table transaction or concurrent publisher guarantee.",
+  "source_files": {
+    "zip_relative_path": "raw/anp_2026_1/a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c/ca-2026-01.zip",
+    "csv_relative_path": "extracted/anp_2026_1/a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c/source.csv",
+    "csv_sha256": "04406f4e411380c07fff0343a746bcc5ef693bd4b26a267101ab0698c44b76a9",
+    "source_rows": 422418,
+    "complete_snapshot_verified_against_reviewed_profile": true
+  },
+  "raw_bronze_full_comparison": {
+    "rows": 422418,
+    "missing_or_extra_rows": false
+  },
+  "counts": {
+    "selected": 8052,
+    "invalid": 0,
+    "exact_duplicate_excess": 0,
+    "conflicting_rows_after_exact_dedup": 0,
+    "accepted": 8052,
+    "received_full_file": 422418,
+    "outside_slice": 414366
+  },
+  "registration": {
+    "run_id": "be1f70ef-d4d6-4fda-a3dd-a308d61d36cb",
+    "attempt_id": "97041061-8385-4259-8971-6c4c9957fc0b",
+    "label": "registration",
+    "status": "replayed",
+    "scope_id": "anp-2026-1-rj-gasolina",
+    "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+    "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+    "publication_policy_sha256": "eb59c881d944523b045de54811a398ac76fcf1807ea7a7404dcc477f47065215",
+    "started_at_utc": "2026-11-13T14:36:54.857917+00:00",
+    "is_synthetic": false,
+    "previous_identity": {
+      "scope_id": "anp-2026-1-rj-gasolina",
+      "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+      "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+      "contract_version": "0.1"
+    },
+    "delta_counts": {
+      "inserted": 0,
+      "removed": 0,
+      "updated": 0
+    },
+    "before_delta_version": 0,
+    "after_delta_version": 0,
+    "rows": 8052,
+    "business_verified": true,
+    "other_scopes_unchanged": true,
+    "selected_snapshot_id": "3da66482-2dad-489f-8450-b7ded2005f3d",
+    "finished_at_utc": "2026-11-13T14:37:18.700318+00:00"
+  },
+  "replay": {
+    "run_id": "be1f70ef-d4d6-4fda-a3dd-a308d61d36cb",
+    "attempt_id": "20761749-18bb-4c48-8e45-52371b53515c",
+    "label": "replay",
+    "status": "replayed",
+    "scope_id": "anp-2026-1-rj-gasolina",
+    "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+    "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+    "publication_policy_sha256": "eb59c881d944523b045de54811a398ac76fcf1807ea7a7404dcc477f47065215",
+    "started_at_utc": "2026-11-13T14:37:20.707839+00:00",
+    "is_synthetic": false,
+    "previous_identity": {
+      "scope_id": "anp-2026-1-rj-gasolina",
+      "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+      "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+      "contract_version": "0.1"
+    },
+    "delta_counts": {
+      "inserted": 0,
+      "removed": 0,
+      "updated": 0
+    },
+    "before_delta_version": 0,
+    "after_delta_version": 0,
+    "rows": 8052,
+    "business_verified": true,
+    "other_scopes_unchanged": true,
+    "selected_snapshot_id": "3da66482-2dad-489f-8450-b7ded2005f3d",
+    "finished_at_utc": "2026-11-13T14:37:38.467073+00:00"
+  },
+  "official_integration_implemented": true,
+  "silver_rows": 8052,
+  "stations": 502,
+  "municipalities": 27,
+  "unusual_iqr_rows": 26,
+  "replay_without_active_commit": true,
+  "consumer_contract": {
+    "table": "silver_preco_publicado",
+    "delta_version": 0,
+    "scope_id": "anp-2026-1-rj-gasolina",
+    "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+    "ibge_sha256": "2338ca0e4f482e065e14d1aec04d69ba525ba69ec4cc103161f6cb178163dad0",
+    "business_fields": [
+      "cnpj",
+      "cnpj_origem",
+      "produto",
+      "data_coleta",
+      "preco_venda",
+      "moeda",
+      "unidade",
+      "uf",
+      "municipio_ibge",
+      "municipio_origem",
+      "revenda_observada",
+      "bandeira_observada",
+      "preco_incomum_iqr"
+    ],
+    "snapshot_id": "3da66482-2dad-489f-8450-b7ded2005f3d",
+    "read_strategy": "Pin Delta version, filter scope, reconcile identity before Gold"
+  },
+  "audit_relative_path": "audit/m03_official/be1f70ef-d4d6-4fda-a3dd-a308d61d36cb",
+  "input_delta_versions": {
+    "bronze_anp": 10,
+    "ref_municipio_ibge": 0,
+    "silver_preco_coletado": 1
+  },
+  "m02_inputs_unchanged": true,
+  "finished_at_utc": "2026-11-13T14:37:41.661884+00:00"
+}

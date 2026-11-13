@@ -11,16 +11,28 @@ from azure.identity import AzureCliCredential
 ROOT = Path(__file__).resolve().parents[2]
 os.environ["AZURE_CONFIG_DIR"] = str(ROOT / ".local/azure")
 credential = AzureCliCredential()
+_fabric_token = None
 
 
 def request(method, path, body=None):
+    global _fabric_token
     url = path if path.startswith("https://") else "https://api.fabric.microsoft.com/v1/" + path.lstrip("/")
     parsed = urlparse(url)
     if parsed.scheme != "https" or not (parsed.hostname == "api.fabric.microsoft.com" or parsed.hostname.endswith(".analysis.windows.net")):
         raise ValueError("Endpoint Fabric nao permitido")
-    token = credential.get_token("https://api.fabric.microsoft.com/.default").token
-    response = requests.request(method, url, json=body,
-                                headers={"Authorization": "Bearer " + token}, timeout=60)
+    if _fabric_token is None or _fabric_token.expires_on <= time.time() + 120:
+        _fabric_token = credential.get_token("https://api.fabric.microsoft.com/.default")
+    token = _fabric_token.token
+    read_only = method.upper() == "GET" or (method.upper() == "POST" and parsed.path.endswith("/queryactivityruns"))
+    for attempt in range(3 if read_only else 1):
+        try:
+            response = requests.request(method, url, json=body,
+                                        headers={"Authorization": "Bearer " + token}, timeout=60)
+            break
+        except (requests.ConnectionError, requests.Timeout):
+            if not read_only or attempt == 2:
+                raise
+            time.sleep(2 ** attempt)
     response.raise_for_status()
     return response
 

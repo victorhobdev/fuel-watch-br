@@ -70,3 +70,16 @@ As saidas nativas ficam em `.local/m05-api/runs/<job-id>/`. `accepted.json` comp
 
 O modulo `warehouse.py` usa ODBC 18 e token Entra, com criptografia e verificacao do certificado. O cliente REST preserva o identificador da operacao longa e aceita os endpoints regionais Microsoft retornados em `Location`; nao repete automaticamente escritas quando uma observacao falha.
 
+Antes de `--start`, o cliente confere jobs e sessoes Livy do notebook 08. Aguarda estados terminais e uma janela de 60 segundos desde o encerramento da ultima sessao, com limite de dez minutos e sem cancelar sessoes automaticamente. Essa janela e uma mitigacao operacional do laboratorio; nao comprova a causa interna de todo HTTP 430.
+
+O cliente mantem o token Fabric somente em memoria ate perto da expiracao e repete no maximo tres vezes leituras interrompidas por falha de conexao. O POST de `queryactivityruns` e uma leitura; o POST de inicio de job nunca e repetido automaticamente. Testes desse transporte usam o venv operacional:
+
+```powershell
+.local/fabric-tools/Scripts/python.exe -m unittest discover -s tools/fabric/tests -v
+.local/fabric-tools/Scripts/python.exe tools/fabric/m05_recovery_cases.py --resume .local/m05-api/recovery-cases-<id>.json
+```
+
+A retomada conserva casos verificados e observa o mesmo job aceito quando o acompanhamento foi interrompido. Falha terminal conhecida em uma recuperacao normal permite nova tentativa; cancelamento ou inicio sem job_id exigem inspecao. A suite principal de desenvolvimento continua separada (`python -m unittest discover -v`).
+
+`m05_schedule_once.py --cases <recovery-cases.json>` so aceita a bateria completa aprovada. Prepara um unico disparo pretendido em janela curta, desabilita e rele a agenda apos observar o job, acompanha o mesmo job e compara o negocio. Se existir um registro desse experimento, recusa criar outra agenda: consultar a agenda/job ja registrados antes de qualquer nova acao.
+

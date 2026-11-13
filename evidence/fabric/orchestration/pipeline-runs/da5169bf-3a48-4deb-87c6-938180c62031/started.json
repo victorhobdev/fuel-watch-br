@@ -1,0 +1,10 @@
+{
+  "run_id": "da5169bf-3a48-4deb-87c6-938180c62031",
+  "environment": "fabric",
+  "observed_at_utc": "2026-11-13T11:48:02.287Z",
+  "status_observed": "Em andamento",
+  "fault_stage": "none",
+  "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+  "scope_id": "anp-2026-1-rj-gasolina",
+  "outcome_validated": false
+}

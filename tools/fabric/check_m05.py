@@ -48,7 +48,13 @@ if args.fault != "none":
     blocked = ["Export_Gold_Input", "Import_Gold", "Publish_Gold", "Validate_Gold"] if args.fault == "silver" else ["Validate_Gold"]
     assert all(name not in activity or activity[name]["status"] == "Skipped" for name in blocked)
     error_text = json.dumps(activity[failed].get("error"), ensure_ascii=False)
-    assert ("M05_INJECTED_SILVER_FAILURE" if args.fault == "silver" else "51999") in error_text, error_text
+    if args.fault == "silver":
+        assert "M05_INJECTED_SILVER_FAILURE" in error_text, error_text
+    else:
+        assert activity[failed]["error"]["message"] == "Falha injetada apos escritas e antes do commit.", error_text
+        sql_input = activity[failed]["input"]["scripts"][0]["text"]
+        assert "DECLARE @fault varchar(20) = 'gold';" in sql_input
+        assert "@inject_fail_before_commit=@inject" in sql_input
 
 config = json.loads((ROOT / ".local/fabric-environment.json").read_text())
 fs = DataLakeServiceClient("https://onelake.dfs.fabric.microsoft.com", credential=credential).get_file_system_client(config["workspace_id"])
@@ -75,6 +81,7 @@ else:
     assert by_phase["silver"]["status"] == by_phase["export"]["status"] == "stage_validated"
 
 connection = connect()
+sql_injection_proof = None
 try:
     cursor = connection.cursor()
     attempt = results(cursor.execute("SELECT * FROM m05.attempt WHERE root_run_id=?", args.job_id))[0]
@@ -84,6 +91,16 @@ try:
         assert attempt[0]["status"] == "validated"
         assert attempt[0]["batch_id"] == publication[0]["batch_id"] == by_phase["export"]["batch_id"]
     else:
+        if args.fault == "gold":
+            definition = cursor.execute("SELECT OBJECT_DEFINITION(OBJECT_ID('gold.publish_gold'))").fetchone()[0]
+            marker = "THROW 51999, 'Falha injetada apos escritas e antes do commit.'"
+            assert definition and marker in definition
+            assert definition.index("INSERT INTO gold.fato_preco_coletado") < definition.index(marker) < definition.index("COMMIT TRANSACTION")
+            assert attempt[0]["status"] == "gold_failed" and attempt[0]["batch_id"] == by_phase["export"]["batch_id"]
+            sql_injection_proof = {"fabric_activity_error_code": activity["Publish_Gold"]["error"]["errorCode"],
+                                   "declared_sql_throw_number": 51999,
+                                   "live_procedure_sha256": hashlib.sha256(definition.encode()).hexdigest(),
+                                   "throw_after_fact_insert_before_commit": True}
         guard = (ROOT / "data/artifacts/m05/warehouse/90_assert_unchanged.sql").read_text(encoding="utf-8").replace("{{ROOT_RUN_ID}}", args.job_id)
         results(cursor.execute(guard))  # THROW bloqueia a verificacao se houver qualquer diferenca.
     fingerprints = {}
@@ -102,6 +119,7 @@ finally:
 
 report = {"environment": "fabric", "job_id": args.job_id, "fault_stage": args.fault,
           "status": "m05_attempt_verified", "job_status": job["status"],
+          "invoke_type": job.get("invokeType"), "job_start_utc": job.get("startTimeUtc"), "job_end_utc": job.get("endTimeUtc"),
           "checked_at_utc": datetime.now(timezone.utc).isoformat(),
           "activities": [{key: item.get(key) for key in ["activityName", "status", "activityRunStart", "activityRunEnd", "durationInMs", "retryAttempt"]} for item in activities],
           "spark_sessions": [{"activity": item["activityName"], "session_id": item["output"]["result"].get("sessionId"),
@@ -110,6 +128,7 @@ report = {"environment": "fabric", "job_id": args.job_id, "fault_stage": args.fa
           "receipts": receipts, "warehouse_attempt": attempt, "publication": publication,
           "business_fingerprints": fingerprints,
           "previous_publication_unchanged": args.fault != "none",
+          "sql_injection_proof": sql_injection_proof,
           "same_business_as": args.same_business_as}
 (folder / "verification.json").write_text(json.dumps(report, indent=2, ensure_ascii=False, default=json_value), encoding="utf-8")
 print(json.dumps({"job_id": args.job_id, "status": report["status"], "job_status": job["status"]}), flush=True)

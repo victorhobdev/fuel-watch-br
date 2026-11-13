@@ -1,0 +1,31 @@
+{
+  "milestone": "M05",
+  "status": "accepted",
+  "environment": "fabric",
+  "checked_at_utc": "2026-11-13T14:58:47.937888+00:00",
+  "criteria_passed": 5,
+  "criteria_total": 5,
+  "baseline_job": "3ceb55a5-8026-4950-97fb-c2eb229d6c1d",
+  "cases": {
+    "silver_failure": "b9812604-df3d-4705-bc30-5324be35779d",
+    "silver_recovery": "5c9a3991-61b9-454a-a686-2a96c2c04c17",
+    "gold_failure": "4145ce90-e750-4109-a0c7-4637ba50a209",
+    "gold_recovery": "dc94cb54-4930-427f-9e08-6ea8b4996747",
+    "full_replay": "bc036008-ccea-404e-9362-ce9dc081db6b"
+  },
+  "scheduled_job": "80575d95-2838-4b70-b9d4-1aad84ffb084",
+  "schedule_disabled_verified": true,
+  "all_seven_functional_runs_same_business": true,
+  "business_counts": {
+    "published_business_bytes": 8052,
+    "dim_posto": 518,
+    "dim_data": 181,
+    "dim_municipio": 92,
+    "dim_produto": 1,
+    "preco_semanal": 656
+  },
+  "finite_import_retry_verified": true,
+  "local_development_tests_passed": 70,
+  "operational_client_tests_passed": 5,
+  "full_project_complete": false
+}
