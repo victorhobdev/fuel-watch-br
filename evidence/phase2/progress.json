@@ -1,0 +1,66 @@
+{
+  "objective": "Completar todos os cinco marcos da fase 2 no escopo aprovado",
+  "milestones": {
+    "F2-01": {
+      "status": "completed",
+      "acceptance": "evidence/phase2/analytics/acceptance.json",
+      "completed": [
+        "national_dataset",
+        "regional_station_municipal_brand_metrics",
+        "six_reconciled_interpreted_answers",
+        "national_model_and_two_page_report",
+        "real_render_and_filters_verified"
+      ],
+      "pending": []
+    },
+    "F2-02": {
+      "status": "partial",
+      "pending": [
+        "historical_spark_validation",
+        "historical_gold_publication_maintaining_2026h1",
+        "integrated_parameterized_national_pipeline",
+        "version_discovery_and_historical_corrections",
+        "five_real_update_failure_recovery_cases",
+        "finite_schedule"
+      ],
+      "completed": [
+        "four_official_historical_sources_profiled",
+        "independent_typed_local_references",
+        "parameterized_copy_pipeline_real_run",
+        "all_four_copied_hashes_verified"
+      ],
+      "prepared": [
+        "versioned_bronze_silver_notebook_11"
+      ]
+    },
+    "F2-03": {
+      "status": "not_started",
+      "pending": [
+        "dated_population_reference",
+        "weather_station_geography_coverage",
+        "nonmultiplying_temporal_joins",
+        "exploratory_answers",
+        "context_report_page"
+      ]
+    },
+    "F2-04": {
+      "status": "not_started",
+      "pending": [
+        "versioned_historical_event_benchmark",
+        "finite_transport_late_duplicate_cases",
+        "real_activator_action_and_shutdown",
+        "expanded_workload_baseline_intervention_reconciliation"
+      ]
+    },
+    "F2-05": {
+      "status": "not_started",
+      "pending": [
+        "active_dependency_versioning",
+        "empty_workspace_rebuild",
+        "full_business_reconciliation",
+        "deployment_restore",
+        "ci_demo_resource_audit"
+      ]
+    }
+  }
+}

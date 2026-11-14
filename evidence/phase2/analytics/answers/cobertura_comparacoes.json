@@ -1,0 +1,170 @@
+[
+  {
+    "produto": "DIESEL",
+    "unidade": "litro",
+    "posicao": "abaixo",
+    "postos_semanas": 20552,
+    "coletas": 20552
+  },
+  {
+    "produto": "DIESEL",
+    "unidade": "litro",
+    "posicao": "acima",
+    "postos_semanas": 20655,
+    "coletas": 20655
+  },
+  {
+    "produto": "DIESEL",
+    "unidade": "litro",
+    "posicao": "cobertura_insuficiente",
+    "postos_semanas": 460,
+    "coletas": 460
+  },
+  {
+    "produto": "DIESEL",
+    "unidade": "litro",
+    "posicao": "igual",
+    "postos_semanas": 4147,
+    "coletas": 4147
+  },
+  {
+    "produto": "DIESEL S10",
+    "unidade": "litro",
+    "posicao": "abaixo",
+    "postos_semanas": 33593,
+    "coletas": 33594
+  },
+  {
+    "produto": "DIESEL S10",
+    "unidade": "litro",
+    "posicao": "acima",
+    "postos_semanas": 34470,
+    "coletas": 34470
+  },
+  {
+    "produto": "DIESEL S10",
+    "unidade": "litro",
+    "posicao": "cobertura_insuficiente",
+    "postos_semanas": 242,
+    "coletas": 242
+  },
+  {
+    "produto": "DIESEL S10",
+    "unidade": "litro",
+    "posicao": "igual",
+    "postos_semanas": 8810,
+    "coletas": 8810
+  },
+  {
+    "produto": "ETANOL",
+    "unidade": "litro",
+    "posicao": "abaixo",
+    "postos_semanas": 41969,
+    "coletas": 41969
+  },
+  {
+    "produto": "ETANOL",
+    "unidade": "litro",
+    "posicao": "acima",
+    "postos_semanas": 41587,
+    "coletas": 41588
+  },
+  {
+    "produto": "ETANOL",
+    "unidade": "litro",
+    "posicao": "cobertura_insuficiente",
+    "postos_semanas": 284,
+    "coletas": 284
+  },
+  {
+    "produto": "ETANOL",
+    "unidade": "litro",
+    "posicao": "igual",
+    "postos_semanas": 10050,
+    "coletas": 10050
+  },
+  {
+    "produto": "GASOLINA",
+    "unidade": "litro",
+    "posicao": "abaixo",
+    "postos_semanas": 50534,
+    "coletas": 50534
+  },
+  {
+    "produto": "GASOLINA",
+    "unidade": "litro",
+    "posicao": "acima",
+    "postos_semanas": 48761,
+    "coletas": 48762
+  },
+  {
+    "produto": "GASOLINA",
+    "unidade": "litro",
+    "posicao": "cobertura_insuficiente",
+    "postos_semanas": 107,
+    "coletas": 107
+  },
+  {
+    "produto": "GASOLINA",
+    "unidade": "litro",
+    "posicao": "igual",
+    "postos_semanas": 11520,
+    "coletas": 11520
+  },
+  {
+    "produto": "GASOLINA ADITIVADA",
+    "unidade": "litro",
+    "posicao": "abaixo",
+    "postos_semanas": 39211,
+    "coletas": 39211
+  },
+  {
+    "produto": "GASOLINA ADITIVADA",
+    "unidade": "litro",
+    "posicao": "acima",
+    "postos_semanas": 40136,
+    "coletas": 40136
+  },
+  {
+    "produto": "GASOLINA ADITIVADA",
+    "unidade": "litro",
+    "posicao": "cobertura_insuficiente",
+    "postos_semanas": 116,
+    "coletas": 116
+  },
+  {
+    "produto": "GASOLINA ADITIVADA",
+    "unidade": "litro",
+    "posicao": "igual",
+    "postos_semanas": 6768,
+    "coletas": 6768
+  },
+  {
+    "produto": "GNV",
+    "unidade": "m3",
+    "posicao": "abaixo",
+    "postos_semanas": 2804,
+    "coletas": 2804
+  },
+  {
+    "produto": "GNV",
+    "unidade": "m3",
+    "posicao": "acima",
+    "postos_semanas": 2704,
+    "coletas": 2704
+  },
+  {
+    "produto": "GNV",
+    "unidade": "m3",
+    "posicao": "cobertura_insuficiente",
+    "postos_semanas": 1216,
+    "coletas": 1216
+  },
+  {
+    "produto": "GNV",
+    "unidade": "m3",
+    "posicao": "igual",
+    "postos_semanas": 1713,
+    "coletas": 1713
+  }
+]

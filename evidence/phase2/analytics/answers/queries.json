@@ -1,0 +1,31 @@
+{
+  "status": "six_business_queries_executed",
+  "environment": "fabric",
+  "checked_at_utc": "2026-11-14T14:12:48.410306+00:00",
+  "queries": {
+    "evolucao_uf_produto": {
+      "rows": 3972,
+      "query": "SELECT uf,produto,moeda,unidade,inicio_semana_iso,postos_referencia,mediana_uf FROM analise_br.referencia_uf_semana ORDER BY produto,uf,inicio_semana_iso"
+    },
+    "municipios_acima": {
+      "rows": 20,
+      "query": "SELECT TOP(20) * FROM analise_br.municipio_semana WHERE produto='GASOLINA' AND benchmark_elegivel=1 AND inicio_semana_iso=(SELECT MAX(inicio_semana_iso) FROM analise_br.municipio_semana WHERE produto='GASOLINA' AND benchmark_elegivel=1) ORDER BY diferenca_uf DESC,postos_municipio DESC,municipio_ibge"
+    },
+    "postos_acima": {
+      "rows": 20,
+      "query": "SELECT TOP(20) cnpj,uf,municipio_ibge_nome,produto,unidade,inicio_semana_iso,preco_mediano,mediana_uf,diferenca_uf,desvio_percentual FROM analise_br.posicao_posto_semana WHERE produto='GASOLINA' AND benchmark_elegivel=1 AND inicio_semana_iso=(SELECT MAX(inicio_semana_iso) FROM analise_br.posicao_posto_semana WHERE produto='GASOLINA' AND benchmark_elegivel=1) ORDER BY diferenca_uf DESC,cnpj"
+    },
+    "persistencia": {
+      "rows": 20,
+      "query": "SELECT TOP(20) * FROM analise_br.persistencia_posto WHERE produto='GASOLINA' AND persistencia_percentual IS NOT NULL ORDER BY persistencia_percentual DESC,semanas_com_benchmark DESC,cnpj"
+    },
+    "bandeiras_contextuais": {
+      "rows": 138,
+      "query": "SELECT * FROM analise_br.comparacao_bandeira WHERE produto='GASOLINA' AND contextos_comparaveis>=10 ORDER BY uf,diferenca_mediana_contextual DESC,bandeira_observada"
+    },
+    "cobertura_comparacoes": {
+      "rows": 24,
+      "query": "SELECT produto,unidade,posicao,COUNT_BIG(*) AS postos_semanas,SUM(coletas) AS coletas FROM analise_br.posicao_posto_semana GROUP BY produto,unidade,posicao ORDER BY produto,posicao"
+    }
+  }
+}

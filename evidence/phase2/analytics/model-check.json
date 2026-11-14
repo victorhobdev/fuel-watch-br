@@ -1,0 +1,116 @@
+{
+  "status": "national_model_dax_reconciled",
+  "environment": "fabric",
+  "checked_at_utc": "2026-11-14T14:37:07.471133+00:00",
+  "checks": [
+    {
+      "filters": {
+        "product": null
+      },
+      "dax": "EVALUATE CALCULATETABLE(ROW(\"coletas\", [Coletas], \"postos\", [Postos], \"media\", [Media por coleta]))",
+      "actual": {
+        "[coletas]": 422412,
+        "[postos]": 7963,
+        "[media]": null
+      },
+      "warehouse": {
+        "coletas": 422412,
+        "postos": 7963,
+        "media": "6.231476"
+      }
+    },
+    {
+      "filters": {
+        "product": "GASOLINA"
+      },
+      "dax": "EVALUATE CALCULATETABLE(ROW(\"coletas\", [Coletas], \"postos\", [Postos], \"media\", [Media por coleta]), TREATAS({\"GASOLINA\"}, Produtos[Combustivel]))",
+      "actual": {
+        "[coletas]": 110923,
+        "[postos]": 7899,
+        "[media]": 6.563048511129343
+      },
+      "warehouse": {
+        "coletas": 110923,
+        "postos": 7899,
+        "media": "6.563048"
+      }
+    },
+    {
+      "filters": {
+        "product": "GNV"
+      },
+      "dax": "EVALUATE CALCULATETABLE(ROW(\"coletas\", [Coletas], \"postos\", [Postos], \"media\", [Media por coleta]), TREATAS({\"GNV\"}, Produtos[Combustivel]))",
+      "actual": {
+        "[coletas]": 8437,
+        "[postos]": 624,
+        "[media]": 4.538153372051677
+      },
+      "warehouse": {
+        "coletas": 8437,
+        "postos": 624,
+        "media": "4.538153"
+      }
+    },
+    {
+      "filters": {
+        "product": "GASOLINA",
+        "uf": "RJ",
+        "brand": "BRANCA",
+        "week": "2026-06-22"
+      },
+      "dax": "EVALUATE CALCULATETABLE(ROW(\"coletas\", [Coletas], \"postos\", [Postos], \"media\", [Media por coleta]), TREATAS({\"GASOLINA\"}, Produtos[Combustivel]), TREATAS({\"RJ\"}, Estados[UF]), TREATAS({\"BRANCA\"}, Marcas[Bandeira]), TREATAS({DATE(2026,6,22)}, Semanas[Semana]))",
+      "actual": {
+        "[coletas]": 104,
+        "[postos]": 104,
+        "[media]": 6.751826923076924
+      },
+      "warehouse": {
+        "coletas": 104,
+        "postos": 104,
+        "media": "6.751826"
+      }
+    },
+    {
+      "filters": {
+        "product": "GNV",
+        "uf": "RJ",
+        "week": "2026-06-22"
+      },
+      "dax": "EVALUATE CALCULATETABLE(ROW(\"coletas\", [Coletas], \"postos\", [Postos], \"media\", [Media por coleta]), TREATAS({\"GNV\"}, Produtos[Combustivel]), TREATAS({\"RJ\"}, Estados[UF]), TREATAS({DATE(2026,6,22)}, Semanas[Semana]))",
+      "actual": {
+        "[coletas]": 137,
+        "[postos]": 137,
+        "[media]": 4.583649635036497
+      },
+      "warehouse": {
+        "coletas": 137,
+        "postos": 137,
+        "media": "4.583649"
+      }
+    },
+    {
+      "metric": "persistencia",
+      "dax": "EVALUATE CALCULATETABLE(ROW(\"value\", [Persistencia acima], \"contexts\", [Semanas elegiveis]), TREATAS({\"GASOLINA\"}, Produtos[Combustivel]), TREATAS({\"00002953000199\"}, Precos[Posto]))",
+      "actual": {
+        "[value]": 0.08695652173913043,
+        "[contexts]": 23
+      },
+      "warehouse": {
+        "value": "0.08695652000",
+        "contexts": 23
+      }
+    },
+    {
+      "metric": "bandeira_contextual",
+      "dax": "EVALUATE CALCULATETABLE(ROW(\"value\", [Diferenca contextual bandeira], \"contexts\", [Contextos de bandeira]), TREATAS({\"GASOLINA\"}, Produtos[Combustivel]), TREATAS({\"AC\"}, Estados[UF]), TREATAS({\"EQUADOR\"}, Marcas[Bandeira]))",
+      "actual": {
+        "[value]": 0.030000000000000002,
+        "[contexts]": 18
+      },
+      "warehouse": {
+        "value": "0.030000",
+        "contexts": 18
+      }
+    }
+  ]
+}

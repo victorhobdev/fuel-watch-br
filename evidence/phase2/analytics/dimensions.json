@@ -1,0 +1,115 @@
+{
+  "status": "no_orphans_in_station_fact",
+  "checks": {
+    "Estados": {
+      "warehouse": {
+        "rows": 422409,
+        "orphan_rows": 0
+      },
+      "other_facts": [
+        {
+          "fact": "municipio_semana",
+          "rows": 50965,
+          "orphan_rows": 0
+        },
+        {
+          "fact": "bandeira_contexto",
+          "rows": 77949,
+          "orphan_rows": 0
+        }
+      ],
+      "dax": {
+        "[distinct]": 27,
+        "[values]": 28,
+        "[blank_fact_rows]": null
+      }
+    },
+    "Marcas": {
+      "warehouse": {
+        "rows": 422409,
+        "orphan_rows": 0
+      },
+      "other_facts": [
+        {
+          "fact": "bandeira_contexto",
+          "rows": 77949,
+          "orphan_rows": 0
+        }
+      ],
+      "dax": {
+        "[distinct]": 47,
+        "[values]": 48,
+        "[blank_fact_rows]": null
+      }
+    },
+    "Cidades": {
+      "warehouse": {
+        "rows": 422409,
+        "orphan_rows": 0
+      },
+      "other_facts": [
+        {
+          "fact": "municipio_semana",
+          "rows": 50965,
+          "orphan_rows": 0
+        },
+        {
+          "fact": "bandeira_contexto",
+          "rows": 77949,
+          "orphan_rows": 0
+        }
+      ],
+      "dax": {
+        "[distinct]": 417,
+        "[values]": 418,
+        "[blank_fact_rows]": null
+      }
+    },
+    "Produtos": {
+      "warehouse": {
+        "rows": 422409,
+        "orphan_rows": 0
+      },
+      "other_facts": [
+        {
+          "fact": "municipio_semana",
+          "rows": 50965,
+          "orphan_rows": 0
+        },
+        {
+          "fact": "bandeira_contexto",
+          "rows": 77949,
+          "orphan_rows": 0
+        }
+      ],
+      "dax": {
+        "[distinct]": 6,
+        "[values]": 7,
+        "[blank_fact_rows]": null
+      }
+    },
+    "Semanas": {
+      "warehouse": {
+        "rows": 422409,
+        "orphan_rows": 0
+      },
+      "other_facts": [
+        {
+          "fact": "municipio_semana",
+          "rows": 50965,
+          "orphan_rows": 0
+        },
+        {
+          "fact": "bandeira_contexto",
+          "rows": 77949,
+          "orphan_rows": 0
+        }
+      ],
+      "dax": {
+        "[distinct]": 27,
+        "[values]": 28,
+        "[blank_fact_rows]": null
+      }
+    }
+  }
+}

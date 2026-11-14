@@ -47,9 +47,11 @@ def validate_row(raw, lookup, scope):
             reasons.append("preco_nao_positivo")
     units = scope.get("product_units")
     expected_unit = units.get(raw["Produto"].strip()) if units else "R$ / litro"
+    source_unit = raw["Unidade de Medida"].strip()
+    canonical_unit = scope.get("unit_aliases", {}).get(source_unit, source_unit)
     if units and expected_unit is None:
         reasons.append("produto_fora_do_contrato")
-    elif raw["Unidade de Medida"].strip() != expected_unit:
+    elif canonical_unit != expected_unit:
         reasons.append("unidade_incompativel_com_produto" if units else "unidade_incompativel_com_gasolina")
     codes = lookup.get((raw["Estado - Sigla"].strip(), normalize_name(raw["Municipio"])), [])
     if len(codes) != 1:

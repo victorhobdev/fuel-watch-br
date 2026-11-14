@@ -1,0 +1,1244 @@
+[
+  {
+    "uf": "AC",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "EQUADOR",
+    "contextos_comparaveis": 18,
+    "diferenca_mediana_contextual": "0.030000"
+  },
+  {
+    "uf": "AC",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "VIBRA",
+    "contextos_comparaveis": 18,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "AL",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "RAIZEN",
+    "contextos_comparaveis": 26,
+    "diferenca_mediana_contextual": "0.025000"
+  },
+  {
+    "uf": "AL",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "IPIRANGA",
+    "contextos_comparaveis": 73,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "AL",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "VIBRA",
+    "contextos_comparaveis": 125,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "AL",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "BRANCA",
+    "contextos_comparaveis": 110,
+    "diferenca_mediana_contextual": "-0.005000"
+  },
+  {
+    "uf": "AM",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "ATEM' S",
+    "contextos_comparaveis": 26,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "AM",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "BRANCA",
+    "contextos_comparaveis": 39,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "AM",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "EQUADOR",
+    "contextos_comparaveis": 26,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "AM",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "IPIRANGA",
+    "contextos_comparaveis": 51,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "AM",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "RZD DISTRIBUIDORA",
+    "contextos_comparaveis": 16,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "AM",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "SABBÁ",
+    "contextos_comparaveis": 48,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "AM",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "VIBRA",
+    "contextos_comparaveis": 48,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "AP",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "VIBRA",
+    "contextos_comparaveis": 14,
+    "diferenca_mediana_contextual": "0.072500"
+  },
+  {
+    "uf": "AP",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "IPIRANGA",
+    "contextos_comparaveis": 15,
+    "diferenca_mediana_contextual": "0.030000"
+  },
+  {
+    "uf": "AP",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "BRANCA",
+    "contextos_comparaveis": 15,
+    "diferenca_mediana_contextual": "-0.100000"
+  },
+  {
+    "uf": "BA",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "LARCO",
+    "contextos_comparaveis": 24,
+    "diferenca_mediana_contextual": "0.015000"
+  },
+  {
+    "uf": "BA",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "PETROBAHIA",
+    "contextos_comparaveis": 24,
+    "diferenca_mediana_contextual": "0.005000"
+  },
+  {
+    "uf": "BA",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "VIBRA",
+    "contextos_comparaveis": 211,
+    "diferenca_mediana_contextual": "0.005000"
+  },
+  {
+    "uf": "BA",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "ALE",
+    "contextos_comparaveis": 41,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "BA",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "IPIRANGA",
+    "contextos_comparaveis": 164,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "BA",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "RAIZEN",
+    "contextos_comparaveis": 216,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "BA",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "BRANCA",
+    "contextos_comparaveis": 381,
+    "diferenca_mediana_contextual": "-0.015000"
+  },
+  {
+    "uf": "CE",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "BRANCA",
+    "contextos_comparaveis": 159,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "CE",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "IPIRANGA",
+    "contextos_comparaveis": 82,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "CE",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "RAIZEN",
+    "contextos_comparaveis": 80,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "CE",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "SP",
+    "contextos_comparaveis": 58,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "CE",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "VIBRA",
+    "contextos_comparaveis": 158,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "DF",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "VIBRA",
+    "contextos_comparaveis": 26,
+    "diferenca_mediana_contextual": "0.017500"
+  },
+  {
+    "uf": "DF",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "IPIRANGA",
+    "contextos_comparaveis": 25,
+    "diferenca_mediana_contextual": "0.005000"
+  },
+  {
+    "uf": "DF",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "RAIZEN",
+    "contextos_comparaveis": 25,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "DF",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "BRANCA",
+    "contextos_comparaveis": 26,
+    "diferenca_mediana_contextual": "-0.002500"
+  },
+  {
+    "uf": "ES",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "ALE",
+    "contextos_comparaveis": 58,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "ES",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "BRANCA",
+    "contextos_comparaveis": 108,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "ES",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "IPIRANGA",
+    "contextos_comparaveis": 137,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "ES",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "RAIZEN",
+    "contextos_comparaveis": 112,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "ES",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "VIBRA",
+    "contextos_comparaveis": 152,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "ES",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "ATLÂNTICA",
+    "contextos_comparaveis": 48,
+    "diferenca_mediana_contextual": "-0.132500"
+  },
+  {
+    "uf": "GO",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "BRANCA",
+    "contextos_comparaveis": 276,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "GO",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "IPIRANGA",
+    "contextos_comparaveis": 177,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "GO",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "RAIZEN",
+    "contextos_comparaveis": 100,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "GO",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "VIBRA",
+    "contextos_comparaveis": 171,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "GO",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "NEXTA",
+    "contextos_comparaveis": 14,
+    "diferenca_mediana_contextual": "-0.030000"
+  },
+  {
+    "uf": "MA",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "TEMAPE",
+    "contextos_comparaveis": 19,
+    "diferenca_mediana_contextual": "0.025000"
+  },
+  {
+    "uf": "MA",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "ALE",
+    "contextos_comparaveis": 89,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "MA",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "BRANCA",
+    "contextos_comparaveis": 169,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "MA",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "IPIRANGA",
+    "contextos_comparaveis": 28,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "MA",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "SABBÁ",
+    "contextos_comparaveis": 68,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "MA",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "VIBRA",
+    "contextos_comparaveis": 54,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "MA",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "RAIZEN",
+    "contextos_comparaveis": 46,
+    "diferenca_mediana_contextual": "-0.035000"
+  },
+  {
+    "uf": "MG",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "IPIRANGA",
+    "contextos_comparaveis": 504,
+    "diferenca_mediana_contextual": "0.010000"
+  },
+  {
+    "uf": "MG",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "VIBRA",
+    "contextos_comparaveis": 730,
+    "diferenca_mediana_contextual": "0.010000"
+  },
+  {
+    "uf": "MG",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "ALE",
+    "contextos_comparaveis": 181,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "MG",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "RAIZEN",
+    "contextos_comparaveis": 459,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "MG",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "BRANCA",
+    "contextos_comparaveis": 838,
+    "diferenca_mediana_contextual": "-0.035000"
+  },
+  {
+    "uf": "MS",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "IPIRANGA",
+    "contextos_comparaveis": 73,
+    "diferenca_mediana_contextual": "0.100000"
+  },
+  {
+    "uf": "MS",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "VIBRA",
+    "contextos_comparaveis": 66,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "MS",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "TAURUS",
+    "contextos_comparaveis": 33,
+    "diferenca_mediana_contextual": "-0.040000"
+  },
+  {
+    "uf": "MS",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "BRANCA",
+    "contextos_comparaveis": 45,
+    "diferenca_mediana_contextual": "-0.100000"
+  },
+  {
+    "uf": "MT",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "RAIZEN",
+    "contextos_comparaveis": 77,
+    "diferenca_mediana_contextual": "0.020000"
+  },
+  {
+    "uf": "MT",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "VIBRA",
+    "contextos_comparaveis": 80,
+    "diferenca_mediana_contextual": "0.020000"
+  },
+  {
+    "uf": "MT",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "IPIRANGA",
+    "contextos_comparaveis": 67,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "MT",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "BRANCA",
+    "contextos_comparaveis": 121,
+    "diferenca_mediana_contextual": "-0.030000"
+  },
+  {
+    "uf": "PA",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "VIBRA",
+    "contextos_comparaveis": 145,
+    "diferenca_mediana_contextual": "0.020000"
+  },
+  {
+    "uf": "PA",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "IPIRANGA",
+    "contextos_comparaveis": 133,
+    "diferenca_mediana_contextual": "0.010000"
+  },
+  {
+    "uf": "PA",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "SABBÁ",
+    "contextos_comparaveis": 99,
+    "diferenca_mediana_contextual": "0.005000"
+  },
+  {
+    "uf": "PA",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "BRANCA",
+    "contextos_comparaveis": 174,
+    "diferenca_mediana_contextual": "-0.070000"
+  },
+  {
+    "uf": "PB",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "IPIRANGA",
+    "contextos_comparaveis": 88,
+    "diferenca_mediana_contextual": "0.010000"
+  },
+  {
+    "uf": "PB",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "BRANCA",
+    "contextos_comparaveis": 83,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "PB",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "DISLUB",
+    "contextos_comparaveis": 19,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "PB",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "VIBRA",
+    "contextos_comparaveis": 52,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "PB",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "RAIZEN",
+    "contextos_comparaveis": 78,
+    "diferenca_mediana_contextual": "-0.010000"
+  },
+  {
+    "uf": "PB",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "ALE",
+    "contextos_comparaveis": 10,
+    "diferenca_mediana_contextual": "-0.060000"
+  },
+  {
+    "uf": "PE",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "DISLUB",
+    "contextos_comparaveis": 31,
+    "diferenca_mediana_contextual": "0.500000"
+  },
+  {
+    "uf": "PE",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "ALE",
+    "contextos_comparaveis": 21,
+    "diferenca_mediana_contextual": "0.055000"
+  },
+  {
+    "uf": "PE",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "BRANCA",
+    "contextos_comparaveis": 323,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "PE",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "IPIRANGA",
+    "contextos_comparaveis": 59,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "PE",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "RAIZEN",
+    "contextos_comparaveis": 96,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "PE",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "VIBRA",
+    "contextos_comparaveis": 299,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "PI",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "IPIRANGA",
+    "contextos_comparaveis": 30,
+    "diferenca_mediana_contextual": "0.005000"
+  },
+  {
+    "uf": "PI",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "SABBÁ",
+    "contextos_comparaveis": 41,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "PI",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "VIBRA",
+    "contextos_comparaveis": 49,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "PI",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "BRANCA",
+    "contextos_comparaveis": 49,
+    "diferenca_mediana_contextual": "-0.030000"
+  },
+  {
+    "uf": "PR",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "CIAPETRO",
+    "contextos_comparaveis": 14,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "PR",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "DIBRAPE",
+    "contextos_comparaveis": 22,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "PR",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "IPIRANGA",
+    "contextos_comparaveis": 404,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "PR",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "RAIZEN",
+    "contextos_comparaveis": 377,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "PR",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "VIBRA",
+    "contextos_comparaveis": 203,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "PR",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "RODOIL",
+    "contextos_comparaveis": 17,
+    "diferenca_mediana_contextual": "-0.010000"
+  },
+  {
+    "uf": "PR",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "STANG",
+    "contextos_comparaveis": 16,
+    "diferenca_mediana_contextual": "-0.017500"
+  },
+  {
+    "uf": "PR",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "BRANCA",
+    "contextos_comparaveis": 463,
+    "diferenca_mediana_contextual": "-0.085000"
+  },
+  {
+    "uf": "RJ",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "IPIRANGA",
+    "contextos_comparaveis": 276,
+    "diferenca_mediana_contextual": "0.050000"
+  },
+  {
+    "uf": "RJ",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "VIBRA",
+    "contextos_comparaveis": 339,
+    "diferenca_mediana_contextual": "0.040000"
+  },
+  {
+    "uf": "RJ",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "BRANCA",
+    "contextos_comparaveis": 509,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "RJ",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "RAIZEN",
+    "contextos_comparaveis": 305,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "RJ",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "ALE",
+    "contextos_comparaveis": 42,
+    "diferenca_mediana_contextual": "-0.042500"
+  },
+  {
+    "uf": "RN",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "RAIZEN",
+    "contextos_comparaveis": 37,
+    "diferenca_mediana_contextual": "0.030000"
+  },
+  {
+    "uf": "RN",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "ALE",
+    "contextos_comparaveis": 68,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "RN",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "IPIRANGA",
+    "contextos_comparaveis": 13,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "RN",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "VIBRA",
+    "contextos_comparaveis": 77,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "RN",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "BRANCA",
+    "contextos_comparaveis": 71,
+    "diferenca_mediana_contextual": "-0.010000"
+  },
+  {
+    "uf": "RO",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "ATEM' S",
+    "contextos_comparaveis": 20,
+    "diferenca_mediana_contextual": "0.010000"
+  },
+  {
+    "uf": "RO",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "IPIRANGA",
+    "contextos_comparaveis": 101,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "RO",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "SABBÁ",
+    "contextos_comparaveis": 23,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "RO",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "VIBRA",
+    "contextos_comparaveis": 101,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "RO",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "EQUADOR",
+    "contextos_comparaveis": 24,
+    "diferenca_mediana_contextual": "-0.020000"
+  },
+  {
+    "uf": "RO",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "BRANCA",
+    "contextos_comparaveis": 64,
+    "diferenca_mediana_contextual": "-0.030000"
+  },
+  {
+    "uf": "RR",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "BRANCA",
+    "contextos_comparaveis": 26,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "RR",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "VIBRA",
+    "contextos_comparaveis": 26,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "RS",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "SANTA LUCIA",
+    "contextos_comparaveis": 19,
+    "diferenca_mediana_contextual": "0.230000"
+  },
+  {
+    "uf": "RS",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "RODOIL",
+    "contextos_comparaveis": 16,
+    "diferenca_mediana_contextual": "0.012500"
+  },
+  {
+    "uf": "RS",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "IPIRANGA",
+    "contextos_comparaveis": 551,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "RS",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "RAIZEN",
+    "contextos_comparaveis": 333,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "RS",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "VIBRA",
+    "contextos_comparaveis": 317,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "RS",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "BRANCA",
+    "contextos_comparaveis": 452,
+    "diferenca_mediana_contextual": "-0.025000"
+  },
+  {
+    "uf": "RS",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "CHARRUA",
+    "contextos_comparaveis": 88,
+    "diferenca_mediana_contextual": "-0.057500"
+  },
+  {
+    "uf": "SC",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "VIBRA",
+    "contextos_comparaveis": 174,
+    "diferenca_mediana_contextual": "0.020000"
+  },
+  {
+    "uf": "SC",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "RAIZEN MIME",
+    "contextos_comparaveis": 67,
+    "diferenca_mediana_contextual": "0.010000"
+  },
+  {
+    "uf": "SC",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "ALE",
+    "contextos_comparaveis": 20,
+    "diferenca_mediana_contextual": "0.005000"
+  },
+  {
+    "uf": "SC",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "DIBRAPE",
+    "contextos_comparaveis": 14,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "SC",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "IPIRANGA",
+    "contextos_comparaveis": 209,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "SC",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "BRANCA",
+    "contextos_comparaveis": 191,
+    "diferenca_mediana_contextual": "-0.020000"
+  },
+  {
+    "uf": "SC",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "MAXSUL",
+    "contextos_comparaveis": 16,
+    "diferenca_mediana_contextual": "-0.025000"
+  },
+  {
+    "uf": "SC",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "RODOIL",
+    "contextos_comparaveis": 33,
+    "diferenca_mediana_contextual": "-0.030000"
+  },
+  {
+    "uf": "SE",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "RAIZEN",
+    "contextos_comparaveis": 22,
+    "diferenca_mediana_contextual": "0.050000"
+  },
+  {
+    "uf": "SE",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "PETROX DISTRIBUIDORA",
+    "contextos_comparaveis": 26,
+    "diferenca_mediana_contextual": "0.007500"
+  },
+  {
+    "uf": "SE",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "BRANCA",
+    "contextos_comparaveis": 68,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "SE",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "VIBRA",
+    "contextos_comparaveis": 75,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "SP",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "RAIZEN",
+    "contextos_comparaveis": 1250,
+    "diferenca_mediana_contextual": "0.060000"
+  },
+  {
+    "uf": "SP",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "IPIRANGA",
+    "contextos_comparaveis": 1517,
+    "diferenca_mediana_contextual": "0.050000"
+  },
+  {
+    "uf": "SP",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "VIBRA",
+    "contextos_comparaveis": 1218,
+    "diferenca_mediana_contextual": "0.032500"
+  },
+  {
+    "uf": "SP",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "ALE",
+    "contextos_comparaveis": 47,
+    "diferenca_mediana_contextual": "-0.100000"
+  },
+  {
+    "uf": "SP",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "BRANCA",
+    "contextos_comparaveis": 1969,
+    "diferenca_mediana_contextual": "-0.110000"
+  },
+  {
+    "uf": "SP",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "D`MAIS",
+    "contextos_comparaveis": 10,
+    "diferenca_mediana_contextual": "-0.270000"
+  },
+  {
+    "uf": "TO",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "IPIRANGA",
+    "contextos_comparaveis": 38,
+    "diferenca_mediana_contextual": "0.050000"
+  },
+  {
+    "uf": "TO",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "RAIZEN",
+    "contextos_comparaveis": 34,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "TO",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "VIBRA",
+    "contextos_comparaveis": 46,
+    "diferenca_mediana_contextual": "0.000000"
+  },
+  {
+    "uf": "TO",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "bandeira_observada": "BRANCA",
+    "contextos_comparaveis": 67,
+    "diferenca_mediana_contextual": "-0.100000"
+  }
+]

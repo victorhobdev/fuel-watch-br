@@ -1,0 +1,482 @@
+{
+  "status": "four_historical_sources_profiled_locally",
+  "profiles": [
+    {
+      "source_id": "anp_2024_1",
+      "source_url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/shpc/dsas/ca/ca-2024-01.zip",
+      "source_sha256": "5f8468096dad5582633ab172bbb101529be8235292487f0d412f5930b310b12a",
+      "source_bytes": 9312457,
+      "declared_period": {
+        "start": "2024-01-01",
+        "end": "2024-06-30"
+      },
+      "layout": [
+        "Regiao - Sigla",
+        "Estado - Sigla",
+        "Municipio",
+        "Revenda",
+        "CNPJ da Revenda",
+        "Nome da Rua",
+        "Numero Rua",
+        "Complemento",
+        "Bairro",
+        "Cep",
+        "Produto",
+        "Data da Coleta",
+        "Valor de Venda",
+        "Valor de Compra",
+        "Unidade de Medida",
+        "Bandeira"
+      ],
+      "csv_member": "Preços semestrais - AUTOMOTIVOS_2024.01.csv",
+      "csv_sha256": "eb439dc323b082201039bd5404d1d7376e44485881cb0fdc4f23ef9016772870",
+      "csv_bytes": 81365972,
+      "utf8_bom": true,
+      "rows": 477154,
+      "empty_records": 0,
+      "invalid_dates_nonempty": 0,
+      "exact_duplicate_excess": 10,
+      "conflicting_key_rows": 8,
+      "candidate_business_key": [
+        "CNPJ da Revenda",
+        "Produto",
+        "Data da Coleta",
+        "Unidade de Medida"
+      ],
+      "date_min": "2024-01-01",
+      "date_max": "2024-06-28",
+      "invalid_nonpositive_prices": 0,
+      "ufs": [
+        "AC",
+        "AL",
+        "AM",
+        "AP",
+        "BA",
+        "CE",
+        "DF",
+        "ES",
+        "GO",
+        "MA",
+        "MG",
+        "MS",
+        "MT",
+        "PA",
+        "PB",
+        "PE",
+        "PI",
+        "PR",
+        "RJ",
+        "RN",
+        "RO",
+        "RR",
+        "RS",
+        "SC",
+        "SE",
+        "SP",
+        "TO"
+      ],
+      "stations": 9495,
+      "observed_months": [
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06"
+      ],
+      "products_units": [
+        {
+          "Produto": "DIESEL",
+          "Unidade de Medida": "R$ / litro",
+          "rows": 55994
+        },
+        {
+          "Produto": "DIESEL S10",
+          "Unidade de Medida": "R$ / litro",
+          "rows": 89385
+        },
+        {
+          "Produto": "ETANOL",
+          "Unidade de Medida": "R$ / litro",
+          "rows": 103797
+        },
+        {
+          "Produto": "GASOLINA",
+          "Unidade de Medida": "R$ / litro",
+          "rows": 122525
+        },
+        {
+          "Produto": "GASOLINA ADITIVADA",
+          "Unidade de Medida": "R$ / litro",
+          "rows": 95961
+        },
+        {
+          "Produto": "GNV",
+          "Unidade de Medida": "R$ / m³",
+          "rows": 9492
+        }
+      ],
+      "checked_at_utc": "2026-11-14T14:25:20.413821+00:00",
+      "fabric_executed": false
+    },
+    {
+      "source_id": "anp_2024_2",
+      "source_url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/shpc/dsas/ca/ca-2024-02.zip",
+      "source_sha256": "63952c6786fe96289a643fdfbf4cf15e29264fb6a4c0be916a0708687aed71d4",
+      "source_bytes": 8137003,
+      "declared_period": {
+        "start": "2024-07-01",
+        "end": "2024-12-31"
+      },
+      "layout": [
+        "Regiao - Sigla",
+        "Estado - Sigla",
+        "Municipio",
+        "Revenda",
+        "CNPJ da Revenda",
+        "Nome da Rua",
+        "Numero Rua",
+        "Complemento",
+        "Bairro",
+        "Cep",
+        "Produto",
+        "Data da Coleta",
+        "Valor de Venda",
+        "Valor de Compra",
+        "Unidade de Medida",
+        "Bandeira"
+      ],
+      "csv_member": "Preços semestrais - AUTOMOTIVOS_2024.02.csv",
+      "csv_sha256": "fe3296f9de5977eb95a2f859f68b80f8336e446494d3be6d07de99ebf7e775ae",
+      "csv_bytes": 71797479,
+      "utf8_bom": true,
+      "rows": 421382,
+      "empty_records": 0,
+      "invalid_dates_nonempty": 0,
+      "exact_duplicate_excess": 0,
+      "conflicting_key_rows": 0,
+      "candidate_business_key": [
+        "CNPJ da Revenda",
+        "Produto",
+        "Data da Coleta",
+        "Unidade de Medida"
+      ],
+      "date_min": "2024-07-01",
+      "date_max": "2024-12-31",
+      "invalid_nonpositive_prices": 0,
+      "ufs": [
+        "AC",
+        "AL",
+        "AM",
+        "AP",
+        "BA",
+        "CE",
+        "DF",
+        "ES",
+        "GO",
+        "MA",
+        "MG",
+        "MS",
+        "MT",
+        "PA",
+        "PB",
+        "PE",
+        "PI",
+        "PR",
+        "RJ",
+        "RN",
+        "RO",
+        "RR",
+        "RS",
+        "SC",
+        "SE",
+        "SP",
+        "TO"
+      ],
+      "stations": 8520,
+      "observed_months": [
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ],
+      "products_units": [
+        {
+          "Produto": "DIESEL",
+          "Unidade de Medida": "R$ / litro",
+          "rows": 46587
+        },
+        {
+          "Produto": "DIESEL S10",
+          "Unidade de Medida": "R$ / litro",
+          "rows": 76883
+        },
+        {
+          "Produto": "ETANOL",
+          "Unidade de Medida": "R$ / litro",
+          "rows": 93509
+        },
+        {
+          "Produto": "GASOLINA",
+          "Unidade de Medida": "R$ / litro",
+          "rows": 110495
+        },
+        {
+          "Produto": "GASOLINA ADITIVADA",
+          "Unidade de Medida": "R$ / litro",
+          "rows": 84457
+        },
+        {
+          "Produto": "GNV",
+          "Unidade de Medida": "R$ / m³",
+          "rows": 9451
+        }
+      ],
+      "checked_at_utc": "2026-11-14T14:25:23.688195+00:00",
+      "fabric_executed": false
+    },
+    {
+      "source_id": "anp_2025_1",
+      "source_url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/shpc/dsas/ca/ca-2025-01.zip",
+      "source_sha256": "674d69b09a1e6571e39b2fceedeed1d3b12d21e097bcec11d2d93ba7f7370a09",
+      "source_bytes": 8176445,
+      "declared_period": {
+        "start": "2025-01-01",
+        "end": "2025-06-30"
+      },
+      "layout": [
+        "Regiao - Sigla",
+        "Estado - Sigla",
+        "Municipio",
+        "Revenda",
+        "CNPJ da Revenda",
+        "Nome da Rua",
+        "Numero Rua",
+        "Complemento",
+        "Bairro",
+        "Cep",
+        "Produto",
+        "Data da Coleta",
+        "Valor de Venda",
+        "Valor de Compra",
+        "Unidade de Medida",
+        "Bandeira"
+      ],
+      "csv_member": "Preços semestrais - AUTOMOTIVOS_2025.01.csv",
+      "csv_sha256": "d308b91e79d112262253e66c84610254b6df8f9f5bfd7c76ecd6c79fd82fb4fa",
+      "csv_bytes": 71902526,
+      "utf8_bom": true,
+      "rows": 429523,
+      "empty_records": 9114,
+      "invalid_dates_nonempty": 0,
+      "exact_duplicate_excess": 0,
+      "conflicting_key_rows": 0,
+      "candidate_business_key": [
+        "CNPJ da Revenda",
+        "Produto",
+        "Data da Coleta",
+        "Unidade de Medida"
+      ],
+      "date_min": "2025-01-01",
+      "date_max": "2025-06-30",
+      "invalid_nonpositive_prices": 0,
+      "ufs": [
+        "AC",
+        "AL",
+        "AM",
+        "AP",
+        "BA",
+        "CE",
+        "DF",
+        "ES",
+        "GO",
+        "MA",
+        "MG",
+        "MS",
+        "MT",
+        "PA",
+        "PB",
+        "PE",
+        "PI",
+        "PR",
+        "RJ",
+        "RN",
+        "RO",
+        "RR",
+        "RS",
+        "SC",
+        "SE",
+        "SP",
+        "TO"
+      ],
+      "stations": 7735,
+      "observed_months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06"
+      ],
+      "products_units": [
+        {
+          "Produto": "",
+          "Unidade de Medida": "",
+          "rows": 9114
+        },
+        {
+          "Produto": "DIESEL",
+          "Unidade de Medida": "R$ / litro",
+          "rows": 45771
+        },
+        {
+          "Produto": "DIESEL S10",
+          "Unidade de Medida": "R$ / litro",
+          "rows": 76134
+        },
+        {
+          "Produto": "ETANOL",
+          "Unidade de Medida": "R$ / litro",
+          "rows": 92598
+        },
+        {
+          "Produto": "GASOLINA",
+          "Unidade de Medida": "R$ / litro",
+          "rows": 110818
+        },
+        {
+          "Produto": "GASOLINA ADITIVADA",
+          "Unidade de Medida": "R$ / litro",
+          "rows": 85580
+        },
+        {
+          "Produto": "GNV",
+          "Unidade de Medida": "R$ / m³",
+          "rows": 9508
+        }
+      ],
+      "checked_at_utc": "2026-11-14T14:25:27.087467+00:00",
+      "fabric_executed": false
+    },
+    {
+      "source_id": "anp_2025_2",
+      "source_url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/shpc/dsas/ca/ca-2025-02.zip",
+      "source_sha256": "73faa3197a3813baa8c057b13045ea4cd799c45e51957b5094be90558f95258a",
+      "source_bytes": 17314933,
+      "declared_period": {
+        "start": "2025-07-01",
+        "end": "2025-12-31"
+      },
+      "layout": [
+        "Regiao - Sigla",
+        "Estado - Sigla",
+        "Municipio",
+        "Revenda",
+        "CNPJ da Revenda",
+        "Nome da Rua",
+        "Numero Rua",
+        "Complemento",
+        "Bairro",
+        "Cep",
+        "Produto",
+        "Data da Coleta",
+        "Valor de Venda",
+        "Valor de Compra",
+        "Unidade de Medida",
+        "Bandeira"
+      ],
+      "csv_member": "Preços semestrais - AUTOMOTIVOS_2025.02.csv",
+      "csv_sha256": "206cc66333ebacb3e33b3f6294a5aaeb3415f1579d35f7f28e25351826ae7745",
+      "csv_bytes": 63739783,
+      "utf8_bom": true,
+      "rows": 384208,
+      "empty_records": 0,
+      "invalid_dates_nonempty": 0,
+      "exact_duplicate_excess": 0,
+      "conflicting_key_rows": 0,
+      "candidate_business_key": [
+        "CNPJ da Revenda",
+        "Produto",
+        "Data da Coleta",
+        "Unidade de Medida"
+      ],
+      "date_min": "2025-07-01",
+      "date_max": "2025-12-31",
+      "invalid_nonpositive_prices": 0,
+      "ufs": [
+        "AC",
+        "AL",
+        "AM",
+        "AP",
+        "BA",
+        "CE",
+        "DF",
+        "ES",
+        "GO",
+        "MA",
+        "MG",
+        "MS",
+        "MT",
+        "PA",
+        "PB",
+        "PE",
+        "PI",
+        "PR",
+        "RJ",
+        "RN",
+        "RO",
+        "RR",
+        "RS",
+        "SC",
+        "SE",
+        "SP",
+        "TO"
+      ],
+      "stations": 7842,
+      "observed_months": [
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ],
+      "products_units": [
+        {
+          "Produto": "DIESEL",
+          "Unidade de Medida": "R$ / litro",
+          "rows": 40198
+        },
+        {
+          "Produto": "DIESEL S10",
+          "Unidade de Medida": "R$ / litro",
+          "rows": 68407
+        },
+        {
+          "Produto": "ETANOL",
+          "Unidade de Medida": "R$ / litro",
+          "rows": 85155
+        },
+        {
+          "Produto": "GASOLINA",
+          "Unidade de Medida": "R$ / litro",
+          "rows": 101605
+        },
+        {
+          "Produto": "GASOLINA ADITIVADA",
+          "Unidade de Medida": "R$ / litro",
+          "rows": 80111
+        },
+        {
+          "Produto": "GNV",
+          "Unidade de Medida": "R$ / m3",
+          "rows": 8732
+        }
+      ],
+      "checked_at_utc": "2026-11-14T14:25:33.612059+00:00",
+      "fabric_executed": false
+    }
+  ]
+}

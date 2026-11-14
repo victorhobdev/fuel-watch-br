@@ -1,0 +1,58 @@
+{
+  "environment": "fabric",
+  "started_at_utc": "2026-11-14T00:25:52.929442+00:00",
+  "tables": {
+    "posto_semana": {
+      "rows": 422409,
+      "business_sha256": "7aa93fe7438d6f14be3ec0467483740742627cf6135b06a47e809c6070c57564",
+      "query_and_check_seconds": 9.260212300010608
+    },
+    "referencia_uf_semana": {
+      "rows": 3972,
+      "business_sha256": "95e40ae02b0a9d0051aac217dc5ed84d1b54e7783080f122590a699652117d08",
+      "query_and_check_seconds": 5.551956399998744
+    },
+    "posicao_posto_semana": {
+      "rows": 422409,
+      "business_sha256": "2d95edad76f85eab474b9d2c0353d54c8fa3a12d777f1dac39fe73ca394d01a2",
+      "query_and_check_seconds": 12.25351039999805
+    },
+    "municipio_semana": {
+      "rows": 50965,
+      "business_sha256": "e9c3cd63b45d94c0e3e4c827950a5a4900ac710a06955fd3c7c4a4873a62e969",
+      "query_and_check_seconds": 9.488599100004649
+    },
+    "persistencia_posto": {
+      "rows": 31348,
+      "business_sha256": "0c2e1f4a39f6feca54f4c08560b3d5ac077166d8a7225c04941cc34be0416588",
+      "query_and_check_seconds": 4.441643300000578
+    },
+    "bandeira_contexto": {
+      "rows": 77949,
+      "business_sha256": "f1583acdacf342a2172f1a68ec068732763954496a29e50249765f9271d1c956",
+      "query_and_check_seconds": 9.721674700005678
+    },
+    "comparacao_bandeira": {
+      "rows": 733,
+      "business_sha256": "887e5fd868c29062a6cbdbbce386dced2ca73e5640fa08c202fb44a0b0c24c4e",
+      "query_and_check_seconds": 6.66786129999673
+    }
+  },
+  "source_publication": [
+    {
+      "batch_id": "7e2b22fc-6fb4-4237-8481-bbc79c753103",
+      "scope_id": "anp-2026-1-br-todos",
+      "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+      "ibge_sha256": "d9eec8439bc8c5dc2f7db6332a8e5569f5a3f637988e26aebc513412d4069d5c",
+      "silver_delta_version": 0,
+      "is_synthetic": false,
+      "published_at_utc": "2026-11-13 23:52:41.382152",
+      "rows_published": 422412,
+      "source_table": "silver_preco_brasil",
+      "snapshot_id": "7e2b22fc-6fb4-4237-8481-bbc79c753103"
+    }
+  ],
+  "status": "analytics_full_comparison_passed",
+  "source_publication_unchanged": true,
+  "finished_at_utc": "2026-11-14T00:26:52.401196+00:00"
+}

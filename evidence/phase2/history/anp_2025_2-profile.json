@@ -1,0 +1,118 @@
+{
+  "source_id": "anp_2025_2",
+  "source_url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/shpc/dsas/ca/ca-2025-02.zip",
+  "source_sha256": "73faa3197a3813baa8c057b13045ea4cd799c45e51957b5094be90558f95258a",
+  "source_bytes": 17314933,
+  "declared_period": {
+    "start": "2025-07-01",
+    "end": "2025-12-31"
+  },
+  "layout": [
+    "Regiao - Sigla",
+    "Estado - Sigla",
+    "Municipio",
+    "Revenda",
+    "CNPJ da Revenda",
+    "Nome da Rua",
+    "Numero Rua",
+    "Complemento",
+    "Bairro",
+    "Cep",
+    "Produto",
+    "Data da Coleta",
+    "Valor de Venda",
+    "Valor de Compra",
+    "Unidade de Medida",
+    "Bandeira"
+  ],
+  "csv_member": "Preços semestrais - AUTOMOTIVOS_2025.02.csv",
+  "csv_sha256": "206cc66333ebacb3e33b3f6294a5aaeb3415f1579d35f7f28e25351826ae7745",
+  "csv_bytes": 63739783,
+  "utf8_bom": true,
+  "rows": 384208,
+  "empty_records": 0,
+  "invalid_dates_nonempty": 0,
+  "exact_duplicate_excess": 0,
+  "conflicting_key_rows": 0,
+  "candidate_business_key": [
+    "CNPJ da Revenda",
+    "Produto",
+    "Data da Coleta",
+    "Unidade de Medida"
+  ],
+  "date_min": "2025-07-01",
+  "date_max": "2025-12-31",
+  "invalid_nonpositive_prices": 0,
+  "ufs": [
+    "AC",
+    "AL",
+    "AM",
+    "AP",
+    "BA",
+    "CE",
+    "DF",
+    "ES",
+    "GO",
+    "MA",
+    "MG",
+    "MS",
+    "MT",
+    "PA",
+    "PB",
+    "PE",
+    "PI",
+    "PR",
+    "RJ",
+    "RN",
+    "RO",
+    "RR",
+    "RS",
+    "SC",
+    "SE",
+    "SP",
+    "TO"
+  ],
+  "stations": 7842,
+  "observed_months": [
+    "2025-07",
+    "2025-08",
+    "2025-09",
+    "2025-10",
+    "2025-11",
+    "2025-12"
+  ],
+  "products_units": [
+    {
+      "Produto": "DIESEL",
+      "Unidade de Medida": "R$ / litro",
+      "rows": 40198
+    },
+    {
+      "Produto": "DIESEL S10",
+      "Unidade de Medida": "R$ / litro",
+      "rows": 68407
+    },
+    {
+      "Produto": "ETANOL",
+      "Unidade de Medida": "R$ / litro",
+      "rows": 85155
+    },
+    {
+      "Produto": "GASOLINA",
+      "Unidade de Medida": "R$ / litro",
+      "rows": 101605
+    },
+    {
+      "Produto": "GASOLINA ADITIVADA",
+      "Unidade de Medida": "R$ / litro",
+      "rows": 80111
+    },
+    {
+      "Produto": "GNV",
+      "Unidade de Medida": "R$ / m3",
+      "rows": 8732
+    }
+  ],
+  "checked_at_utc": "2026-11-14T14:25:33.612059+00:00",
+  "fabric_executed": false
+}

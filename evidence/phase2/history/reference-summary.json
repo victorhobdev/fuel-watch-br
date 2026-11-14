@@ -1,0 +1,6264 @@
+{
+  "status": "local_historical_reference_prepared",
+  "fabric_executed": false,
+  "sources": [
+    {
+      "source_id": "anp_2024_1",
+      "scope": {
+        "scope_id": "anp_2024_1-br-todos",
+        "date_start": "2024-01-01",
+        "date_end": "2024-06-30",
+        "product_units": {
+          "DIESEL": "R$ / litro",
+          "DIESEL S10": "R$ / litro",
+          "ETANOL": "R$ / litro",
+          "GASOLINA": "R$ / litro",
+          "GASOLINA ADITIVADA": "R$ / litro",
+          "GNV": "R$ / m³"
+        },
+        "contract_version": "history-1.0"
+      },
+      "source_sha256": "5f8468096dad5582633ab172bbb101529be8235292487f0d412f5930b310b12a",
+      "csv_sha256": "eb439dc323b082201039bd5404d1d7376e44485881cb0fdc4f23ef9016772870",
+      "counts": {
+        "received": 477154,
+        "invalid": 0,
+        "exact_duplicate_excess": 10,
+        "conflicting_rows": 8,
+        "accepted": 477136
+      },
+      "invalid_reasons": {},
+      "ambiguous_station_day_records": 0,
+      "parquet_sha256": "6beac4ad139ca42cbedfc7ef3cf30cbb32f11ee3019ebddfce0ef5f0d0db13c7",
+      "ufs": 27,
+      "municipalities": 460,
+      "stations": 9495,
+      "by_uf_product_unit": [
+        {
+          "uf": "AC",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 477,
+          "postos": 32,
+          "municipios": 2,
+          "soma_mills": 3480380
+        },
+        {
+          "uf": "AC",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 493,
+          "postos": 34,
+          "municipios": 2,
+          "soma_mills": 3638370
+        },
+        {
+          "uf": "AC",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 282,
+          "postos": 20,
+          "municipios": 2,
+          "soma_mills": 1370690
+        },
+        {
+          "uf": "AC",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 544,
+          "postos": 36,
+          "municipios": 2,
+          "soma_mills": 3802320
+        },
+        {
+          "uf": "AC",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 419,
+          "postos": 33,
+          "municipios": 2,
+          "soma_mills": 2929680
+        },
+        {
+          "uf": "AL",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 390,
+          "postos": 39,
+          "municipios": 5,
+          "soma_mills": 2490990
+        },
+        {
+          "uf": "AL",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 962,
+          "postos": 84,
+          "municipios": 5,
+          "soma_mills": 5840220
+        },
+        {
+          "uf": "AL",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1374,
+          "postos": 115,
+          "municipios": 5,
+          "soma_mills": 5902470
+        },
+        {
+          "uf": "AL",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1406,
+          "postos": 117,
+          "municipios": 5,
+          "soma_mills": 8303700
+        },
+        {
+          "uf": "AL",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1103,
+          "postos": 91,
+          "municipios": 5,
+          "soma_mills": 6651730
+        },
+        {
+          "uf": "AL",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 226,
+          "postos": 18,
+          "municipios": 4,
+          "soma_mills": 1073400
+        },
+        {
+          "uf": "AM",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 558,
+          "postos": 54,
+          "municipios": 5,
+          "soma_mills": 3602580
+        },
+        {
+          "uf": "AM",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1133,
+          "postos": 95,
+          "municipios": 5,
+          "soma_mills": 7378830
+        },
+        {
+          "uf": "AM",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 935,
+          "postos": 88,
+          "municipios": 3,
+          "soma_mills": 4030760
+        },
+        {
+          "uf": "AM",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1619,
+          "postos": 125,
+          "municipios": 5,
+          "soma_mills": 10425850
+        },
+        {
+          "uf": "AM",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1062,
+          "postos": 99,
+          "municipios": 5,
+          "soma_mills": 6737120
+        },
+        {
+          "uf": "AM",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 49,
+          "postos": 4,
+          "municipios": 1,
+          "soma_mills": 218710
+        },
+        {
+          "uf": "AP",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 252,
+          "postos": 23,
+          "municipios": 2,
+          "soma_mills": 1613610
+        },
+        {
+          "uf": "AP",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 300,
+          "postos": 28,
+          "municipios": 2,
+          "soma_mills": 1951690
+        },
+        {
+          "uf": "AP",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 27,
+          "postos": 4,
+          "municipios": 2,
+          "soma_mills": 134590
+        },
+        {
+          "uf": "AP",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 550,
+          "postos": 45,
+          "municipios": 2,
+          "soma_mills": 3081670
+        },
+        {
+          "uf": "AP",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 120,
+          "postos": 12,
+          "municipios": 2,
+          "soma_mills": 707490
+        },
+        {
+          "uf": "BA",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 4262,
+          "postos": 245,
+          "municipios": 30,
+          "soma_mills": 25373770
+        },
+        {
+          "uf": "BA",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 5622,
+          "postos": 326,
+          "municipios": 31,
+          "soma_mills": 33870230
+        },
+        {
+          "uf": "BA",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 6779,
+          "postos": 369,
+          "municipios": 31,
+          "soma_mills": 29525980
+        },
+        {
+          "uf": "BA",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 6876,
+          "postos": 374,
+          "municipios": 31,
+          "soma_mills": 41690690
+        },
+        {
+          "uf": "BA",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 5278,
+          "postos": 299,
+          "municipios": 30,
+          "soma_mills": 32530430
+        },
+        {
+          "uf": "BA",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 345,
+          "postos": 28,
+          "municipios": 7,
+          "soma_mills": 1469830
+        },
+        {
+          "uf": "CE",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 528,
+          "postos": 42,
+          "municipios": 10,
+          "soma_mills": 3220640
+        },
+        {
+          "uf": "CE",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3183,
+          "postos": 335,
+          "municipios": 13,
+          "soma_mills": 19134550
+        },
+        {
+          "uf": "CE",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3533,
+          "postos": 369,
+          "municipios": 13,
+          "soma_mills": 16196230
+        },
+        {
+          "uf": "CE",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3983,
+          "postos": 385,
+          "municipios": 13,
+          "soma_mills": 23684580
+        },
+        {
+          "uf": "CE",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3485,
+          "postos": 350,
+          "municipios": 13,
+          "soma_mills": 21163380
+        },
+        {
+          "uf": "CE",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 331,
+          "postos": 44,
+          "municipios": 5,
+          "soma_mills": 1701200
+        },
+        {
+          "uf": "DF",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 487,
+          "postos": 52,
+          "municipios": 1,
+          "soma_mills": 2830930
+        },
+        {
+          "uf": "DF",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 572,
+          "postos": 52,
+          "municipios": 1,
+          "soma_mills": 3353350
+        },
+        {
+          "uf": "DF",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 839,
+          "postos": 105,
+          "municipios": 1,
+          "soma_mills": 3103350
+        },
+        {
+          "uf": "DF",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1233,
+          "postos": 130,
+          "municipios": 1,
+          "soma_mills": 7078820
+        },
+        {
+          "uf": "DF",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1104,
+          "postos": 115,
+          "municipios": 1,
+          "soma_mills": 6407090
+        },
+        {
+          "uf": "DF",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 4,
+          "postos": 1,
+          "municipios": 1,
+          "soma_mills": 26760
+        },
+        {
+          "uf": "ES",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1092,
+          "postos": 80,
+          "municipios": 10,
+          "soma_mills": 6416920
+        },
+        {
+          "uf": "ES",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1846,
+          "postos": 137,
+          "municipios": 10,
+          "soma_mills": 11105880
+        },
+        {
+          "uf": "ES",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1731,
+          "postos": 132,
+          "municipios": 10,
+          "soma_mills": 7163330
+        },
+        {
+          "uf": "ES",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2632,
+          "postos": 182,
+          "municipios": 10,
+          "soma_mills": 15408910
+        },
+        {
+          "uf": "ES",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2290,
+          "postos": 161,
+          "municipios": 10,
+          "soma_mills": 13784640
+        },
+        {
+          "uf": "ES",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 418,
+          "postos": 25,
+          "municipios": 8,
+          "soma_mills": 2094860
+        },
+        {
+          "uf": "GO",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2827,
+          "postos": 195,
+          "municipios": 17,
+          "soma_mills": 16354180
+        },
+        {
+          "uf": "GO",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3615,
+          "postos": 275,
+          "municipios": 17,
+          "soma_mills": 21268620
+        },
+        {
+          "uf": "GO",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 4958,
+          "postos": 341,
+          "municipios": 17,
+          "soma_mills": 18633610
+        },
+        {
+          "uf": "GO",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 4952,
+          "postos": 340,
+          "municipios": 17,
+          "soma_mills": 28599180
+        },
+        {
+          "uf": "GO",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2708,
+          "postos": 192,
+          "municipios": 17,
+          "soma_mills": 16074510
+        },
+        {
+          "uf": "MA",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1591,
+          "postos": 107,
+          "municipios": 12,
+          "soma_mills": 9237110
+        },
+        {
+          "uf": "MA",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2754,
+          "postos": 216,
+          "municipios": 12,
+          "soma_mills": 15959700
+        },
+        {
+          "uf": "MA",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1575,
+          "postos": 125,
+          "municipios": 12,
+          "soma_mills": 7010040
+        },
+        {
+          "uf": "MA",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3012,
+          "postos": 224,
+          "municipios": 12,
+          "soma_mills": 17072070
+        },
+        {
+          "uf": "MA",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2060,
+          "postos": 165,
+          "municipios": 12,
+          "soma_mills": 11926910
+        },
+        {
+          "uf": "MG",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 6876,
+          "postos": 530,
+          "municipios": 58,
+          "soma_mills": 39697070
+        },
+        {
+          "uf": "MG",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 9924,
+          "postos": 750,
+          "municipios": 58,
+          "soma_mills": 58413020
+        },
+        {
+          "uf": "MG",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 13146,
+          "postos": 915,
+          "municipios": 58,
+          "soma_mills": 49087350
+        },
+        {
+          "uf": "MG",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 13513,
+          "postos": 927,
+          "municipios": 58,
+          "soma_mills": 76727760
+        },
+        {
+          "uf": "MG",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 8547,
+          "postos": 617,
+          "municipios": 58,
+          "soma_mills": 50345770
+        },
+        {
+          "uf": "MG",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 385,
+          "postos": 28,
+          "municipios": 11,
+          "soma_mills": 1902880
+        },
+        {
+          "uf": "MS",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 942,
+          "postos": 88,
+          "municipios": 7,
+          "soma_mills": 5756640
+        },
+        {
+          "uf": "MS",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1094,
+          "postos": 100,
+          "municipios": 7,
+          "soma_mills": 6701720
+        },
+        {
+          "uf": "MS",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1297,
+          "postos": 128,
+          "municipios": 7,
+          "soma_mills": 4782630
+        },
+        {
+          "uf": "MS",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1714,
+          "postos": 149,
+          "municipios": 7,
+          "soma_mills": 9982860
+        },
+        {
+          "uf": "MS",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1243,
+          "postos": 112,
+          "municipios": 7,
+          "soma_mills": 7460960
+        },
+        {
+          "uf": "MS",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 37,
+          "postos": 5,
+          "municipios": 1,
+          "soma_mills": 158770
+        },
+        {
+          "uf": "MT",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1091,
+          "postos": 90,
+          "municipios": 7,
+          "soma_mills": 6594270
+        },
+        {
+          "uf": "MT",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1246,
+          "postos": 117,
+          "municipios": 7,
+          "soma_mills": 7615060
+        },
+        {
+          "uf": "MT",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1739,
+          "postos": 153,
+          "municipios": 7,
+          "soma_mills": 5865100
+        },
+        {
+          "uf": "MT",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1837,
+          "postos": 158,
+          "municipios": 7,
+          "soma_mills": 10756280
+        },
+        {
+          "uf": "MT",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1123,
+          "postos": 94,
+          "municipios": 7,
+          "soma_mills": 6806920
+        },
+        {
+          "uf": "MT",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 29,
+          "postos": 3,
+          "municipios": 2,
+          "soma_mills": 102660
+        },
+        {
+          "uf": "PA",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1895,
+          "postos": 126,
+          "municipios": 14,
+          "soma_mills": 11959620
+        },
+        {
+          "uf": "PA",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2612,
+          "postos": 199,
+          "municipios": 16,
+          "soma_mills": 16180340
+        },
+        {
+          "uf": "PA",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1452,
+          "postos": 121,
+          "municipios": 16,
+          "soma_mills": 6379350
+        },
+        {
+          "uf": "PA",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3474,
+          "postos": 252,
+          "municipios": 16,
+          "soma_mills": 20696770
+        },
+        {
+          "uf": "PA",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2128,
+          "postos": 173,
+          "municipios": 16,
+          "soma_mills": 13184560
+        },
+        {
+          "uf": "PB",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 817,
+          "postos": 50,
+          "municipios": 6,
+          "soma_mills": 4776940
+        },
+        {
+          "uf": "PB",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1246,
+          "postos": 101,
+          "municipios": 6,
+          "soma_mills": 7327930
+        },
+        {
+          "uf": "PB",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1431,
+          "postos": 110,
+          "municipios": 6,
+          "soma_mills": 5823490
+        },
+        {
+          "uf": "PB",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1609,
+          "postos": 120,
+          "municipios": 6,
+          "soma_mills": 9128270
+        },
+        {
+          "uf": "PB",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1100,
+          "postos": 80,
+          "municipios": 6,
+          "soma_mills": 6385920
+        },
+        {
+          "uf": "PB",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 293,
+          "postos": 17,
+          "municipios": 5,
+          "soma_mills": 1429310
+        },
+        {
+          "uf": "PE",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 256,
+          "postos": 37,
+          "municipios": 15,
+          "soma_mills": 1486940
+        },
+        {
+          "uf": "PE",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 4123,
+          "postos": 288,
+          "municipios": 18,
+          "soma_mills": 23555220
+        },
+        {
+          "uf": "PE",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 4137,
+          "postos": 292,
+          "municipios": 18,
+          "soma_mills": 17538600
+        },
+        {
+          "uf": "PE",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 4719,
+          "postos": 319,
+          "municipios": 18,
+          "soma_mills": 27213870
+        },
+        {
+          "uf": "PE",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3279,
+          "postos": 236,
+          "municipios": 18,
+          "soma_mills": 19428150
+        },
+        {
+          "uf": "PE",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 693,
+          "postos": 56,
+          "municipios": 11,
+          "soma_mills": 3076860
+        },
+        {
+          "uf": "PI",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 718,
+          "postos": 68,
+          "municipios": 4,
+          "soma_mills": 4228140
+        },
+        {
+          "uf": "PI",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1021,
+          "postos": 105,
+          "municipios": 4,
+          "soma_mills": 6118330
+        },
+        {
+          "uf": "PI",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1097,
+          "postos": 107,
+          "municipios": 4,
+          "soma_mills": 4494950
+        },
+        {
+          "uf": "PI",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1401,
+          "postos": 134,
+          "municipios": 4,
+          "soma_mills": 7799540
+        },
+        {
+          "uf": "PI",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1076,
+          "postos": 100,
+          "municipios": 4,
+          "soma_mills": 6224470
+        },
+        {
+          "uf": "PR",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3845,
+          "postos": 293,
+          "municipios": 29,
+          "soma_mills": 22315890
+        },
+        {
+          "uf": "PR",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 5454,
+          "postos": 498,
+          "municipios": 29,
+          "soma_mills": 32312170
+        },
+        {
+          "uf": "PR",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 7449,
+          "postos": 621,
+          "municipios": 29,
+          "soma_mills": 28801840
+        },
+        {
+          "uf": "PR",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 7433,
+          "postos": 618,
+          "municipios": 29,
+          "soma_mills": 43805840
+        },
+        {
+          "uf": "PR",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 5810,
+          "postos": 493,
+          "municipios": 29,
+          "soma_mills": 35137810
+        },
+        {
+          "uf": "PR",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 174,
+          "postos": 20,
+          "municipios": 5,
+          "soma_mills": 879760
+        },
+        {
+          "uf": "RJ",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3521,
+          "postos": 282,
+          "municipios": 31,
+          "soma_mills": 21047380
+        },
+        {
+          "uf": "RJ",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 5750,
+          "postos": 495,
+          "municipios": 32,
+          "soma_mills": 35013890
+        },
+        {
+          "uf": "RJ",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 8282,
+          "postos": 673,
+          "municipios": 32,
+          "soma_mills": 34241760
+        },
+        {
+          "uf": "RJ",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 8888,
+          "postos": 698,
+          "municipios": 32,
+          "soma_mills": 51368180
+        },
+        {
+          "uf": "RJ",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 8092,
+          "postos": 619,
+          "municipios": 32,
+          "soma_mills": 48039720
+        },
+        {
+          "uf": "RJ",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 3514,
+          "postos": 294,
+          "municipios": 29,
+          "soma_mills": 16829040
+        },
+        {
+          "uf": "RN",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 780,
+          "postos": 81,
+          "municipios": 4,
+          "soma_mills": 4739770
+        },
+        {
+          "uf": "RN",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 758,
+          "postos": 103,
+          "municipios": 4,
+          "soma_mills": 4677210
+        },
+        {
+          "uf": "RN",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1137,
+          "postos": 119,
+          "municipios": 4,
+          "soma_mills": 5178820
+        },
+        {
+          "uf": "RN",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1177,
+          "postos": 125,
+          "municipios": 4,
+          "soma_mills": 7145990
+        },
+        {
+          "uf": "RN",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1099,
+          "postos": 118,
+          "municipios": 4,
+          "soma_mills": 6727480
+        },
+        {
+          "uf": "RN",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 219,
+          "postos": 23,
+          "municipios": 3,
+          "soma_mills": 1120560
+        },
+        {
+          "uf": "RO",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1261,
+          "postos": 84,
+          "municipios": 6,
+          "soma_mills": 8153840
+        },
+        {
+          "uf": "RO",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1237,
+          "postos": 99,
+          "municipios": 6,
+          "soma_mills": 8051850
+        },
+        {
+          "uf": "RO",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 570,
+          "postos": 37,
+          "municipios": 6,
+          "soma_mills": 2782550
+        },
+        {
+          "uf": "RO",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1544,
+          "postos": 106,
+          "municipios": 6,
+          "soma_mills": 9859080
+        },
+        {
+          "uf": "RO",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1220,
+          "postos": 81,
+          "municipios": 6,
+          "soma_mills": 7914180
+        },
+        {
+          "uf": "RR",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 316,
+          "postos": 19,
+          "municipios": 1,
+          "soma_mills": 2060210
+        },
+        {
+          "uf": "RR",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 423,
+          "postos": 26,
+          "municipios": 1,
+          "soma_mills": 2775170
+        },
+        {
+          "uf": "RR",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 99,
+          "postos": 7,
+          "municipios": 1,
+          "soma_mills": 477060
+        },
+        {
+          "uf": "RR",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 442,
+          "postos": 30,
+          "municipios": 1,
+          "soma_mills": 2694510
+        },
+        {
+          "uf": "RR",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 419,
+          "postos": 29,
+          "municipios": 1,
+          "soma_mills": 2589480
+        },
+        {
+          "uf": "RS",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 5610,
+          "postos": 463,
+          "municipios": 36,
+          "soma_mills": 33399500
+        },
+        {
+          "uf": "RS",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 6518,
+          "postos": 554,
+          "municipios": 36,
+          "soma_mills": 39217190
+        },
+        {
+          "uf": "RS",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3224,
+          "postos": 282,
+          "municipios": 36,
+          "soma_mills": 14563980
+        },
+        {
+          "uf": "RS",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 8268,
+          "postos": 696,
+          "municipios": 36,
+          "soma_mills": 47687220
+        },
+        {
+          "uf": "RS",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 8527,
+          "postos": 694,
+          "municipios": 36,
+          "soma_mills": 50757680
+        },
+        {
+          "uf": "RS",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 518,
+          "postos": 53,
+          "municipios": 19,
+          "soma_mills": 2439030
+        },
+        {
+          "uf": "SC",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1986,
+          "postos": 164,
+          "municipios": 20,
+          "soma_mills": 11775570
+        },
+        {
+          "uf": "SC",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3526,
+          "postos": 317,
+          "municipios": 21,
+          "soma_mills": 21166470
+        },
+        {
+          "uf": "SC",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2919,
+          "postos": 277,
+          "municipios": 21,
+          "soma_mills": 12470120
+        },
+        {
+          "uf": "SC",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 5000,
+          "postos": 426,
+          "municipios": 21,
+          "soma_mills": 29419630
+        },
+        {
+          "uf": "SC",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 4745,
+          "postos": 409,
+          "municipios": 21,
+          "soma_mills": 28547540
+        },
+        {
+          "uf": "SC",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 600,
+          "postos": 58,
+          "municipios": 15,
+          "soma_mills": 2979910
+        },
+        {
+          "uf": "SE",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 411,
+          "postos": 23,
+          "municipios": 4,
+          "soma_mills": 2327110
+        },
+        {
+          "uf": "SE",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 559,
+          "postos": 39,
+          "municipios": 4,
+          "soma_mills": 3266940
+        },
+        {
+          "uf": "SE",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 632,
+          "postos": 48,
+          "municipios": 4,
+          "soma_mills": 2779450
+        },
+        {
+          "uf": "SE",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 867,
+          "postos": 59,
+          "municipios": 4,
+          "soma_mills": 5198610
+        },
+        {
+          "uf": "SE",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 677,
+          "postos": 52,
+          "municipios": 4,
+          "soma_mills": 4118370
+        },
+        {
+          "uf": "SE",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 98,
+          "postos": 8,
+          "municipios": 2,
+          "soma_mills": 485640
+        },
+        {
+          "uf": "SP",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 12330,
+          "postos": 962,
+          "municipios": 107,
+          "soma_mills": 72405090
+        },
+        {
+          "uf": "SP",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 22325,
+          "postos": 1759,
+          "municipios": 108,
+          "soma_mills": 133718960
+        },
+        {
+          "uf": "SP",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 32133,
+          "postos": 2445,
+          "municipios": 108,
+          "soma_mills": 112757380
+        },
+        {
+          "uf": "SP",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 32557,
+          "postos": 2464,
+          "municipios": 108,
+          "soma_mills": 182128010
+        },
+        {
+          "uf": "SP",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 26335,
+          "postos": 1993,
+          "municipios": 108,
+          "soma_mills": 154665420
+        },
+        {
+          "uf": "SP",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 1557,
+          "postos": 110,
+          "municipios": 43,
+          "soma_mills": 7030830
+        },
+        {
+          "uf": "TO",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 875,
+          "postos": 51,
+          "municipios": 5,
+          "soma_mills": 5031530
+        },
+        {
+          "uf": "TO",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1089,
+          "postos": 63,
+          "municipios": 5,
+          "soma_mills": 6257600
+        },
+        {
+          "uf": "TO",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1020,
+          "postos": 60,
+          "municipios": 5,
+          "soma_mills": 4222630
+        },
+        {
+          "uf": "TO",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1267,
+          "postos": 70,
+          "municipios": 5,
+          "soma_mills": 7465800
+        },
+        {
+          "uf": "TO",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 904,
+          "postos": 52,
+          "municipios": 5,
+          "soma_mills": 5443870
+        }
+      ],
+      "fabric_executed": false,
+      "prepared_at_utc": "2026-11-14T14:28:39.111127+00:00"
+    },
+    {
+      "source_id": "anp_2024_2",
+      "scope": {
+        "scope_id": "anp_2024_2-br-todos",
+        "date_start": "2024-07-01",
+        "date_end": "2024-12-31",
+        "product_units": {
+          "DIESEL": "R$ / litro",
+          "DIESEL S10": "R$ / litro",
+          "ETANOL": "R$ / litro",
+          "GASOLINA": "R$ / litro",
+          "GASOLINA ADITIVADA": "R$ / litro",
+          "GNV": "R$ / m³"
+        },
+        "contract_version": "history-1.0"
+      },
+      "source_sha256": "63952c6786fe96289a643fdfbf4cf15e29264fb6a4c0be916a0708687aed71d4",
+      "csv_sha256": "fe3296f9de5977eb95a2f859f68b80f8336e446494d3be6d07de99ebf7e775ae",
+      "counts": {
+        "received": 421382,
+        "invalid": 0,
+        "exact_duplicate_excess": 0,
+        "conflicting_rows": 0,
+        "accepted": 421382
+      },
+      "invalid_reasons": {},
+      "ambiguous_station_day_records": 0,
+      "parquet_sha256": "25cf5516cca2b7c6ecdf7384bac6742ac7d757683e37cbc4a4d28e469af3b914",
+      "ufs": 27,
+      "municipalities": 359,
+      "stations": 8520,
+      "by_uf_product_unit": [
+        {
+          "uf": "AC",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 376,
+          "postos": 29,
+          "municipios": 2,
+          "soma_mills": 2811620
+        },
+        {
+          "uf": "AC",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 367,
+          "postos": 32,
+          "municipios": 2,
+          "soma_mills": 2764780
+        },
+        {
+          "uf": "AC",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 294,
+          "postos": 22,
+          "municipios": 2,
+          "soma_mills": 1490330
+        },
+        {
+          "uf": "AC",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 461,
+          "postos": 35,
+          "municipios": 2,
+          "soma_mills": 3392350
+        },
+        {
+          "uf": "AC",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 400,
+          "postos": 31,
+          "municipios": 2,
+          "soma_mills": 2969230
+        },
+        {
+          "uf": "AL",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 318,
+          "postos": 22,
+          "municipios": 4,
+          "soma_mills": 2043370
+        },
+        {
+          "uf": "AL",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 917,
+          "postos": 80,
+          "municipios": 4,
+          "soma_mills": 5667830
+        },
+        {
+          "uf": "AL",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1308,
+          "postos": 107,
+          "municipios": 4,
+          "soma_mills": 6270240
+        },
+        {
+          "uf": "AL",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1393,
+          "postos": 111,
+          "municipios": 4,
+          "soma_mills": 8770080
+        },
+        {
+          "uf": "AL",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1050,
+          "postos": 85,
+          "municipios": 4,
+          "soma_mills": 6769170
+        },
+        {
+          "uf": "AL",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 219,
+          "postos": 16,
+          "municipios": 3,
+          "soma_mills": 1080770
+        },
+        {
+          "uf": "AM",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 510,
+          "postos": 41,
+          "municipios": 3,
+          "soma_mills": 3293080
+        },
+        {
+          "uf": "AM",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1050,
+          "postos": 80,
+          "municipios": 3,
+          "soma_mills": 6951060
+        },
+        {
+          "uf": "AM",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 987,
+          "postos": 71,
+          "municipios": 2,
+          "soma_mills": 4819960
+        },
+        {
+          "uf": "AM",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1415,
+          "postos": 100,
+          "municipios": 3,
+          "soma_mills": 9921600
+        },
+        {
+          "uf": "AM",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1103,
+          "postos": 84,
+          "municipios": 3,
+          "soma_mills": 7748380
+        },
+        {
+          "uf": "AM",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 53,
+          "postos": 4,
+          "municipios": 1,
+          "soma_mills": 262070
+        },
+        {
+          "uf": "AP",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 281,
+          "postos": 25,
+          "municipios": 2,
+          "soma_mills": 1816010
+        },
+        {
+          "uf": "AP",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 307,
+          "postos": 27,
+          "municipios": 2,
+          "soma_mills": 2013830
+        },
+        {
+          "uf": "AP",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 85,
+          "postos": 10,
+          "municipios": 2,
+          "soma_mills": 429390
+        },
+        {
+          "uf": "AP",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 597,
+          "postos": 46,
+          "municipios": 2,
+          "soma_mills": 3525860
+        },
+        {
+          "uf": "AP",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 143,
+          "postos": 12,
+          "municipios": 2,
+          "soma_mills": 891230
+        },
+        {
+          "uf": "BA",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3617,
+          "postos": 238,
+          "municipios": 26,
+          "soma_mills": 21925100
+        },
+        {
+          "uf": "BA",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 4575,
+          "postos": 305,
+          "municipios": 26,
+          "soma_mills": 28099070
+        },
+        {
+          "uf": "BA",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 5488,
+          "postos": 348,
+          "municipios": 26,
+          "soma_mills": 24943780
+        },
+        {
+          "uf": "BA",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 5706,
+          "postos": 356,
+          "municipios": 26,
+          "soma_mills": 35957390
+        },
+        {
+          "uf": "BA",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 4376,
+          "postos": 287,
+          "municipios": 26,
+          "soma_mills": 28079670
+        },
+        {
+          "uf": "BA",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 256,
+          "postos": 22,
+          "municipios": 6,
+          "soma_mills": 1122610
+        },
+        {
+          "uf": "CE",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 287,
+          "postos": 35,
+          "municipios": 7,
+          "soma_mills": 1797760
+        },
+        {
+          "uf": "CE",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2371,
+          "postos": 265,
+          "municipios": 9,
+          "soma_mills": 14631700
+        },
+        {
+          "uf": "CE",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2763,
+          "postos": 274,
+          "municipios": 9,
+          "soma_mills": 13920010
+        },
+        {
+          "uf": "CE",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3070,
+          "postos": 287,
+          "municipios": 9,
+          "soma_mills": 19208910
+        },
+        {
+          "uf": "CE",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2673,
+          "postos": 267,
+          "municipios": 9,
+          "soma_mills": 17075060
+        },
+        {
+          "uf": "CE",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 265,
+          "postos": 36,
+          "municipios": 3,
+          "soma_mills": 1312630
+        },
+        {
+          "uf": "DF",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 519,
+          "postos": 34,
+          "municipios": 1,
+          "soma_mills": 3028910
+        },
+        {
+          "uf": "DF",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 561,
+          "postos": 37,
+          "municipios": 1,
+          "soma_mills": 3293880
+        },
+        {
+          "uf": "DF",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 735,
+          "postos": 56,
+          "municipios": 1,
+          "soma_mills": 3027500
+        },
+        {
+          "uf": "DF",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1292,
+          "postos": 85,
+          "municipios": 1,
+          "soma_mills": 7827980
+        },
+        {
+          "uf": "DF",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1137,
+          "postos": 75,
+          "municipios": 1,
+          "soma_mills": 6941770
+        },
+        {
+          "uf": "ES",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 745,
+          "postos": 69,
+          "municipios": 6,
+          "soma_mills": 4392470
+        },
+        {
+          "uf": "ES",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1401,
+          "postos": 120,
+          "municipios": 7,
+          "soma_mills": 8451780
+        },
+        {
+          "uf": "ES",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1385,
+          "postos": 113,
+          "municipios": 7,
+          "soma_mills": 6089790
+        },
+        {
+          "uf": "ES",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2110,
+          "postos": 161,
+          "municipios": 7,
+          "soma_mills": 13159440
+        },
+        {
+          "uf": "ES",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1851,
+          "postos": 142,
+          "municipios": 7,
+          "soma_mills": 11827720
+        },
+        {
+          "uf": "ES",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 337,
+          "postos": 23,
+          "municipios": 7,
+          "soma_mills": 1658840
+        },
+        {
+          "uf": "GO",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2484,
+          "postos": 183,
+          "municipios": 15,
+          "soma_mills": 14610130
+        },
+        {
+          "uf": "GO",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3224,
+          "postos": 262,
+          "municipios": 15,
+          "soma_mills": 19250460
+        },
+        {
+          "uf": "GO",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 4494,
+          "postos": 340,
+          "municipios": 15,
+          "soma_mills": 18396690
+        },
+        {
+          "uf": "GO",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 4553,
+          "postos": 340,
+          "municipios": 15,
+          "soma_mills": 27739870
+        },
+        {
+          "uf": "GO",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2553,
+          "postos": 192,
+          "municipios": 15,
+          "soma_mills": 15930460
+        },
+        {
+          "uf": "MA",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1291,
+          "postos": 96,
+          "municipios": 9,
+          "soma_mills": 7677110
+        },
+        {
+          "uf": "MA",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2256,
+          "postos": 202,
+          "municipios": 9,
+          "soma_mills": 13415650
+        },
+        {
+          "uf": "MA",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1552,
+          "postos": 139,
+          "municipios": 9,
+          "soma_mills": 7394240
+        },
+        {
+          "uf": "MA",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2612,
+          "postos": 223,
+          "municipios": 9,
+          "soma_mills": 15922440
+        },
+        {
+          "uf": "MA",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1707,
+          "postos": 161,
+          "municipios": 9,
+          "soma_mills": 10599060
+        },
+        {
+          "uf": "MG",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 5789,
+          "postos": 437,
+          "municipios": 44,
+          "soma_mills": 33983780
+        },
+        {
+          "uf": "MG",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 8398,
+          "postos": 657,
+          "municipios": 44,
+          "soma_mills": 50054660
+        },
+        {
+          "uf": "MG",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 11180,
+          "postos": 850,
+          "municipios": 44,
+          "soma_mills": 46774230
+        },
+        {
+          "uf": "MG",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 11737,
+          "postos": 870,
+          "municipios": 44,
+          "soma_mills": 71346570
+        },
+        {
+          "uf": "MG",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 7303,
+          "postos": 593,
+          "municipios": 44,
+          "soma_mills": 45934760
+        },
+        {
+          "uf": "MG",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 422,
+          "postos": 34,
+          "municipios": 11,
+          "soma_mills": 2147730
+        },
+        {
+          "uf": "MS",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 827,
+          "postos": 78,
+          "municipios": 5,
+          "soma_mills": 5158450
+        },
+        {
+          "uf": "MS",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 870,
+          "postos": 90,
+          "municipios": 5,
+          "soma_mills": 5419110
+        },
+        {
+          "uf": "MS",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1065,
+          "postos": 110,
+          "municipios": 5,
+          "soma_mills": 4273970
+        },
+        {
+          "uf": "MS",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1567,
+          "postos": 131,
+          "municipios": 5,
+          "soma_mills": 9569220
+        },
+        {
+          "uf": "MS",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1190,
+          "postos": 95,
+          "municipios": 5,
+          "soma_mills": 7491160
+        },
+        {
+          "uf": "MS",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 35,
+          "postos": 2,
+          "municipios": 1,
+          "soma_mills": 161350
+        },
+        {
+          "uf": "MT",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 937,
+          "postos": 67,
+          "municipios": 6,
+          "soma_mills": 5662460
+        },
+        {
+          "uf": "MT",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1224,
+          "postos": 92,
+          "municipios": 6,
+          "soma_mills": 7542230
+        },
+        {
+          "uf": "MT",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1772,
+          "postos": 124,
+          "municipios": 6,
+          "soma_mills": 6732710
+        },
+        {
+          "uf": "MT",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1798,
+          "postos": 126,
+          "municipios": 6,
+          "soma_mills": 10894540
+        },
+        {
+          "uf": "MT",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1076,
+          "postos": 77,
+          "municipios": 6,
+          "soma_mills": 6744520
+        },
+        {
+          "uf": "MT",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 34,
+          "postos": 4,
+          "municipios": 2,
+          "soma_mills": 121880
+        },
+        {
+          "uf": "PA",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 961,
+          "postos": 80,
+          "municipios": 5,
+          "soma_mills": 6283130
+        },
+        {
+          "uf": "PA",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1555,
+          "postos": 138,
+          "municipios": 7,
+          "soma_mills": 9835900
+        },
+        {
+          "uf": "PA",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 936,
+          "postos": 99,
+          "municipios": 7,
+          "soma_mills": 4370190
+        },
+        {
+          "uf": "PA",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2204,
+          "postos": 194,
+          "municipios": 7,
+          "soma_mills": 13812690
+        },
+        {
+          "uf": "PA",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1425,
+          "postos": 143,
+          "municipios": 7,
+          "soma_mills": 9337450
+        },
+        {
+          "uf": "PB",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 715,
+          "postos": 46,
+          "municipios": 6,
+          "soma_mills": 4205290
+        },
+        {
+          "uf": "PB",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1103,
+          "postos": 97,
+          "municipios": 6,
+          "soma_mills": 6504690
+        },
+        {
+          "uf": "PB",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1351,
+          "postos": 107,
+          "municipios": 6,
+          "soma_mills": 5959670
+        },
+        {
+          "uf": "PB",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1615,
+          "postos": 118,
+          "municipios": 6,
+          "soma_mills": 9745160
+        },
+        {
+          "uf": "PB",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1078,
+          "postos": 80,
+          "municipios": 6,
+          "soma_mills": 6654980
+        },
+        {
+          "uf": "PB",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 287,
+          "postos": 16,
+          "municipios": 5,
+          "soma_mills": 1472930
+        },
+        {
+          "uf": "PE",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 168,
+          "postos": 21,
+          "municipios": 9,
+          "soma_mills": 1018320
+        },
+        {
+          "uf": "PE",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3545,
+          "postos": 232,
+          "municipios": 14,
+          "soma_mills": 20676430
+        },
+        {
+          "uf": "PE",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3610,
+          "postos": 241,
+          "municipios": 14,
+          "soma_mills": 16340850
+        },
+        {
+          "uf": "PE",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 4241,
+          "postos": 269,
+          "municipios": 14,
+          "soma_mills": 25773990
+        },
+        {
+          "uf": "PE",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2939,
+          "postos": 203,
+          "municipios": 14,
+          "soma_mills": 18320460
+        },
+        {
+          "uf": "PE",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 668,
+          "postos": 50,
+          "municipios": 9,
+          "soma_mills": 3076990
+        },
+        {
+          "uf": "PI",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 748,
+          "postos": 66,
+          "municipios": 4,
+          "soma_mills": 4471980
+        },
+        {
+          "uf": "PI",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1032,
+          "postos": 102,
+          "municipios": 4,
+          "soma_mills": 6273420
+        },
+        {
+          "uf": "PI",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1011,
+          "postos": 106,
+          "municipios": 4,
+          "soma_mills": 4563360
+        },
+        {
+          "uf": "PI",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1540,
+          "postos": 134,
+          "municipios": 4,
+          "soma_mills": 9208450
+        },
+        {
+          "uf": "PI",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1048,
+          "postos": 97,
+          "municipios": 4,
+          "soma_mills": 6487980
+        },
+        {
+          "uf": "PR",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3049,
+          "postos": 266,
+          "municipios": 22,
+          "soma_mills": 18014780
+        },
+        {
+          "uf": "PR",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 4496,
+          "postos": 439,
+          "municipios": 22,
+          "soma_mills": 27075160
+        },
+        {
+          "uf": "PR",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 6367,
+          "postos": 561,
+          "municipios": 22,
+          "soma_mills": 26958300
+        },
+        {
+          "uf": "PR",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 6361,
+          "postos": 557,
+          "municipios": 22,
+          "soma_mills": 39138960
+        },
+        {
+          "uf": "PR",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 4975,
+          "postos": 455,
+          "municipios": 22,
+          "soma_mills": 31382680
+        },
+        {
+          "uf": "PR",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 182,
+          "postos": 17,
+          "municipios": 5,
+          "soma_mills": 898760
+        },
+        {
+          "uf": "RJ",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2837,
+          "postos": 218,
+          "municipios": 23,
+          "soma_mills": 17053750
+        },
+        {
+          "uf": "RJ",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 5224,
+          "postos": 412,
+          "municipios": 24,
+          "soma_mills": 31888260
+        },
+        {
+          "uf": "RJ",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 7608,
+          "postos": 558,
+          "municipios": 24,
+          "soma_mills": 33702810
+        },
+        {
+          "uf": "RJ",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 8303,
+          "postos": 601,
+          "municipios": 24,
+          "soma_mills": 50144250
+        },
+        {
+          "uf": "RJ",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 7396,
+          "postos": 532,
+          "municipios": 24,
+          "soma_mills": 45987230
+        },
+        {
+          "uf": "RJ",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 3882,
+          "postos": 283,
+          "municipios": 24,
+          "soma_mills": 18830250
+        },
+        {
+          "uf": "RN",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 650,
+          "postos": 73,
+          "municipios": 4,
+          "soma_mills": 4052150
+        },
+        {
+          "uf": "RN",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 801,
+          "postos": 95,
+          "municipios": 4,
+          "soma_mills": 5042140
+        },
+        {
+          "uf": "RN",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1085,
+          "postos": 116,
+          "municipios": 4,
+          "soma_mills": 5317130
+        },
+        {
+          "uf": "RN",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1160,
+          "postos": 119,
+          "municipios": 4,
+          "soma_mills": 7390470
+        },
+        {
+          "uf": "RN",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1016,
+          "postos": 109,
+          "municipios": 4,
+          "soma_mills": 6541650
+        },
+        {
+          "uf": "RN",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 193,
+          "postos": 22,
+          "municipios": 3,
+          "soma_mills": 979950
+        },
+        {
+          "uf": "RO",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 886,
+          "postos": 80,
+          "municipios": 5,
+          "soma_mills": 5844770
+        },
+        {
+          "uf": "RO",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 947,
+          "postos": 90,
+          "municipios": 5,
+          "soma_mills": 6271690
+        },
+        {
+          "uf": "RO",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 452,
+          "postos": 37,
+          "municipios": 5,
+          "soma_mills": 2298890
+        },
+        {
+          "uf": "RO",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1176,
+          "postos": 98,
+          "municipios": 5,
+          "soma_mills": 8121000
+        },
+        {
+          "uf": "RO",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 911,
+          "postos": 74,
+          "municipios": 5,
+          "soma_mills": 6347320
+        },
+        {
+          "uf": "RR",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 343,
+          "postos": 17,
+          "municipios": 1,
+          "soma_mills": 2271560
+        },
+        {
+          "uf": "RR",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 432,
+          "postos": 23,
+          "municipios": 1,
+          "soma_mills": 2867580
+        },
+        {
+          "uf": "RR",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 87,
+          "postos": 6,
+          "municipios": 1,
+          "soma_mills": 428020
+        },
+        {
+          "uf": "RR",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 450,
+          "postos": 27,
+          "municipios": 1,
+          "soma_mills": 2982410
+        },
+        {
+          "uf": "RR",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 432,
+          "postos": 26,
+          "municipios": 1,
+          "soma_mills": 2903290
+        },
+        {
+          "uf": "RS",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 5019,
+          "postos": 390,
+          "municipios": 30,
+          "soma_mills": 30308200
+        },
+        {
+          "uf": "RS",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 5988,
+          "postos": 476,
+          "municipios": 30,
+          "soma_mills": 36563660
+        },
+        {
+          "uf": "RS",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3326,
+          "postos": 267,
+          "municipios": 30,
+          "soma_mills": 15787130
+        },
+        {
+          "uf": "RS",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 8126,
+          "postos": 604,
+          "municipios": 30,
+          "soma_mills": 49766920
+        },
+        {
+          "uf": "RS",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 7853,
+          "postos": 593,
+          "municipios": 30,
+          "soma_mills": 49460450
+        },
+        {
+          "uf": "RS",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 530,
+          "postos": 43,
+          "municipios": 15,
+          "soma_mills": 2511830
+        },
+        {
+          "uf": "SC",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1300,
+          "postos": 108,
+          "municipios": 13,
+          "soma_mills": 7747710
+        },
+        {
+          "uf": "SC",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2588,
+          "postos": 200,
+          "municipios": 13,
+          "soma_mills": 15659120
+        },
+        {
+          "uf": "SC",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2429,
+          "postos": 191,
+          "municipios": 13,
+          "soma_mills": 10871010
+        },
+        {
+          "uf": "SC",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 4011,
+          "postos": 288,
+          "municipios": 13,
+          "soma_mills": 24760280
+        },
+        {
+          "uf": "SC",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3637,
+          "postos": 273,
+          "municipios": 13,
+          "soma_mills": 22867040
+        },
+        {
+          "uf": "SC",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 525,
+          "postos": 32,
+          "municipios": 8,
+          "soma_mills": 2598200
+        },
+        {
+          "uf": "SE",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 254,
+          "postos": 14,
+          "municipios": 2,
+          "soma_mills": 1443930
+        },
+        {
+          "uf": "SE",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 416,
+          "postos": 24,
+          "municipios": 3,
+          "soma_mills": 2445800
+        },
+        {
+          "uf": "SE",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 509,
+          "postos": 28,
+          "municipios": 3,
+          "soma_mills": 2358910
+        },
+        {
+          "uf": "SE",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 771,
+          "postos": 44,
+          "municipios": 3,
+          "soma_mills": 4802350
+        },
+        {
+          "uf": "SE",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 631,
+          "postos": 37,
+          "municipios": 3,
+          "soma_mills": 3985930
+        },
+        {
+          "uf": "SE",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 73,
+          "postos": 6,
+          "municipios": 1,
+          "soma_mills": 358140
+        },
+        {
+          "uf": "SP",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 10943,
+          "postos": 917,
+          "municipios": 87,
+          "soma_mills": 64957830
+        },
+        {
+          "uf": "SP",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 20329,
+          "postos": 1708,
+          "municipios": 88,
+          "soma_mills": 122877740
+        },
+        {
+          "uf": "SP",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 30717,
+          "postos": 2386,
+          "municipios": 88,
+          "soma_mills": 119683380
+        },
+        {
+          "uf": "SP",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 31101,
+          "postos": 2404,
+          "municipios": 88,
+          "soma_mills": 183736010
+        },
+        {
+          "uf": "SP",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 23730,
+          "postos": 1856,
+          "municipios": 88,
+          "soma_mills": 146783730
+        },
+        {
+          "uf": "SP",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 1490,
+          "postos": 106,
+          "municipios": 42,
+          "soma_mills": 6742730
+        },
+        {
+          "uf": "TO",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 733,
+          "postos": 74,
+          "municipios": 5,
+          "soma_mills": 4362500
+        },
+        {
+          "uf": "TO",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 906,
+          "postos": 92,
+          "municipios": 5,
+          "soma_mills": 5412380
+        },
+        {
+          "uf": "TO",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 913,
+          "postos": 88,
+          "municipios": 5,
+          "soma_mills": 4166610
+        },
+        {
+          "uf": "TO",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1125,
+          "postos": 105,
+          "municipios": 5,
+          "soma_mills": 7222700
+        },
+        {
+          "uf": "TO",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 824,
+          "postos": 80,
+          "municipios": 5,
+          "soma_mills": 5381690
+        }
+      ],
+      "fabric_executed": false,
+      "prepared_at_utc": "2026-11-14T14:28:49.909086+00:00"
+    },
+    {
+      "source_id": "anp_2025_1",
+      "scope": {
+        "scope_id": "anp_2025_1-br-todos",
+        "date_start": "2025-01-01",
+        "date_end": "2025-06-30",
+        "product_units": {
+          "DIESEL": "R$ / litro",
+          "DIESEL S10": "R$ / litro",
+          "ETANOL": "R$ / litro",
+          "GASOLINA": "R$ / litro",
+          "GASOLINA ADITIVADA": "R$ / litro",
+          "GNV": "R$ / m³"
+        },
+        "contract_version": "history-1.0"
+      },
+      "source_sha256": "674d69b09a1e6571e39b2fceedeed1d3b12d21e097bcec11d2d93ba7f7370a09",
+      "csv_sha256": "d308b91e79d112262253e66c84610254b6df8f9f5bfd7c76ecd6c79fd82fb4fa",
+      "counts": {
+        "received": 429523,
+        "invalid": 9114,
+        "exact_duplicate_excess": 0,
+        "conflicting_rows": 0,
+        "accepted": 420409
+      },
+      "invalid_reasons": {
+        "cnpj_formato_invalido": 9114,
+        "obrigatorio_ausente:Revenda": 9114,
+        "obrigatorio_ausente:Bandeira": 9114,
+        "obrigatorio_ausente:Municipio": 9114,
+        "obrigatorio_ausente:Produto": 9114,
+        "obrigatorio_ausente:Estado - Sigla": 9114,
+        "data_coleta_invalida": 9114,
+        "preco_formato_ou_precisao_invalida": 9114,
+        "produto_fora_do_contrato": 9114,
+        "municipio_sem_correspondencia": 9114
+      },
+      "ambiguous_station_day_records": 0,
+      "parquet_sha256": "495b5e88d176e3a396c5aea128010904b2f70ef06bf2ee0fc211df56d71d01e0",
+      "ufs": 27,
+      "municipalities": 409,
+      "stations": 7735,
+      "by_uf_product_unit": [
+        {
+          "uf": "AC",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 318,
+          "postos": 18,
+          "municipios": 2,
+          "soma_mills": 2495800
+        },
+        {
+          "uf": "AC",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 267,
+          "postos": 17,
+          "municipios": 2,
+          "soma_mills": 2115760
+        },
+        {
+          "uf": "AC",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 251,
+          "postos": 12,
+          "municipios": 2,
+          "soma_mills": 1372960
+        },
+        {
+          "uf": "AC",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 374,
+          "postos": 19,
+          "municipios": 2,
+          "soma_mills": 2892490
+        },
+        {
+          "uf": "AC",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 310,
+          "postos": 17,
+          "municipios": 2,
+          "soma_mills": 2406780
+        },
+        {
+          "uf": "AL",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 232,
+          "postos": 16,
+          "municipios": 5,
+          "soma_mills": 1530000
+        },
+        {
+          "uf": "AL",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 722,
+          "postos": 62,
+          "municipios": 5,
+          "soma_mills": 4615140
+        },
+        {
+          "uf": "AL",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1148,
+          "postos": 92,
+          "municipios": 5,
+          "soma_mills": 5686520
+        },
+        {
+          "uf": "AL",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1334,
+          "postos": 97,
+          "municipios": 5,
+          "soma_mills": 8536030
+        },
+        {
+          "uf": "AL",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 967,
+          "postos": 73,
+          "municipios": 5,
+          "soma_mills": 6358610
+        },
+        {
+          "uf": "AL",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 198,
+          "postos": 13,
+          "municipios": 4,
+          "soma_mills": 967580
+        },
+        {
+          "uf": "AM",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 511,
+          "postos": 35,
+          "municipios": 3,
+          "soma_mills": 3456880
+        },
+        {
+          "uf": "AM",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1066,
+          "postos": 66,
+          "municipios": 3,
+          "soma_mills": 7474440
+        },
+        {
+          "uf": "AM",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 982,
+          "postos": 56,
+          "municipios": 2,
+          "soma_mills": 5282820
+        },
+        {
+          "uf": "AM",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1389,
+          "postos": 82,
+          "municipios": 3,
+          "soma_mills": 10140390
+        },
+        {
+          "uf": "AM",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1089,
+          "postos": 69,
+          "municipios": 3,
+          "soma_mills": 7980550
+        },
+        {
+          "uf": "AM",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 44,
+          "postos": 3,
+          "municipios": 1,
+          "soma_mills": 236560
+        },
+        {
+          "uf": "AP",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 204,
+          "postos": 13,
+          "municipios": 2,
+          "soma_mills": 1349040
+        },
+        {
+          "uf": "AP",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 194,
+          "postos": 13,
+          "municipios": 2,
+          "soma_mills": 1292790
+        },
+        {
+          "uf": "AP",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 96,
+          "postos": 4,
+          "municipios": 1,
+          "soma_mills": 519600
+        },
+        {
+          "uf": "AP",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 496,
+          "postos": 24,
+          "municipios": 2,
+          "soma_mills": 2997050
+        },
+        {
+          "uf": "AP",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 146,
+          "postos": 8,
+          "municipios": 2,
+          "soma_mills": 928170
+        },
+        {
+          "uf": "BA",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3358,
+          "postos": 214,
+          "municipios": 27,
+          "soma_mills": 20885460
+        },
+        {
+          "uf": "BA",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 4365,
+          "postos": 269,
+          "municipios": 27,
+          "soma_mills": 27575500
+        },
+        {
+          "uf": "BA",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 5140,
+          "postos": 303,
+          "municipios": 27,
+          "soma_mills": 24791130
+        },
+        {
+          "uf": "BA",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 5649,
+          "postos": 324,
+          "municipios": 27,
+          "soma_mills": 36449500
+        },
+        {
+          "uf": "BA",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 4230,
+          "postos": 260,
+          "municipios": 27,
+          "soma_mills": 27740860
+        },
+        {
+          "uf": "BA",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 379,
+          "postos": 26,
+          "municipios": 6,
+          "soma_mills": 1658030
+        },
+        {
+          "uf": "CE",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 217,
+          "postos": 26,
+          "municipios": 8,
+          "soma_mills": 1422460
+        },
+        {
+          "uf": "CE",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2255,
+          "postos": 223,
+          "municipios": 11,
+          "soma_mills": 14319820
+        },
+        {
+          "uf": "CE",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2682,
+          "postos": 246,
+          "municipios": 11,
+          "soma_mills": 13908240
+        },
+        {
+          "uf": "CE",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2986,
+          "postos": 265,
+          "municipios": 11,
+          "soma_mills": 19250460
+        },
+        {
+          "uf": "CE",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2534,
+          "postos": 236,
+          "municipios": 11,
+          "soma_mills": 16679130
+        },
+        {
+          "uf": "CE",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 245,
+          "postos": 29,
+          "municipios": 3,
+          "soma_mills": 1250440
+        },
+        {
+          "uf": "DF",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 511,
+          "postos": 27,
+          "municipios": 1,
+          "soma_mills": 3203010
+        },
+        {
+          "uf": "DF",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 512,
+          "postos": 27,
+          "municipios": 1,
+          "soma_mills": 3213940
+        },
+        {
+          "uf": "DF",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 685,
+          "postos": 41,
+          "municipios": 1,
+          "soma_mills": 3192190
+        },
+        {
+          "uf": "DF",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1259,
+          "postos": 73,
+          "municipios": 1,
+          "soma_mills": 8184540
+        },
+        {
+          "uf": "DF",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1124,
+          "postos": 64,
+          "municipios": 1,
+          "soma_mills": 7361110
+        },
+        {
+          "uf": "ES",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 882,
+          "postos": 71,
+          "municipios": 9,
+          "soma_mills": 5429300
+        },
+        {
+          "uf": "ES",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1445,
+          "postos": 120,
+          "municipios": 10,
+          "soma_mills": 9023870
+        },
+        {
+          "uf": "ES",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1573,
+          "postos": 113,
+          "municipios": 10,
+          "soma_mills": 7171730
+        },
+        {
+          "uf": "ES",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2420,
+          "postos": 161,
+          "municipios": 10,
+          "soma_mills": 15264580
+        },
+        {
+          "uf": "ES",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2088,
+          "postos": 142,
+          "municipios": 10,
+          "soma_mills": 13530120
+        },
+        {
+          "uf": "ES",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 324,
+          "postos": 20,
+          "municipios": 8,
+          "soma_mills": 1428600
+        },
+        {
+          "uf": "GO",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2446,
+          "postos": 172,
+          "municipios": 16,
+          "soma_mills": 14897230
+        },
+        {
+          "uf": "GO",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3023,
+          "postos": 239,
+          "municipios": 16,
+          "soma_mills": 18623270
+        },
+        {
+          "uf": "GO",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 4154,
+          "postos": 305,
+          "municipios": 16,
+          "soma_mills": 18380000
+        },
+        {
+          "uf": "GO",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 4317,
+          "postos": 310,
+          "municipios": 16,
+          "soma_mills": 27177030
+        },
+        {
+          "uf": "GO",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2476,
+          "postos": 194,
+          "municipios": 16,
+          "soma_mills": 15968240
+        },
+        {
+          "uf": "MA",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1273,
+          "postos": 87,
+          "municipios": 10,
+          "soma_mills": 7906280
+        },
+        {
+          "uf": "MA",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2188,
+          "postos": 177,
+          "municipios": 10,
+          "soma_mills": 13540710
+        },
+        {
+          "uf": "MA",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1507,
+          "postos": 120,
+          "municipios": 10,
+          "soma_mills": 7495680
+        },
+        {
+          "uf": "MA",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2584,
+          "postos": 200,
+          "municipios": 10,
+          "soma_mills": 16075010
+        },
+        {
+          "uf": "MA",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1557,
+          "postos": 133,
+          "municipios": 10,
+          "soma_mills": 9866120
+        },
+        {
+          "uf": "MG",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 5441,
+          "postos": 393,
+          "municipios": 52,
+          "soma_mills": 33168860
+        },
+        {
+          "uf": "MG",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 7848,
+          "postos": 607,
+          "municipios": 52,
+          "soma_mills": 48522690
+        },
+        {
+          "uf": "MG",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 10617,
+          "postos": 788,
+          "municipios": 52,
+          "soma_mills": 46112220
+        },
+        {
+          "uf": "MG",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 11210,
+          "postos": 807,
+          "municipios": 52,
+          "soma_mills": 69217820
+        },
+        {
+          "uf": "MG",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 7013,
+          "postos": 549,
+          "municipios": 52,
+          "soma_mills": 44733480
+        },
+        {
+          "uf": "MG",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 350,
+          "postos": 33,
+          "municipios": 10,
+          "soma_mills": 1766080
+        },
+        {
+          "uf": "MS",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 707,
+          "postos": 58,
+          "municipios": 5,
+          "soma_mills": 4563010
+        },
+        {
+          "uf": "MS",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 676,
+          "postos": 64,
+          "municipios": 5,
+          "soma_mills": 4335920
+        },
+        {
+          "uf": "MS",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 828,
+          "postos": 79,
+          "municipios": 5,
+          "soma_mills": 3441780
+        },
+        {
+          "uf": "MS",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1429,
+          "postos": 102,
+          "municipios": 5,
+          "soma_mills": 8969130
+        },
+        {
+          "uf": "MS",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1136,
+          "postos": 76,
+          "municipios": 5,
+          "soma_mills": 7322570
+        },
+        {
+          "uf": "MS",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 39,
+          "postos": 3,
+          "municipios": 1,
+          "soma_mills": 185310
+        },
+        {
+          "uf": "MT",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1054,
+          "postos": 81,
+          "municipios": 6,
+          "soma_mills": 6633240
+        },
+        {
+          "uf": "MT",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1340,
+          "postos": 106,
+          "municipios": 6,
+          "soma_mills": 8563930
+        },
+        {
+          "uf": "MT",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1923,
+          "postos": 144,
+          "municipios": 6,
+          "soma_mills": 7860860
+        },
+        {
+          "uf": "MT",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1988,
+          "postos": 146,
+          "municipios": 6,
+          "soma_mills": 12407540
+        },
+        {
+          "uf": "MT",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1215,
+          "postos": 88,
+          "municipios": 6,
+          "soma_mills": 7866810
+        },
+        {
+          "uf": "MT",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 34,
+          "postos": 4,
+          "municipios": 2,
+          "soma_mills": 136790
+        },
+        {
+          "uf": "PA",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1259,
+          "postos": 92,
+          "municipios": 10,
+          "soma_mills": 8485580
+        },
+        {
+          "uf": "PA",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1979,
+          "postos": 146,
+          "municipios": 12,
+          "soma_mills": 12866900
+        },
+        {
+          "uf": "PA",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1031,
+          "postos": 81,
+          "municipios": 11,
+          "soma_mills": 5029080
+        },
+        {
+          "uf": "PA",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2830,
+          "postos": 179,
+          "municipios": 12,
+          "soma_mills": 18260110
+        },
+        {
+          "uf": "PA",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1968,
+          "postos": 136,
+          "municipios": 12,
+          "soma_mills": 13118640
+        },
+        {
+          "uf": "PB",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 748,
+          "postos": 47,
+          "municipios": 6,
+          "soma_mills": 4568520
+        },
+        {
+          "uf": "PB",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1203,
+          "postos": 83,
+          "municipios": 6,
+          "soma_mills": 7387670
+        },
+        {
+          "uf": "PB",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1354,
+          "postos": 87,
+          "municipios": 6,
+          "soma_mills": 6173930
+        },
+        {
+          "uf": "PB",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1673,
+          "postos": 101,
+          "municipios": 6,
+          "soma_mills": 10297340
+        },
+        {
+          "uf": "PB",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1127,
+          "postos": 72,
+          "municipios": 6,
+          "soma_mills": 7086350
+        },
+        {
+          "uf": "PB",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 284,
+          "postos": 14,
+          "municipios": 5,
+          "soma_mills": 1460740
+        },
+        {
+          "uf": "PE",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 185,
+          "postos": 22,
+          "municipios": 11,
+          "soma_mills": 1149780
+        },
+        {
+          "uf": "PE",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3775,
+          "postos": 213,
+          "municipios": 18,
+          "soma_mills": 22657860
+        },
+        {
+          "uf": "PE",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3917,
+          "postos": 218,
+          "municipios": 18,
+          "soma_mills": 18868250
+        },
+        {
+          "uf": "PE",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 4589,
+          "postos": 243,
+          "municipios": 18,
+          "soma_mills": 29114420
+        },
+        {
+          "uf": "PE",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3291,
+          "postos": 189,
+          "municipios": 18,
+          "soma_mills": 21379270
+        },
+        {
+          "uf": "PE",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 625,
+          "postos": 39,
+          "municipios": 10,
+          "soma_mills": 2911200
+        },
+        {
+          "uf": "PI",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 557,
+          "postos": 48,
+          "municipios": 4,
+          "soma_mills": 3414490
+        },
+        {
+          "uf": "PI",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 972,
+          "postos": 88,
+          "municipios": 4,
+          "soma_mills": 6064910
+        },
+        {
+          "uf": "PI",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1034,
+          "postos": 91,
+          "municipios": 4,
+          "soma_mills": 4859930
+        },
+        {
+          "uf": "PI",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1437,
+          "postos": 114,
+          "municipios": 4,
+          "soma_mills": 8625500
+        },
+        {
+          "uf": "PI",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1030,
+          "postos": 82,
+          "municipios": 4,
+          "soma_mills": 6421180
+        },
+        {
+          "uf": "PR",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3205,
+          "postos": 234,
+          "municipios": 25,
+          "soma_mills": 19676440
+        },
+        {
+          "uf": "PR",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 4635,
+          "postos": 384,
+          "municipios": 25,
+          "soma_mills": 29015390
+        },
+        {
+          "uf": "PR",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 6816,
+          "postos": 519,
+          "municipios": 25,
+          "soma_mills": 30594940
+        },
+        {
+          "uf": "PR",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 6834,
+          "postos": 518,
+          "municipios": 25,
+          "soma_mills": 44171460
+        },
+        {
+          "uf": "PR",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 5460,
+          "postos": 430,
+          "municipios": 25,
+          "soma_mills": 35934550
+        },
+        {
+          "uf": "PR",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 174,
+          "postos": 13,
+          "municipios": 5,
+          "soma_mills": 853600
+        },
+        {
+          "uf": "RJ",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3069,
+          "postos": 191,
+          "municipios": 27,
+          "soma_mills": 19166180
+        },
+        {
+          "uf": "RJ",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 5384,
+          "postos": 346,
+          "municipios": 27,
+          "soma_mills": 34018450
+        },
+        {
+          "uf": "RJ",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 7618,
+          "postos": 463,
+          "municipios": 27,
+          "soma_mills": 35383520
+        },
+        {
+          "uf": "RJ",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 8512,
+          "postos": 509,
+          "municipios": 27,
+          "soma_mills": 52672780
+        },
+        {
+          "uf": "RJ",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 7693,
+          "postos": 460,
+          "municipios": 27,
+          "soma_mills": 49007070
+        },
+        {
+          "uf": "RJ",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 3978,
+          "postos": 238,
+          "municipios": 26,
+          "soma_mills": 19192530
+        },
+        {
+          "uf": "RN",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 610,
+          "postos": 48,
+          "municipios": 4,
+          "soma_mills": 3898320
+        },
+        {
+          "uf": "RN",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 837,
+          "postos": 71,
+          "municipios": 4,
+          "soma_mills": 5388420
+        },
+        {
+          "uf": "RN",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1011,
+          "postos": 78,
+          "municipios": 4,
+          "soma_mills": 5053130
+        },
+        {
+          "uf": "RN",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1109,
+          "postos": 80,
+          "municipios": 4,
+          "soma_mills": 7180380
+        },
+        {
+          "uf": "RN",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 929,
+          "postos": 73,
+          "municipios": 4,
+          "soma_mills": 6050750
+        },
+        {
+          "uf": "RN",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 163,
+          "postos": 13,
+          "municipios": 3,
+          "soma_mills": 800750
+        },
+        {
+          "uf": "RO",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 923,
+          "postos": 69,
+          "municipios": 6,
+          "soma_mills": 6243310
+        },
+        {
+          "uf": "RO",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 983,
+          "postos": 83,
+          "municipios": 6,
+          "soma_mills": 6671470
+        },
+        {
+          "uf": "RO",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 553,
+          "postos": 44,
+          "municipios": 6,
+          "soma_mills": 2853280
+        },
+        {
+          "uf": "RO",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1314,
+          "postos": 91,
+          "municipios": 6,
+          "soma_mills": 9202510
+        },
+        {
+          "uf": "RO",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1113,
+          "postos": 74,
+          "municipios": 6,
+          "soma_mills": 7903170
+        },
+        {
+          "uf": "RR",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 312,
+          "postos": 13,
+          "municipios": 1,
+          "soma_mills": 2173510
+        },
+        {
+          "uf": "RR",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 367,
+          "postos": 15,
+          "municipios": 1,
+          "soma_mills": 2566120
+        },
+        {
+          "uf": "RR",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 149,
+          "postos": 9,
+          "municipios": 1,
+          "soma_mills": 769100
+        },
+        {
+          "uf": "RR",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 407,
+          "postos": 16,
+          "municipios": 1,
+          "soma_mills": 2843230
+        },
+        {
+          "uf": "RR",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 382,
+          "postos": 15,
+          "municipios": 1,
+          "soma_mills": 2707810
+        },
+        {
+          "uf": "RS",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 5060,
+          "postos": 342,
+          "municipios": 35,
+          "soma_mills": 31640420
+        },
+        {
+          "uf": "RS",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 6254,
+          "postos": 431,
+          "municipios": 35,
+          "soma_mills": 39544460
+        },
+        {
+          "uf": "RS",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3572,
+          "postos": 254,
+          "municipios": 35,
+          "soma_mills": 17459200
+        },
+        {
+          "uf": "RS",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 8447,
+          "postos": 544,
+          "municipios": 35,
+          "soma_mills": 52816970
+        },
+        {
+          "uf": "RS",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 8187,
+          "postos": 535,
+          "municipios": 35,
+          "soma_mills": 52723330
+        },
+        {
+          "uf": "RS",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 593,
+          "postos": 42,
+          "municipios": 15,
+          "soma_mills": 2817160
+        },
+        {
+          "uf": "SC",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1307,
+          "postos": 120,
+          "municipios": 15,
+          "soma_mills": 8166840
+        },
+        {
+          "uf": "SC",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2523,
+          "postos": 221,
+          "municipios": 15,
+          "soma_mills": 15976600
+        },
+        {
+          "uf": "SC",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2496,
+          "postos": 208,
+          "municipios": 15,
+          "soma_mills": 11934240
+        },
+        {
+          "uf": "SC",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3909,
+          "postos": 311,
+          "municipios": 15,
+          "soma_mills": 25276820
+        },
+        {
+          "uf": "SC",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3527,
+          "postos": 289,
+          "municipios": 15,
+          "soma_mills": 23205250
+        },
+        {
+          "uf": "SC",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 532,
+          "postos": 40,
+          "municipios": 9,
+          "soma_mills": 2769630
+        },
+        {
+          "uf": "SE",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 278,
+          "postos": 17,
+          "municipios": 3,
+          "soma_mills": 1617870
+        },
+        {
+          "uf": "SE",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 444,
+          "postos": 27,
+          "municipios": 4,
+          "soma_mills": 2670110
+        },
+        {
+          "uf": "SE",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 505,
+          "postos": 25,
+          "municipios": 4,
+          "soma_mills": 2440950
+        },
+        {
+          "uf": "SE",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 861,
+          "postos": 43,
+          "municipios": 4,
+          "soma_mills": 5638760
+        },
+        {
+          "uf": "SE",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 700,
+          "postos": 37,
+          "municipios": 4,
+          "soma_mills": 4649960
+        },
+        {
+          "uf": "SE",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 109,
+          "postos": 5,
+          "municipios": 2,
+          "soma_mills": 537430
+        },
+        {
+          "uf": "SP",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 10352,
+          "postos": 822,
+          "municipios": 97,
+          "soma_mills": 63836670
+        },
+        {
+          "uf": "SP",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 19927,
+          "postos": 1551,
+          "municipios": 97,
+          "soma_mills": 125097680
+        },
+        {
+          "uf": "SP",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 29988,
+          "postos": 2203,
+          "municipios": 97,
+          "soma_mills": 123402660
+        },
+        {
+          "uf": "SP",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 30299,
+          "postos": 2209,
+          "municipios": 97,
+          "soma_mills": 185551770
+        },
+        {
+          "uf": "SP",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 23424,
+          "postos": 1770,
+          "municipios": 97,
+          "soma_mills": 150141760
+        },
+        {
+          "uf": "SP",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 1437,
+          "postos": 96,
+          "municipios": 35,
+          "soma_mills": 6737770
+        },
+        {
+          "uf": "TO",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 752,
+          "postos": 54,
+          "municipios": 5,
+          "soma_mills": 4604870
+        },
+        {
+          "uf": "TO",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 950,
+          "postos": 75,
+          "municipios": 5,
+          "soma_mills": 5858470
+        },
+        {
+          "uf": "TO",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 968,
+          "postos": 75,
+          "municipios": 5,
+          "soma_mills": 4612470
+        },
+        {
+          "uf": "TO",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1162,
+          "postos": 86,
+          "municipios": 5,
+          "soma_mills": 7612130
+        },
+        {
+          "uf": "TO",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 864,
+          "postos": 65,
+          "municipios": 5,
+          "soma_mills": 5736790
+        }
+      ],
+      "fabric_executed": false,
+      "prepared_at_utc": "2026-11-14T14:29:00.682967+00:00"
+    },
+    {
+      "source_id": "anp_2025_2",
+      "scope": {
+        "scope_id": "anp_2025_2-br-todos",
+        "date_start": "2025-07-01",
+        "date_end": "2025-12-31",
+        "product_units": {
+          "DIESEL": "R$ / litro",
+          "DIESEL S10": "R$ / litro",
+          "ETANOL": "R$ / litro",
+          "GASOLINA": "R$ / litro",
+          "GASOLINA ADITIVADA": "R$ / litro",
+          "GNV": "R$ / m³"
+        },
+        "contract_version": "history-1.0",
+        "unit_aliases": {
+          "R$ / m3": "R$ / m³"
+        }
+      },
+      "source_sha256": "73faa3197a3813baa8c057b13045ea4cd799c45e51957b5094be90558f95258a",
+      "csv_sha256": "206cc66333ebacb3e33b3f6294a5aaeb3415f1579d35f7f28e25351826ae7745",
+      "counts": {
+        "received": 384208,
+        "invalid": 0,
+        "exact_duplicate_excess": 0,
+        "conflicting_rows": 0,
+        "accepted": 384208
+      },
+      "invalid_reasons": {},
+      "ambiguous_station_day_records": 0,
+      "parquet_sha256": "521dfe3b873032df52d2a0af7a04486107e1a75efbe9568ff253e117f64b2b44",
+      "ufs": 27,
+      "municipalities": 414,
+      "stations": 7842,
+      "by_uf_product_unit": [
+        {
+          "uf": "AC",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 277,
+          "postos": 17,
+          "municipios": 2,
+          "soma_mills": 2124940
+        },
+        {
+          "uf": "AC",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 250,
+          "postos": 16,
+          "municipios": 2,
+          "soma_mills": 1935960
+        },
+        {
+          "uf": "AC",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 248,
+          "postos": 14,
+          "municipios": 2,
+          "soma_mills": 1346750
+        },
+        {
+          "uf": "AC",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 326,
+          "postos": 19,
+          "municipios": 2,
+          "soma_mills": 2477240
+        },
+        {
+          "uf": "AC",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 305,
+          "postos": 18,
+          "municipios": 2,
+          "soma_mills": 2332350
+        },
+        {
+          "uf": "AL",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 110,
+          "postos": 12,
+          "municipios": 5,
+          "soma_mills": 693250
+        },
+        {
+          "uf": "AL",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 540,
+          "postos": 59,
+          "municipios": 5,
+          "soma_mills": 3273860
+        },
+        {
+          "uf": "AL",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 959,
+          "postos": 88,
+          "municipios": 5,
+          "soma_mills": 4795190
+        },
+        {
+          "uf": "AL",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1156,
+          "postos": 99,
+          "municipios": 5,
+          "soma_mills": 7229530
+        },
+        {
+          "uf": "AL",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 819,
+          "postos": 78,
+          "municipios": 5,
+          "soma_mills": 5281830
+        },
+        {
+          "uf": "AL",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 187,
+          "postos": 13,
+          "municipios": 4,
+          "soma_mills": 865970
+        },
+        {
+          "uf": "AM",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 524,
+          "postos": 36,
+          "municipios": 3,
+          "soma_mills": 3431390
+        },
+        {
+          "uf": "AM",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1016,
+          "postos": 69,
+          "municipios": 3,
+          "soma_mills": 6911410
+        },
+        {
+          "uf": "AM",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 944,
+          "postos": 59,
+          "municipios": 2,
+          "soma_mills": 5174220
+        },
+        {
+          "uf": "AM",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1342,
+          "postos": 82,
+          "municipios": 3,
+          "soma_mills": 9595170
+        },
+        {
+          "uf": "AM",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1144,
+          "postos": 74,
+          "municipios": 3,
+          "soma_mills": 8228680
+        },
+        {
+          "uf": "AM",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 37,
+          "postos": 3,
+          "municipios": 1,
+          "soma_mills": 168130
+        },
+        {
+          "uf": "AP",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 127,
+          "postos": 10,
+          "municipios": 1,
+          "soma_mills": 813320
+        },
+        {
+          "uf": "AP",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 147,
+          "postos": 12,
+          "municipios": 1,
+          "soma_mills": 952160
+        },
+        {
+          "uf": "AP",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 73,
+          "postos": 5,
+          "municipios": 1,
+          "soma_mills": 397810
+        },
+        {
+          "uf": "AP",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 381,
+          "postos": 26,
+          "municipios": 1,
+          "soma_mills": 2301700
+        },
+        {
+          "uf": "AP",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 88,
+          "postos": 6,
+          "municipios": 1,
+          "soma_mills": 556740
+        },
+        {
+          "uf": "BA",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2114,
+          "postos": 203,
+          "municipios": 28,
+          "soma_mills": 12786480
+        },
+        {
+          "uf": "BA",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3088,
+          "postos": 280,
+          "municipios": 28,
+          "soma_mills": 18968060
+        },
+        {
+          "uf": "BA",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3701,
+          "postos": 312,
+          "municipios": 28,
+          "soma_mills": 17537680
+        },
+        {
+          "uf": "BA",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 4169,
+          "postos": 333,
+          "municipios": 28,
+          "soma_mills": 26294830
+        },
+        {
+          "uf": "BA",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3278,
+          "postos": 266,
+          "municipios": 27,
+          "soma_mills": 21017230
+        },
+        {
+          "uf": "BA",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 317,
+          "postos": 26,
+          "municipios": 6,
+          "soma_mills": 1393420
+        },
+        {
+          "uf": "CE",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 278,
+          "postos": 37,
+          "municipios": 8,
+          "soma_mills": 1708510
+        },
+        {
+          "uf": "CE",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2383,
+          "postos": 221,
+          "municipios": 11,
+          "soma_mills": 14404300
+        },
+        {
+          "uf": "CE",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2748,
+          "postos": 226,
+          "municipios": 11,
+          "soma_mills": 13870520
+        },
+        {
+          "uf": "CE",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2963,
+          "postos": 235,
+          "municipios": 11,
+          "soma_mills": 18663000
+        },
+        {
+          "uf": "CE",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2623,
+          "postos": 214,
+          "municipios": 11,
+          "soma_mills": 16869650
+        },
+        {
+          "uf": "CE",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 216,
+          "postos": 22,
+          "municipios": 3,
+          "soma_mills": 1114180
+        },
+        {
+          "uf": "DF",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 521,
+          "postos": 32,
+          "municipios": 1,
+          "soma_mills": 3142180
+        },
+        {
+          "uf": "DF",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 480,
+          "postos": 32,
+          "municipios": 1,
+          "soma_mills": 2896570
+        },
+        {
+          "uf": "DF",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 566,
+          "postos": 54,
+          "municipios": 1,
+          "soma_mills": 2614440
+        },
+        {
+          "uf": "DF",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1315,
+          "postos": 93,
+          "municipios": 1,
+          "soma_mills": 8398690
+        },
+        {
+          "uf": "DF",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1175,
+          "postos": 78,
+          "municipios": 1,
+          "soma_mills": 7549970
+        },
+        {
+          "uf": "ES",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 720,
+          "postos": 60,
+          "municipios": 9,
+          "soma_mills": 4272220
+        },
+        {
+          "uf": "ES",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1257,
+          "postos": 106,
+          "municipios": 9,
+          "soma_mills": 7576300
+        },
+        {
+          "uf": "ES",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1421,
+          "postos": 113,
+          "municipios": 9,
+          "soma_mills": 6384470
+        },
+        {
+          "uf": "ES",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2185,
+          "postos": 158,
+          "municipios": 9,
+          "soma_mills": 13547320
+        },
+        {
+          "uf": "ES",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1845,
+          "postos": 135,
+          "municipios": 9,
+          "soma_mills": 11735240
+        },
+        {
+          "uf": "ES",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 263,
+          "postos": 17,
+          "municipios": 7,
+          "soma_mills": 1108230
+        },
+        {
+          "uf": "GO",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2094,
+          "postos": 171,
+          "municipios": 16,
+          "soma_mills": 12411560
+        },
+        {
+          "uf": "GO",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2683,
+          "postos": 247,
+          "municipios": 16,
+          "soma_mills": 16142750
+        },
+        {
+          "uf": "GO",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3617,
+          "postos": 313,
+          "municipios": 16,
+          "soma_mills": 16231280
+        },
+        {
+          "uf": "GO",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3852,
+          "postos": 322,
+          "municipios": 16,
+          "soma_mills": 24214980
+        },
+        {
+          "uf": "GO",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2407,
+          "postos": 208,
+          "municipios": 16,
+          "soma_mills": 15527800
+        },
+        {
+          "uf": "GO",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 1,
+          "postos": 1,
+          "municipios": 1,
+          "soma_mills": 6370
+        },
+        {
+          "uf": "MA",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1067,
+          "postos": 94,
+          "municipios": 10,
+          "soma_mills": 6385210
+        },
+        {
+          "uf": "MA",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1953,
+          "postos": 196,
+          "municipios": 10,
+          "soma_mills": 11656160
+        },
+        {
+          "uf": "MA",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1354,
+          "postos": 135,
+          "municipios": 11,
+          "soma_mills": 6649280
+        },
+        {
+          "uf": "MA",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2232,
+          "postos": 222,
+          "municipios": 11,
+          "soma_mills": 13441490
+        },
+        {
+          "uf": "MA",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1407,
+          "postos": 152,
+          "municipios": 10,
+          "soma_mills": 8651860
+        },
+        {
+          "uf": "MG",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 4022,
+          "postos": 372,
+          "municipios": 51,
+          "soma_mills": 23609130
+        },
+        {
+          "uf": "MG",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 5646,
+          "postos": 545,
+          "municipios": 52,
+          "soma_mills": 33726390
+        },
+        {
+          "uf": "MG",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 8017,
+          "postos": 710,
+          "municipios": 52,
+          "soma_mills": 34641820
+        },
+        {
+          "uf": "MG",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 8480,
+          "postos": 741,
+          "municipios": 52,
+          "soma_mills": 51493100
+        },
+        {
+          "uf": "MG",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 5492,
+          "postos": 495,
+          "municipios": 52,
+          "soma_mills": 34620240
+        },
+        {
+          "uf": "MG",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 314,
+          "postos": 25,
+          "municipios": 8,
+          "soma_mills": 1564740
+        },
+        {
+          "uf": "MS",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 575,
+          "postos": 55,
+          "municipios": 5,
+          "soma_mills": 3517020
+        },
+        {
+          "uf": "MS",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 517,
+          "postos": 54,
+          "municipios": 5,
+          "soma_mills": 3154120
+        },
+        {
+          "uf": "MS",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 679,
+          "postos": 66,
+          "municipios": 5,
+          "soma_mills": 2704270
+        },
+        {
+          "uf": "MS",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1229,
+          "postos": 85,
+          "municipios": 5,
+          "soma_mills": 7527960
+        },
+        {
+          "uf": "MS",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1003,
+          "postos": 66,
+          "municipios": 5,
+          "soma_mills": 6343190
+        },
+        {
+          "uf": "MS",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 39,
+          "postos": 2,
+          "municipios": 1,
+          "soma_mills": 181510
+        },
+        {
+          "uf": "MT",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1070,
+          "postos": 86,
+          "municipios": 7,
+          "soma_mills": 6706980
+        },
+        {
+          "uf": "MT",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1256,
+          "postos": 118,
+          "municipios": 7,
+          "soma_mills": 7912520
+        },
+        {
+          "uf": "MT",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1895,
+          "postos": 160,
+          "municipios": 7,
+          "soma_mills": 8023850
+        },
+        {
+          "uf": "MT",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1922,
+          "postos": 162,
+          "municipios": 7,
+          "soma_mills": 12072780
+        },
+        {
+          "uf": "MT",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1034,
+          "postos": 95,
+          "municipios": 7,
+          "soma_mills": 6676660
+        },
+        {
+          "uf": "MT",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 44,
+          "postos": 4,
+          "municipios": 2,
+          "soma_mills": 178140
+        },
+        {
+          "uf": "PA",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1152,
+          "postos": 103,
+          "municipios": 12,
+          "soma_mills": 7475730
+        },
+        {
+          "uf": "PA",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2034,
+          "postos": 159,
+          "municipios": 12,
+          "soma_mills": 12744530
+        },
+        {
+          "uf": "PA",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1157,
+          "postos": 92,
+          "municipios": 11,
+          "soma_mills": 5561470
+        },
+        {
+          "uf": "PA",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2839,
+          "postos": 194,
+          "municipios": 12,
+          "soma_mills": 18028190
+        },
+        {
+          "uf": "PA",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2052,
+          "postos": 142,
+          "municipios": 12,
+          "soma_mills": 13495170
+        },
+        {
+          "uf": "PB",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 555,
+          "postos": 45,
+          "municipios": 6,
+          "soma_mills": 3199110
+        },
+        {
+          "uf": "PB",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 921,
+          "postos": 87,
+          "municipios": 6,
+          "soma_mills": 5331520
+        },
+        {
+          "uf": "PB",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1204,
+          "postos": 95,
+          "municipios": 6,
+          "soma_mills": 5314790
+        },
+        {
+          "uf": "PB",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1417,
+          "postos": 108,
+          "municipios": 6,
+          "soma_mills": 8425480
+        },
+        {
+          "uf": "PB",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 974,
+          "postos": 75,
+          "municipios": 6,
+          "soma_mills": 5924460
+        },
+        {
+          "uf": "PB",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 238,
+          "postos": 18,
+          "municipios": 5,
+          "soma_mills": 1183810
+        },
+        {
+          "uf": "PE",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 147,
+          "postos": 35,
+          "municipios": 13,
+          "soma_mills": 870490
+        },
+        {
+          "uf": "PE",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2726,
+          "postos": 221,
+          "municipios": 18,
+          "soma_mills": 15762270
+        },
+        {
+          "uf": "PE",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2982,
+          "postos": 223,
+          "municipios": 18,
+          "soma_mills": 14054980
+        },
+        {
+          "uf": "PE",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3470,
+          "postos": 254,
+          "municipios": 18,
+          "soma_mills": 21902000
+        },
+        {
+          "uf": "PE",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2494,
+          "postos": 190,
+          "municipios": 18,
+          "soma_mills": 16176920
+        },
+        {
+          "uf": "PE",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 544,
+          "postos": 39,
+          "municipios": 9,
+          "soma_mills": 2410910
+        },
+        {
+          "uf": "PI",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 517,
+          "postos": 45,
+          "municipios": 4,
+          "soma_mills": 3067780
+        },
+        {
+          "uf": "PI",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 779,
+          "postos": 78,
+          "municipios": 4,
+          "soma_mills": 4688280
+        },
+        {
+          "uf": "PI",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 967,
+          "postos": 88,
+          "municipios": 4,
+          "soma_mills": 4395500
+        },
+        {
+          "uf": "PI",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1278,
+          "postos": 109,
+          "municipios": 4,
+          "soma_mills": 7461920
+        },
+        {
+          "uf": "PI",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 992,
+          "postos": 83,
+          "municipios": 4,
+          "soma_mills": 6006340
+        },
+        {
+          "uf": "PR",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3162,
+          "postos": 243,
+          "municipios": 26,
+          "soma_mills": 18734960
+        },
+        {
+          "uf": "PR",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 4652,
+          "postos": 407,
+          "municipios": 26,
+          "soma_mills": 28157750
+        },
+        {
+          "uf": "PR",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 6669,
+          "postos": 542,
+          "municipios": 26,
+          "soma_mills": 29517850
+        },
+        {
+          "uf": "PR",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 6711,
+          "postos": 548,
+          "municipios": 26,
+          "soma_mills": 42892370
+        },
+        {
+          "uf": "PR",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 5360,
+          "postos": 449,
+          "municipios": 26,
+          "soma_mills": 34964020
+        },
+        {
+          "uf": "PR",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 118,
+          "postos": 17,
+          "municipios": 5,
+          "soma_mills": 564360
+        },
+        {
+          "uf": "RJ",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2691,
+          "postos": 202,
+          "municipios": 27,
+          "soma_mills": 16404370
+        },
+        {
+          "uf": "RJ",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 4970,
+          "postos": 357,
+          "municipios": 27,
+          "soma_mills": 30588990
+        },
+        {
+          "uf": "RJ",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 6706,
+          "postos": 461,
+          "municipios": 27,
+          "soma_mills": 30655490
+        },
+        {
+          "uf": "RJ",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 7624,
+          "postos": 516,
+          "municipios": 27,
+          "soma_mills": 46485080
+        },
+        {
+          "uf": "RJ",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 6880,
+          "postos": 466,
+          "municipios": 27,
+          "soma_mills": 43355500
+        },
+        {
+          "uf": "RJ",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 3774,
+          "postos": 239,
+          "municipios": 26,
+          "soma_mills": 17340950
+        },
+        {
+          "uf": "RN",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 628,
+          "postos": 52,
+          "municipios": 4,
+          "soma_mills": 3881070
+        },
+        {
+          "uf": "RN",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 986,
+          "postos": 86,
+          "municipios": 4,
+          "soma_mills": 6126170
+        },
+        {
+          "uf": "RN",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1118,
+          "postos": 89,
+          "municipios": 4,
+          "soma_mills": 5589750
+        },
+        {
+          "uf": "RN",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1194,
+          "postos": 93,
+          "municipios": 4,
+          "soma_mills": 7399850
+        },
+        {
+          "uf": "RN",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1043,
+          "postos": 83,
+          "municipios": 4,
+          "soma_mills": 6512870
+        },
+        {
+          "uf": "RN",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 180,
+          "postos": 14,
+          "municipios": 3,
+          "soma_mills": 917210
+        },
+        {
+          "uf": "RO",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 959,
+          "postos": 66,
+          "municipios": 6,
+          "soma_mills": 6137860
+        },
+        {
+          "uf": "RO",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1045,
+          "postos": 81,
+          "municipios": 6,
+          "soma_mills": 6706220
+        },
+        {
+          "uf": "RO",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 679,
+          "postos": 48,
+          "municipios": 6,
+          "soma_mills": 3569630
+        },
+        {
+          "uf": "RO",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1332,
+          "postos": 89,
+          "municipios": 6,
+          "soma_mills": 9093460
+        },
+        {
+          "uf": "RO",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1199,
+          "postos": 77,
+          "municipios": 6,
+          "soma_mills": 8309890
+        },
+        {
+          "uf": "RR",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 316,
+          "postos": 13,
+          "municipios": 1,
+          "soma_mills": 2151240
+        },
+        {
+          "uf": "RR",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 365,
+          "postos": 15,
+          "municipios": 1,
+          "soma_mills": 2492280
+        },
+        {
+          "uf": "RR",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 186,
+          "postos": 9,
+          "municipios": 1,
+          "soma_mills": 961110
+        },
+        {
+          "uf": "RR",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 391,
+          "postos": 16,
+          "municipios": 1,
+          "soma_mills": 2701200
+        },
+        {
+          "uf": "RR",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 373,
+          "postos": 15,
+          "municipios": 1,
+          "soma_mills": 2615050
+        },
+        {
+          "uf": "RS",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 4494,
+          "postos": 332,
+          "municipios": 35,
+          "soma_mills": 27329230
+        },
+        {
+          "uf": "RS",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 5513,
+          "postos": 436,
+          "municipios": 35,
+          "soma_mills": 34002310
+        },
+        {
+          "uf": "RS",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3572,
+          "postos": 267,
+          "municipios": 35,
+          "soma_mills": 17360130
+        },
+        {
+          "uf": "RS",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 7874,
+          "postos": 560,
+          "municipios": 35,
+          "soma_mills": 48737380
+        },
+        {
+          "uf": "RS",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 7546,
+          "postos": 542,
+          "municipios": 35,
+          "soma_mills": 48202250
+        },
+        {
+          "uf": "RS",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 413,
+          "postos": 33,
+          "municipios": 15,
+          "soma_mills": 2030470
+        },
+        {
+          "uf": "SC",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 1439,
+          "postos": 118,
+          "municipios": 16,
+          "soma_mills": 8765820
+        },
+        {
+          "uf": "SC",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2722,
+          "postos": 215,
+          "municipios": 16,
+          "soma_mills": 16742410
+        },
+        {
+          "uf": "SC",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 2680,
+          "postos": 217,
+          "municipios": 16,
+          "soma_mills": 12605220
+        },
+        {
+          "uf": "SC",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 4039,
+          "postos": 311,
+          "municipios": 16,
+          "soma_mills": 25537380
+        },
+        {
+          "uf": "SC",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 3692,
+          "postos": 288,
+          "municipios": 16,
+          "soma_mills": 23802970
+        },
+        {
+          "uf": "SC",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 665,
+          "postos": 45,
+          "municipios": 10,
+          "soma_mills": 3294620
+        },
+        {
+          "uf": "SE",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 211,
+          "postos": 19,
+          "municipios": 4,
+          "soma_mills": 1201470
+        },
+        {
+          "uf": "SE",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 328,
+          "postos": 28,
+          "municipios": 4,
+          "soma_mills": 1928330
+        },
+        {
+          "uf": "SE",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 359,
+          "postos": 24,
+          "municipios": 4,
+          "soma_mills": 1752320
+        },
+        {
+          "uf": "SE",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 688,
+          "postos": 42,
+          "municipios": 4,
+          "soma_mills": 4503670
+        },
+        {
+          "uf": "SE",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 568,
+          "postos": 36,
+          "municipios": 4,
+          "soma_mills": 3771640
+        },
+        {
+          "uf": "SE",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 91,
+          "postos": 5,
+          "municipios": 2,
+          "soma_mills": 431590
+        },
+        {
+          "uf": "SP",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 9847,
+          "postos": 800,
+          "municipios": 99,
+          "soma_mills": 59188060
+        },
+        {
+          "uf": "SP",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 19417,
+          "postos": 1597,
+          "municipios": 99,
+          "soma_mills": 118839950
+        },
+        {
+          "uf": "SP",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 29853,
+          "postos": 2253,
+          "municipios": 99,
+          "soma_mills": 122194940
+        },
+        {
+          "uf": "SP",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 30235,
+          "postos": 2269,
+          "municipios": 99,
+          "soma_mills": 183177940
+        },
+        {
+          "uf": "SP",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 23665,
+          "postos": 1818,
+          "municipios": 99,
+          "soma_mills": 150349780
+        },
+        {
+          "uf": "SP",
+          "produto": "GNV",
+          "moeda": "BRL",
+          "unidade": "m3",
+          "coletas": 1291,
+          "postos": 91,
+          "municipios": 33,
+          "soma_mills": 5983570
+        },
+        {
+          "uf": "TO",
+          "produto": "DIESEL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 581,
+          "postos": 52,
+          "municipios": 5,
+          "soma_mills": 3494270
+        },
+        {
+          "uf": "TO",
+          "produto": "DIESEL S10",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 733,
+          "postos": 74,
+          "municipios": 5,
+          "soma_mills": 4419460
+        },
+        {
+          "uf": "TO",
+          "produto": "ETANOL",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 801,
+          "postos": 72,
+          "municipios": 5,
+          "soma_mills": 3832600
+        },
+        {
+          "uf": "TO",
+          "produto": "GASOLINA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 961,
+          "postos": 82,
+          "municipios": 5,
+          "soma_mills": 6259830
+        },
+        {
+          "uf": "TO",
+          "produto": "GASOLINA ADITIVADA",
+          "moeda": "BRL",
+          "unidade": "litro",
+          "coletas": 653,
+          "postos": 63,
+          "municipios": 5,
+          "soma_mills": 4310480
+        }
+      ],
+      "fabric_executed": false,
+      "prepared_at_utc": "2026-11-14T14:29:10.592933+00:00"
+    }
+  ]
+}

@@ -12,6 +12,16 @@ class NationalTests(unittest.TestCase):
  def test_litre_does_not_validate_as_gnv(self):
   _,reasons=validate_row(self.row(unit='R$ / litro'),{('SP','CIDADE'):['3550308']},SCOPE)
   self.assertIn('unidade_incompativel_com_produto',reasons)
+ def test_ascii_cubic_metre_requires_explicit_versioned_alias(self):
+  raw=self.row(unit='R$ / m3');lookup={('SP','CIDADE'):['3550308']}
+  _,reasons=validate_row(raw,lookup,SCOPE)
+  self.assertIn('unidade_incompativel_com_produto',reasons)
+  scoped={**SCOPE,'unit_aliases':{'R$ / m3':'R$ / m³'}}
+  typed,reasons=validate_row(raw,lookup,scoped)
+  self.assertFalse(reasons);self.assertEqual(typed['unidade'],'m3')
+  self.assertEqual(raw['Unidade de Medida'],'R$ / m3')
+  _,reasons=validate_row(self.row(unit='R$ / litro'),lookup,scoped)
+  self.assertIn('unidade_incompativel_com_produto',reasons)
  def test_unknown_product_does_not_silently_enter(self):
   _,reasons=validate_row(self.row(product='NOVO'),{('SP','CIDADE'):['3550308']},SCOPE)
   self.assertIn('produto_fora_do_contrato',reasons)

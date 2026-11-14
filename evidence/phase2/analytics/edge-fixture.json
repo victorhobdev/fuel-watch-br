@@ -1,0 +1,69 @@
+{
+  "status": "analytical_edge_fixture_passed",
+  "environment": "fabric",
+  "synthetic_rows": 186,
+  "checks": [
+    {
+      "case": "posto_semana_preserva_grao",
+      "actual": "181",
+      "passed": true
+    },
+    {
+      "case": "mediana_posto_duas_coletas",
+      "actual": "2.000000",
+      "passed": true
+    },
+    {
+      "case": "posto_tem_um_peso_na_uf",
+      "actual": "6.500000",
+      "passed": true
+    },
+    {
+      "case": "gnv_nao_mistura_unidade",
+      "actual": "65.000000",
+      "passed": true
+    },
+    {
+      "case": "uf_insuficiente_nao_recebe_diferenca",
+      "actual": "0",
+      "passed": true
+    },
+    {
+      "case": "municipio_insuficiente_nao_recebe_diferenca",
+      "actual": "0",
+      "passed": true
+    },
+    {
+      "case": "atributo_ambiguo_excluido",
+      "actual": "1",
+      "passed": true
+    },
+    {
+      "case": "empates_nao_viram_acima",
+      "actual": "0",
+      "passed": true
+    },
+    {
+      "case": "persistencia_usa_semanas_elegiveis",
+      "actual": "100.000000",
+      "passed": true
+    },
+    {
+      "case": "persistencia_insuficiente_e_null",
+      "actual": "0",
+      "passed": true
+    },
+    {
+      "case": "contextos_bandeira_sao_comparaveis",
+      "actual": "0",
+      "passed": true
+    },
+    {
+      "case": "mediana_municipal_dos_postos",
+      "actual": "3.500000",
+      "passed": true
+    }
+  ],
+  "official_data_mutated": false,
+  "checked_at_utc": "2026-11-14T00:35:27.789146+00:00"
+}

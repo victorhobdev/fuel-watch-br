@@ -1,0 +1,71 @@
+{
+  "status": "f2_01_accepted",
+  "environment": "fabric",
+  "checked_at_utc": "2026-11-14T14:41:01.775466+00:00",
+  "evidence": {
+    "full_seven_view_comparison": "evidence/phase2/analytics/warehouse-verification.json",
+    "edge_cases": "evidence/phase2/analytics/edge-fixture.json",
+    "seven_dax_sql_checks": "evidence/phase2/analytics/model-check.json",
+    "dimension_orphans": "evidence/phase2/analytics/dimensions.json",
+    "six_queries": "evidence/phase2/analytics/answers/queries.json",
+    "interpreted_answers": "docs/phase2-respostas-analiticas.md"
+  },
+  "rendered_artifacts": [
+    {
+      "path": "evidence/phase2/analytics/render/report-national-gasolina.pdf",
+      "sha256": "fc344e8ea539a6e7993c6e8f8b20a9492280d938a28da20aafca0762ced13309",
+      "bytes": 102859
+    },
+    {
+      "path": "evidence/phase2/analytics/render/report-national-gasolina.png",
+      "sha256": "c8711782a0e2ef5dc2ec4fac722fd839d6ddc3ee30e1b8be76233f965244cb26",
+      "bytes": 237388
+    },
+    {
+      "path": "evidence/phase2/analytics/render/report-nacional_panorama-gnv-v1.pdf",
+      "sha256": "da2578551e8405111b968cfb7a613ceb0a09de7dc3af7d1a8dad9ea09e777562",
+      "bytes": 92280
+    },
+    {
+      "path": "evidence/phase2/analytics/render/report-nacional_panorama-gnv-v1.png",
+      "sha256": "533e3cb4282011210dc892306bfad5cab0694e4ef71eb0f0e3ad9b8b2a8e2251",
+      "bytes": 210327
+    },
+    {
+      "path": "evidence/phase2/analytics/render/report-nacional_comparacoes-gasolina-v1.pdf",
+      "sha256": "062f9d8240f90e354f79eebc3fe379f7868bb6e5e8a4dc02a174db59f8fa0ef7",
+      "bytes": 88853
+    },
+    {
+      "path": "evidence/phase2/analytics/render/report-nacional_comparacoes-gasolina-v1.png",
+      "sha256": "7535172f11cc02dd33f1a537a1ee4a3c949260d85d208f574e2808fc19d9d8db",
+      "bytes": 328091
+    },
+    {
+      "path": "evidence/phase2/analytics/render/report-nacional_panorama-gasolina-v1-rj-branca.pdf",
+      "sha256": "703a648b500e42cb8aade834bfe522f1960553892165d3baac7c1212a1d9bd1e",
+      "bytes": 90434
+    },
+    {
+      "path": "evidence/phase2/analytics/render/report-nacional_panorama-gasolina-v1-rj-branca.png",
+      "sha256": "439e2fe57609fc88dcd3b34ed1ee52162311cd5dba6fcbc2dd3fb5bed5ec42e5",
+      "bytes": 229636
+    }
+  ],
+  "visual_inspection": {
+    "method": "PDF real exportado e PNG inspecionado pelo assistente",
+    "observed": [
+      "panorama gasolina: 110923 coletas, 7899 postos, 417 municipios",
+      "panorama GNV: 8437 coletas, 624 postos, 147 municipios; unidade m3",
+      "postos/bandeiras: CNPJs com zeros, persistencia e diferenca contextual renderizadas",
+      "gasolina/RJ/BRANCA: 3081 coletas, 201 postos, 26 municipios"
+    ],
+    "browser_click_automation_tested": false
+  },
+  "limitations": [
+    "Membro em branco adicional em VALUES das dimensoes, sem registros associados; todas as chaves das tres tabelas analiticas foram conferidas no Warehouse.",
+    "Benchmark municipal e estadual usa todas as bandeiras por definicao; o filtro de bandeira muda a cobertura dos postos, nao redefine a referencia.",
+    "Semanas nas bordas do semestre sao parciais; os dados nao sao precos atuais.",
+    "Teste com segunda identidade dispensado pelo usuario; nao executado."
+  ]
+}

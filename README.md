@@ -8,7 +8,11 @@ O mesmo arquivo ANP de jan–jun/2026 já está tratado para **todas as 27 UFs e
 
 No Fabric: Lakehouse `lh_fuelwatch`, tabela `silver_preco_brasil`; Warehouse `wh_fuelwatch`, view **`gold_br.coletas`**, dimensões e agregado `gold_br.preco_semanal`. Silver/Gold, referência independente completa, repetição da publicação e exportação real foram validadas. [Guia dos dados, consultas e arquivos Parquet/CSV](docs/dados-nacionais.md), [evidências](evidence/fabric/national/).
 
-[Roadmap replanejado da fase 2](docs/fase-2-roadmap-observatorio-completo-2026-11-13.md): base nacional concluída, **1/10 marcos aceitos**; próximo: benchmarks regionais, postos e bandeiras sobre os dados nacionais.
+[Roadmap vigente da fase 2 em cinco marcos](docs/roadmap-fase2-cinco-marcos.md): **F2-01 concluído; F2-02 em execução**. O plano anterior de dez itens permanece como detalhamento histórico.
+
+O observatório nacional agora tem sete visões `analise_br`, modelo DirectQuery e relatório **Fuel Watch BR Nacional**, com páginas de panorama e postos/bandeiras. As visões foram comparadas integralmente com referência independente; filtros e medidas foram reconciliados em SQL/DAX e quatro recortes foram renderizados e inspecionados. [Seis respostas interpretadas](docs/phase2-respostas-analiticas.md), [contrato analítico](docs/analytics-contract.md) e [aceite F2-01](evidence/phase2/analytics/acceptance.json).
+
+Para o histórico, os quatro semestres oficiais de 2024–2025 foram copiados pelo Fabric e seus hashes verificados no OneLake. A referência local tem **1.703.135 coletas aceitas**; o processamento histórico Spark e sua promoção à Gold têm acompanhamento separado. [Contrato e reconciliação histórica](docs/history-contract.md), [andamento por marco](evidence/phase2/progress.json). Código preparado e referência local não equivalem a execução validada no Fabric.
 
 O restante deste README conserva o encerramento da fase 1 RJ/GASOLINA. O relatório e pipeline mestre antigos ainda usam esse baseline; as novas tabelas nacionais e os exports locais já estão prontos para trabalhar.
 

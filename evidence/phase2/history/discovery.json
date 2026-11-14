@@ -1,0 +1,11 @@
+{
+  "index_url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/serie-historica-de-precos-de-combustiveis",
+  "index_sha256": "10e30bc3ad20aa8cf51c6b117deb13db0a067b5e07be64b0fab0ee052fe8b23b",
+  "checked_at_utc": "2026-11-14T14:25:15.887164+00:00",
+  "official_urls": [
+    "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/shpc/dsas/ca/ca-2024-01.zip",
+    "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/shpc/dsas/ca/ca-2024-02.zip",
+    "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/shpc/dsas/ca/ca-2025-01.zip",
+    "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/shpc/dsas/ca/ca-2025-02.zip"
+  ]
+}

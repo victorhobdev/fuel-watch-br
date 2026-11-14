@@ -1,0 +1,222 @@
+[
+  {
+    "cnpj": "02243585000104",
+    "uf": "SP",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "semanas_observadas": 27,
+    "semanas_com_benchmark": 27,
+    "semanas_acima": 27,
+    "persistencia_percentual": "100.000000"
+  },
+  {
+    "cnpj": "02583776000107",
+    "uf": "SP",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "semanas_observadas": 27,
+    "semanas_com_benchmark": 27,
+    "semanas_acima": 27,
+    "persistencia_percentual": "100.000000"
+  },
+  {
+    "cnpj": "02878955000171",
+    "uf": "SP",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "semanas_observadas": 27,
+    "semanas_com_benchmark": 27,
+    "semanas_acima": 27,
+    "persistencia_percentual": "100.000000"
+  },
+  {
+    "cnpj": "03868469000135",
+    "uf": "SP",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "semanas_observadas": 27,
+    "semanas_com_benchmark": 27,
+    "semanas_acima": 27,
+    "persistencia_percentual": "100.000000"
+  },
+  {
+    "cnpj": "00135799000123",
+    "uf": "SP",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "semanas_observadas": 26,
+    "semanas_com_benchmark": 26,
+    "semanas_acima": 26,
+    "persistencia_percentual": "100.000000"
+  },
+  {
+    "cnpj": "00199825000187",
+    "uf": "PE",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "semanas_observadas": 26,
+    "semanas_com_benchmark": 26,
+    "semanas_acima": 26,
+    "persistencia_percentual": "100.000000"
+  },
+  {
+    "cnpj": "00300969000188",
+    "uf": "MS",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "semanas_observadas": 26,
+    "semanas_com_benchmark": 26,
+    "semanas_acima": 26,
+    "persistencia_percentual": "100.000000"
+  },
+  {
+    "cnpj": "00510292000102",
+    "uf": "MG",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "semanas_observadas": 26,
+    "semanas_com_benchmark": 26,
+    "semanas_acima": 26,
+    "persistencia_percentual": "100.000000"
+  },
+  {
+    "cnpj": "00877201000171",
+    "uf": "PE",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "semanas_observadas": 26,
+    "semanas_com_benchmark": 26,
+    "semanas_acima": 26,
+    "persistencia_percentual": "100.000000"
+  },
+  {
+    "cnpj": "01369210000114",
+    "uf": "RJ",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "semanas_observadas": 26,
+    "semanas_com_benchmark": 26,
+    "semanas_acima": 26,
+    "persistencia_percentual": "100.000000"
+  },
+  {
+    "cnpj": "01436949000100",
+    "uf": "SP",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "semanas_observadas": 26,
+    "semanas_com_benchmark": 26,
+    "semanas_acima": 26,
+    "persistencia_percentual": "100.000000"
+  },
+  {
+    "cnpj": "01456575000186",
+    "uf": "SP",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "semanas_observadas": 26,
+    "semanas_com_benchmark": 26,
+    "semanas_acima": 26,
+    "persistencia_percentual": "100.000000"
+  },
+  {
+    "cnpj": "01639527000123",
+    "uf": "MG",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "semanas_observadas": 26,
+    "semanas_com_benchmark": 26,
+    "semanas_acima": 26,
+    "persistencia_percentual": "100.000000"
+  },
+  {
+    "cnpj": "01716931000153",
+    "uf": "SP",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "semanas_observadas": 26,
+    "semanas_com_benchmark": 26,
+    "semanas_acima": 26,
+    "persistencia_percentual": "100.000000"
+  },
+  {
+    "cnpj": "01991038000306",
+    "uf": "MA",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "semanas_observadas": 26,
+    "semanas_com_benchmark": 26,
+    "semanas_acima": 26,
+    "persistencia_percentual": "100.000000"
+  },
+  {
+    "cnpj": "02273616000161",
+    "uf": "SP",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "semanas_observadas": 26,
+    "semanas_com_benchmark": 26,
+    "semanas_acima": 26,
+    "persistencia_percentual": "100.000000"
+  },
+  {
+    "cnpj": "02752766000158",
+    "uf": "RJ",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "semanas_observadas": 26,
+    "semanas_com_benchmark": 26,
+    "semanas_acima": 26,
+    "persistencia_percentual": "100.000000"
+  },
+  {
+    "cnpj": "03136505000176",
+    "uf": "SP",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "semanas_observadas": 26,
+    "semanas_com_benchmark": 26,
+    "semanas_acima": 26,
+    "persistencia_percentual": "100.000000"
+  },
+  {
+    "cnpj": "03201848000177",
+    "uf": "MG",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "semanas_observadas": 26,
+    "semanas_com_benchmark": 26,
+    "semanas_acima": 26,
+    "persistencia_percentual": "100.000000"
+  },
+  {
+    "cnpj": "03317678000190",
+    "uf": "RJ",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "semanas_observadas": 26,
+    "semanas_com_benchmark": 26,
+    "semanas_acima": 26,
+    "persistencia_percentual": "100.000000"
+  }
+]
