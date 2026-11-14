@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-11-13T21:26:03.788657+00:00",
+  "checked_at_utc": "2026-11-13T23:55:32.305619+00:00",
   "workspaces": [
     {
       "alias": "dev",
@@ -15,7 +15,7 @@
         "Eventstream": 1,
         "KQLDatabase": 2,
         "Lakehouse": 2,
-        "Notebook": 11,
+        "Notebook": 12,
         "Reflex": 1,
         "Report": 1,
         "SQLEndpoint": 2,

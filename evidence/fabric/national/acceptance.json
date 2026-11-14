@@ -29,5 +29,10 @@
   "legacy_rj_baseline_preserved": true,
   "power_bi_expanded": false,
   "national_schedule_enabled": false,
-  "checked_at_utc": "2026-11-13T23:55:16.431376+00:00"
+  "checked_at_utc": "2026-11-13T23:55:16.431376+00:00",
+  "ci_url": "https://github.com/victorhobdev/fuel-watch-br/actions/runs/43530811696",
+  "ci_commit": "75685fe41c826bea7d4f12da9b5d9133adf463ab",
+  "ci_checks": 46,
+  "runner_removed": true,
+  "resource_audit": "../operations/resource-audit-2026-11-13.json"
 }

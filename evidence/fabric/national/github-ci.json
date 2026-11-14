@@ -1,0 +1,15 @@
+{
+  "conclusion": "success",
+  "headSha": "75685fe41c826bea7d4f12da9b5d9133adf463ab",
+  "status": "completed",
+  "url": "https://github.com/victorhobdev/fuel-watch-br/actions/runs/43530811696",
+  "test_counts": [
+    36,
+    10
+  ],
+  "total_checks": 46,
+  "runner": "ephemeral local Windows, repository-only",
+  "registered_runners_after_job": 0,
+  "runner_credentials_removed": true,
+  "checked_at_utc": "2026-11-13T23:59:24.978029+00:00"
+}

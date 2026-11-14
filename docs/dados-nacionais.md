@@ -93,3 +93,5 @@ A Silver no Lakehouse tem também raw_json e os campos de endereço/CEP de orige
 O pipeline mestre da fase 1 e o relatório anterior continuam apontando para o baseline RJ. O fluxo nacional foi executado pela CLI (`national_job.py` → `national_warehouse.py`), com recibos próprios; não foi alegado agendamento automático nacional nem expansão do relatório. Essa separação preserva as evidências antigas e deixa os dados nacionais disponíveis imediatamente para consultas.
 
 O refresh seletivo do SQL endpoint respondeu `NotRun` com timestamps de sincronização anteriores: a sincronização já havia ocorrido. Não se atribui a essa chamada uma correção que ela não executou. A publicação exigiu os dados do run exato visíveis antes de iniciar.
+
+Validação de código: 78 testes locais aprovados e [46 checks no GitHub](https://github.com/victorhobdev/fuel-watch-br/actions/runs/43530811696) na revisão `75685fe`. Runner efêmero removido; inventário final sem jobs/sessões/agendas ativos. [Aceite nacional](../evidence/fabric/national/acceptance.json).
