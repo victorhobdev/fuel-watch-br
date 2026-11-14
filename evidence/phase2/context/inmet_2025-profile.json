@@ -1,0 +1,160 @@
+{
+  "year": 2025,
+  "source_url": "https://portal.inmet.gov.br/uploads/dadoshistoricos/2025.zip",
+  "source_sha256": "14988d0b736ba969b48881589f602f3a6d7e97b95bd1de934456851fdac2cb89",
+  "source_bytes": 90898634,
+  "source_last_modified": "Fri, 20 Mar 2026 12:30:31 GMT",
+  "csv_members": 594,
+  "total_uncompressed_bytes": 376671813,
+  "sample_member": "2025/INMET_CO_DF_A001_BRASILIA_01-01-2025_A_31-12-2025.CSV",
+  "sample_encoding": "latin1",
+  "sample_metadata_rows": [
+    [
+      "REGIAO:",
+      "CO"
+    ],
+    [
+      "UF:",
+      "DF"
+    ],
+    [
+      "ESTACAO:",
+      "BRASILIA"
+    ],
+    [
+      "CODIGO (WMO):",
+      "A001"
+    ],
+    [
+      "LATITUDE:",
+      "-15,78944444"
+    ],
+    [
+      "LONGITUDE:",
+      "-47,92583332"
+    ],
+    [
+      "ALTITUDE:",
+      "1160,96"
+    ],
+    [
+      "DATA DE FUNDACAO:",
+      "07/05/00"
+    ]
+  ],
+  "sample_header": [
+    "Data",
+    "Hora UTC",
+    "PRECIPITAÇÃO TOTAL, HORÁRIO (mm)",
+    "PRESSAO ATMOSFERICA AO NIVEL DA ESTACAO, HORARIA (mB)",
+    "PRESSÃO ATMOSFERICA MAX.NA HORA ANT. (AUT) (mB)",
+    "PRESSÃO ATMOSFERICA MIN. NA HORA ANT. (AUT) (mB)",
+    "RADIACAO GLOBAL (Kj/m²)",
+    "TEMPERATURA DO AR - BULBO SECO, HORARIA (°C)",
+    "TEMPERATURA DO PONTO DE ORVALHO (°C)",
+    "TEMPERATURA MÁXIMA NA HORA ANT. (AUT) (°C)",
+    "TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)",
+    "TEMPERATURA ORVALHO MAX. NA HORA ANT. (AUT) (°C)",
+    "TEMPERATURA ORVALHO MIN. NA HORA ANT. (AUT) (°C)",
+    "UMIDADE REL. MAX. NA HORA ANT. (AUT) (%)",
+    "UMIDADE REL. MIN. NA HORA ANT. (AUT) (%)",
+    "UMIDADE RELATIVA DO AR, HORARIA (%)",
+    "VENTO, DIREÇÃO HORARIA (gr) (° (gr))",
+    "VENTO, RAJADA MAXIMA (m/s)",
+    "VENTO, VELOCIDADE HORARIA (m/s)",
+    ""
+  ],
+  "sample_rows": [
+    [
+      "2025/01/01",
+      "0000 UTC",
+      "0",
+      "886,1",
+      "886,1",
+      "885,5",
+      "",
+      "20,8",
+      "19,5",
+      "20,9",
+      "20,7",
+      "19,5",
+      "19,2",
+      "92",
+      "90",
+      "92",
+      "8",
+      "3,6",
+      "1,8",
+      ""
+    ],
+    [
+      "2025/01/01",
+      "0100 UTC",
+      "0",
+      "886,3",
+      "886,4",
+      "886",
+      "",
+      "20,7",
+      "19,3",
+      "20,8",
+      "20,5",
+      "19,5",
+      "19,3",
+      "93",
+      "92",
+      "92",
+      "4",
+      "3,4",
+      "1,9",
+      ""
+    ],
+    [
+      "2025/01/01",
+      "0200 UTC",
+      "0",
+      "886,7",
+      "886,7",
+      "886,2",
+      "",
+      "20,6",
+      "19,1",
+      "20,8",
+      "20,5",
+      "19,3",
+      "19",
+      "92",
+      "91",
+      "91",
+      "3",
+      "3,7",
+      "1,4",
+      ""
+    ],
+    [
+      "2025/01/01",
+      "0300 UTC",
+      "0",
+      "886,4",
+      "886,7",
+      "886,4",
+      "",
+      "20,3",
+      "18,9",
+      "20,6",
+      "20,1",
+      "19,1",
+      "18,7",
+      "92",
+      "91",
+      "92",
+      "345",
+      "3",
+      "1,1",
+      ""
+    ]
+  ],
+  "sample_data_rows": 8760,
+  "fabric_executed": false,
+  "checked_at_utc": "2026-11-14T20:26:07.076569+00:00"
+}

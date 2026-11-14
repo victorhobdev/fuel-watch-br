@@ -1,0 +1,32 @@
+{
+  "status": "official_historical_copy_verified",
+  "environment": "fabric",
+  "run_id": "bc18012b-8e22-4dd4-ada8-4076e1f725c6",
+  "checked_at_utc": "2026-11-14T20:33:27.573988+00:00",
+  "sources": [
+    {
+      "source_id": "anp_2024_1",
+      "landing_relative_path": "landing/anp-history/anp_2024_1/bc18012b-8e22-4dd4-ada8-4076e1f725c6/ca-2024-01.zip",
+      "sha256": "5f8468096dad5582633ab172bbb101529be8235292487f0d412f5930b310b12a",
+      "bytes": 9312457
+    },
+    {
+      "source_id": "anp_2024_2",
+      "landing_relative_path": "landing/anp-history/anp_2024_2/bc18012b-8e22-4dd4-ada8-4076e1f725c6/ca-2024-02.zip",
+      "sha256": "63952c6786fe96289a643fdfbf4cf15e29264fb6a4c0be916a0708687aed71d4",
+      "bytes": 8137003
+    },
+    {
+      "source_id": "anp_2025_1",
+      "landing_relative_path": "landing/anp-history/anp_2025_1/bc18012b-8e22-4dd4-ada8-4076e1f725c6/ca-2025-01.zip",
+      "sha256": "674d69b09a1e6571e39b2fceedeed1d3b12d21e097bcec11d2d93ba7f7370a09",
+      "bytes": 8176445
+    },
+    {
+      "source_id": "anp_2025_2",
+      "landing_relative_path": "landing/anp-history/anp_2025_2/bc18012b-8e22-4dd4-ada8-4076e1f725c6/ca-2025-02.zip",
+      "sha256": "73faa3197a3813baa8c057b13045ea4cd799c45e51957b5094be90558f95258a",
+      "bytes": 17314933
+    }
+  ]
+}

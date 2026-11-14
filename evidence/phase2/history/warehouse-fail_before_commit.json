@@ -1,0 +1,70 @@
+{
+  "status": "historical_gold_injected_failure_business_preserved",
+  "environment": "fabric",
+  "spark_job_id": "6938a475-57c5-4b0e-8bf6-8b49f15efdd1",
+  "run_id": "2e0be068-3468-4f5f-ac1b-625cb1bf50c7",
+  "attempt": "fail_before_commit",
+  "started_at_utc": "2026-11-14T20:35:50.967050+00:00",
+  "publication_unchanged": true,
+  "before": {
+    "business_published": {
+      "rows": 2125547,
+      "sha256": "62f286a8bb58f163faf773b351bb638178a139dc578bcc6b7d36c6c897dac408"
+    },
+    "dim_posto": {
+      "rows": 15005,
+      "sha256": "daf63f7be961dc421123117ff413afe6dd6d9055d8935e9fd872e452b89f833c"
+    },
+    "dim_data": {
+      "rows": 912,
+      "sha256": "176ab4c4110e179457449971a850c69771aabd44ca0a37e899225c5e0d753f6b"
+    },
+    "dim_municipio": {
+      "rows": 5571,
+      "sha256": "66934efc1d489fa3b22e3d0bc447f7997c8b8d51b282dd740693533198f94bfc"
+    },
+    "dim_produto": {
+      "rows": 6,
+      "sha256": "a958b64e0a4733784275104e3802760b09b9444799ae71cb66346b53384d1452"
+    },
+    "source_versions": {
+      "rows": 5,
+      "sha256": "7c73fbc1b73c15e8a808622d677b4ed9c6cdc2c1a31af58ea6c5570d065d6f70"
+    },
+    "publication": {
+      "rows": 1,
+      "sha256": "f30850f8a5c4e1278ecdec70ac492b71314fd30ce82c8f7b76d3e50e318248c5"
+    }
+  },
+  "after": {
+    "business_published": {
+      "rows": 2125547,
+      "sha256": "62f286a8bb58f163faf773b351bb638178a139dc578bcc6b7d36c6c897dac408"
+    },
+    "dim_posto": {
+      "rows": 15005,
+      "sha256": "daf63f7be961dc421123117ff413afe6dd6d9055d8935e9fd872e452b89f833c"
+    },
+    "dim_data": {
+      "rows": 912,
+      "sha256": "176ab4c4110e179457449971a850c69771aabd44ca0a37e899225c5e0d753f6b"
+    },
+    "dim_municipio": {
+      "rows": 5571,
+      "sha256": "66934efc1d489fa3b22e3d0bc447f7997c8b8d51b282dd740693533198f94bfc"
+    },
+    "dim_produto": {
+      "rows": 6,
+      "sha256": "a958b64e0a4733784275104e3802760b09b9444799ae71cb66346b53384d1452"
+    },
+    "source_versions": {
+      "rows": 5,
+      "sha256": "7c73fbc1b73c15e8a808622d677b4ed9c6cdc2c1a31af58ea6c5570d065d6f70"
+    },
+    "publication": {
+      "rows": 1,
+      "sha256": "f30850f8a5c4e1278ecdec70ac492b71314fd30ce82c8f7b76d3e50e318248c5"
+    }
+  },
+  "finished_at_utc": "2026-11-14T20:37:35.035326+00:00"
+}

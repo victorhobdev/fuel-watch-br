@@ -1,0 +1,486 @@
+{
+  "status": "official_weather_archives_preserved_and_sampled",
+  "fabric_executed": false,
+  "profiles": [
+    {
+      "year": 2024,
+      "source_url": "https://portal.inmet.gov.br/uploads/dadoshistoricos/2024.zip",
+      "source_sha256": "0a7f89de57427f79b6f82943b2f7f2e932202d9253e34bf25629ed088d108ae7",
+      "source_bytes": 102772199,
+      "source_last_modified": "Thu, 02 Jan 2025 18:14:09 GMT",
+      "csv_members": 565,
+      "total_uncompressed_bytes": 405471533,
+      "sample_member": "INMET_CO_DF_A001_BRASILIA_01-01-2024_A_31-12-2024.CSV",
+      "sample_encoding": "latin1",
+      "sample_metadata_rows": [
+        [
+          "REGIAO:",
+          "CO"
+        ],
+        [
+          "UF:",
+          "DF"
+        ],
+        [
+          "ESTACAO:",
+          "BRASILIA"
+        ],
+        [
+          "CODIGO (WMO):",
+          "A001"
+        ],
+        [
+          "LATITUDE:",
+          "-15,78944444"
+        ],
+        [
+          "LONGITUDE:",
+          "-47,92583332"
+        ],
+        [
+          "ALTITUDE:",
+          "1160,96"
+        ],
+        [
+          "DATA DE FUNDACAO:",
+          "07/05/00"
+        ]
+      ],
+      "sample_header": [
+        "Data",
+        "Hora UTC",
+        "PRECIPITAÇÃO TOTAL, HORÁRIO (mm)",
+        "PRESSAO ATMOSFERICA AO NIVEL DA ESTACAO, HORARIA (mB)",
+        "PRESSÃO ATMOSFERICA MAX.NA HORA ANT. (AUT) (mB)",
+        "PRESSÃO ATMOSFERICA MIN. NA HORA ANT. (AUT) (mB)",
+        "RADIACAO GLOBAL (Kj/m²)",
+        "TEMPERATURA DO AR - BULBO SECO, HORARIA (°C)",
+        "TEMPERATURA DO PONTO DE ORVALHO (°C)",
+        "TEMPERATURA MÁXIMA NA HORA ANT. (AUT) (°C)",
+        "TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)",
+        "TEMPERATURA ORVALHO MAX. NA HORA ANT. (AUT) (°C)",
+        "TEMPERATURA ORVALHO MIN. NA HORA ANT. (AUT) (°C)",
+        "UMIDADE REL. MAX. NA HORA ANT. (AUT) (%)",
+        "UMIDADE REL. MIN. NA HORA ANT. (AUT) (%)",
+        "UMIDADE RELATIVA DO AR, HORARIA (%)",
+        "VENTO, DIREÇÃO HORARIA (gr) (° (gr))",
+        "VENTO, RAJADA MAXIMA (m/s)",
+        "VENTO, VELOCIDADE HORARIA (m/s)",
+        ""
+      ],
+      "sample_rows": [
+        [
+          "2024/01/01",
+          "0000 UTC",
+          "0",
+          "885,7",
+          "885,7",
+          "885,3",
+          "",
+          "22",
+          "18,2",
+          "22,6",
+          "21,8",
+          "18,6",
+          "18,2",
+          "81",
+          "77",
+          "79",
+          "311",
+          "2,8",
+          "1,5",
+          ""
+        ],
+        [
+          "2024/01/01",
+          "0100 UTC",
+          "0",
+          "886,7",
+          "886,7",
+          "885,7",
+          "",
+          "21,2",
+          "18,6",
+          "22",
+          "21,1",
+          "18,7",
+          "18,1",
+          "85",
+          "79",
+          "85",
+          "315",
+          "2,9",
+          "1,5",
+          ""
+        ],
+        [
+          "2024/01/01",
+          "0200 UTC",
+          "0",
+          "887,1",
+          "887,2",
+          "886,7",
+          "",
+          "20,9",
+          "18,8",
+          "21,5",
+          "20,9",
+          "18,9",
+          "18,7",
+          "88",
+          "85",
+          "88",
+          "305",
+          "3,3",
+          "1,1",
+          ""
+        ],
+        [
+          "2024/01/01",
+          "0300 UTC",
+          "0",
+          "887,1",
+          "887,4",
+          "887,1",
+          "",
+          "20,9",
+          "18,3",
+          "21,1",
+          "20,8",
+          "18,9",
+          "18,3",
+          "88",
+          "85",
+          "85",
+          "304",
+          "3,3",
+          "1,5",
+          ""
+        ]
+      ],
+      "sample_data_rows": 8784,
+      "fabric_executed": false,
+      "checked_at_utc": "2026-11-14T20:25:46.927584+00:00"
+    },
+    {
+      "year": 2025,
+      "source_url": "https://portal.inmet.gov.br/uploads/dadoshistoricos/2025.zip",
+      "source_sha256": "14988d0b736ba969b48881589f602f3a6d7e97b95bd1de934456851fdac2cb89",
+      "source_bytes": 90898634,
+      "source_last_modified": "Fri, 20 Mar 2026 12:30:31 GMT",
+      "csv_members": 594,
+      "total_uncompressed_bytes": 376671813,
+      "sample_member": "2025/INMET_CO_DF_A001_BRASILIA_01-01-2025_A_31-12-2025.CSV",
+      "sample_encoding": "latin1",
+      "sample_metadata_rows": [
+        [
+          "REGIAO:",
+          "CO"
+        ],
+        [
+          "UF:",
+          "DF"
+        ],
+        [
+          "ESTACAO:",
+          "BRASILIA"
+        ],
+        [
+          "CODIGO (WMO):",
+          "A001"
+        ],
+        [
+          "LATITUDE:",
+          "-15,78944444"
+        ],
+        [
+          "LONGITUDE:",
+          "-47,92583332"
+        ],
+        [
+          "ALTITUDE:",
+          "1160,96"
+        ],
+        [
+          "DATA DE FUNDACAO:",
+          "07/05/00"
+        ]
+      ],
+      "sample_header": [
+        "Data",
+        "Hora UTC",
+        "PRECIPITAÇÃO TOTAL, HORÁRIO (mm)",
+        "PRESSAO ATMOSFERICA AO NIVEL DA ESTACAO, HORARIA (mB)",
+        "PRESSÃO ATMOSFERICA MAX.NA HORA ANT. (AUT) (mB)",
+        "PRESSÃO ATMOSFERICA MIN. NA HORA ANT. (AUT) (mB)",
+        "RADIACAO GLOBAL (Kj/m²)",
+        "TEMPERATURA DO AR - BULBO SECO, HORARIA (°C)",
+        "TEMPERATURA DO PONTO DE ORVALHO (°C)",
+        "TEMPERATURA MÁXIMA NA HORA ANT. (AUT) (°C)",
+        "TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)",
+        "TEMPERATURA ORVALHO MAX. NA HORA ANT. (AUT) (°C)",
+        "TEMPERATURA ORVALHO MIN. NA HORA ANT. (AUT) (°C)",
+        "UMIDADE REL. MAX. NA HORA ANT. (AUT) (%)",
+        "UMIDADE REL. MIN. NA HORA ANT. (AUT) (%)",
+        "UMIDADE RELATIVA DO AR, HORARIA (%)",
+        "VENTO, DIREÇÃO HORARIA (gr) (° (gr))",
+        "VENTO, RAJADA MAXIMA (m/s)",
+        "VENTO, VELOCIDADE HORARIA (m/s)",
+        ""
+      ],
+      "sample_rows": [
+        [
+          "2025/01/01",
+          "0000 UTC",
+          "0",
+          "886,1",
+          "886,1",
+          "885,5",
+          "",
+          "20,8",
+          "19,5",
+          "20,9",
+          "20,7",
+          "19,5",
+          "19,2",
+          "92",
+          "90",
+          "92",
+          "8",
+          "3,6",
+          "1,8",
+          ""
+        ],
+        [
+          "2025/01/01",
+          "0100 UTC",
+          "0",
+          "886,3",
+          "886,4",
+          "886",
+          "",
+          "20,7",
+          "19,3",
+          "20,8",
+          "20,5",
+          "19,5",
+          "19,3",
+          "93",
+          "92",
+          "92",
+          "4",
+          "3,4",
+          "1,9",
+          ""
+        ],
+        [
+          "2025/01/01",
+          "0200 UTC",
+          "0",
+          "886,7",
+          "886,7",
+          "886,2",
+          "",
+          "20,6",
+          "19,1",
+          "20,8",
+          "20,5",
+          "19,3",
+          "19",
+          "92",
+          "91",
+          "91",
+          "3",
+          "3,7",
+          "1,4",
+          ""
+        ],
+        [
+          "2025/01/01",
+          "0300 UTC",
+          "0",
+          "886,4",
+          "886,7",
+          "886,4",
+          "",
+          "20,3",
+          "18,9",
+          "20,6",
+          "20,1",
+          "19,1",
+          "18,7",
+          "92",
+          "91",
+          "92",
+          "345",
+          "3",
+          "1,1",
+          ""
+        ]
+      ],
+      "sample_data_rows": 8760,
+      "fabric_executed": false,
+      "checked_at_utc": "2026-11-14T20:26:07.076569+00:00"
+    },
+    {
+      "year": 2026,
+      "source_url": "https://portal.inmet.gov.br/uploads/dadoshistoricos/2026.zip",
+      "source_sha256": "e50640dee9556273fcdf02874fc88518c5a82a377e3780eb0fcdf202cb9006fd",
+      "source_bytes": 81772595,
+      "source_last_modified": "Thu, 05 Nov 2026 12:58:43 GMT",
+      "csv_members": 634,
+      "total_uncompressed_bytes": 340920820,
+      "sample_member": "INMET_CO_DF_A001_BRASILIA_01-01-2026_A_31-10-2026.CSV",
+      "sample_encoding": "latin1",
+      "sample_metadata_rows": [
+        [
+          "REGIAO:",
+          "CO"
+        ],
+        [
+          "UF:",
+          "DF"
+        ],
+        [
+          "ESTACAO:",
+          "BRASILIA"
+        ],
+        [
+          "CODIGO (WMO):",
+          "A001"
+        ],
+        [
+          "LATITUDE:",
+          "-15,78944444"
+        ],
+        [
+          "LONGITUDE:",
+          "-47,92583332"
+        ],
+        [
+          "ALTITUDE:",
+          "1160,96"
+        ],
+        [
+          "DATA DE FUNDACAO:",
+          "07/05/00"
+        ]
+      ],
+      "sample_header": [
+        "Data",
+        "Hora UTC",
+        "PRECIPITAÇÃO TOTAL, HORÁRIO (mm)",
+        "PRESSAO ATMOSFERICA AO NIVEL DA ESTACAO, HORARIA (mB)",
+        "PRESSÃO ATMOSFERICA MAX.NA HORA ANT. (AUT) (mB)",
+        "PRESSÃO ATMOSFERICA MIN. NA HORA ANT. (AUT) (mB)",
+        "RADIACAO GLOBAL (Kj/m²)",
+        "TEMPERATURA DO AR - BULBO SECO, HORARIA (°C)",
+        "TEMPERATURA DO PONTO DE ORVALHO (°C)",
+        "TEMPERATURA MÁXIMA NA HORA ANT. (AUT) (°C)",
+        "TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)",
+        "TEMPERATURA ORVALHO MAX. NA HORA ANT. (AUT) (°C)",
+        "TEMPERATURA ORVALHO MIN. NA HORA ANT. (AUT) (°C)",
+        "UMIDADE REL. MAX. NA HORA ANT. (AUT) (%)",
+        "UMIDADE REL. MIN. NA HORA ANT. (AUT) (%)",
+        "UMIDADE RELATIVA DO AR, HORARIA (%)",
+        "VENTO, DIREÇÃO HORARIA (gr) (° (gr))",
+        "VENTO, RAJADA MAXIMA (m/s)",
+        "VENTO, VELOCIDADE HORARIA (m/s)",
+        ""
+      ],
+      "sample_rows": [
+        [
+          "2026/01/01",
+          "0000 UTC",
+          "0",
+          "887,7",
+          "887,7",
+          "887,2",
+          "",
+          "19,9",
+          "18,5",
+          "20,8",
+          "19,8",
+          "18,6",
+          "18,1",
+          "92",
+          "85",
+          "92",
+          "9",
+          "4,5",
+          "1,1",
+          ""
+        ],
+        [
+          "2026/01/01",
+          "0100 UTC",
+          "0",
+          "888,1",
+          "888,2",
+          "887,7",
+          "",
+          "18,5",
+          "17,7",
+          "19,8",
+          "18,5",
+          "18,4",
+          "17,7",
+          "95",
+          "92",
+          "95",
+          "305",
+          "1,8",
+          ",8",
+          ""
+        ],
+        [
+          "2026/01/01",
+          "0200 UTC",
+          "0",
+          "888",
+          "888,2",
+          "888",
+          "",
+          "18,2",
+          "17,5",
+          "18,5",
+          "18,1",
+          "17,8",
+          "17,4",
+          "96",
+          "95",
+          "96",
+          "301",
+          "1,9",
+          "1",
+          ""
+        ],
+        [
+          "2026/01/01",
+          "0300 UTC",
+          "0",
+          "887,6",
+          "888",
+          "887,6",
+          "",
+          "18,1",
+          "17,4",
+          "18,4",
+          "17,8",
+          "17,7",
+          "17,1",
+          "96",
+          "96",
+          "96",
+          "269",
+          "1,7",
+          ",6",
+          ""
+        ]
+      ],
+      "sample_data_rows": 7296,
+      "fabric_executed": false,
+      "checked_at_utc": "2026-11-14T20:26:24.758353+00:00"
+    }
+  ]
+}

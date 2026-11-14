@@ -22,6 +22,11 @@ _,lookup=national_reference(json.loads((bundle/'municipios.json').read_bytes()),
 spark.conf.set('spark.sql.session.timeZone','UTC')
 run_id=str(uuid.uuid4())
 audit={'run_id':run_id,'landing_run_id':p_landing_run_id,'environment':'fabric','manifest_sha256':p_manifest_sha256,'status':'started','started_at_utc':datetime.now(timezone.utc).isoformat(),'sources':[]}
+previous_receipts=[]
+for receipt_path in (files/'audit/history').glob('*.json'):
+    receipt=json.loads(receipt_path.read_bytes())
+    if receipt.get('status')=='historical_versions_silver_validated' and receipt.get('manifest_sha256')==p_manifest_sha256:
+        previous_receipts.append(receipt)
 def compare(a,b):
     a=a.select(*TYPED_FIELDS);b=b.select(*TYPED_FIELDS)
     assert a.schema==b.schema, 'Tipos diferentes da referencia independente'
@@ -61,6 +66,18 @@ try:
         bronze.write.format('delta').mode('overwrite').option('replaceWhere',predicate).saveAsTable('hist_bronze_anp')
         persisted=spark.table('hist_bronze_anp').where(predicate)
         assert persisted.count()==count
+        prior=next((s for r in previous_receipts for s in r['sources'] if s['source_id']==source_id and s['source_sha256']==sha and s['full_typed_comparison_passed']),None)
+        if prior and spark.catalog.tableExists('hist_silver_versoes'):
+            existing=spark.table('hist_silver_versoes').where(predicate)
+            ref=spark.read.parquet('Files/'+p_bundle_relative_path+'/'+source_id+'.parquet').withColumn('preco_venda',F.col('preco_venda').cast('decimal(10,3)'))
+            compare(ref,existing)
+            actual={'selected':count,'invalid':spark.table('hist_quarentena').where(predicate).count(),
+                    'exact_duplicate_excess':int(spark.table('hist_duplicatas').where(predicate).agg(F.sum('duplicate_excess')).first()[0] or 0),
+                    'conflicting_rows_after_exact_dedup':spark.table('hist_conflitos').where(predicate).count(),'accepted':existing.count()}
+            assert actual==prior['counts'],'Repeticao encontrou alteracao nas categorias persistidas'
+            audit['sources'].append({'source_id':source_id,'source_sha256':sha,'counts':actual,'full_typed_comparison_passed':True,'reused_validated_silver':True,'prior_validation_reused':True})
+            print('Identical source: typed Silver and quality reconciled without rerunning validation UDF',source_id,flush=True)
+            continue
         parts=classify(persisted,lookup,source['scope'])
         try:
             actual=category_counts(parts)
@@ -77,7 +94,7 @@ try:
             # Escrita por hash nao remove versoes de outros arquivos nem publica Gold.
             lineage(accepted,source).write.format('delta').mode('overwrite').option('replaceWhere',predicate).saveAsTable('hist_silver_versoes')
             compare(ref,spark.table('hist_silver_versoes').where(predicate))
-            audit['sources'].append({'source_id':source_id,'source_sha256':sha,'counts':actual,'full_typed_comparison_passed':True})
+            audit['sources'].append({'source_id':source_id,'source_sha256':sha,'counts':actual,'full_typed_comparison_passed':True,'reused_validated_silver':False})
         finally:
             parts['classified'].unpersist()
     audit['status']='historical_versions_silver_validated'

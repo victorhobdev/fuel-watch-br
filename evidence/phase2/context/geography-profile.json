@@ -1,0 +1,15 @@
+{
+  "status": "official_municipal_geography_profiled_locally",
+  "fabric_executed": false,
+  "source_url": "https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/localidades/Localidades_do_Brasil/2022/Localidades_Brasil_gpkg.zip",
+  "source_sha256": "1d96d5f0b379972a506d4b18c3696af974fbe59f8f6680557cb3a6dd38a0eb57",
+  "source_last_modified": "Wed, 19 Nov 2025 19:12:39 GMT",
+  "declared_dataset": "Localidades do Brasil 2022; snapshot oficial consultado na data registrada",
+  "crs": "EPSG:4674 SIRGAS 2000; latitude/longitude publicadas pelo IBGE",
+  "selection": "Cidade/Sede Municipal; Cidade/Capital Federal; Distrito Estadual de Fernando de Noronha. Capital Estadual duplicada excluida pela categoria, sem escolher coordenada arbitraria.",
+  "rows": 5571,
+  "reference_municipalities": 5571,
+  "reference_missing_coordinates": 0,
+  "limits": "Sede municipal e ponto de referencia; nao e coordenada de posto, centroide do poligono ou garantia de representatividade meteorologica de todo o municipio.",
+  "checked_at_utc": "2026-11-14T20:23:44.935348+00:00"
+}

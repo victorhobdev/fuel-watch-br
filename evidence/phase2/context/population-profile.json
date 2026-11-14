@@ -1,0 +1,67 @@
+{
+  "status": "official_population_profiled_locally",
+  "fabric_executed": false,
+  "aggregate": "6579",
+  "variable": {
+    "id": 9324,
+    "nome": "População residente estimada",
+    "unidade": "Pessoas",
+    "sumarizacao": [
+      "nivelTerritorial"
+    ]
+  },
+  "sources": {
+    "ibge_pop_metadata": {
+      "url": "https://servicodados.ibge.gov.br/api/v3/agregados/6579/metadados",
+      "sha256": "93520e06fe21ad54f216f89b81a7d5761e6032584bd70afc7f55e37d5d84ff53",
+      "bytes": 298,
+      "last_modified": null,
+      "etag": null,
+      "finished_at_utc": "2026-11-14T20:16:03.619263+00:00"
+    },
+    "ibge_pop_2024": {
+      "url": "https://servicodados.ibge.gov.br/api/v3/agregados/6579/periodos/2024/variaveis/9324?localidades=N6%5Ball%5D",
+      "sha256": "08c6f2c3c145696401b4467849c7d0e16602cd7908e95742c77e13abe43dd795",
+      "bytes": 689492,
+      "last_modified": null,
+      "etag": null,
+      "finished_at_utc": "2026-11-14T20:16:04.296887+00:00"
+    },
+    "ibge_pop_2025": {
+      "url": "https://servicodados.ibge.gov.br/api/v3/agregados/6579/periodos/2025/variaveis/9324?localidades=N6%5Ball%5D",
+      "sha256": "4af9498de1e9d0a49b8dc56039e941c0742122b9cc41adea50e18e63084112e7",
+      "bytes": 86921,
+      "last_modified": null,
+      "etag": null,
+      "finished_at_utc": "2026-11-14T20:16:04.607136+00:00"
+    },
+    "ibge_pop_2026": {
+      "url": "https://servicodados.ibge.gov.br/api/v3/agregados/6579/periodos/2026/variaveis/9324?localidades=N6%5Ball%5D",
+      "sha256": "36b8bd4c9ec1c74f0b1e76cbb108fec91571c351b9423e508bf0f4350e6d27b0",
+      "bytes": 689494,
+      "last_modified": null,
+      "etag": null,
+      "finished_at_utc": "2026-11-14T20:16:05.270711+00:00"
+    }
+  },
+  "rows": 16713,
+  "by_year": [
+    {
+      "ano_referencia": 2024,
+      "municipios": 5571,
+      "ausentes": 1
+    },
+    {
+      "ano_referencia": 2025,
+      "municipios": 5571,
+      "ausentes": 0
+    },
+    {
+      "ano_referencia": 2026,
+      "municipios": 5571,
+      "ausentes": 0
+    }
+  ],
+  "temporal_policy": "Contexto retrospectivo do mesmo ano; referencia em 1 de julho, nao disponibilidade na data da coleta. Snapshot atual sujeito a revisoes.",
+  "checked_at_utc": "2026-11-14T20:16:05.568516+00:00"
+}

@@ -1,0 +1,65 @@
+{
+  "status": "annual_station_catalog_and_associations_prepared_locally",
+  "fabric_executed": false,
+  "policy": {
+    "contract_version": "weather-1.0",
+    "municipal_reference": "IBGE Localidades do Brasil: sede municipal, EPSG:4674",
+    "station_selection": "nearest_valid_coordinate_in_annual_official_archive",
+    "station_selection_uses_price_values": false,
+    "station_tie_breaker": "station_id_ascending",
+    "station_year_basis": "ISO week year; one association for each municipality and ISO week",
+    "maximum_station_coordinate_change_km": 1,
+    "distance_method": "haversine_sphere_radius_6371_km",
+    "maximum_distance_km": 100,
+    "fallback_when_nearest_has_missing_measurements": false,
+    "timezone": "UTC",
+    "week": "ISO Monday; UTC weather calendar aligned to ANP collection date without inferring collection time",
+    "minimum_valid_hour_fraction_per_variable": 0.8,
+    "missing_numeric_sentinels": [
+      -9999
+    ],
+    "temperature_unit": "degC",
+    "precipitation_unit": "mm",
+    "precipitation_zero_is_valid": true,
+    "partial_boundary_weeks": "expected hours clipped to declared ANP publication interval; explicitly flagged",
+    "interpretation": "Exploratory municipal context; neither station-level weather nor causal inference"
+  },
+  "station_year_records": 1793,
+  "invalid_station_coordinates": 0,
+  "station_ids_excluded_coordinate_change": 10,
+  "municipality_years": 1296,
+  "by_year": [
+    {
+      "year": 2024,
+      "association_status": "associated",
+      "municipalities": 454
+    },
+    {
+      "year": 2024,
+      "association_status": "beyond_maximum_distance",
+      "municipalities": 6
+    },
+    {
+      "year": 2025,
+      "association_status": "associated",
+      "municipalities": 414
+    },
+    {
+      "year": 2025,
+      "association_status": "beyond_maximum_distance",
+      "municipalities": 5
+    },
+    {
+      "year": 2026,
+      "association_status": "associated",
+      "municipalities": 415
+    },
+    {
+      "year": 2026,
+      "association_status": "beyond_maximum_distance",
+      "municipalities": 2
+    }
+  ],
+  "maximum_selected_distance_km": 97.15596438152072,
+  "checked_at_utc": "2026-11-14T20:33:14.207848+00:00"
+}

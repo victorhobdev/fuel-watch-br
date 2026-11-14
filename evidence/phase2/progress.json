@@ -16,8 +16,6 @@
     "F2-02": {
       "status": "partial",
       "pending": [
-        "historical_spark_validation",
-        "historical_gold_publication_maintaining_2026h1",
         "integrated_parameterized_national_pipeline",
         "version_discovery_and_historical_corrections",
         "five_real_update_failure_recovery_cases",
@@ -27,20 +25,40 @@
         "four_official_historical_sources_profiled",
         "independent_typed_local_references",
         "parameterized_copy_pipeline_real_run",
-        "all_four_copied_hashes_verified"
+        "all_four_copied_hashes_verified",
+        "historical_spark_validation",
+        "historical_gold_publication_maintaining_2026h1",
+        "identical_delivery_reuses_validated_silver",
+        "injected_failure_full_publication_preserved",
+        "successful_recovery_after_injected_failure"
       ],
       "prepared": [
-        "versioned_bronze_silver_notebook_11"
+        "versioned_bronze_silver_notebook_11",
+        "joint_historical_candidate_notebook_12"
+      ],
+      "evidence": [
+        "evidence/phase2/history/silver-72918c9c-414e-40d0-8395-3ebdb0cb75d1.json",
+        "evidence/phase2/history/warehouse-first_joint_publish.json"
       ]
     },
     "F2-03": {
-      "status": "not_started",
+      "status": "partial",
       "pending": [
         "dated_population_reference",
         "weather_station_geography_coverage",
         "nonmultiplying_temporal_joins",
         "exploratory_answers",
         "context_report_page"
+      ],
+      "completed": [
+        "official_population_profile_local",
+        "official_municipal_geography_profile_local",
+        "population_join_nonmultiplication_local",
+        "official_inmet_annual_archives_sampled"
+      ],
+      "prepared": [
+        "population_temporal_contract",
+        "weather_association_policy_and_catalog"
       ]
     },
     "F2-04": {

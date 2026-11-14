@@ -1,0 +1,21 @@
+{
+  "contract_version": "weather-1.0",
+  "municipal_reference": "IBGE Localidades do Brasil: sede municipal, EPSG:4674",
+  "station_selection": "nearest_valid_coordinate_in_annual_official_archive",
+  "station_selection_uses_price_values": false,
+  "station_tie_breaker": "station_id_ascending",
+  "station_year_basis": "ISO week year; one association for each municipality and ISO week",
+  "maximum_station_coordinate_change_km": 1,
+  "distance_method": "haversine_sphere_radius_6371_km",
+  "maximum_distance_km": 100,
+  "fallback_when_nearest_has_missing_measurements": false,
+  "timezone": "UTC",
+  "week": "ISO Monday; UTC weather calendar aligned to ANP collection date without inferring collection time",
+  "minimum_valid_hour_fraction_per_variable": 0.8,
+  "missing_numeric_sentinels": [-9999],
+  "temperature_unit": "degC",
+  "precipitation_unit": "mm",
+  "precipitation_zero_is_valid": true,
+  "partial_boundary_weeks": "expected hours clipped to declared ANP publication interval; explicitly flagged",
+  "interpretation": "Exploratory municipal context; neither station-level weather nor causal inference"
+}
