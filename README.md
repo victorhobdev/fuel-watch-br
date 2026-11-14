@@ -8,6 +8,8 @@ O mesmo arquivo ANP de jan–jun/2026 já está tratado para **todas as 27 UFs e
 
 No Fabric: Lakehouse `lh_fuelwatch`, tabela `silver_preco_brasil`; Warehouse `wh_fuelwatch`, view **`gold_br.coletas`**, dimensões e agregado `gold_br.preco_semanal`. Silver/Gold, referência independente completa, repetição da publicação e exportação real foram validadas. [Guia dos dados, consultas e arquivos Parquet/CSV](docs/dados-nacionais.md), [evidências](evidence/fabric/national/).
 
+[Roadmap replanejado da fase 2](docs/fase-2-roadmap-observatorio-completo-2026-11-13.md): base nacional concluída, **1/10 marcos aceitos**; próximo: benchmarks regionais, postos e bandeiras sobre os dados nacionais.
+
 O restante deste README conserva o encerramento da fase 1 RJ/GASOLINA. O relatório e pipeline mestre antigos ainda usam esse baseline; as novas tabelas nacionais e os exports locais já estão prontos para trabalhar.
 
 ## Estado verificado em 13/11/2026
