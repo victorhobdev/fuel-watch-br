@@ -1,0 +1,304 @@
+{
+  "status": "full_old_file_correction_validated_in_fabric",
+  "is_synthetic": true,
+  "pipeline_run_id": "c3756c95-33c1-4c8c-9398-5544b0b78de7",
+  "rows": 2125547,
+  "station_versions": 15006,
+  "target_price": "5.803",
+  "both_source_versions_preserved": [
+    {
+      "source_sha256": "f95e44e79cdad48f1bbdbe9e47ed9800e7531cb2595eb54e82e2311f68b622de",
+      "rows": 477136
+    },
+    {
+      "source_sha256": "5f8468096dad5582633ab172bbb101529be8235292487f0d412f5930b310b12a",
+      "rows": 477136
+    }
+  ],
+  "versions_receipt": {
+    "run_id": "393d6c28-c25d-449f-8d10-4245e4d37a97",
+    "landing_run_id": "c3756c95-33c1-4c8c-9398-5544b0b78de7",
+    "environment": "fabric",
+    "is_synthetic": true,
+    "manifest_sha256": "1544bebf32f87f86a95559a92aacdfe98f00e8004460527282f93edf5e5416e1",
+    "status": "historical_versions_silver_validated",
+    "started_at_utc": "2026-11-14T21:19:47.754403+00:00",
+    "sources": [
+      {
+        "source_id": "anp_2024_1",
+        "source_sha256": "f95e44e79cdad48f1bbdbe9e47ed9800e7531cb2595eb54e82e2311f68b622de",
+        "counts": {
+          "selected": 477154,
+          "invalid": 0,
+          "exact_duplicate_excess": 10,
+          "conflicting_rows_after_exact_dedup": 8,
+          "accepted": 477136
+        },
+        "full_typed_comparison_passed": true,
+        "reused_validated_silver": false
+      }
+    ],
+    "all_versions_reused": false,
+    "finished_at_utc": "2026-11-14T21:22:05.546906+00:00"
+  },
+  "candidate_receipt": {
+    "run_id": "910474df-b6bf-4020-ab0e-30fe9b0e454d",
+    "environment": "fabric",
+    "is_synthetic": true,
+    "status": "historical_publication_candidate_validated",
+    "started_at_utc": "2026-11-14T21:22:34.091677+00:00",
+    "manifest_sha256": "5ccf03a3b95a349185147cbd32a2bb7dfd164b47157ed6857dbbe8b3dad13fb4",
+    "fault_stage": "none",
+    "sources": [
+      {
+        "source_id": "anp_2024_1",
+        "source_sha256": "f95e44e79cdad48f1bbdbe9e47ed9800e7531cb2595eb54e82e2311f68b622de",
+        "csv_sha256": "6a902d95d60ead78d71b1c545d9286e0fcfcb75a3eb555401536f8ceaeb6d07a",
+        "scope": {
+          "scope_id": "lab_anp_2024_1-br-todos",
+          "date_start": "2024-01-01",
+          "date_end": "2024-06-30",
+          "product_units": {
+            "DIESEL": "R$ / litro",
+            "DIESEL S10": "R$ / litro",
+            "ETANOL": "R$ / litro",
+            "GASOLINA": "R$ / litro",
+            "GASOLINA ADITIVADA": "R$ / litro",
+            "GNV": "R$ / m³"
+          },
+          "contract_version": "history-1.0"
+        },
+        "counts": {
+          "received": 477154,
+          "invalid": 0,
+          "exact_duplicate_excess": 10,
+          "conflicting_rows": 8,
+          "accepted": 477136
+        }
+      },
+      {
+        "source_id": "anp_2024_2",
+        "source_sha256": "63952c6786fe96289a643fdfbf4cf15e29264fb6a4c0be916a0708687aed71d4",
+        "csv_sha256": "fe3296f9de5977eb95a2f859f68b80f8336e446494d3be6d07de99ebf7e775ae",
+        "scope": {
+          "scope_id": "anp_2024_2-br-todos",
+          "date_start": "2024-07-01",
+          "date_end": "2024-12-31",
+          "product_units": {
+            "DIESEL": "R$ / litro",
+            "DIESEL S10": "R$ / litro",
+            "ETANOL": "R$ / litro",
+            "GASOLINA": "R$ / litro",
+            "GASOLINA ADITIVADA": "R$ / litro",
+            "GNV": "R$ / m³"
+          },
+          "contract_version": "history-1.0"
+        },
+        "counts": {
+          "received": 421382,
+          "invalid": 0,
+          "exact_duplicate_excess": 0,
+          "conflicting_rows": 0,
+          "accepted": 421382
+        }
+      },
+      {
+        "source_id": "anp_2025_1",
+        "source_sha256": "674d69b09a1e6571e39b2fceedeed1d3b12d21e097bcec11d2d93ba7f7370a09",
+        "csv_sha256": "d308b91e79d112262253e66c84610254b6df8f9f5bfd7c76ecd6c79fd82fb4fa",
+        "scope": {
+          "scope_id": "anp_2025_1-br-todos",
+          "date_start": "2025-01-01",
+          "date_end": "2025-06-30",
+          "product_units": {
+            "DIESEL": "R$ / litro",
+            "DIESEL S10": "R$ / litro",
+            "ETANOL": "R$ / litro",
+            "GASOLINA": "R$ / litro",
+            "GASOLINA ADITIVADA": "R$ / litro",
+            "GNV": "R$ / m³"
+          },
+          "contract_version": "history-1.0"
+        },
+        "counts": {
+          "received": 429523,
+          "invalid": 9114,
+          "exact_duplicate_excess": 0,
+          "conflicting_rows": 0,
+          "accepted": 420409
+        }
+      },
+      {
+        "source_id": "anp_2025_2",
+        "source_sha256": "73faa3197a3813baa8c057b13045ea4cd799c45e51957b5094be90558f95258a",
+        "csv_sha256": "206cc66333ebacb3e33b3f6294a5aaeb3415f1579d35f7f28e25351826ae7745",
+        "scope": {
+          "scope_id": "anp_2025_2-br-todos",
+          "date_start": "2025-07-01",
+          "date_end": "2025-12-31",
+          "product_units": {
+            "DIESEL": "R$ / litro",
+            "DIESEL S10": "R$ / litro",
+            "ETANOL": "R$ / litro",
+            "GASOLINA": "R$ / litro",
+            "GASOLINA ADITIVADA": "R$ / litro",
+            "GNV": "R$ / m³"
+          },
+          "contract_version": "history-1.0",
+          "unit_aliases": {
+            "R$ / m3": "R$ / m³"
+          }
+        },
+        "counts": {
+          "received": 384208,
+          "invalid": 0,
+          "exact_duplicate_excess": 0,
+          "conflicting_rows": 0,
+          "accepted": 384208
+        }
+      },
+      {
+        "source_id": "anp_2026_1",
+        "source_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+        "csv_sha256": "04406f4e411380c07fff0343a746bcc5ef693bd4b26a267101ab0698c44b76a9",
+        "scope": {
+          "scope_id": "anp-2026-1-br-todos",
+          "date_start": "2026-01-01",
+          "date_end": "2026-06-30",
+          "contract_version": "national-1.0",
+          "product_units": {
+            "DIESEL": "R$ / litro",
+            "DIESEL S10": "R$ / litro",
+            "ETANOL": "R$ / litro",
+            "GASOLINA": "R$ / litro",
+            "GASOLINA ADITIVADA": "R$ / litro",
+            "GNV": "R$ / m³"
+          }
+        },
+        "counts": {
+          "received": 422418,
+          "invalid": 0,
+          "exact_duplicate_excess": 6,
+          "conflicting_rows": 0,
+          "accepted": 422412
+        }
+      }
+    ],
+    "rows": 2125547,
+    "full_business_comparison_passed": true,
+    "delta_version": 0,
+    "finished_at_utc": "2026-11-14T21:24:36.418261+00:00"
+  },
+  "activities": [
+    {
+      "activityName": "Copy_Lab_Old_Correction",
+      "status": "Succeeded",
+      "durationInMs": 12030
+    },
+    {
+      "activityName": "Validate_Versions",
+      "status": "Succeeded",
+      "durationInMs": 181653
+    },
+    {
+      "activityName": "Build_Candidate",
+      "status": "Succeeded",
+      "durationInMs": 144403
+    },
+    {
+      "activityName": "Wait_Exact_SQL_Visibility",
+      "status": "Succeeded",
+      "durationInMs": 14535
+    },
+    {
+      "activityName": "Install_Lab_Gold_Procedure",
+      "status": "Succeeded",
+      "durationInMs": 7943
+    },
+    {
+      "activityName": "Install_Lab_Stage_Procedure",
+      "status": "Succeeded",
+      "durationInMs": 7002
+    },
+    {
+      "activityName": "Publish_Corrected_Lab_Gold",
+      "status": "Succeeded",
+      "durationInMs": 121110
+    }
+  ],
+  "official_before": {
+    "business_published": {
+      "rows": 2125547,
+      "sha256": "62f286a8bb58f163faf773b351bb638178a139dc578bcc6b7d36c6c897dac408"
+    },
+    "dim_posto": {
+      "rows": 15005,
+      "sha256": "daf63f7be961dc421123117ff413afe6dd6d9055d8935e9fd872e452b89f833c"
+    },
+    "dim_data": {
+      "rows": 912,
+      "sha256": "176ab4c4110e179457449971a850c69771aabd44ca0a37e899225c5e0d753f6b"
+    },
+    "dim_municipio": {
+      "rows": 5571,
+      "sha256": "66934efc1d489fa3b22e3d0bc447f7997c8b8d51b282dd740693533198f94bfc"
+    },
+    "dim_produto": {
+      "rows": 6,
+      "sha256": "a958b64e0a4733784275104e3802760b09b9444799ae71cb66346b53384d1452"
+    },
+    "source_versions": {
+      "rows": 5,
+      "sha256": "7c73fbc1b73c15e8a808622d677b4ed9c6cdc2c1a31af58ea6c5570d065d6f70"
+    },
+    "publication": {
+      "rows": 1,
+      "sha256": "b916136eda66bb32cd1d06daee4ec797ef450248218883874d6714f3d78165b6"
+    }
+  },
+  "official_after": {
+    "business_published": {
+      "rows": 2125547,
+      "sha256": "62f286a8bb58f163faf773b351bb638178a139dc578bcc6b7d36c6c897dac408"
+    },
+    "dim_posto": {
+      "rows": 15005,
+      "sha256": "daf63f7be961dc421123117ff413afe6dd6d9055d8935e9fd872e452b89f833c"
+    },
+    "dim_data": {
+      "rows": 912,
+      "sha256": "176ab4c4110e179457449971a850c69771aabd44ca0a37e899225c5e0d753f6b"
+    },
+    "dim_municipio": {
+      "rows": 5571,
+      "sha256": "66934efc1d489fa3b22e3d0bc447f7997c8b8d51b282dd740693533198f94bfc"
+    },
+    "dim_produto": {
+      "rows": 6,
+      "sha256": "a958b64e0a4733784275104e3802760b09b9444799ae71cb66346b53384d1452"
+    },
+    "source_versions": {
+      "rows": 5,
+      "sha256": "7c73fbc1b73c15e8a808622d677b4ed9c6cdc2c1a31af58ea6c5570d065d6f70"
+    },
+    "publication": {
+      "rows": 1,
+      "sha256": "b916136eda66bb32cd1d06daee4ec797ef450248218883874d6714f3d78165b6"
+    }
+  },
+  "publication": [
+    {
+      "batch_id": "910474df-b6bf-4020-ab0e-30fe9b0e454d",
+      "scope_id": "lab-anp-historico-br-todos",
+      "source_sha256": "5ccf03a3b95a349185147cbd32a2bb7dfd164b47157ed6857dbbe8b3dad13fb4",
+      "ibge_sha256": "d9eec8439bc8c5dc2f7db6332a8e5569f5a3f637988e26aebc513412d4069d5c",
+      "silver_delta_version": 0,
+      "is_synthetic": true,
+      "published_at_utc": "2026-11-14 21:26:41.535266",
+      "rows_published": 2125547,
+      "source_table": "lab_hist_transfer_coletas",
+      "snapshot_id": "910474df-b6bf-4020-ab0e-30fe9b0e454d"
+    }
+  ],
+  "checked_at_utc": "2026-11-14T21:30:59.508130+00:00"
+}

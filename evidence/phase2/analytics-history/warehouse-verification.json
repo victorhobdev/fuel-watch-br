@@ -1,0 +1,59 @@
+{
+  "environment": "fabric",
+  "source_schema": "gold_hist",
+  "started_at_utc": "2026-11-14T21:43:43.043562+00:00",
+  "tables": {
+    "posto_semana": {
+      "rows": 2125498,
+      "business_sha256": "4e5e5c0a90320bab4d4354c9bd2df4e537a40fd7746f30b85435cb778505d3f4",
+      "query_and_check_seconds": 36.80711919999976
+    },
+    "referencia_uf_semana": {
+      "rows": 19808,
+      "business_sha256": "0b6c23262db49fa7609a0a6f2d238afd4770d85b1011d7181a9fc0b871e3b66b",
+      "query_and_check_seconds": 15.342755900000157
+    },
+    "posicao_posto_semana": {
+      "rows": 2125498,
+      "business_sha256": "58c9bf0670c744dc661fcbb4bd5431dfe93637cbab2f42003c64dc371d2010c4",
+      "query_and_check_seconds": 53.920720600000095
+    },
+    "municipio_semana": {
+      "rows": 252391,
+      "business_sha256": "8e962a6d9f4c877f24b8177d4f7ebab754db18717c3a53bb2184e454c77df3d9",
+      "query_and_check_seconds": 17.591953099999955
+    },
+    "persistencia_posto": {
+      "rows": 52760,
+      "business_sha256": "8d51ae818d4d4cb100071166f390f15450a1159a95919d51753992a3e2820715",
+      "query_and_check_seconds": 10.445399799999905
+    },
+    "bandeira_contexto": {
+      "rows": 400780,
+      "business_sha256": "ac49abf1a5e35f26146d833de667d635a18eed0d4a94ca5a51f393f04a8f7171",
+      "query_and_check_seconds": 20.068552799999452
+    },
+    "comparacao_bandeira": {
+      "rows": 925,
+      "business_sha256": "ad299c0365f81f659dcdca275a3bdbeb7bf4a59b25a98696c4df370b1d2ce774",
+      "query_and_check_seconds": 12.241259100000207
+    }
+  },
+  "source_publication": [
+    {
+      "batch_id": "fa38a557-db79-475b-839c-c2fbda588b3e",
+      "scope_id": "anp-historico-br-todos",
+      "source_sha256": "759b19e80c99cb5a5a7900c85a6556106eb0b9cf6f84218c692b835f12745af1",
+      "ibge_sha256": "d9eec8439bc8c5dc2f7db6332a8e5569f5a3f637988e26aebc513412d4069d5c",
+      "silver_delta_version": 1,
+      "is_synthetic": false,
+      "published_at_utc": "2026-11-14 20:59:22.398307",
+      "rows_published": 2125547,
+      "source_table": "hist_transfer_coletas",
+      "snapshot_id": "fa38a557-db79-475b-839c-c2fbda588b3e"
+    }
+  ],
+  "status": "analytics_full_comparison_passed",
+  "source_publication_unchanged": true,
+  "finished_at_utc": "2026-11-14T21:46:31.459953+00:00"
+}

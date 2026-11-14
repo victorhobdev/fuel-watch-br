@@ -50,9 +50,10 @@ refletir mudança da amostra; um painel de postos comuns será explicitado nas
 análises de evolução. Ausência de coleta não representa preço zero.
 
 O relatório **Fuel Watch BR Nacional** ainda usa a publicação analítica de
-2026H1 validada no F2-01. A incorporação desse histórico ao modelo e a verificação
-dos cenários operacionais continuam no F2-02; não são consideradas prontas pela
-mera existência das tabelas.
+2026H1 validada no F2-01. A incorporação desse histórico ao modelo e o painel de
+postos comuns continuam no F2-02; não são considerados prontos pela mera
+existência das tabelas. Os cinco cenários operacionais já foram verificados,
+assim como as sete visões `analise_hist`; consulte `history-operations.md`.
 
 Evidências: `evidence/phase2/history/warehouse-first_joint_publish.json`,
 `silver-72918c9c-414e-40d0-8395-3ebdb0cb75d1.json` e

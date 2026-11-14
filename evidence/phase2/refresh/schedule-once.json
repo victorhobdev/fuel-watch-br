@@ -1,0 +1,41 @@
+{
+  "status": "historical_scheduled_run_verified_and_disabled",
+  "request": {
+    "enabled": true,
+    "configuration": {
+      "startDateTime": "2026-11-14T21:11:34Z",
+      "endDateTime": "2026-11-14T21:16:34Z",
+      "localTimeZoneId": "UTC",
+      "type": "Cron",
+      "interval": 60
+    },
+    "executionData": {
+      "pipelineName": "pl_fuelwatch_historico",
+      "parameters": {
+        "p_force_rebuild": false
+      }
+    }
+  },
+  "previous_job_ids": [
+    "96898797-8ece-4393-a8ac-e59d9a3ac4c6",
+    "010951d0-40c0-4e89-86de-20885cf7ed8b"
+  ],
+  "publication_before": [
+    {
+      "batch_id": "fa38a557-db79-475b-839c-c2fbda588b3e",
+      "scope_id": "anp-historico-br-todos",
+      "source_sha256": "759b19e80c99cb5a5a7900c85a6556106eb0b9cf6f84218c692b835f12745af1",
+      "ibge_sha256": "d9eec8439bc8c5dc2f7db6332a8e5569f5a3f637988e26aebc513412d4069d5c",
+      "silver_delta_version": 1,
+      "is_synthetic": false,
+      "published_at_utc": "2026-11-14 20:59:22.398307",
+      "rows_published": 2125547,
+      "source_table": "hist_transfer_coletas",
+      "snapshot_id": "fa38a557-db79-475b-839c-c2fbda588b3e"
+    }
+  ],
+  "schedule_id": "fcfd6f65-3d84-45c5-a147-7aa743ec3a47",
+  "job_id": "481d3ce1-a08c-4614-994e-d2362d8c9107",
+  "invoke_type": "Scheduled",
+  "disabled_verified": true
+}

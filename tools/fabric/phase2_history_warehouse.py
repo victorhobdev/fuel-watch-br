@@ -1,11 +1,12 @@
 """Promover o candidato historico validado para Gold dimensional transacional."""
-import argparse,hashlib,json,re,time,uuid
+import argparse,json,re,time,uuid
 from datetime import datetime,timezone
 from azure.storage.filedatalake import DataLakeServiceClient
 import pyodbc
 from client import ROOT,request,credential
 from warehouse import connect,results
 from evidence import write_json
+from phase2_fingerprint import publication_fingerprint
 
 p=argparse.ArgumentParser();p.add_argument('job_id');p.add_argument('--attempt',required=True);p.add_argument('--inject-fail',action='store_true');args=p.parse_args()
 assert re.fullmatch('[a-z0-9_-]+',args.attempt)
@@ -28,17 +29,6 @@ report={'status':'started','environment':'fabric','spark_job_id':args.job_id,'ru
 write_json(journal,report)
 fields='cnpj,cnpj_origem,produto,data_coleta,preco_venda,moeda,unidade,uf,municipio_ibge,municipio_origem,revenda_observada,bandeira_observada,preco_incomum_iqr'
 weekly='inicio_semana_iso,ano_iso,semana_iso,municipio_ibge,produto,moeda,unidade,coletas,postos_observados,soma_precos,preco_minimo,preco_maximo,precos_incomuns'
-def publication_fingerprint(cur):
-    snapshots={}
-    for table in ['business_published','dim_posto','dim_data','dim_municipio','dim_produto','source_versions','publication']:
-        cur.execute('SELECT * FROM gold_hist.'+table);hashes=[]
-        while True:
-            batch=cur.fetchmany(10000)
-            if not batch:break
-            hashes.extend(hashlib.sha256(json.dumps([None if x is None else str(x) for x in row],ensure_ascii=False,separators=(',',':')).encode()).hexdigest() for row in batch)
-        snapshots[table]={'rows':len(hashes),'sha256':hashlib.sha256('\n'.join(sorted(hashes)).encode()).hexdigest()}
-        print('Publication fingerprint',table,len(hashes),flush=True)
-    return snapshots
 try:
     with connect(c) as cn:
         cn.timeout=900;cur=cn.cursor()

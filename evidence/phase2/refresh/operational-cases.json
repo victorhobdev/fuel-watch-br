@@ -1,0 +1,31 @@
+{
+  "status": "five_operational_cases_verified_in_fabric",
+  "cases": {
+    "new_delivery": {
+      "synthetic": false,
+      "evidence": "evidence/phase2/history/silver-72918c9c-414e-40d0-8395-3ebdb0cb75d1.json",
+      "qualification": "First entry of four historical source IDs into project catalog, not a claim of recent ANP publication"
+    },
+    "identical_delivery": {
+      "synthetic": false,
+      "evidence": "evidence/phase2/refresh/pipeline-96898797-8ece-4393-a8ac-e59d9a3ac4c6.json"
+    },
+    "old_file_correction": {
+      "synthetic": true,
+      "evidence": "evidence/phase2/history/lab/fabric-correction.json"
+    },
+    "interruption_before_commit": {
+      "synthetic_fault": true,
+      "evidence": "evidence/phase2/history/warehouse-fail_before_commit.json"
+    },
+    "recovery": {
+      "synthetic_fault_recovery": true,
+      "evidence": "evidence/phase2/history/warehouse-recover_before_commit.json"
+    }
+  },
+  "milestone_complete": false,
+  "remaining": [
+    "historical_analytics_report_and_common_station_panel",
+    "latest_official_notebook_definition_sync"
+  ]
+}

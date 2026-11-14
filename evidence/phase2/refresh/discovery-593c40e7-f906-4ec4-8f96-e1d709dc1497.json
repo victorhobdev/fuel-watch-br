@@ -1,0 +1,90 @@
+{
+  "status": "official_catalog_and_old_versions_refreshed",
+  "run_id": "593c40e7-f906-4ec4-8f96-e1d709dc1497",
+  "files_fetched": true,
+  "catalog_sha256": "10e30bc3ad20aa8cf51c6b117deb13db0a067b5e07be64b0fab0ee052fe8b23b",
+  "policy": {
+    "contract_version": "anp-refresh-1.0",
+    "catalog_url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/serie-historica-de-precos-de-combustiveis",
+    "first_year": 2024,
+    "only_closed_semesters": true,
+    "recheck": "all_discovered_eligible_semesters_on_each_explicit_refresh",
+    "identity": "sha256_of_original_downloaded_bytes",
+    "date_watermark_is_sufficient": false,
+    "same_hash": "record_delivery; reuse_integrally_verified_Silver; skip_Gold_when_approved_snapshot_already_published",
+    "unknown_or_changed_hash": "preserve_new_bytes; profile_layout_units_keys_quality; approve_versioned_contract_and_reference_before_publication",
+    "conditional_http_or_zero_transfer_claimed": false,
+    "continuous_schedule_authorized": false
+  },
+  "sources": [
+    {
+      "source_id": "anp_2024_1",
+      "source_url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/shpc/dsas/ca/ca-2024-01.zip",
+      "date_start": "2024-01-01",
+      "date_end": "2024-06-30",
+      "classification": "identical_content",
+      "previous_sha256": "5f8468096dad5582633ab172bbb101529be8235292487f0d412f5930b310b12a",
+      "observed_sha256": "5f8468096dad5582633ab172bbb101529be8235292487f0d412f5930b310b12a",
+      "approved_sha256": "5f8468096dad5582633ab172bbb101529be8235292487f0d412f5930b310b12a",
+      "matches_approved_version": true,
+      "download_run_id": "9d57b1fc-a60f-4f5e-962f-0009a8145281",
+      "downloaded_bytes": 9312457
+    },
+    {
+      "source_id": "anp_2024_2",
+      "source_url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/shpc/dsas/ca/ca-2024-02.zip",
+      "date_start": "2024-07-01",
+      "date_end": "2024-12-31",
+      "classification": "identical_content",
+      "previous_sha256": "63952c6786fe96289a643fdfbf4cf15e29264fb6a4c0be916a0708687aed71d4",
+      "observed_sha256": "63952c6786fe96289a643fdfbf4cf15e29264fb6a4c0be916a0708687aed71d4",
+      "approved_sha256": "63952c6786fe96289a643fdfbf4cf15e29264fb6a4c0be916a0708687aed71d4",
+      "matches_approved_version": true,
+      "download_run_id": "21696146-ecf3-46a3-86ca-8aa12bbe4960",
+      "downloaded_bytes": 8137003
+    },
+    {
+      "source_id": "anp_2025_1",
+      "source_url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/shpc/dsas/ca/ca-2025-01.zip",
+      "date_start": "2025-01-01",
+      "date_end": "2025-06-30",
+      "classification": "identical_content",
+      "previous_sha256": "674d69b09a1e6571e39b2fceedeed1d3b12d21e097bcec11d2d93ba7f7370a09",
+      "observed_sha256": "674d69b09a1e6571e39b2fceedeed1d3b12d21e097bcec11d2d93ba7f7370a09",
+      "approved_sha256": "674d69b09a1e6571e39b2fceedeed1d3b12d21e097bcec11d2d93ba7f7370a09",
+      "matches_approved_version": true,
+      "download_run_id": "fd6b46c1-ebad-4d91-87f6-ab0f82aa4f60",
+      "downloaded_bytes": 8176445
+    },
+    {
+      "source_id": "anp_2025_2",
+      "source_url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/shpc/dsas/ca/ca-2025-02.zip",
+      "date_start": "2025-07-01",
+      "date_end": "2025-12-31",
+      "classification": "identical_content",
+      "previous_sha256": "73faa3197a3813baa8c057b13045ea4cd799c45e51957b5094be90558f95258a",
+      "observed_sha256": "73faa3197a3813baa8c057b13045ea4cd799c45e51957b5094be90558f95258a",
+      "approved_sha256": "73faa3197a3813baa8c057b13045ea4cd799c45e51957b5094be90558f95258a",
+      "matches_approved_version": true,
+      "download_run_id": "438df5c5-2e8a-415b-9b9f-9fffdce00922",
+      "downloaded_bytes": 17314933
+    },
+    {
+      "source_id": "anp_2026_1",
+      "source_url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/shpc/dsas/ca/ca-2026-01.zip",
+      "date_start": "2026-01-01",
+      "date_end": "2026-06-30",
+      "classification": "identical_content",
+      "previous_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+      "observed_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+      "approved_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+      "matches_approved_version": true,
+      "download_run_id": "06ec464c-7b98-4360-9004-d8c99f27da03",
+      "downloaded_bytes": 8488624
+    }
+  ],
+  "total_downloaded_bytes": 51429462,
+  "publication_changed": false,
+  "started_at_utc": "2026-11-14T20:57:45.462944+00:00",
+  "finished_at_utc": "2026-11-14T20:57:57.254723+00:00"
+}

@@ -1,0 +1,21 @@
+{
+  "status": "old_file_correction_fixture_prepared_locally",
+  "is_synthetic": true,
+  "fabric_executed": false,
+  "source_id": "anp_2024_1",
+  "original_source_sha256": "5f8468096dad5582633ab172bbb101529be8235292487f0d412f5930b310b12a",
+  "corrected_source_sha256": "f95e44e79cdad48f1bbdbe9e47ed9800e7531cb2595eb54e82e2311f68b622de",
+  "source_rows": 477154,
+  "accepted_rows": 477136,
+  "target": {
+    "cnpj": "02817655000182",
+    "data_coleta": "2024-01-01",
+    "produto": "GASOLINA",
+    "old_price": "5.680",
+    "new_price": "5.803"
+  },
+  "changed_price_rows": 1,
+  "changed_station_attribute_rows": 4,
+  "official_inputs_modified": false,
+  "prepared_at_utc": "2026-11-14T20:56:21.215840+00:00"
+}

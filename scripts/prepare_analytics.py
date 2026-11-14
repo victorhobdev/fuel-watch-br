@@ -1,12 +1,20 @@
 """Referencia independente Pandas sobre o export real, sem executar Fabric."""
-import json,hashlib
+import argparse,json,hashlib,sys
 from pathlib import Path
 from decimal import Decimal
+ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 import pandas as pd
 from fuelwatch.analytics import decimal_median,relative_difference,row_hash
 
-out=Path('data/artifacts/analytics');out.mkdir(exist_ok=True,parents=True)
-f=pd.read_parquet('data/processed/anp_brasil_2026_1.parquet');f['mills']=f.preco_venda.map(lambda p:int(p*1000))
+parser=argparse.ArgumentParser();parser.add_argument('--history',action='store_true');args=parser.parse_args()
+out=ROOT/('data/artifacts/analytics-history' if args.history else 'data/artifacts/analytics');out.mkdir(exist_ok=True,parents=True)
+if args.history:
+ f=pd.read_parquet(ROOT/'data/artifacts/history/publication/reference.parquet')
+ dates=pd.to_datetime(f.data_coleta);f['inicio_semana_iso']=(dates-pd.to_timedelta(dates.dt.dayofweek,unit='d')).dt.date
+ municipalities=pd.read_parquet(ROOT/'data/artifacts/national/municipalities.parquet',columns=['municipio_ibge','nome']).rename(columns={'nome':'municipio_ibge_nome'})
+ n=len(f);f=f.merge(municipalities,on='municipio_ibge',how='left',validate='many_to_one');assert len(f)==n and f.municipio_ibge_nome.notna().all()
+else:f=pd.read_parquet(ROOT/'data/processed/anp_brasil_2026_1.parquet')
+f['mills']=f.preco_venda.map(lambda p:int(p*1000))
 key=['cnpj','produto','moeda','unidade','inicio_semana_iso'];region=['uf','produto','moeda','unidade','inicio_semana_iso'];city=['municipio_ibge','produto','moeda','unidade','inicio_semana_iso']
 f=f.sort_values('data_coleta');g=f.groupby(key,dropna=False);last=g.tail(1).set_index(key);agg=g.agg(mills=('mills','median'),coletas=('cnpj','size'),soma_mills=('mills','sum'),ufs=('uf','nunique'),municipios=('municipio_ibge','nunique'),bandeiras=('bandeira_observada','nunique'))
 p=last[['uf','municipio_ibge','municipio_ibge_nome','bandeira_observada','revenda_observada']].join(agg).reset_index();p['preco_mediano']=p.mills.map(lambda x:Decimal(str(x))/1000);p['soma_precos']=p.soma_mills.map(lambda x:Decimal(int(x))/1000);p['comparacao_valida']=(p.ufs==1)&(p.municipios==1)&(p.bandeiras==1);p=p[key+['uf','municipio_ibge','municipio_ibge_nome','bandeira_observada','revenda_observada','preco_mediano','coletas','soma_precos','comparacao_valida']]

@@ -62,6 +62,12 @@ Política definida antes de interpretar associações de preços, em
 - Vazio e sentinela -9999 são ausências; chuva zero é medição válida. Duplicatas,
   conflitos de hora, formatos e demais valores inválidos precisam ser auditados
   no processamento, antes de qualquer análise.
+- O screening de temperatura usa a faixa ampla de -60 a 60 °C, como regra do
+  projeto, sem atribuí-la ao controle oficial do INMET. Valores excluídos continuam
+  rastreáveis no arquivo original. Precipitação negativa é inválida.
+- Chuva semanal é soma **observada nas horas válidas**, sem preencher as horas
+  ausentes. Mesmo com cobertura mínima de 80%, não equivale ao total completo
+  da semana; a fração válida acompanha o valor.
 
 O catálogo contém 1.793 registros estação/ano. A associação geográfica ficou
 dentro do limite para 454 de 460 municípios no ano ISO 2024, 414 de 419 em 2025

@@ -11,19 +11,27 @@ bundle=files/p_bundle_relative_path
 payload=(bundle/'manifest.json').read_bytes()
 assert hashlib.sha256(payload).hexdigest()==p_manifest_sha256
 manifest=json.loads(payload)
+mode=globals().get('p_mode','official')
+assert mode in ['official','lab'] and manifest.get('is_synthetic',False) is (mode=='lab')
+if mode=='lab':assert all(s['scope']['scope_id'].startswith('lab_') for s in manifest['sources'])
+namespace='lab_hist' if mode=='lab' else 'hist'
+data_root=files/'lab/history-correction' if mode=='lab' else files
+def table(suffix):return namespace+'_'+suffix
 for name,spec in manifest['files'].items():
     content=(bundle/name).read_bytes()
     assert hashlib.sha256(content).hexdigest()==spec['sha256'] and len(content)==spec['bytes'],name
-spark.sparkContext.addPyFile(str(bundle/'rules.zip'))
+shared_rules=files/'shared_rules'/manifest['files']['rules.zip']['sha256']/'fuelwatch_history_rules.zip'
+assert hashlib.sha256(shared_rules.read_bytes()).hexdigest()==manifest['files']['rules.zip']['sha256']
+spark.sparkContext.addPyFile(str(shared_rules))
 from fuelwatch.national import national_reference
 from fuelwatch.m02_reference import RAW_COLUMNS, HEADERS, TYPED_FIELDS
 from fuelwatch.silver_spark import classify,category_counts
 _,lookup=national_reference(json.loads((bundle/'municipios.json').read_bytes()),json.loads((bundle/'estados.json').read_bytes()))
 spark.conf.set('spark.sql.session.timeZone','UTC')
 run_id=str(uuid.uuid4())
-audit={'run_id':run_id,'landing_run_id':p_landing_run_id,'environment':'fabric','manifest_sha256':p_manifest_sha256,'status':'started','started_at_utc':datetime.now(timezone.utc).isoformat(),'sources':[]}
+audit={'run_id':run_id,'landing_run_id':p_landing_run_id,'environment':'fabric','is_synthetic':mode=='lab','manifest_sha256':p_manifest_sha256,'status':'started','started_at_utc':datetime.now(timezone.utc).isoformat(),'sources':[]}
 previous_receipts=[]
-for receipt_path in (files/'audit/history').glob('*.json'):
+for receipt_path in (data_root/'audit/history').glob('*.json'):
     receipt=json.loads(receipt_path.read_bytes())
     if receipt.get('status')=='historical_versions_silver_validated' and receipt.get('manifest_sha256')==p_manifest_sha256:
         previous_receipts.append(receipt)
@@ -32,14 +40,18 @@ def compare(a,b):
     assert a.schema==b.schema, 'Tipos diferentes da referencia independente'
     assert a.exceptAll(b).limit(1).count()==0 and b.exceptAll(a).limit(1).count()==0,'Diferenca de negocio'
 def lineage(df,source):
-    return df.withColumn('source_id',F.lit(source['source_id'])).withColumn('source_sha256',F.lit(source['source_sha256'])).withColumn('run_id',F.lit(run_id)).withColumn('ingested_at_utc',F.lit(audit['started_at_utc'])).withColumn('is_synthetic',F.lit(False))
+    return df.withColumn('source_id',F.lit(source['source_id'])).withColumn('source_sha256',F.lit(source['source_sha256'])).withColumn('run_id',F.lit(run_id)).withColumn('ingested_at_utc',F.lit(audit['started_at_utc'])).withColumn('is_synthetic',F.lit(mode=='lab'))
 try:
+    if mode=='lab' and not spark.catalog.tableExists(table('silver_versoes')):
+        source_ids=[s['source_id'] for s in manifest['sources']]
+        seed=spark.table('hist_silver_versoes').where(F.col('source_id').isin(source_ids)).withColumn('is_synthetic',F.lit(True))
+        seed.write.format('delta').mode('overwrite').saveAsTable(table('silver_versoes'))
     for source in manifest['sources']:
         source_id=source['source_id'];sha=source['source_sha256']
         assert re.fullmatch(r'anp_20\d{2}_[12]',source_id) and re.fullmatch('[0-9a-f]{64}',sha)
-        landing=files/'landing/anp-history'/source_id/p_landing_run_id/source['filename']
+        landing=data_root/'landing/anp-history'/source_id/p_landing_run_id/source['filename']
         raw_bytes=landing.read_bytes();assert hashlib.sha256(raw_bytes).hexdigest()==sha
-        raw_dir=files/'raw/anp-history'/source_id/sha;raw_dir.mkdir(parents=True,exist_ok=True)
+        raw_dir=data_root/'raw/anp-history'/source_id/sha;raw_dir.mkdir(parents=True,exist_ok=True)
         preserved=raw_dir/source['filename']
         if preserved.exists():assert preserved.read_bytes()==raw_bytes
         else:preserved.write_bytes(raw_bytes)
@@ -55,7 +67,7 @@ try:
             assert len(row)==len(HEADERS)
             count+=1
         assert count==source['counts']['received']
-        extracted=files/'extracted/anp-history'/source_id/sha/'source.csv';extracted.parent.mkdir(parents=True,exist_ok=True)
+        extracted=data_root/'extracted/anp-history'/source_id/sha/'source.csv';extracted.parent.mkdir(parents=True,exist_ok=True)
         if extracted.exists():assert extracted.read_bytes()==csv_bytes
         else:extracted.write_bytes(csv_bytes)
         schema=T.StructType([T.StructField(h,T.StringType(),True) for h in HEADERS])
@@ -63,17 +75,17 @@ try:
         assert raw.count()==count
         bronze=lineage(raw.withColumn('raw_row_sha256',F.sha2(F.to_json(F.struct(*RAW_COLUMNS)),256)),source)
         predicate="source_sha256 = '"+sha+"'"
-        bronze.write.format('delta').mode('overwrite').option('replaceWhere',predicate).saveAsTable('hist_bronze_anp')
-        persisted=spark.table('hist_bronze_anp').where(predicate)
+        bronze.write.format('delta').mode('overwrite').option('replaceWhere',predicate).saveAsTable(table('bronze_anp'))
+        persisted=spark.table(table('bronze_anp')).where(predicate)
         assert persisted.count()==count
         prior=next((s for r in previous_receipts for s in r['sources'] if s['source_id']==source_id and s['source_sha256']==sha and s['full_typed_comparison_passed']),None)
-        if prior and spark.catalog.tableExists('hist_silver_versoes'):
-            existing=spark.table('hist_silver_versoes').where(predicate)
+        if prior and spark.catalog.tableExists(table('silver_versoes')):
+            existing=spark.table(table('silver_versoes')).where(predicate)
             ref=spark.read.parquet('Files/'+p_bundle_relative_path+'/'+source_id+'.parquet').withColumn('preco_venda',F.col('preco_venda').cast('decimal(10,3)'))
             compare(ref,existing)
-            actual={'selected':count,'invalid':spark.table('hist_quarentena').where(predicate).count(),
-                    'exact_duplicate_excess':int(spark.table('hist_duplicatas').where(predicate).agg(F.sum('duplicate_excess')).first()[0] or 0),
-                    'conflicting_rows_after_exact_dedup':spark.table('hist_conflitos').where(predicate).count(),'accepted':existing.count()}
+            actual={'selected':count,'invalid':spark.table(table('quarentena')).where(predicate).count(),
+                    'exact_duplicate_excess':int(spark.table(table('duplicatas')).where(predicate).agg(F.sum('duplicate_excess')).first()[0] or 0),
+                    'conflicting_rows_after_exact_dedup':spark.table(table('conflitos')).where(predicate).count(),'accepted':existing.count()}
             assert actual==prior['counts'],'Repeticao encontrou alteracao nas categorias persistidas'
             audit['sources'].append({'source_id':source_id,'source_sha256':sha,'counts':actual,'full_typed_comparison_passed':True,'reused_validated_silver':True,'prior_validation_reused':True})
             print('Identical source: typed Silver and quality reconciled without rerunning validation UDF',source_id,flush=True)
@@ -83,27 +95,28 @@ try:
             actual=category_counts(parts)
             expected={'selected':count,'invalid':source['counts']['invalid'],'exact_duplicate_excess':source['counts']['exact_duplicate_excess'],'conflicting_rows_after_exact_dedup':source['counts']['conflicting_rows'],'accepted':source['counts']['accepted']}
             assert actual==expected,(source_id,actual,expected)
-            for category,table in [('invalid','hist_quarentena'),('duplicates','hist_duplicatas'),('conflicts','hist_conflitos')]:
-                lineage(parts[category],source).write.format('delta').mode('overwrite').option('replaceWhere',predicate).saveAsTable(table)
+            for category,suffix in [('invalid','quarentena'),('duplicates','duplicatas'),('conflicts','conflitos')]:
+                lineage(parts[category],source).write.format('delta').mode('overwrite').option('replaceWhere',predicate).saveAsTable(table(suffix))
             accepted=parts['accepted']
             ref=spark.read.parquet('Files/'+p_bundle_relative_path+'/'+source_id+'.parquet').withColumn('preco_venda',F.col('preco_venda').cast('decimal(10,3)'))
             compare(ref,accepted)
-            if spark.catalog.tableExists('hist_silver_versoes'):
-                previous=spark.table('hist_silver_versoes').where(predicate)
+            if spark.catalog.tableExists(table('silver_versoes')):
+                previous=spark.table(table('silver_versoes')).where(predicate)
                 if previous.limit(1).count():compare(previous,accepted)
             # Escrita por hash nao remove versoes de outros arquivos nem publica Gold.
-            lineage(accepted,source).write.format('delta').mode('overwrite').option('replaceWhere',predicate).saveAsTable('hist_silver_versoes')
-            compare(ref,spark.table('hist_silver_versoes').where(predicate))
+            lineage(accepted,source).write.format('delta').mode('overwrite').option('replaceWhere',predicate).saveAsTable(table('silver_versoes'))
+            compare(ref,spark.table(table('silver_versoes')).where(predicate))
             audit['sources'].append({'source_id':source_id,'source_sha256':sha,'counts':actual,'full_typed_comparison_passed':True,'reused_validated_silver':False})
         finally:
             parts['classified'].unpersist()
     audit['status']='historical_versions_silver_validated'
+    audit['all_versions_reused']=all(s.get('reused_validated_silver',False) for s in audit['sources'])
 except Exception as exc:
     audit.update(status='failed',error_type=type(exc).__name__,error=str(exc)[:1500])
     raise
 finally:
     audit['finished_at_utc']=datetime.now(timezone.utc).isoformat()
-    target=files/'audit/history';target.mkdir(parents=True,exist_ok=True)
+    target=data_root/'audit/history';target.mkdir(parents=True,exist_ok=True)
     (target/(run_id+'.json')).write_text(json.dumps(audit,ensure_ascii=False,indent=2),encoding='utf8')
 print(json.dumps(audit),flush=True)
 notebookutils.notebook.exit(json.dumps(audit))

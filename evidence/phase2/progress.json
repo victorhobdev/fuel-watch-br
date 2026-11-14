@@ -16,10 +16,8 @@
     "F2-02": {
       "status": "partial",
       "pending": [
-        "integrated_parameterized_national_pipeline",
-        "version_discovery_and_historical_corrections",
-        "five_real_update_failure_recovery_cases",
-        "finite_schedule"
+        "historical_analytics_report_and_common_station_panel",
+        "latest_official_notebook_definition_sync"
       ],
       "completed": [
         "four_official_historical_sources_profiled",
@@ -30,15 +28,27 @@
         "historical_gold_publication_maintaining_2026h1",
         "identical_delivery_reuses_validated_silver",
         "injected_failure_full_publication_preserved",
-        "successful_recovery_after_injected_failure"
+        "successful_recovery_after_injected_failure",
+        "integrated_parameterized_national_pipeline",
+        "integrated_unchanged_publication_skipped",
+        "finite_schedule_executed_and_disabled",
+        "old_official_files_refreshed_by_hash",
+        "old_file_full_correction_and_scd2_rebuild_in_fabric",
+        "five_real_update_failure_recovery_cases",
+        "seven_historical_analytical_views_fully_reconciled"
       ],
       "prepared": [
         "versioned_bronze_silver_notebook_11",
-        "joint_historical_candidate_notebook_12"
+        "joint_historical_candidate_notebook_12",
+        "complete_old_file_correction_lab"
       ],
       "evidence": [
         "evidence/phase2/history/silver-72918c9c-414e-40d0-8395-3ebdb0cb75d1.json",
-        "evidence/phase2/history/warehouse-first_joint_publish.json"
+        "evidence/phase2/history/warehouse-first_joint_publish.json",
+        "evidence/phase2/refresh/pipeline-010951d0-40c0-4e89-86de-20885cf7ed8b.json",
+        "evidence/phase2/refresh/schedule-once.json",
+        "evidence/phase2/history/lab/fabric-correction.json",
+        "evidence/phase2/analytics-history/warehouse-verification.json"
       ]
     },
     "F2-03": {
@@ -54,7 +64,8 @@
         "official_population_profile_local",
         "official_municipal_geography_profile_local",
         "population_join_nonmultiplication_local",
-        "official_inmet_annual_archives_sampled"
+        "official_inmet_annual_archives_sampled",
+        "weather_hourly_weekly_reference_and_join_local"
       ],
       "prepared": [
         "population_temporal_contract",

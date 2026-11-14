@@ -13,6 +13,7 @@
   "week": "ISO Monday; UTC weather calendar aligned to ANP collection date without inferring collection time",
   "minimum_valid_hour_fraction_per_variable": 0.8,
   "missing_numeric_sentinels": [-9999],
+  "temperature_screening_degC": [-60, 60],
   "temperature_unit": "degC",
   "precipitation_unit": "mm",
   "precipitation_zero_is_valid": true,

@@ -19,6 +19,13 @@ if args.prepare:
     ws=request('GET',base).json();cap=next(x for x in request('GET','capacities').json()['value'] if x['id']==ws['capacityId'])
     assert cap['sku'].startswith('FTL') and cap['state']=='Active'
     fs=DataLakeServiceClient('https://onelake.dfs.fabric.microsoft.com',credential=credential).get_file_system_client(c['workspace_id'])
+    rules=(ROOT/'data/artifacts/history'/input_folder/'rules.zip').read_bytes()
+    shared=c['lakehouse_id']+'/Files/shared_rules/'+hashlib.sha256(rules).hexdigest()
+    fs.get_directory_client(shared).create_directory()
+    rule_file=fs.get_file_client(shared+'/fuelwatch_history_rules.zip')
+    if not rule_file.exists():
+        rule_file.create_file();rule_file.append_data(rules,offset=0,length=len(rules));rule_file.flush_data(len(rules))
+    assert rule_file.download_file().readall()==rules
     prefix=c['lakehouse_id']+'/Files/'+bundle['relative_path'];fs.get_directory_client(prefix).create_directory()
     for path in sorted((ROOT/'data/artifacts/history'/input_folder).iterdir()):
         content=path.read_bytes();target=fs.get_file_client(prefix+'/'+path.name)

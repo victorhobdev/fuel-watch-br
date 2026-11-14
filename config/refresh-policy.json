@@ -1,0 +1,13 @@
+{
+  "contract_version": "anp-refresh-1.0",
+  "catalog_url": "https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/serie-historica-de-precos-de-combustiveis",
+  "first_year": 2024,
+  "only_closed_semesters": true,
+  "recheck": "all_discovered_eligible_semesters_on_each_explicit_refresh",
+  "identity": "sha256_of_original_downloaded_bytes",
+  "date_watermark_is_sufficient": false,
+  "same_hash": "record_delivery; reuse_integrally_verified_Silver; skip_Gold_when_approved_snapshot_already_published",
+  "unknown_or_changed_hash": "preserve_new_bytes; profile_layout_units_keys_quality; approve_versioned_contract_and_reference_before_publication",
+  "conditional_http_or_zero_transfer_claimed": false,
+  "continuous_schedule_authorized": false
+}

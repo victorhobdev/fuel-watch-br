@@ -1,0 +1,169 @@
+{
+  "status": "historical_integrated_skip_verified",
+  "environment": "fabric",
+  "pipeline_run_id": "96898797-8ece-4393-a8ac-e59d9a3ac4c6",
+  "job_start": "2026-11-14T21:03:31.1203273",
+  "job_end": "2026-11-14T21:07:38.9466667",
+  "activities": [
+    {
+      "name": "For_Each_Official_Version",
+      "status": "Succeeded",
+      "duration_ms": 76049,
+      "bytes_read": null,
+      "bytes_written": null,
+      "execution_seconds": null
+    },
+    {
+      "name": "Copy_Official_Version",
+      "status": "Succeeded",
+      "duration_ms": 19521,
+      "bytes_read": 9312457,
+      "bytes_written": 9312457,
+      "execution_seconds": null
+    },
+    {
+      "name": "Copy_Official_Version",
+      "status": "Succeeded",
+      "duration_ms": 17851,
+      "bytes_read": 8137003,
+      "bytes_written": 8137003,
+      "execution_seconds": null
+    },
+    {
+      "name": "Copy_Official_Version",
+      "status": "Succeeded",
+      "duration_ms": 13789,
+      "bytes_read": 8176445,
+      "bytes_written": 8176445,
+      "execution_seconds": null
+    },
+    {
+      "name": "Copy_Official_Version",
+      "status": "Succeeded",
+      "duration_ms": 18046,
+      "bytes_read": 17314933,
+      "bytes_written": 17314933,
+      "execution_seconds": null
+    },
+    {
+      "name": "Validate_Versions",
+      "status": "Succeeded",
+      "duration_ms": 148503,
+      "bytes_read": null,
+      "bytes_written": null,
+      "execution_seconds": 141
+    },
+    {
+      "name": "Check_Current_Publication",
+      "status": "Succeeded",
+      "duration_ms": 7550,
+      "bytes_read": null,
+      "bytes_written": null,
+      "execution_seconds": 2
+    },
+    {
+      "name": "Publish_When_Required",
+      "status": "Succeeded",
+      "duration_ms": 5406,
+      "bytes_read": null,
+      "bytes_written": null,
+      "execution_seconds": null
+    },
+    {
+      "name": "Identical_Publication_Skipped",
+      "status": "Succeeded",
+      "duration_ms": 1517,
+      "bytes_read": null,
+      "bytes_written": null,
+      "execution_seconds": null
+    }
+  ],
+  "versions_receipt": {
+    "run_id": "5329e641-6905-48a2-8109-b99c2377f00a",
+    "landing_run_id": "96898797-8ece-4393-a8ac-e59d9a3ac4c6",
+    "environment": "fabric",
+    "manifest_sha256": "4f9b45e5581c3148252a8f5f2f677359e307c234451c5d88cba3d804ed138f35",
+    "status": "historical_versions_silver_validated",
+    "started_at_utc": "2026-11-14T21:05:25.399435+00:00",
+    "sources": [
+      {
+        "source_id": "anp_2024_1",
+        "source_sha256": "5f8468096dad5582633ab172bbb101529be8235292487f0d412f5930b310b12a",
+        "counts": {
+          "selected": 477154,
+          "invalid": 0,
+          "exact_duplicate_excess": 10,
+          "conflicting_rows_after_exact_dedup": 8,
+          "accepted": 477136
+        },
+        "full_typed_comparison_passed": true,
+        "reused_validated_silver": true,
+        "prior_validation_reused": true
+      },
+      {
+        "source_id": "anp_2024_2",
+        "source_sha256": "63952c6786fe96289a643fdfbf4cf15e29264fb6a4c0be916a0708687aed71d4",
+        "counts": {
+          "selected": 421382,
+          "invalid": 0,
+          "exact_duplicate_excess": 0,
+          "conflicting_rows_after_exact_dedup": 0,
+          "accepted": 421382
+        },
+        "full_typed_comparison_passed": true,
+        "reused_validated_silver": true,
+        "prior_validation_reused": true
+      },
+      {
+        "source_id": "anp_2025_1",
+        "source_sha256": "674d69b09a1e6571e39b2fceedeed1d3b12d21e097bcec11d2d93ba7f7370a09",
+        "counts": {
+          "selected": 429523,
+          "invalid": 9114,
+          "exact_duplicate_excess": 0,
+          "conflicting_rows_after_exact_dedup": 0,
+          "accepted": 420409
+        },
+        "full_typed_comparison_passed": true,
+        "reused_validated_silver": true,
+        "prior_validation_reused": true
+      },
+      {
+        "source_id": "anp_2025_2",
+        "source_sha256": "73faa3197a3813baa8c057b13045ea4cd799c45e51957b5094be90558f95258a",
+        "counts": {
+          "selected": 384208,
+          "invalid": 0,
+          "exact_duplicate_excess": 0,
+          "conflicting_rows_after_exact_dedup": 0,
+          "accepted": 384208
+        },
+        "full_typed_comparison_passed": true,
+        "reused_validated_silver": true,
+        "prior_validation_reused": true
+      }
+    ],
+    "all_versions_reused": true,
+    "finished_at_utc": "2026-11-14T21:07:10.473790+00:00"
+  },
+  "publication": [
+    {
+      "batch_id": "fa38a557-db79-475b-839c-c2fbda588b3e",
+      "scope_id": "anp-historico-br-todos",
+      "source_sha256": "759b19e80c99cb5a5a7900c85a6556106eb0b9cf6f84218c692b835f12745af1",
+      "ibge_sha256": "d9eec8439bc8c5dc2f7db6332a8e5569f5a3f637988e26aebc513412d4069d5c",
+      "silver_delta_version": 1,
+      "is_synthetic": false,
+      "published_at_utc": "2026-11-14 20:59:22.398307",
+      "rows_published": 2125547,
+      "source_table": "hist_transfer_coletas",
+      "snapshot_id": "fa38a557-db79-475b-839c-c2fbda588b3e"
+    }
+  ],
+  "totals": {
+    "coletas": 2125547,
+    "postos": 13030,
+    "municipios": 462
+  },
+  "checked_at_utc": "2026-11-14T21:09:13.128557+00:00"
+}
