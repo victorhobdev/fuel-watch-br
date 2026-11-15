@@ -120,6 +120,7 @@
         "empty_workspace_rebuild_and_full_business_reconciliation",
         "prior_m08_promotion_and_restore_evidence_reused",
         "local_locked_ci_46_portable_plus_10_transport_tests_passed",
+        "github_workflow_dispatch_and_receipt",
         "dependency_locks_and_fabric_runtime_reviewed",
         "final_demo_and_readme_updated",
         "dev_test_rebuild_resource_audit_idle_same_ftl4_capacity",
@@ -127,8 +128,7 @@
         "integrated_pipeline_identical_replay_skipped_publication"
       ],
       "pending": [
-        "integrated_update_pipeline_reconstructed_and_verified_in_clean_workspace",
-        "github_ci_for_corrected_code_revision"
+        "integrated_update_pipeline_reconstructed_and_verified_in_clean_workspace"
       ],
       "evidence": [
         "evidence/phase2/deployment/empty-workspace.json",
@@ -136,7 +136,6 @@
         "evidence/phase2/deployment/rebuild-context-join.json",
         "evidence/phase2/deployment/rebuild-history-report-qa4.json",
         "evidence/phase2/deployment/github-ci.json",
-        "evidence/phase2/deployment/predecessor-guard.json",
         "evidence/phase2/deployment/predecessor-guard.json",
         "evidence/phase2/refresh/pipeline-30c7fac3-012f-4b85-97cd-77ae8ce56084.json",
         "evidence/phase2/deployment/dependency-versions.json",

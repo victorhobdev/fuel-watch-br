@@ -7,7 +7,8 @@ Gold, contexto, modelo semântico e relatório foram gerados e reconciliados no
 destino. A auditoria final confirmou dev, test e rebuild sem jobs, sessões Spark
 ou agendas habilitadas. O pipeline integrado de atualização ainda precisa ser
 reconstruído neste destino; o teste atual de predecessor no Warehouse não prova
-que esse pipeline rode ali. CI para o código corrigido também está pendente.
+que esse pipeline rode ali. O CI do commit corrigido passou e está registrado em
+`evidence/phase2/deployment/github-ci.json`.
 
 Bindings privados: `.local/phase2-rebuild/`; nunca substituir a configuração
 padrão de desenvolvimento. Conferir ausência de IDs literais de dev nas células

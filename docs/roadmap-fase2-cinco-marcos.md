@@ -21,7 +21,8 @@ Andamento detalhado e evidências: `evidence/phase2/progress.json`. Dados inicia
 F2-01 a F2-04 concluídos. F2-05 está parcial: o predecessor da publicação
 histórica agora é verificado dentro da transação e foi exercitado em dev e no
 workspace de rebuild; o pipeline integrado passou por uma repetição que pulou
-a republicação. Falta reconstruir e validar esse pipeline no workspace limpo e
-rodar CI para o commit corrigido. Evidências e pendências em
+a republicação. Falta reconstruir e validar esse pipeline no workspace limpo.
+O CI do commit corrigido passou com 46 testes portáveis e 10 de transporte e
+identidade. Evidências e pendências em
 `evidence/phase2/progress.json`. Não foi criada capacidade paga; o consumo em
 CU e a expiração da trial não foram verificados.

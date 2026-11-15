@@ -5,16 +5,16 @@
   "trigger": "workflow_dispatch",
   "repository": "victorhobdev/fuel-watch-br",
   "branch": "codex/primeira-fatia",
-  "head_sha": "ae18d4dd83fbcfb7abafed7548187f3f77f1da9e",
-  "run_id": 43725469433,
-  "run_url": "https://github.com/victorhobdev/fuel-watch-br/actions/runs/43725469433",
+  "head_sha": "2f3aaa375e275279c04de8c40ce5205684d76887",
+  "run_id": 43740143492,
+  "run_url": "https://github.com/victorhobdev/fuel-watch-br/actions/runs/43740143492",
   "conclusion": "success",
   "job": "portable-tests",
-  "job_duration_seconds": 54,
+  "job_duration_seconds": 63,
   "tests": {
-    "portable": 43,
+    "portable": 46,
     "transport_and_identity": 10,
-    "total": 53
+    "total": 56
   },
   "runner": {
     "kind": "self-hosted",
@@ -23,6 +23,6 @@
     "release_archive_sha256_verified": true,
     "unregistered_after_job": true
   },
-  "completed_at_utc": "2026-11-15T14:39:36Z",
+  "completed_at_utc": "2026-11-15T17:17:17Z",
   "evidence_source": "GitHub Actions run metadata and job log"
 }
