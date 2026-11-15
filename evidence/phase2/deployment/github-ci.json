@@ -1,0 +1,28 @@
+{
+  "status": "github_workflow_verified",
+  "workflow": "Fuel Watch checks",
+  "workflow_file": ".github/workflows/checks.yml",
+  "trigger": "workflow_dispatch",
+  "repository": "victorhobdev/fuel-watch-br",
+  "branch": "codex/primeira-fatia",
+  "head_sha": "ae18d4dd83fbcfb7abafed7548187f3f77f1da9e",
+  "run_id": 43725469433,
+  "run_url": "https://github.com/victorhobdev/fuel-watch-br/actions/runs/43725469433",
+  "conclusion": "success",
+  "job": "portable-tests",
+  "job_duration_seconds": 54,
+  "tests": {
+    "portable": 43,
+    "transport_and_identity": 10,
+    "total": 53
+  },
+  "runner": {
+    "kind": "self-hosted",
+    "ephemeral": true,
+    "version": "2.338.2",
+    "release_archive_sha256_verified": true,
+    "unregistered_after_job": true
+  },
+  "completed_at_utc": "2026-11-15T14:39:36Z",
+  "evidence_source": "GitHub Actions run metadata and job log"
+}

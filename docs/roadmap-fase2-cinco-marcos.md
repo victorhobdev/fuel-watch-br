@@ -15,3 +15,12 @@ Não alterar estes requisitos para se ajustar ao que já existe. Aceite exige ev
 Sequência: F2-01 → F2-02 → F2-03 → F2-04 → F2-05, com coleta de métricas, contratos, qualidade e versionamento ao longo de todos. Falhas técnicas serão investigadas e corrigidas; dependências humanas reais não impedem trabalho independente autorizado.
 
 Andamento detalhado e evidências: `evidence/phase2/progress.json`. Dados iniciais: `evidence/fabric/national/acceptance.json`. O plano técnico anterior descreve os contratos e os cuidados de cada componente: `fase-2-roadmap-observatorio-completo-2026-11-13.md`.
+
+## Fechamento em 15/11/2026
+
+**F2-01 a F2-05 concluídos**, todos com `pending: []` em
+`evidence/phase2/progress.json`. O CI remoto do commit final `ae18d4d` passou
+com 43 testes portáveis e 10 de transporte/identidade; recibo:
+`evidence/phase2/deployment/github-ci.json`. Permanecem limites já registrados:
+não foi criada capacidade paga, e o consumo em CU e a expiração da trial não
+foram verificados.

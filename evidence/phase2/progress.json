@@ -113,25 +113,25 @@
       ]
     },
     "F2-05": {
-      "status": "partial",
+      "status": "completed",
       "completed": [
         "current_workspace_items_inventory",
         "clean_rebuild_workspace_empty_baseline_verified_on_existing_trial",
         "empty_workspace_rebuild_and_full_business_reconciliation",
         "prior_m08_promotion_and_restore_evidence_reused",
         "local_locked_ci_43_portable_plus_10_transport_tests_passed",
+        "github_workflow_dispatch_and_receipt",
         "dependency_locks_and_fabric_runtime_reviewed",
         "final_demo_and_readme_updated",
         "dev_test_rebuild_resource_audit_idle_same_ftl4_capacity"
       ],
-      "pending": [
-        "github_workflow_dispatch_and_receipt"
-      ],
+      "pending": [],
       "evidence": [
         "evidence/phase2/deployment/empty-workspace.json",
         "evidence/phase2/deployment/rebuild-warehouse-history-rebuild01.json",
         "evidence/phase2/deployment/rebuild-context-join.json",
         "evidence/phase2/deployment/rebuild-history-report-qa4.json",
+        "evidence/phase2/deployment/github-ci.json",
         "evidence/phase2/deployment/dependency-versions.json",
         "evidence/phase2/deployment/resource-audit-2026-11-15.json",
         "evidence/fabric/deployment/checkpoint.json",
