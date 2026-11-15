@@ -1,6 +1,7 @@
 -- O run vem da saida do notebook, nunca de TOP(1)/MAX(data).
 CREATE OR ALTER PROCEDURE gold_hist.stage_and_publish
-    @batch_id varchar(80), @snapshot_sha256 varchar(64), @inject_fail_before_commit bit=0
+    @batch_id varchar(80), @snapshot_sha256 varchar(64),
+    @expected_previous_batch_id varchar(80), @inject_fail_before_commit bit=0
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -42,5 +43,7 @@ BEGIN
         IF @@TRANCOUNT>0 ROLLBACK TRANSACTION;
         THROW;
     END CATCH;
-    EXEC gold_hist.publish_gold @batch_id=@batch_id,@inject_fail_before_commit=@inject_fail_before_commit;
+    EXEC gold_hist.publish_gold @batch_id=@batch_id,
+        @expected_previous_batch_id=@expected_previous_batch_id,
+        @inject_fail_before_commit=@inject_fail_before_commit;
 END;

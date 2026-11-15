@@ -13,4 +13,4 @@ Fonte inicial: `gold_br.coletas`, publicação `7e2b22fc-6fb4-4237-8481-bbc79c75
 - Preços nominais em BRL/litro ou BRL/m3, sem misturar produtos. Valores analíticos e diferenças usam seis casas decimais; percentual também usa seis. Arredondamento de exibição não altera as comparações.
 - Verificação: referências independentes Pandas/Decimal versus T-SQL real, preservando colunas, conteúdo e multiplicidade por fingerprints de linhas tipadas. Contagem ou soma isoladas não bastam.
 
-Implementação: `sql/analytics/01_national_benchmarks.sql`. Referências locais: `scripts/prepare_analytics.py`. Verificação remota: `tools/fabric/phase2_analytics.py --verify`. O relatório nacional e as respostas interpretativas ainda precisam de execução/verificação próprias para fechar F2-01.
+Implementação: `sql/analytics/01_national_benchmarks.sql`. Referências locais: `scripts/prepare_analytics.py`. Verificação remota: `tools/fabric/phase2_analytics.py --verify`. O relatório nacional e as respostas interpretativas foram executados, reconciliados e renderizados; evidências em `evidence/phase2/analytics/acceptance.json` e no manifesto de progresso.

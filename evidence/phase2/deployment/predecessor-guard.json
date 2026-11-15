@@ -1,0 +1,24 @@
+{
+  "status": "predecessor_guard_verified_in_fabric",
+  "checks": [
+    {
+      "environment": "development",
+      "stale_predecessor_rejected": true,
+      "publication_batch_id": "fa38a557-db79-475b-839c-c2fbda588b3e",
+      "source_sha256": "759b19e80c99cb5a5a7900c85a6556106eb0b9cf6f84218c692b835f12745af1",
+      "rows_published": 2125547,
+      "unchanged_after_rejection": true
+    },
+    {
+      "environment": "clean_rebuild",
+      "stale_predecessor_rejected": true,
+      "publication_batch_id": "8eb53793-b0de-48c3-af79-e6ae800c032b",
+      "source_sha256": "759b19e80c99cb5a5a7900c85a6556106eb0b9cf6f84218c692b835f12745af1",
+      "rows_published": 2125547,
+      "unchanged_after_rejection": true
+    }
+  ],
+  "rejected_expected_previous_batch_id": "intentionally-stale-batch",
+  "tested_at_utc": "2026-11-15T17:13:24.252892+00:00",
+  "mutation_of_official_business": false
+}

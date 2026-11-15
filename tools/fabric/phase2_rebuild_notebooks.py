@@ -8,7 +8,7 @@ s=json.loads(binding.read_text());dev=json.loads((ROOT/'.local/fabric-environmen
 assert s['workspace_id']!=dev['workspace_id'] and s['lakehouse']['id']!=dev['lakehouse_id']
 base='workspaces/'+s['workspace_id']
 wh=request('GET',base+'/warehouses/'+s['warehouse']['id']).json()
-environment={'workspace_id':s['workspace_id'],'lakehouse_id':s['lakehouse']['id'],'warehouse_database':'wh_fuelwatch','warehouse_server':wh['properties']['connectionInfo']}
+environment={'workspace_id':s['workspace_id'],'lakehouse_id':s['lakehouse']['id'],'warehouse_id':s['warehouse']['id'],'warehouse_database':'wh_fuelwatch','warehouse_server':wh['properties']['connectionInfo']}
 write_json(folder/'environment.json',environment)
 s.setdefault('notebooks',{})
 checks=[]

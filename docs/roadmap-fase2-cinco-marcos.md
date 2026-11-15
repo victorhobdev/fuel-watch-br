@@ -16,12 +16,12 @@ Sequência: F2-01 → F2-02 → F2-03 → F2-04 → F2-05, com coleta de métric
 
 Andamento detalhado e evidências: `evidence/phase2/progress.json`. Dados iniciais: `evidence/fabric/national/acceptance.json`. O plano técnico anterior descreve os contratos e os cuidados de cada componente: `fase-2-roadmap-observatorio-completo-2026-11-13.md`.
 
-## Fechamento em 15/11/2026
+## Estado da revisão em 15/11/2026
 
-**F2-01 a F2-05 concluídos**, todos com `pending: []` em
-`evidence/phase2/progress.json`. O CI remoto do commit de implementação
-`ae18d4d` passou
-com 43 testes portáveis e 10 de transporte/identidade; recibo:
-`evidence/phase2/deployment/github-ci.json`. Permanecem limites já registrados:
-não foi criada capacidade paga, e o consumo em CU e a expiração da trial não
-foram verificados.
+F2-01 a F2-04 concluídos. F2-05 está parcial: o predecessor da publicação
+histórica agora é verificado dentro da transação e foi exercitado em dev e no
+workspace de rebuild; o pipeline integrado passou por uma repetição que pulou
+a republicação. Falta reconstruir e validar esse pipeline no workspace limpo e
+rodar CI para o commit corrigido. Evidências e pendências em
+`evidence/phase2/progress.json`. Não foi criada capacidade paga; o consumo em
+CU e a expiração da trial não foram verificados.

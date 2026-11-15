@@ -1,10 +1,19 @@
 -- Publicacao nacional transacional; uma tentativa por vez.
-CREATE OR ALTER PROCEDURE gold_hist.publish_gold @batch_id varchar(80), @inject_fail_before_commit bit = 0
+CREATE OR ALTER PROCEDURE gold_hist.publish_gold
+    @batch_id varchar(80), @expected_previous_batch_id varchar(80),
+    @inject_fail_before_commit bit = 0
 AS
 BEGIN
     SET NOCOUNT ON;
     BEGIN TRY
         BEGIN TRANSACTION;
+        DECLARE @current_publications bigint, @current_batch_id varchar(80);
+        SELECT @current_publications=COUNT_BIG(*), @current_batch_id=MAX(batch_id)
+        FROM gold_hist.publication;
+        IF (@expected_previous_batch_id='' AND @current_publications<>0)
+            OR (@expected_previous_batch_id<>'' AND
+                (@current_publications<>1 OR @current_batch_id<>@expected_previous_batch_id))
+            THROW 51847, 'A publicacao atual mudou desde a selecao do predecessor.', 1;
         DELETE FROM gold_hist.dim_data;
         INSERT INTO gold_hist.dim_data
             SELECT CAST(data_sk AS int),CAST(data AS date),CAST(inicio_semana_iso AS date),CAST(ano_iso AS int),CAST(semana_iso AS int)

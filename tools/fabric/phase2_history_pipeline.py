@@ -42,14 +42,14 @@ if args.prepare:
     gate_expr=expr("@concat('"+before.replace("'","''")+"',json(activity('Build_Candidate').output.result.exitValue).run_id,'"+after.replace("'","''")+"')")
     visible=script('Wait_Exact_SQL_Visibility',gate_expr,'Build_Candidate',retries=12)
     install=script('Install_Stage_Procedure',(ROOT/'sql/history/04_stage_and_publish.sql').read_text(encoding='utf8'),'Wait_Exact_SQL_Visibility')
-    publish=script('Publish_Protected_Gold',expr("@concat('EXEC gold_hist.stage_and_publish @batch_id=''',json(activity('Build_Candidate').output.result.exitValue).run_id,''',@snapshot_sha256=''',pipeline().parameters.p_publication_sha,''';')"),'Install_Stage_Procedure')
+    publish=script('Publish_Protected_Gold',expr("@concat('EXEC gold_hist.stage_and_publish @batch_id=''',json(activity('Build_Candidate').output.result.exitValue).run_id,''',@snapshot_sha256=''',pipeline().parameters.p_publication_sha,''',@expected_previous_batch_id=''',pipeline().parameters.p_expected_previous_batch_id,''';')"),'Install_Stage_Procedure')
     verify=script('Verify_Exact_Publication',expr("@concat('IF (SELECT COUNT_BIG(*) FROM gold_hist.publication WHERE batch_id=''',json(activity('Build_Candidate').output.result.exitValue).run_id,''' AND source_sha256=''',pipeline().parameters.p_publication_sha,''')<>1 THROW 51846,''Publicacao nao corresponde ao run exato.'',1; SELECT ''historical_pipeline_published'' AS status;')"),'Publish_Protected_Gold')
     changed={'name':'Publish_When_Required','type':'IfCondition','dependsOn':depends('Check_Current_Publication'),'typeProperties':{
         'expression':expr("@or(pipeline().parameters.p_force_rebuild,or(not(json(activity('Validate_Versions').output.result.exitValue).all_versions_reused),equals(activity('Check_Current_Publication').output.resultSets[0].rows[0].current_publication,0)))"),
         'ifTrueActivities':[candidate,visible,install,publish,verify],
         'ifFalseActivities':[{'name':'Identical_Publication_Skipped','type':'Wait','dependsOn':[],'typeProperties':{'waitTimeInSeconds':1}}]}}
     parameters=copy.deepcopy(source['properties']['parameters'])
-    parameters.update({key:{'type':'string','defaultValue':value} for key,value in {'p_versions_path':versions['relative_path'],'p_versions_sha':versions['manifest_sha256'],'p_publication_path':publication['relative_path'],'p_publication_sha':publication['manifest_sha256']}.items()})
+    parameters.update({key:{'type':'string','defaultValue':value} for key,value in {'p_versions_path':versions['relative_path'],'p_versions_sha':versions['manifest_sha256'],'p_publication_path':publication['relative_path'],'p_publication_sha':publication['manifest_sha256'],'p_expected_previous_batch_id':''}.items()})
     parameters['p_force_rebuild']={'type':'bool','defaultValue':False}
     content={'properties':{'activities':[loop,validation,current,changed],'parameters':parameters}}
     definition={'parts':[{'path':'pipeline-content.json','payloadType':'InlineBase64','payload':base64.b64encode(json.dumps(content).encode()).decode()}]}
@@ -77,7 +77,9 @@ if args.start:
             assert all(x['state'] in {'Succeeded','Failed','Cancelled','Dead','Error','Success'} for x in sessions),'Sessao Spark ativa'
     write_json(pending,{'intent_at_utc':datetime.now(timezone.utc).isoformat(),'force_rebuild':args.force_rebuild})
     with connect(c) as cn:publication_before=results(cn.cursor().execute('SELECT * FROM gold_hist.publication'))[0]
-    response=request('POST',jobs+'/Pipeline/instances',{'executionData':{'pipelineName':name,'parameters':{'p_force_rebuild':args.force_rebuild}}})
+    assert len(publication_before)<=1,'Publicacao atual ambigua; interromper'
+    expected_previous=publication_before[0]['batch_id'] if publication_before else ''
+    response=request('POST',jobs+'/Pipeline/instances',{'executionData':{'pipelineName':name,'parameters':{'p_force_rebuild':args.force_rebuild,'p_expected_previous_batch_id':expected_previous}}})
     run=response.headers['Location'].rstrip('/').split('/')[-1]
     write_json(accepted,{'run_id':run,'force_rebuild':args.force_rebuild,'publication_before':publication_before,'accepted_at_utc':datetime.now(timezone.utc).isoformat()});pending.unlink()
     print('Accepted integrated pipeline',run,flush=True)

@@ -1,11 +1,13 @@
 # Reconstrução da solução ampliada
 
-Estado em 15/11/2026: reconstrução executada em um workspace que estava vazio,
-na mesma capacidade trial FTL4 do ambiente dev. Lakehouse e Warehouse foram
+Estado em 15/11/2026: reconstrução de dados e consumo executada em um workspace
+que estava vazio, na mesma capacidade trial FTL4 do ambiente dev. Lakehouse e Warehouse foram
 criados no destino; nenhum Delta nem recibo de dev foi copiado. Bronze, Silver,
 Gold, contexto, modelo semântico e relatório foram gerados e reconciliados no
 destino. A auditoria final confirmou dev, test e rebuild sem jobs, sessões Spark
-ou agendas habilitadas. A execução remota final do CI ainda está pendente.
+ou agendas habilitadas. O pipeline integrado de atualização ainda precisa ser
+reconstruído neste destino; o teste atual de predecessor no Warehouse não prova
+que esse pipeline rode ali. CI para o código corrigido também está pendente.
 
 Bindings privados: `.local/phase2-rebuild/`; nunca substituir a configuração
 padrão de desenvolvimento. Conferir ausência de IDs literais de dev nas células
