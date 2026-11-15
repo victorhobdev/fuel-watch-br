@@ -1,0 +1,65 @@
+{
+  "status": "prepared_not_emitted",
+  "lab_run_id": "ae5e0526-4c65-45bb-928c-f80ea4c9c7e1",
+  "is_synthetic": true,
+  "source_is_anp": false,
+  "benchmark": {
+    "contract_version": "synthetic-historical-benchmark-1",
+    "source_publication": {
+      "batch_id": "fa38a557-db79-475b-839c-c2fbda588b3e",
+      "scope_id": "anp-historico-br-todos",
+      "source_sha256": "759b19e80c99cb5a5a7900c85a6556106eb0b9cf6f84218c692b835f12745af1",
+      "ibge_sha256": "d9eec8439bc8c5dc2f7db6332a8e5569f5a3f637988e26aebc513412d4069d5c",
+      "silver_delta_version": 1,
+      "is_synthetic": false,
+      "published_at_utc": "2026-11-14 20:59:22.398307",
+      "rows_published": 2125547,
+      "source_table": "hist_transfer_coletas",
+      "snapshot_id": "fa38a557-db79-475b-839c-c2fbda588b3e"
+    },
+    "reference_business_sha256": "0b6c23262db49fa7609a0a6f2d238afd4770d85b1011d7181a9fc0b871e3b66b",
+    "uf": "RJ",
+    "produto": "GASOLINA",
+    "moeda": "BRL",
+    "unidade": "litro",
+    "week_start": "2026-06-22",
+    "median": "6.790000",
+    "stations": 288,
+    "available_for_lab_at_utc": "2026-11-15T01:24:26.923372+00:00",
+    "maximum_reference_age_days": 180,
+    "missing_or_stale_policy": "unclassified_no_alert",
+    "event_time_policy": "synthetic events at or after available_for_lab_at_utc; historical reference explicitly dated",
+    "threshold_policy": "strictly greater than median times 1.10; synthetic scenario, not fraud detection",
+    "is_synthetic_lab": true,
+    "official_observations_modified": false,
+    "benchmark_version": "8006da3fa4aadb0cb4d048ac9a88f05d751f40ef6ad07c84c7997f22df94ed59"
+  },
+  "unique_event_ids": 1000,
+  "reinjected_events": 20,
+  "late_fixture_events": 10,
+  "expected_classifications": {
+    "within_threshold": 989,
+    "missing_benchmark": 5,
+    "stale_benchmark": 5,
+    "above_threshold": 1
+  },
+  "files": {
+    "seed.jsonl": {
+      "rows": 10,
+      "sha256": "d0004609ef9a2224c93603b65d5245f687ba685bf805646fab7c7f167ab14af8"
+    },
+    "baseline.jsonl": {
+      "rows": 989,
+      "sha256": "e3e7bd1bb1eb1f3f73ad1323a227976bd10aab283295477b6e7799710253c392"
+    },
+    "transition.jsonl": {
+      "rows": 1,
+      "sha256": "31cc1ac2775c7bf8e6bb531259729d671c682d6bad1c044c79e52865fcf176e6"
+    },
+    "reinject.jsonl": {
+      "rows": 20,
+      "sha256": "1c3d8f787488161ab859a52bc94dc43d758355c1ef35740de27d2603f81813e9"
+    }
+  },
+  "prepared_at_utc": "2026-11-15T01:28:17.134653+00:00"
+}

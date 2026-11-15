@@ -1,0 +1,67 @@
+{
+  "checked_at_utc": "2026-11-15T14:27:04.491627+00:00",
+  "workspaces": [
+    {
+      "alias": "dev",
+      "capacity_id": "8a343195-9180-4dbe-b23a-a8ded3d7bbde",
+      "capacity_sku": "FTL4",
+      "capacity_state": "Active",
+      "active_jobs": [],
+      "active_spark_sessions": [],
+      "enabled_pipeline_schedules": [],
+      "item_types": {
+        "DataPipeline": 7,
+        "Dataflow": 1,
+        "Eventhouse": 1,
+        "Eventstream": 1,
+        "KQLDatabase": 2,
+        "Lakehouse": 2,
+        "Notebook": 17,
+        "Reflex": 1,
+        "Report": 3,
+        "SQLEndpoint": 2,
+        "SemanticModel": 3,
+        "Warehouse": 2
+      }
+    },
+    {
+      "alias": "test",
+      "capacity_id": "8a343195-9180-4dbe-b23a-a8ded3d7bbde",
+      "capacity_sku": "FTL4",
+      "capacity_state": "Active",
+      "active_jobs": [],
+      "active_spark_sessions": [],
+      "enabled_pipeline_schedules": [],
+      "item_types": {
+        "DataPipeline": 2,
+        "Dataflow": 1,
+        "Lakehouse": 2,
+        "Notebook": 7,
+        "SQLEndpoint": 2,
+        "Warehouse": 2
+      }
+    },
+    {
+      "alias": "rebuild",
+      "capacity_id": "8a343195-9180-4dbe-b23a-a8ded3d7bbde",
+      "capacity_sku": "FTL4",
+      "capacity_state": "Active",
+      "active_jobs": [],
+      "active_spark_sessions": [],
+      "enabled_pipeline_schedules": [],
+      "item_types": {
+        "DataPipeline": 1,
+        "Lakehouse": 1,
+        "Notebook": 5,
+        "Report": 1,
+        "SQLEndpoint": 1,
+        "SemanticModel": 1,
+        "Warehouse": 1
+      }
+    }
+  ],
+  "trial_expiration_verified": false,
+  "cost_or_cu_measured": false,
+  "batch_idle": true,
+  "same_capacity_for_all_workspaces": true
+}

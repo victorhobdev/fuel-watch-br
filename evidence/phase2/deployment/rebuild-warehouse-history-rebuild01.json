@@ -1,0 +1,39 @@
+{
+  "status": "historical_gold_validated",
+  "environment": "fabric",
+  "spark_job_id": "cf455708-3cb0-414a-9f21-d2d70ce7ca2c",
+  "run_id": "8eb53793-b0de-48c3-af79-e6ae800c032b",
+  "attempt": "rebuild01",
+  "started_at_utc": "2026-11-15T13:07:30.191212+00:00",
+  "publication": [
+    [
+      {
+        "status": "historical_gold_published",
+        "batch_id": "8eb53793-b0de-48c3-af79-e6ae800c032b",
+        "scope_id": "anp-historico-br-todos",
+        "source_sha256": "759b19e80c99cb5a5a7900c85a6556106eb0b9cf6f84218c692b835f12745af1",
+        "ibge_sha256": "d9eec8439bc8c5dc2f7db6332a8e5569f5a3f637988e26aebc513412d4069d5c",
+        "silver_delta_version": 0,
+        "is_synthetic": false,
+        "published_at_utc": "2026-11-15 13:12:11.215037",
+        "rows_published": 2125547,
+        "source_table": "hist_transfer_coletas",
+        "snapshot_id": "8eb53793-b0de-48c3-af79-e6ae800c032b"
+      }
+    ]
+  ],
+  "totals": {
+    "coletas": 2125547,
+    "postos": 13030,
+    "municipios": 462,
+    "ufs": 27,
+    "produtos": 6
+  },
+  "preserved_2026h1_typed_business": true,
+  "full_silver_gold_business_comparison_passed": true,
+  "full_scd2_and_weekly_comparison_passed": true,
+  "workspace_id": "52ee7464-3b6a-4cce-a1cd-0048b4f460ad",
+  "lakehouse_id": "95eceead-a243-4d43-a633-d5a9eb7ea5c5",
+  "warehouse_id": "141daf38-c50a-438e-b117-e9fa04374e8c",
+  "finished_at_utc": "2026-11-15T13:16:27.329056+00:00"
+}

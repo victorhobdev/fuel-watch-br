@@ -1,0 +1,28 @@
+{
+  "status": "context_spark_receipt_verified",
+  "environment": "fabric",
+  "job_id": "68240dd3-19a0-40fc-9f49-96db4c66cb6d",
+  "job_status": "Completed",
+  "receipt": {
+    "run_id": "8ab2db14-614b-4615-9b27-5fbe769fd7c6",
+    "environment": "fabric",
+    "started_at_utc": "2026-11-14T22:10:22.022702+00:00",
+    "inputs": {
+      "population": {
+        "sha256": "9c55ad8a681afa39059d8f7d40ffe41bbfa26f7b3d35b802238e4d14e433ab08",
+        "rows": 16713,
+        "table": "f2_context_population",
+        "action": "created"
+      },
+      "weather_municipal_weekly": {
+        "sha256": "4b712406c2d4ff275f766d0c12448245d0426a2b07d0291422e4539a6129da97",
+        "rows": 48677,
+        "table": "f2_context_weather_municipal_weekly",
+        "action": "created"
+      }
+    },
+    "status": "context_reference_tables_validated",
+    "finished_at_utc": "2026-11-14T22:10:53.738324+00:00"
+  },
+  "checked_at_utc": "2026-11-15T01:17:35.357621+00:00"
+}

@@ -1,0 +1,20 @@
+{
+  "status": "Completed",
+  "environment": "fabric_rebuild",
+  "workspace_id": "52ee7464-3b6a-4cce-a1cd-0048b4f460ad",
+  "lakehouse_id": "95eceead-a243-4d43-a633-d5a9eb7ea5c5",
+  "notebook": "15_context_references",
+  "notebook_id": "8bf9e95e-db13-4efb-9660-b19a39673eb4",
+  "job_id": "36d0d080-350b-4bd4-a579-5972847e5ff1",
+  "job_type": "execute",
+  "root_activity_id": "a148aae0-47c5-4737-82de-75ea6ec79ff7",
+  "started_at_utc": "2026-11-15T13:16:40.9826786",
+  "ended_at_utc": "2026-11-15T13:17:55.3454308",
+  "failure_reason": null,
+  "exit_value": "{\"run_id\": \"71981715-dcf8-467b-bfe5-3a7fe28542b2\", \"environment\": \"fabric\", \"started_at_utc\": \"2026-11-15T13:16:58.531255+00:00\", \"inputs\": {\"population\": {\"sha256\": \"9c55ad8a681afa39059d8f7d40ffe41bbfa26f7b3d35b802238e4d14e433ab08\", \"rows\": 16713, \"table\": \"f2_context_population\", \"action\": \"created\"}, \"weather_municipal_weekly\": {\"sha256\": \"4b712406c2d4ff275f766d0c12448245d0426a2b07d0291422e4539a6129da97\", \"rows\": 48677, \"table\": \"f2_context_weather_municipal_weekly\", \"action\": \"created\"}}, \"status\": \"context_reference_tables_validated\", \"finished_at_utc\": \"2026-11-15T13:17:44.284851+00:00\"}",
+  "compute": "Spark",
+  "livy_id": "a0056f8e-eb33-4a71-97c5-ed3e0a61ddb0",
+  "spark_application_id": "application_1794748318838_0001",
+  "runtime_version": "2.0",
+  "checked_at_utc": "2026-11-15T13:18:24.627519+00:00"
+}

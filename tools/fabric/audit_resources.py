@@ -18,13 +18,18 @@ def values(path):
 report = {'checked_at_utc': datetime.now(timezone.utc).isoformat(), 'workspaces': [],
           'trial_expiration_verified': False, 'cost_or_cu_measured': False}
 capacities = values('capacities')
-for alias, file in [('dev', '.local/fabric-environment.json'), ('test', '.local/m08-api/environment-test.json')]:
+environments = [
+    ('dev', '.local/fabric-environment.json'),
+    ('test', '.local/m08-api/environment-test.json'),
+    ('rebuild', '.local/phase2-rebuild/fabric-environment.json'),
+]
+for alias, file in environments:
     c = json.loads((ROOT / file).read_text())
     ws = c['workspace_id']
     info = request('GET', 'workspaces/' + ws).json()
     cap = next(x for x in capacities if x['id'] == info['capacityId'])
     items = values(f'workspaces/{ws}/items')
-    row = {'alias': alias, 'capacity_sku': cap['sku'], 'capacity_state': cap['state'],
+    row = {'alias': alias, 'capacity_id': cap['id'], 'capacity_sku': cap['sku'], 'capacity_state': cap['state'],
            'active_jobs': [], 'active_spark_sessions': [], 'enabled_pipeline_schedules': [],
            'item_types': {kind: sum(x['type'] == kind for x in items) for kind in sorted({x['type'] for x in items})}}
     for item in items:
@@ -46,6 +51,8 @@ for alias, file in [('dev', '.local/fabric-environment.json'), ('test', '.local/
                       'enabled_schedules': len(row['enabled_pipeline_schedules'])}), flush=True)
 report['batch_idle'] = all(not r[k] for r in report['workspaces']
                           for k in ['active_jobs', 'active_spark_sessions', 'enabled_pipeline_schedules'])
-out = ROOT / 'evidence/fabric/operations/resource-audit-2026-11-13.json'
+report['same_capacity_for_all_workspaces'] = len({r['capacity_id'] for r in report['workspaces']}) == 1
+out = ROOT / ('evidence/phase2/deployment/resource-audit-'
+              + datetime.now(timezone.utc).strftime('%Y-%m-%d') + '.json')
 out.write_text(json.dumps(report, indent=2) + '\n')
 print(json.dumps({'status': 'resource_inventory_recorded', 'batch_idle': report['batch_idle']}), flush=True)

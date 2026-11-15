@@ -1,0 +1,76 @@
+{
+  "status": "real_synthetic_activator_action_verified",
+  "environment": "fabric",
+  "rule_id": "9f582dd7-0afc-4ace-a407-4a60035a1547",
+  "rule_name": "Historical benchmark alert",
+  "activation_time_utc": "2026-11-15T01:52:43Z",
+  "activation_ingestion_time_utc": "2026-11-15T01:55:57Z",
+  "probe_run_id": "21366cbd-8f32-44f3-8222-eee18f061c46",
+  "probe_event_ids": [
+    "d2ae9be1-4ce1-4a48-91a5-e4311971f7e1",
+    "9c1c30c3-9978-4847-829f-c5da2dc94bb4"
+  ],
+  "probe_event_times_utc": [
+    "2026-11-15T01:49:28.967221+00:00",
+    "2026-11-15T01:49:29.967221+00:00"
+  ],
+  "action_type": "FabricItem pipeline",
+  "action_pipeline_id": "5904a32f-de04-471c-8424-c72e9b38b429",
+  "pipeline_job_id": "d55e8a4e-336a-4065-8f88-15b05a6f47a4",
+  "pipeline_status": "Completed",
+  "pipeline_started_at_utc": "2026-11-15T01:55:58.27",
+  "pipeline_ended_at_utc": "2026-11-15T01:56:12.9",
+  "rule_running": false,
+  "eventstream_destinations": [
+    {
+      "id": "4c27ad1f-58da-4c19-b9eb-220723d17324",
+      "name": "synthetic_activator",
+      "type": "Activator",
+      "properties": {
+        "workspaceId": "59339e2a-a81d-460b-a761-cdb6af13dec4",
+        "itemId": "79152e3d-e7fd-4335-b42d-00648af99cee",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "synthetic_stream"
+        }
+      ],
+      "status": "Paused"
+    },
+    {
+      "id": "e45d5621-fd1c-4d30-86f0-510e518f57ed",
+      "name": "synthetic_eventhouse",
+      "type": "Eventhouse",
+      "properties": {
+        "dataIngestionMode": "ProcessedIngestion",
+        "workspaceId": "59339e2a-a81d-460b-a761-cdb6af13dec4",
+        "itemId": "e5412d9f-5f94-4515-bb79-a74b0a0c5955",
+        "databaseName": "e5412d9f-5f94-4515-bb79-a74b0a0c5955",
+        "tableName": "lab_historical_events",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "synthetic_stream"
+        }
+      ],
+      "status": "Paused"
+    }
+  ],
+  "is_synthetic": true,
+  "official_observations_modified": false,
+  "external_notification_sent": false,
+  "correlation_limit": "Activator activation record has objectId=null; it proves one real rule activation and completed internal pipeline action within the two-event synthetic probe window, but does not expose the triggering event_id.",
+  "checked_at_utc": "2026-11-15T14:13:10.118832+00:00"
+}

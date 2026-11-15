@@ -1,0 +1,69 @@
+{
+  "status": "dependency_locks_and_fabric_runtime_reviewed",
+  "checked_at_utc": "2026-11-15T14:26:58.591251+00:00",
+  "python": {
+    "ci": "Python 3.13.5",
+    "fabric_tools": "Python 3.13.5"
+  },
+  "locks": [
+    {
+      "path": "tools/ci/requirements.lock",
+      "sha256": "d612f7feca342d2268d82a475378aac81681110cd78eb6191a907fc7ee0ed695",
+      "pinned_distributions": 19,
+      "installed_matches_lock": true,
+      "mismatches": {}
+    },
+    {
+      "path": "tools/fabric/requirements.lock",
+      "sha256": "75720db4d02b6a4d8ba18ca83376dbabf81d6c159e7a495e8de07b092cfdd514",
+      "pinned_distributions": 56,
+      "installed_matches_lock": true,
+      "mismatches": {}
+    },
+    {
+      "path": "tools/fabric/m10-requirements.lock",
+      "sha256": "429a8fcca21917daca93ce7042b1664157d03f8c59a2630c85192a48d1f874d4",
+      "pinned_distributions": 9,
+      "installed_matches_lock": true,
+      "mismatches": {},
+      "installed_subset_matches_lock": true
+    },
+    {
+      "path": "requirements-local.txt",
+      "sha256": "2e7da5ebc5415c5dc6c8eee3fad9b2b187295bbcd7817c7391d71aeff1ccd745",
+      "pinned_distributions": 4
+    }
+  ],
+  "ci_environment_matches_its_lock": true,
+  "fabric_tools_environment_matches_its_lock": true,
+  "m10_dependencies_are_installed_at_locked_versions": true,
+  "notebook_jobs": [
+    {
+      "notebook": "01_landing_to_bronze",
+      "status": "Completed",
+      "fabric_runtime_version": "2.0"
+    },
+    {
+      "notebook": "10_brasil_todos_combustiveis",
+      "status": "Completed",
+      "fabric_runtime_version": "2.0"
+    },
+    {
+      "notebook": "11_historico_bronze_silver",
+      "status": "Completed",
+      "fabric_runtime_version": "2.0"
+    },
+    {
+      "notebook": "12_historico_publicacao",
+      "status": "Completed",
+      "fabric_runtime_version": "2.0"
+    },
+    {
+      "notebook": "15_context_references",
+      "status": "Completed",
+      "fabric_runtime_version": "2.0"
+    }
+  ],
+  "spark_version_from_real_notebook_receipt": "4.1.1.5.5.20260929.238183312",
+  "limitations": "Fabric Runtime is service-managed; exact observed job runtime is recorded rather than installed from Python lockfiles. requirements-local.txt is a separate direct-dependency contract."
+}

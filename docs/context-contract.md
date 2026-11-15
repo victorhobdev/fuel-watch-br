@@ -1,7 +1,15 @@
-# Contexto populacional e meteorológico — contrato em validação
+# Contexto populacional e meteorológico — validado no Fabric
 
-Este bloco ainda não está publicado no Fabric nem no relatório. As fontes abaixo
-foram baixadas e perfiladas localmente, com hashes e origem preservados.
+As referências foram publicadas e validadas no Fabric pelo notebook
+`15_context_references`, job `68240dd3-19a0-40fc-9f49-96db4c66cb6d`.
+Os joins em `analise_hist.coletas_contexto` mantêm as 2.125.547 coletas e a soma
+de preços, com unicidade das referências conferida. As respostas exploratórias,
+medidas DAX por porte e a página de contexto do relatório histórico foram
+reconciliadas e renderizadas. A cobertura climática permanece descritiva e
+explicita ausências e elegibilidade.
+Evidências: `evidence/phase2/context/fabric-reference-68240dd3-19a0-40fc-9f49-96db4c66cb6d.json`,
+`evidence/phase2/context/warehouse-join.json` e
+`evidence/phase2/deployment/rebuild-history-report-qa4.json`.
 
 ## População
 
@@ -72,7 +80,10 @@ Política definida antes de interpretar associações de preços, em
 O catálogo contém 1.793 registros estação/ano. A associação geográfica ficou
 dentro do limite para 454 de 460 municípios no ano ISO 2024, 414 de 419 em 2025
 e 415 de 417 em 2026. Esses números medem proximidade geográfica elegível,
-**não cobertura de medições válidas**. A completude horária ainda será apurada.
+**não cobertura de medições válidas**. A completude foi apurada separadamente:
+1.509.541 coletas têm as duas variáveis elegíveis; 158.333 têm uma variável;
+417.449 têm cobertura insuficiente para ambas; 22.796 não têm estação elegível
+e 17.428 não têm medições. Esses totais foram reconciliados no Warehouse.
 
 As relações com preços serão exploratórias, com tamanho da amostra e ausências
 visíveis. Localização, sazonalidade, composição da amostra e distância da estação

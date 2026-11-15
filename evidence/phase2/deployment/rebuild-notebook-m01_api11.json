@@ -1,0 +1,20 @@
+{
+  "status": "Completed",
+  "environment": "fabric_rebuild",
+  "workspace_id": "52ee7464-3b6a-4cce-a1cd-0048b4f460ad",
+  "lakehouse_id": "95eceead-a243-4d43-a633-d5a9eb7ea5c5",
+  "notebook": "11_historico_bronze_silver",
+  "notebook_id": "7d4bcd7b-4bfa-41cb-9546-7120f1a24639",
+  "job_id": "c1934a83-eefc-4ae2-830d-659797a0e918",
+  "job_type": "execute",
+  "root_activity_id": "682e0147-63c5-4c22-bd67-72b272124d83",
+  "started_at_utc": "2026-11-15T12:50:14.5092735",
+  "ended_at_utc": "2026-11-15T12:58:34.7237152",
+  "failure_reason": null,
+  "exit_value": "{\"run_id\": \"b18ae8da-fb94-451b-bf75-fca48cff7da1\", \"landing_run_id\": \"4e37161f-bc84-4705-8d2f-a29af412b5e0\", \"environment\": \"fabric\", \"manifest_sha256\": \"4f9b45e5581c3148252a8f5f2f677359e307c234451c5d88cba3d804ed138f35\", \"status\": \"historical_versions_silver_validated\", \"started_at_utc\": \"2026-11-15T12:50:25.449171+00:00\", \"sources\": [{\"source_id\": \"anp_2024_1\", \"source_sha256\": \"5f8468096dad5582633ab172bbb101529be8235292487f0d412f5930b310b12a\", \"counts\": {\"selected\": 477154, \"invalid\": 0, \"exact_duplicate_excess\": 10, \"conflicting_rows_after_exact_dedup\": 8, \"accepted\": 477136}, \"full_typed_comparison_passed\": true, \"reused_validated_silver\": false}, {\"source_id\": \"anp_2024_2\", \"source_sha256\": \"63952c6786fe96289a643fdfbf4cf15e29264fb6a4c0be916a0708687aed71d4\", \"counts\": {\"selected\": 421382, \"invalid\": 0, \"exact_duplicate_excess\": 0, \"conflicting_rows_after_exact_dedup\": 0, \"accepted\": 421382}, \"full_typed_comparison_passed\": true, \"reused_validated_silver\": false}, {\"source_id\": \"anp_2025_1\", \"source_sha256\": \"674d69b09a1e6571e39b2fceedeed1d3b12d21e097bcec11d2d93ba7f7370a09\", \"counts\": {\"selected\": 429523, \"invalid\": 9114, \"exact_duplicate_excess\": 0, \"conflicting_rows_after_exact_dedup\": 0, \"accepted\": 420409}, \"full_typed_comparison_passed\": true, \"reused_validated_silver\": false}, {\"source_id\": \"anp_2025_2\", \"source_sha256\": \"73faa3197a3813baa8c057b13045ea4cd799c45e51957b5094be90558f95258a\", \"counts\": {\"selected\": 384208, \"invalid\": 0, \"exact_duplicate_excess\": 0, \"conflicting_rows_after_exact_dedup\": 0, \"accepted\": 384208}, \"full_typed_comparison_passed\": true, \"reused_validated_silver\": false}], \"all_versions_reused\": false, \"finished_at_utc\": \"2026-11-15T12:58:27.300715+00:00\"}",
+  "compute": "Spark",
+  "livy_id": "726845ce-b899-4d48-865a-5bb44156a5fc",
+  "spark_application_id": "application_1794746590408_0001",
+  "runtime_version": "2.0",
+  "checked_at_utc": "2026-11-15T12:59:07.077732+00:00"
+}

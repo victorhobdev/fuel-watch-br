@@ -1,0 +1,41 @@
+{
+  "status": "context_dax_reconciled",
+  "environment": "fabric_rebuild",
+  "workspace_id": "52ee7464-3b6a-4cce-a1cd-0048b4f460ad",
+  "checked_at_utc": "2026-11-15T13:57:02.586962+00:00",
+  "checks": [
+    {
+      "porte": "100mil_a_500mil",
+      "actual": {
+        "[n]": 226,
+        "[preco]": 6.19,
+        "[cobertura]": 8.831787951765856
+      }
+    },
+    {
+      "porte": "50mil_a_100mil",
+      "actual": {
+        "[n]": 118,
+        "[preco]": 6.26,
+        "[cobertura]": 12.514331737155377
+      }
+    },
+    {
+      "porte": "acima_500mil",
+      "actual": {
+        "[n]": 48,
+        "[preco]": 6.09,
+        "[cobertura]": 5.26076213947793
+      }
+    },
+    {
+      "porte": "ate_50mil",
+      "actual": {
+        "[n]": 27,
+        "[preco]": 6.19,
+        "[cobertura]": 20.2020202020202
+      }
+    }
+  ],
+  "mixed_context_price_blank": true
+}

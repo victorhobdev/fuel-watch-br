@@ -1,0 +1,17 @@
+{
+  "status": "historical_destination_bound_and_paused",
+  "environment": "fabric",
+  "table": "lab_historical_events",
+  "destinations": [
+    {
+      "name": "synthetic_activator",
+      "status": "Paused"
+    },
+    {
+      "name": "synthetic_eventhouse",
+      "status": "Paused"
+    }
+  ],
+  "emitter_started": false,
+  "checked_at_utc": "2026-11-15T01:28:03.581836+00:00"
+}

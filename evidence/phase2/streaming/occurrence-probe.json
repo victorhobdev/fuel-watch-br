@@ -1,0 +1,52 @@
+{
+  "status": "audit_observed",
+  "probe_run_id": "21366cbd-8f32-44f3-8222-eee18f061c46",
+  "parent_lab_run_id": "ae5e0526-4c65-45bb-928c-f80ea4c9c7e1",
+  "events": [
+    {
+      "event_id": "d2ae9be1-4ce1-4a48-91a5-e4311971f7e1",
+      "lab_run_id": "21366cbd-8f32-44f3-8222-eee18f061c46",
+      "posto_id": "SYNTHETIC_PROBE",
+      "uf": "RJ",
+      "produto": "GASOLINA",
+      "unidade": "litro",
+      "moeda": "BRL",
+      "event_time": "2026-11-15T01:49:28.967221+00:00",
+      "sequence": 0,
+      "preco": "6.790000",
+      "is_synthetic": true,
+      "is_late_fixture": false,
+      "benchmark_version": "8006da3fa4aadb0cb4d048ac9a88f05d751f40ef6ad07c84c7997f22df94ed59",
+      "benchmark_status": "within_threshold",
+      "alert_score": 0
+    },
+    {
+      "event_id": "9c1c30c3-9978-4847-829f-c5da2dc94bb4",
+      "lab_run_id": "21366cbd-8f32-44f3-8222-eee18f061c46",
+      "posto_id": "SYNTHETIC_PROBE",
+      "uf": "RJ",
+      "produto": "GASOLINA",
+      "unidade": "litro",
+      "moeda": "BRL",
+      "event_time": "2026-11-15T01:49:29.967221+00:00",
+      "sequence": 1,
+      "preco": "8.148",
+      "is_synthetic": true,
+      "is_late_fixture": false,
+      "benchmark_version": "8006da3fa4aadb0cb4d048ac9a88f05d751f40ef6ad07c84c7997f22df94ed59",
+      "benchmark_status": "above_threshold",
+      "alert_score": 1
+    }
+  ],
+  "started_at_utc": "2026-11-15T01:49:28.967221+00:00",
+  "audit": [
+    {
+      "pipeline_run_id": "d55e8a4e-336a-4065-8f88-15b05a6f47a4",
+      "lab_run_id": "ae5e0526-4c65-45bb-928c-f80ea4c9c7e1",
+      "benchmark_version": "8006da3fa4aadb0cb4d048ac9a88f05d751f40ef6ad07c84c7997f22df94ed59",
+      "recorded_at_utc": "2026-11-15 01:56:10.493094",
+      "is_synthetic": true
+    }
+  ],
+  "pause_requested": true
+}

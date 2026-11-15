@@ -1,0 +1,57 @@
+{
+  "status": "copy_bytes_verified",
+  "environment": "fabric",
+  "workspace_id": "52ee7464-3b6a-4cce-a1cd-0048b4f460ad",
+  "lakehouse_id": "95eceead-a243-4d43-a633-d5a9eb7ea5c5",
+  "pipeline_id": "5b9afeca-8fca-4e2d-b050-2a4fd4267ef9",
+  "pipeline_job_id": "4e37161f-bc84-4705-8d2f-a29af412b5e0",
+  "pipeline_job_status": "Completed",
+  "verified_at_utc": "2026-11-15T02:06:17.675774+00:00",
+  "files": [
+    {
+      "source_id": "anp_2024_1",
+      "filename": "ca-2024-01.zip",
+      "expected_bytes": 9312457,
+      "actual_bytes": 9312457,
+      "expected_sha256": "5f8468096dad5582633ab172bbb101529be8235292487f0d412f5930b310b12a",
+      "actual_sha256": "5f8468096dad5582633ab172bbb101529be8235292487f0d412f5930b310b12a",
+      "verified": true
+    },
+    {
+      "source_id": "anp_2024_2",
+      "filename": "ca-2024-02.zip",
+      "expected_bytes": 8137003,
+      "actual_bytes": 8137003,
+      "expected_sha256": "63952c6786fe96289a643fdfbf4cf15e29264fb6a4c0be916a0708687aed71d4",
+      "actual_sha256": "63952c6786fe96289a643fdfbf4cf15e29264fb6a4c0be916a0708687aed71d4",
+      "verified": true
+    },
+    {
+      "source_id": "anp_2025_1",
+      "filename": "ca-2025-01.zip",
+      "expected_bytes": 8176445,
+      "actual_bytes": 8176445,
+      "expected_sha256": "674d69b09a1e6571e39b2fceedeed1d3b12d21e097bcec11d2d93ba7f7370a09",
+      "actual_sha256": "674d69b09a1e6571e39b2fceedeed1d3b12d21e097bcec11d2d93ba7f7370a09",
+      "verified": true
+    },
+    {
+      "source_id": "anp_2025_2",
+      "filename": "ca-2025-02.zip",
+      "expected_bytes": 17314933,
+      "actual_bytes": 17314933,
+      "expected_sha256": "73faa3197a3813baa8c057b13045ea4cd799c45e51957b5094be90558f95258a",
+      "actual_sha256": "73faa3197a3813baa8c057b13045ea4cd799c45e51957b5094be90558f95258a",
+      "verified": true
+    },
+    {
+      "source_id": "anp_2026_1",
+      "filename": "ca-2026-01.zip",
+      "expected_bytes": 8488624,
+      "actual_bytes": 8488624,
+      "expected_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+      "actual_sha256": "a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c",
+      "verified": true
+    }
+  ]
+}

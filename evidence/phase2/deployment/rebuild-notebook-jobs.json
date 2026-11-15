@@ -1,0 +1,17 @@
+{
+  "environment": "fabric_rebuild",
+  "workspace_id": "52ee7464-3b6a-4cce-a1cd-0048b4f460ad",
+  "item_id": "b3df8546-1be5-419b-8d18-b95c22db50e5",
+  "notebook": "01_landing_to_bronze",
+  "attempts": [
+    {
+      "job_instance_id": "e55f5a82-7c1b-480b-98ef-be42a965941d",
+      "status": "Failed",
+      "failure_code": "NotebookBadWebRequest",
+      "request_id": "89036645-c04e-4352-bf21-7b2a9c413f24",
+      "started_at_utc": "2026-11-15T02:11:30.7766667Z",
+      "ended_at_utc": "2026-11-15T02:11:31.0933333Z",
+      "diagnosis": "The MCP request placed notebook parameters inside executionData. The official Notebook API requires a top-level parameters array; the corrected request will separate parameters from executionData. The job ended in <1 second and no Files/audit/anp receipt was present, so notebook code did not begin."
+    }
+  ]
+}

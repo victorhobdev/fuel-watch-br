@@ -1,0 +1,9 @@
+{
+  "status": "historical_rule_prepared_disabled",
+  "environment": "fabric",
+  "lab_run_id": "ae5e0526-4c65-45bb-928c-f80ea4c9c7e1",
+  "benchmark_version": "8006da3fa4aadb0cb4d048ac9a88f05d751f40ef6ad07c84c7997f22df94ed59",
+  "rule_id": "9f582dd7-0afc-4ace-a407-4a60035a1547",
+  "action_pipeline_id": "5904a32f-de04-471c-8424-c72e9b38b429",
+  "runtime_trigger_verified": false
+}

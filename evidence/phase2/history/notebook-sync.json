@@ -1,0 +1,19 @@
+{
+  "status": "official_notebook_definitions_reconciled",
+  "environment": "fabric",
+  "checked_at_utc": "2026-11-14T22:02:31.529328+00:00",
+  "notebooks": [
+    {
+      "notebook": "11_historico_bronze_silver",
+      "code_sha256": "5ecd862a05a52d1ca61ff4ae7f963403e18c7db765deff8ebd0a0b70a0c62e82",
+      "updated": false,
+      "lakehouse_binding_verified": true
+    },
+    {
+      "notebook": "12_historico_publicacao",
+      "code_sha256": "017009bfde24db052589f70a5433564d3aa729a0dcda8e3380ede667ac3ac677",
+      "updated": false,
+      "lakehouse_binding_verified": true
+    }
+  ]
+}

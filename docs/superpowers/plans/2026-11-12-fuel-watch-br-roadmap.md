@@ -35,6 +35,16 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. M00–M06 aceitos; M10 aceito c
 
 **Ordem principal:** M00 → M01 → M02 → M03 → M04 → M05 → M08 → M09 → M10 → M11. Encaixar M06 depois de M02 e M07 depois de M04, antes do aceite final. Essa ordem é de execução; versionamento, auditoria e revisão de acessos começam antes dos seus marcos finais.
 
+## Leitura do roadmap para a DP-700
+
+A [análise de aderência de 12/11](../../dp700-analise-e-rota-2026-11-12.md) relaciona as atividades ao estudo. Ela foi corrigida após observação do usuário: uma etapa futura já prevista não é uma omissão do plano. O acompanhamento de 3/12 marcos mede entregas do produto; não mede percentual do conteúdo dominado ou prontidão para o exame.
+
+**A ordem principal e as dependências permanecem como definidas acima.** Segurança (M07), implantação (M08), operação/desempenho (M09) e tempo real (M10) já estão planejados. Sua execução posterior ao núcleo batch não demonstra desvio de preparação.
+
+Ao preparar os marcos pertinentes ou a revisão final, conferir complementos ainda sem exercício explícito: shortcuts/mirroring, projeto de banco/build, Spark Structured Streaming/checkpoint e detalhamento de configurações e controles de governança. A análise distingue esses complementos dos assuntos já cobertos pelo plano.
+
+As sugestões didáticas não antecipam etapas obrigatoriamente, não alteram os cinco critérios de aceite de cada marco e não permitem inferir o domínio individual do usuário a partir dos chats de execução.
+
 ## Regras globais
 
 - Escopo inicial de negócio: GASOLINA/RJ, 01/01 a 30/06/2026, moeda BRL e unidade litro. O ZIP bruto contém o semestre nacional, com outros produtos. Expandir o consumo exige novo perfil e ajuste do contrato.
@@ -102,7 +112,7 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. M00–M06 aceitos; M10 aceito c
 
 **Arquivos previstos:** `notebooks/05_source_versions_backfill.ipynb`, ajustes no notebook 04, `docs/source-versioning.md`, `evidence/fabric/versioning/`.
 
-**Preparação em 12/11:** [notebook 05 e guia de execução](../../m03-fabric.md) entregues, pacote de três arquivos e 17 tentativas sintéticas incluindo falha antes da promoção/retry. São 28 testes locais aprovados e formato/sintaxe conferidos, conforme [evidência de preparação](../../../evidence/m03/notebook-preparation.json). Spark/Delta deste notebook ainda não foram executados; os cinco critérios Fabric permanecem abertos. O pacote M02 continua preservado.
+**Preparação em 12/11:** [notebook 05 e guia de execução](../../m03-fabric.md) entregues, pacote de três arquivos e 17 tentativas sintéticas incluindo falha antes da promoção/retry. Foram 28 testes locais aprovados e formato/sintaxe conferidos naquele checkpoint, conforme [evidência de preparação](../../../evidence/m03/notebook-preparation.json). Essa preparação foi seguida pela execução descrita abaixo. O pacote M02 continua preservado.
 
 **Execução em 12/11:** [laboratório Fabric validado](../../../evidence/fabric/versioning/README.md), experimento ccbdb9dc: 17 cenários, versões ativas 0 → 7, oito rejeições, falha antes da promoção recuperada e Silver oficial na versão 1 sem diferenças. Os cinco cenários de controle foram exercitados no laboratório sintético. No checkpoint do laboratório a integração oficial ainda estava pendente; esse retorno isolado não fechava o marco.
 
@@ -147,6 +157,7 @@ Atualizado em **13/11/2026**, America/Sao_Paulo. M00–M06 aceitos; M10 aceito c
 **Aceite em 13/11:** 5/5 critérios. Carga normal, falhas Silver/Gold, recuperações, repetição e um disparo agendado foram conferidos por REST/OneLake/SQL. A agenda está desabilitada. [Bateria](../../../evidence/fabric/orchestration/recovery-cases-2026-11-13.json), [disparo e desativação](../../../evidence/fabric/orchestration/scheduled-run-2026-11-13.json). Permanece a fatia de 8.052 coletas; 6/12 marcos concluídos.
 
 **Arquivos previstos:** definições reais exportadas em `fabric/` (estrutura nativa confirmada na integração), `docs/runbooks/recovery.md`, `evidence/fabric/orchestration/`.
+
 
 ## M06 — Laboratório Dataflow Gen2
 

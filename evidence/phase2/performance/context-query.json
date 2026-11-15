@@ -1,0 +1,76 @@
+{
+  "status": "context_query_materialization_experiment_reconciled",
+  "environment": "fabric",
+  "checked_at_utc": "2026-11-15T01:36:21.020143+00:00",
+  "hypothesis": "Materialização evita recomputar janelas e joins da view em consultas repetidas.",
+  "source": "analise_hist.populacao_municipio",
+  "laboratory_copy": "lab_f2.population_cache",
+  "rows": 6914,
+  "content_sha256": "f1ee096de605d2f0c17e691c547f71effef90e995ac71a5925b819fe87ed9b49",
+  "measurements": [
+    {
+      "condition": "view",
+      "warmup": true,
+      "seconds": 7.613321900000301,
+      "rows": 6914
+    },
+    {
+      "condition": "cache",
+      "warmup": true,
+      "seconds": 0.10125399999742513,
+      "rows": 6914
+    },
+    {
+      "condition": "view",
+      "warmup": false,
+      "seconds": 7.374809799999639,
+      "rows": 6914
+    },
+    {
+      "condition": "cache",
+      "warmup": false,
+      "seconds": 0.10457959999985178,
+      "rows": 6914
+    },
+    {
+      "condition": "cache",
+      "warmup": false,
+      "seconds": 0.1072872999975516,
+      "rows": 6914
+    },
+    {
+      "condition": "view",
+      "warmup": false,
+      "seconds": 7.444966600000043,
+      "rows": 6914
+    },
+    {
+      "condition": "view",
+      "warmup": false,
+      "seconds": 7.366411099999823,
+      "rows": 6914
+    },
+    {
+      "condition": "cache",
+      "warmup": false,
+      "seconds": 0.09669360000043525,
+      "rows": 6914
+    }
+  ],
+  "summary": {
+    "view": {
+      "median_seconds": 7.374809799999639,
+      "minimum_seconds": 7.366411099999823,
+      "maximum_seconds": 7.444966600000043,
+      "samples": 3
+    },
+    "cache": {
+      "median_seconds": 0.10457959999985178,
+      "minimum_seconds": 0.09669360000043525,
+      "maximum_seconds": 0.1072872999975516,
+      "samples": 3
+    }
+  },
+  "official_publication_unchanged": true,
+  "limitations": "Mede consulta completa via TDS incluindo transferência. Não mede DAX ou pipeline fim a fim; cache do serviço não controlado; CU não medido. Cópia não promovida para produção."
+}

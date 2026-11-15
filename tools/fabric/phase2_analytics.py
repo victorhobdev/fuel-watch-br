@@ -1,14 +1,14 @@
 """Implanta views analiticas sem alterar a Gold e verifica conteudo completo por hash tipado."""
 import argparse,json,re,hashlib,time,sys
 from datetime import datetime,timezone
-from client import ROOT
+from client import ROOT,environment_config
 from warehouse import connect,results
 sys.path.insert(0,str(ROOT))
 from fuelwatch.analytics import row_hash
 
-parser=argparse.ArgumentParser();parser.add_argument('--deploy',action='store_true');parser.add_argument('--verify',action='store_true');parser.add_argument('--history',action='store_true');args=parser.parse_args();assert args.deploy or args.verify
+parser=argparse.ArgumentParser();parser.add_argument('--deploy',action='store_true');parser.add_argument('--verify',action='store_true');parser.add_argument('--history',action='store_true');parser.add_argument('--rebuild',action='store_true');args=parser.parse_args();assert args.deploy or args.verify;assert not args.rebuild or args.history
 namespace='analise_hist' if args.history else 'analise_br';gold='gold_hist' if args.history else 'gold_br'
-c=json.loads((ROOT/'.local/fabric-environment.json').read_text());out=ROOT/('evidence/phase2/analytics-history' if args.history else 'evidence/phase2/analytics');out.mkdir(parents=True,exist_ok=True);record={'environment':'fabric','source_schema':gold,'started_at_utc':datetime.now(timezone.utc).isoformat(),'tables':{}}
+c=environment_config();out=ROOT/('evidence/phase2/deployment/rebuild-analytics-history' if args.rebuild else ('evidence/phase2/analytics-history' if args.history else 'evidence/phase2/analytics'));out.mkdir(parents=True,exist_ok=True);record={'environment':'fabric_rebuild' if args.rebuild else 'fabric','workspace_id':c['workspace_id'],'source_schema':gold,'started_at_utc':datetime.now(timezone.utc).isoformat(),'tables':{}}
 with connect(c) as cn:
  cn.timeout=900;cur=cn.cursor();before=results(cur.execute('SELECT * FROM '+gold+'.publication'))[0]
  if args.deploy:

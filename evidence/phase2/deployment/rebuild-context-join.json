@@ -1,0 +1,48 @@
+{
+  "status": "context_join_reconciled",
+  "environment": "fabric",
+  "checked_at_utc": "2026-11-15T13:26:55.276974+00:00",
+  "totals": {
+    "rows": 2125547,
+    "price_mills": 12326584850,
+    "no_population": 0
+  },
+  "weather_status": [
+    {
+      "weather_status": "insufficient_both",
+      "n": 417449
+    },
+    {
+      "weather_status": "both_variables_eligible",
+      "n": 1509541
+    },
+    {
+      "weather_status": "no_measurements",
+      "n": 17428
+    },
+    {
+      "weather_status": "no_eligible_station",
+      "n": 22796
+    },
+    {
+      "weather_status": "one_variable_eligible",
+      "n": 158333
+    }
+  ],
+  "source_publication_unchanged": true,
+  "reference_uniqueness_verified": true,
+  "source_publication": [
+    {
+      "batch_id": "8eb53793-b0de-48c3-af79-e6ae800c032b",
+      "scope_id": "anp-historico-br-todos",
+      "source_sha256": "759b19e80c99cb5a5a7900c85a6556106eb0b9cf6f84218c692b835f12745af1",
+      "ibge_sha256": "d9eec8439bc8c5dc2f7db6332a8e5569f5a3f637988e26aebc513412d4069d5c",
+      "silver_delta_version": 0,
+      "is_synthetic": false,
+      "published_at_utc": "2026-11-15 13:12:11.215037",
+      "rows_published": 2125547,
+      "source_table": "hist_transfer_coletas",
+      "snapshot_id": "8eb53793-b0de-48c3-af79-e6ae800c032b"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "status": "common_station_dax_reconciled",
+  "environment": "fabric",
+  "checked_at_utc": "2026-11-14T22:01:54.519998+00:00",
+  "checks": [
+    {
+      "produto": "GASOLINA",
+      "ano_atual": 2025,
+      "uf": "RJ",
+      "dax": {
+        "[postos]": 377,
+        "[anterior]": 5.780447656281619,
+        "[atual]": 6.167946761694087
+      },
+      "warehouse": {
+        "postos": 377,
+        "anterior": 5.780447656281619,
+        "atual": 6.167946761694081
+      }
+    },
+    {
+      "produto": "GNV",
+      "ano_atual": 2026,
+      "uf": "SP",
+      "dax": {
+        "[postos]": 71,
+        "[anterior]": 4.687140740632417,
+        "[atual]": 4.250701782870369
+      },
+      "warehouse": {
+        "postos": 71,
+        "anterior": 4.687140740632415,
+        "atual": 4.25070178287037
+      }
+    },
+    {
+      "produto": "ETANOL",
+      "ano_atual": 2026,
+      "uf": "MG",
+      "dax": {
+        "[postos]": 595,
+        "[anterior]": 4.362627805748661,
+        "[atual]": 4.566237526153635
+      },
+      "warehouse": {
+        "postos": 595,
+        "anterior": 4.3626278057486605,
+        "atual": 4.566237526153631
+      }
+    }
+  ]
+}

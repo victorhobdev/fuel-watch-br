@@ -46,16 +46,30 @@ comparados integralmente com referência independente. Os 12 campos tipados de
 porque agora há observações do semestre vizinho compondo a mesma semana ISO.
 
 Preços são nominais, sem ajuste por inflação. Diferença entre períodos pode
-refletir mudança da amostra; um painel de postos comuns será explicitado nas
-análises de evolução. Ausência de coleta não representa preço zero.
+refletir mudança da amostra; o relatório separado de postos comuns compara
+somente os estabelecimentos e localidades presentes nos dois períodos.
+Ausência de coleta não representa preço zero.
 
-O relatório **Fuel Watch BR Nacional** ainda usa a publicação analítica de
-2026H1 validada no F2-01. A incorporação desse histórico ao modelo e o painel de
-postos comuns continuam no F2-02; não são considerados prontos pela mera
-existência das tabelas. Os cinco cenários operacionais já foram verificados,
-assim como as sete visões `analise_hist`; consulte `history-operations.md`.
+O relatório **Fuel Watch BR Nacional** continua usando 2026H1. O relatório
+separado **Fuel Watch BR Histórico** usa as visões `analise_hist` e inclui uma
+página de postos comuns. Compara primeiros semestres de anos consecutivos,
+com o mesmo CNPJ, produto, moeda, unidade, UF e município nos dois períodos.
+Calcula a média das coletas por posto e dá o mesmo peso a cada posto na média
+comparada. Bandeira não define a identidade da comparação. Um posto ausente
+em qualquer período não é tratado como preço zero. A variação é nominal e não
+equivale à variação ajustada pela inflação ou de todos os postos brasileiros.
+
+O conjunto de pares foi comparado integralmente com a referência local: 22.046
+combinações em 2024–2025 e 23.433 em 2025–2026. Três recortes de medidas DAX
+foram reconciliados com o Warehouse; os seletores de combustível, ano e UF
+estão presentes no relatório. A exportação final foi inspecionada nas quatro
+páginas; a tabela estadual mostra as 27 UFs e o total sem rolagem. Os cinco
+cenários operacionais já foram verificados, assim como as sete visões
+`analise_hist`; consulte `history-operations.md` e os recibos em
+`evidence/phase2/analytics-history/`.
 
 Evidências: `evidence/phase2/history/warehouse-first_joint_publish.json`,
 `silver-72918c9c-414e-40d0-8395-3ebdb0cb75d1.json` e
-`publication-reference.json`. A última é referência local; as duas primeiras
-registram verificações reais no Fabric.
+`publication-reference.json` e `evidence/phase2/deployment/rebuild-history-report-qa4.json`.
+A referência de publicação é local; os demais recibos registram verificações
+reais no Fabric.

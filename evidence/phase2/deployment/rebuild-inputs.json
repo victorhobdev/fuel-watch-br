@@ -1,0 +1,169 @@
+{
+  "status": "immutable_rebuild_inputs_verified",
+  "environment": "fabric_rebuild",
+  "files": [
+    {
+      "relative_path": "national_input/d8f755a68467c63883c3454a7c2e2861867f03fc9a64dff1e61eb0f119968ac8/calendar.parquet",
+      "bytes": 5744,
+      "sha256": "f39f7b16b0e8572335f9a371b5ac5ddafc250c8d8a61919460680e0fb8188574"
+    },
+    {
+      "relative_path": "national_input/d8f755a68467c63883c3454a7c2e2861867f03fc9a64dff1e61eb0f119968ac8/estados.http",
+      "bytes": 491,
+      "sha256": "8de577f0bf8ae5f10cfca9870520c37a71c071ed34ffae09af1fae967385db7f"
+    },
+    {
+      "relative_path": "national_input/d8f755a68467c63883c3454a7c2e2861867f03fc9a64dff1e61eb0f119968ac8/estados.json",
+      "bytes": 2446,
+      "sha256": "7ca1368dea3af83cba1af84ae8a7e88f1173c97586831d086cc8b3c1ba9c6596"
+    },
+    {
+      "relative_path": "national_input/d8f755a68467c63883c3454a7c2e2861867f03fc9a64dff1e61eb0f119968ac8/fuelwatch_national_rules.zip",
+      "bytes": 15901,
+      "sha256": "8e13d7d55dd1c4a44a9af9dfad42243f192b6b8476d3652d436f5bcb29e1594d"
+    },
+    {
+      "relative_path": "national_input/d8f755a68467c63883c3454a7c2e2861867f03fc9a64dff1e61eb0f119968ac8/history.parquet",
+      "bytes": 354336,
+      "sha256": "a2f1cb5865df60b356cb17ce3b1ee11caa9672a3afa8741200ada4b886c4549f"
+    },
+    {
+      "relative_path": "national_input/d8f755a68467c63883c3454a7c2e2861867f03fc9a64dff1e61eb0f119968ac8/manifest.json",
+      "bytes": 37753,
+      "sha256": "d8f755a68467c63883c3454a7c2e2861867f03fc9a64dff1e61eb0f119968ac8"
+    },
+    {
+      "relative_path": "national_input/d8f755a68467c63883c3454a7c2e2861867f03fc9a64dff1e61eb0f119968ac8/municipalities.parquet",
+      "bytes": 148986,
+      "sha256": "d24834997dd0814f8a9b2d9d7eff38155453c2c0b49005df105da9e41f0ad778"
+    },
+    {
+      "relative_path": "national_input/d8f755a68467c63883c3454a7c2e2861867f03fc9a64dff1e61eb0f119968ac8/municipios.http",
+      "bytes": 231346,
+      "sha256": "d5c60d0c928f74db6008942d9660c9e731004fda0aa8ade43aaf9d0cdab85879"
+    },
+    {
+      "relative_path": "national_input/d8f755a68467c63883c3454a7c2e2861867f03fc9a64dff1e61eb0f119968ac8/municipios.json",
+      "bytes": 2470036,
+      "sha256": "d9eec8439bc8c5dc2f7db6332a8e5569f5a3f637988e26aebc513412d4069d5c"
+    },
+    {
+      "relative_path": "national_input/d8f755a68467c63883c3454a7c2e2861867f03fc9a64dff1e61eb0f119968ac8/reference.parquet",
+      "bytes": 3856789,
+      "sha256": "768d8c009430cfefec323c0756f9d75a2c9856c2ba121fd5e2c0309318c98419"
+    },
+    {
+      "relative_path": "national_input/d8f755a68467c63883c3454a7c2e2861867f03fc9a64dff1e61eb0f119968ac8/thresholds.parquet",
+      "bytes": 61268,
+      "sha256": "eae74b6a47169c498ce1143e082be252afdc73e4f51b7ea244caa527f3f146ea"
+    },
+    {
+      "relative_path": "national_input/d8f755a68467c63883c3454a7c2e2861867f03fc9a64dff1e61eb0f119968ac8/weekly.parquet",
+      "bytes": 396394,
+      "sha256": "32f2c1ae25d6361185cc0e764a00749df3865a65cad22613814545e0744ea2e4"
+    },
+    {
+      "relative_path": "history_input/4f9b45e5581c3148252a8f5f2f677359e307c234451c5d88cba3d804ed138f35/anp_2024_1.parquet",
+      "bytes": 33855210,
+      "sha256": "6beac4ad139ca42cbedfc7ef3cf30cbb32f11ee3019ebddfce0ef5f0d0db13c7"
+    },
+    {
+      "relative_path": "history_input/4f9b45e5581c3148252a8f5f2f677359e307c234451c5d88cba3d804ed138f35/anp_2024_2.parquet",
+      "bytes": 29662975,
+      "sha256": "25cf5516cca2b7c6ecdf7384bac6742ac7d757683e37cbc4a4d28e469af3b914"
+    },
+    {
+      "relative_path": "history_input/4f9b45e5581c3148252a8f5f2f677359e307c234451c5d88cba3d804ed138f35/anp_2025_1.parquet",
+      "bytes": 29692220,
+      "sha256": "495b5e88d176e3a396c5aea128010904b2f70ef06bf2ee0fc211df56d71d01e0"
+    },
+    {
+      "relative_path": "history_input/4f9b45e5581c3148252a8f5f2f677359e307c234451c5d88cba3d804ed138f35/anp_2025_2.parquet",
+      "bytes": 46813567,
+      "sha256": "521dfe3b873032df52d2a0af7a04486107e1a75efbe9568ff253e117f64b2b44"
+    },
+    {
+      "relative_path": "history_input/4f9b45e5581c3148252a8f5f2f677359e307c234451c5d88cba3d804ed138f35/estados.json",
+      "bytes": 2446,
+      "sha256": "7ca1368dea3af83cba1af84ae8a7e88f1173c97586831d086cc8b3c1ba9c6596"
+    },
+    {
+      "relative_path": "history_input/4f9b45e5581c3148252a8f5f2f677359e307c234451c5d88cba3d804ed138f35/manifest.json",
+      "bytes": 4554,
+      "sha256": "4f9b45e5581c3148252a8f5f2f677359e307c234451c5d88cba3d804ed138f35"
+    },
+    {
+      "relative_path": "history_input/4f9b45e5581c3148252a8f5f2f677359e307c234451c5d88cba3d804ed138f35/municipios.json",
+      "bytes": 2470036,
+      "sha256": "d9eec8439bc8c5dc2f7db6332a8e5569f5a3f637988e26aebc513412d4069d5c"
+    },
+    {
+      "relative_path": "history_input/4f9b45e5581c3148252a8f5f2f677359e307c234451c5d88cba3d804ed138f35/rules.zip",
+      "bytes": 16585,
+      "sha256": "bbe77750f26ffcd62257c96c3f5aaa95af93b995ed75ff8eb58009b372aca358"
+    },
+    {
+      "relative_path": "shared_rules/bbe77750f26ffcd62257c96c3f5aaa95af93b995ed75ff8eb58009b372aca358/fuelwatch_history_rules.zip",
+      "bytes": 16585,
+      "sha256": "bbe77750f26ffcd62257c96c3f5aaa95af93b995ed75ff8eb58009b372aca358"
+    },
+    {
+      "relative_path": "history_publication_input/759b19e80c99cb5a5a7900c85a6556106eb0b9cf6f84218c692b835f12745af1/calendar.parquet",
+      "bytes": 14639,
+      "sha256": "17da961ca3ef8fa54742e5e2076fa6248d6b68cb00d57c1d8ef2bb9ae5c56d0f"
+    },
+    {
+      "relative_path": "history_publication_input/759b19e80c99cb5a5a7900c85a6556106eb0b9cf6f84218c692b835f12745af1/history.parquet",
+      "bytes": 623843,
+      "sha256": "7da6c4eab9030c84a5bcdbf1743c567ecbad8a188071ca7933aa73f5e0f7bb49"
+    },
+    {
+      "relative_path": "history_publication_input/759b19e80c99cb5a5a7900c85a6556106eb0b9cf6f84218c692b835f12745af1/manifest.json",
+      "bytes": 5761,
+      "sha256": "759b19e80c99cb5a5a7900c85a6556106eb0b9cf6f84218c692b835f12745af1"
+    },
+    {
+      "relative_path": "history_publication_input/759b19e80c99cb5a5a7900c85a6556106eb0b9cf6f84218c692b835f12745af1/municipalities.parquet",
+      "bytes": 148986,
+      "sha256": "d24834997dd0814f8a9b2d9d7eff38155453c2c0b49005df105da9e41f0ad778"
+    },
+    {
+      "relative_path": "history_publication_input/759b19e80c99cb5a5a7900c85a6556106eb0b9cf6f84218c692b835f12745af1/reference.parquet",
+      "bytes": 19548532,
+      "sha256": "1959400fb58adde85dfed27e44c5cf6a91b2d268d1204fa1a9395b5a4b078011"
+    },
+    {
+      "relative_path": "history_publication_input/759b19e80c99cb5a5a7900c85a6556106eb0b9cf6f84218c692b835f12745af1/rules.zip",
+      "bytes": 16585,
+      "sha256": "bbe77750f26ffcd62257c96c3f5aaa95af93b995ed75ff8eb58009b372aca358"
+    },
+    {
+      "relative_path": "history_publication_input/759b19e80c99cb5a5a7900c85a6556106eb0b9cf6f84218c692b835f12745af1/thresholds.parquet",
+      "bytes": 211033,
+      "sha256": "d6dc58e058f8f2262b984585e4fceb69bc77bafc80072dd73267976a97f636f9"
+    },
+    {
+      "relative_path": "history_publication_input/759b19e80c99cb5a5a7900c85a6556106eb0b9cf6f84218c692b835f12745af1/weekly.parquet",
+      "bytes": 1762925,
+      "sha256": "ac1d1b1831761d5c1a9e17173abe5a0dfeb1e98aeb7718855018305a068bf9a4"
+    },
+    {
+      "relative_path": "shared_rules/bbe77750f26ffcd62257c96c3f5aaa95af93b995ed75ff8eb58009b372aca358/fuelwatch_history_rules.zip",
+      "bytes": 16585,
+      "sha256": "bbe77750f26ffcd62257c96c3f5aaa95af93b995ed75ff8eb58009b372aca358"
+    },
+    {
+      "relative_path": "context/9c55ad8a681afa39059d8f7d40ffe41bbfa26f7b3d35b802238e4d14e433ab08/population.parquet",
+      "bytes": 242304,
+      "sha256": "9c55ad8a681afa39059d8f7d40ffe41bbfa26f7b3d35b802238e4d14e433ab08"
+    },
+    {
+      "relative_path": "context/4b712406c2d4ff275f766d0c12448245d0426a2b07d0291422e4539a6129da97/weather_municipal_weekly.parquet",
+      "bytes": 950920,
+      "sha256": "4b712406c2d4ff275f766d0c12448245d0426a2b07d0291422e4539a6129da97"
+    }
+  ],
+  "delta_tables_copied": false,
+  "execution_receipts_copied": false,
+  "checked_at_utc": "2026-11-15T01:56:30.512047+00:00"
+}

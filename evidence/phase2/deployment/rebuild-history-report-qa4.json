@@ -1,0 +1,21 @@
+{
+  "status": "report_export_visually_verified",
+  "environment": "fabric_rebuild",
+  "workspace_id": "52ee7464-3b6a-4cce-a1cd-0048b4f460ad",
+  "report_id": "7d5cac0a-7d85-49b0-9922-496ae51f5e47",
+  "export_id": "Mi9CbG9iSWRWMi1jZmI1ZmJmMy1kYWYyLTQ2NjUtODkwOC1kNzY5MDM1ZjdhNWN0NmhMVmpGSmRFOTMtcXE0VmRyRGpob056dnhCSC1xZjJ5QTh3WHRXZEJ3PS4=",
+  "sha256": "c4c0d34fba430f5f737560cd18c492875d1d524109458de5a3eaefa6c016643f",
+  "bytes": 250791,
+  "pdf_path": "C:\\Users\\Vitinho\\Documents\\ChatGPT\\Watch Fuel\\evidence\\phase2\\deployment\\rebuild-history-report-qa4.pdf",
+  "checked_at_utc": "2026-11-15T14:11:16.591184+00:00",
+  "visual_inspection": {
+    "method": "PDF exported from the Fabric report, rendered to page images, and inspected visually",
+    "pages": {
+      "1": "National panorama populated: selected GASOLINA, summary cards, weekly median and municipality coverage; no blank visuals or clipped slicers.",
+      "2": "Top 100 station table, brand comparison and comparable contexts populated; no visual query error.",
+      "3": "Common-station comparison populated for 2025→2026; all 27 UFs plus total visible with no internal scrolling; default fuel/year/UF are visible.",
+      "4": "Population groups and climate coverage statuses populated; defaults visible; context caveats are printed on page."
+    },
+    "overall": "Four pages rendered; no visible blank required visual, query error, clipped slicer or hidden UF row. Page 3 layout was adjusted and re-exported as qa4."
+  }
+}

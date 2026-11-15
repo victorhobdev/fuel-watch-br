@@ -1,0 +1,10 @@
+{
+  "status": "clean_rebuild_core_items_created",
+  "environment": "fabric",
+  "workspace_id": "52ee7464-3b6a-4cce-a1cd-0048b4f460ad",
+  "lakehouse_id": "95eceead-a243-4d43-a633-d5a9eb7ea5c5",
+  "warehouse_id": "141daf38-c50a-438e-b117-e9fa04374e8c",
+  "capacity_sku": "FTL4",
+  "data_execution_validated": false,
+  "checked_at_utc": "2026-11-15T01:52:31.252717+00:00"
+}

@@ -1,0 +1,11 @@
+{
+  "status": "report_export_downloaded",
+  "environment": "fabric_rebuild",
+  "workspace_id": "52ee7464-3b6a-4cce-a1cd-0048b4f460ad",
+  "report_id": "7d5cac0a-7d85-49b0-9922-496ae51f5e47",
+  "export_id": "Mi9CbG9iSWRWMi0yZTllNzM5Ny1kNTMxLTQ1ZGYtOTJjYi01ZDc5NGQxNGI0NmRpWmNhWnAyRS1SWUVld2ZjR1pjU1gzLWdIQjlSdmw5V2tTVFZwektxcDg4PS4=",
+  "sha256": "a49024ffbc8101a29f77dff41cdba2acdfcc0d778799d8006235bf73e948ad6c",
+  "bytes": 252535,
+  "pdf_path": "C:\\Users\\Vitinho\\Documents\\ChatGPT\\Watch Fuel\\evidence\\phase2\\deployment\\rebuild-history-report-qa3.pdf",
+  "checked_at_utc": "2026-11-15T14:07:40.438829+00:00"
+}

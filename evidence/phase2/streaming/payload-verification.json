@@ -1,0 +1,18 @@
+{
+  "status": "historical_synthetic_payloads_reconciled",
+  "environment": "fabric",
+  "lab_run_id": "ae5e0526-4c65-45bb-928c-f80ea4c9c7e1",
+  "received": 1020,
+  "unique_ids": 1000,
+  "reinjection_excess": 20,
+  "late_events": 10,
+  "full_payload_comparison": true,
+  "classification_recomputed_independently": true,
+  "classifications": {
+    "within_threshold": 989,
+    "missing_benchmark": 5,
+    "stale_benchmark": 5,
+    "above_threshold": 1
+  },
+  "checked_at_utc": "2026-11-15T01:43:39.736465+00:00"
+}

@@ -1,0 +1,20 @@
+{
+  "status": "Completed",
+  "environment": "fabric_rebuild",
+  "workspace_id": "52ee7464-3b6a-4cce-a1cd-0048b4f460ad",
+  "lakehouse_id": "95eceead-a243-4d43-a633-d5a9eb7ea5c5",
+  "notebook": "01_landing_to_bronze",
+  "notebook_id": "b3df8546-1be5-419b-8d18-b95c22db50e5",
+  "job_id": "aac268fc-8269-441f-a36a-d8470d104e6a",
+  "job_type": "execute",
+  "root_activity_id": "e2f9c240-865b-499c-b44a-9afbd44b60f3",
+  "started_at_utc": "2026-11-15T12:40:03.3851665",
+  "ended_at_utc": "2026-11-15T12:41:04.4411844",
+  "failure_reason": null,
+  "exit_value": null,
+  "compute": "Spark",
+  "livy_id": "d5c9864b-4ae7-496b-9687-856b9cd99520",
+  "spark_application_id": "application_1794745716732_0001",
+  "runtime_version": "2.0",
+  "checked_at_utc": "2026-11-15T12:41:44.347442+00:00"
+}

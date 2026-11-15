@@ -1,0 +1,260 @@
+{
+  "status": "current_items_inventoried_dependency_review_pending",
+  "environment": "fabric",
+  "checked_at_utc": "2026-11-15T01:43:17.579153+00:00",
+  "item_count": 42,
+  "items": [
+    {
+      "id": "d8c31ed3-a719-4643-b9be-0e1463e2c4c7",
+      "name": "Fuel Watch BR",
+      "type": "Report",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "c9c35dcc-9e7b-4d4e-8a89-1ddbd1f96cc9",
+      "name": "Fuel Watch BR Nacional",
+      "type": "Report",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "18529998-8c2d-42da-90ca-88cfefbce4d6",
+      "name": "Fuel Watch BR Histórico",
+      "type": "Report",
+      "review_group": "active_candidate"
+    },
+    {
+      "id": "80e9d682-60d5-4520-95eb-07f7a944aef7",
+      "name": "sm_fuelwatch",
+      "type": "SemanticModel",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "32a45e85-e335-4b95-893d-eb21fd4e3d33",
+      "name": "sm_fuelwatch_nacional",
+      "type": "SemanticModel",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "96cc9114-61ba-4b87-9e31-d678808ea76b",
+      "name": "sm_fuelwatch_historico",
+      "type": "SemanticModel",
+      "review_group": "active_candidate"
+    },
+    {
+      "id": "ff13638f-288c-4090-b904-94b6f47a8a72",
+      "name": "lh_fuelwatch",
+      "type": "SQLEndpoint",
+      "review_group": "active_candidate"
+    },
+    {
+      "id": "efdb1609-c556-4945-9d9b-82a2ee090be4",
+      "name": "wh_fuelwatch",
+      "type": "Warehouse",
+      "review_group": "active_candidate"
+    },
+    {
+      "id": "e59a4fb5-321a-4da1-9aae-9dee9acec1ab",
+      "name": "StagingWarehouseForDataflows_20261113140901",
+      "type": "Warehouse",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "b875fd13-6302-40d8-bf9c-cdba9a8182a1",
+      "name": "StagingLakehouseForDataflows_20261113140901",
+      "type": "SQLEndpoint",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "0d19f7dd-8040-4fac-a79c-279ffc943ae8",
+      "name": "lh_fuelwatch",
+      "type": "Lakehouse",
+      "review_group": "active_candidate"
+    },
+    {
+      "id": "50cb0873-1c7f-481f-8895-4e4860e95125",
+      "name": "pl_anp_landing",
+      "type": "DataPipeline",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "f32f1648-6eb5-4a23-a451-91c8b97184bd",
+      "name": "01_landing_to_bronze",
+      "type": "Notebook",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "16c313a6-f101-422a-8f21-38ae261b61de",
+      "name": "02_verify_bronze_replay",
+      "type": "Notebook",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "81c3c2f2-fde2-4225-8892-ff867be791b9",
+      "name": "03_ibge_reference",
+      "type": "Notebook",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "aa3ef98d-2f5c-4377-9b39-829fb0900fd8",
+      "name": "04_bronze_to_silver",
+      "type": "Notebook",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "ef0c0367-bfba-42da-b298-145a37d1b189",
+      "name": "05_source_versions_backfill",
+      "type": "Notebook",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "34c49e53-7700-41fd-a742-97a225119270",
+      "name": "06_export_gold_input",
+      "type": "Notebook",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "92fc3964-a8fb-454b-84a6-c075961464f7",
+      "name": "06_official_source_selection",
+      "type": "Notebook",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "bf6fec1e-6583-40c1-8382-5bf3db667dd6",
+      "name": "07_export_gold_input",
+      "type": "Notebook",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "6f135e23-b7be-4942-8c36-e46e518e521f",
+      "name": "08_pipeline_stage",
+      "type": "Notebook",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "68f7a742-061a-4f33-9ef3-e42e6071daa8",
+      "name": "pl_fuelwatch_master",
+      "type": "DataPipeline",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "6bc8c559-5354-48fd-abbd-481a45c37532",
+      "name": "df_m06_ibge_lab",
+      "type": "Dataflow",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "4508ea0a-4821-478a-8d25-a1215c09ddb5",
+      "name": "StagingLakehouseForDataflows_20261113140901",
+      "type": "Lakehouse",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "f137f329-cb8e-41f2-aba1-807a5745e9b0",
+      "name": "lab_m07_permission_probe",
+      "type": "Notebook",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "c8c25286-1060-4d7e-bd16-6f1aca4e47e6",
+      "name": "09_weekly_benchmark",
+      "type": "Notebook",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "7f92e41e-fd3e-4cee-90cf-0bab9c58d01d",
+      "name": "eh_fuelwatch_lab",
+      "type": "Eventhouse",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "a0341ec4-7d47-4607-941a-061e565680e2",
+      "name": "eh_fuelwatch_lab",
+      "type": "KQLDatabase",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "e5412d9f-5f94-4515-bb79-a74b0a0c5955",
+      "name": "kql_fuelwatch_lab",
+      "type": "KQLDatabase",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "49164b5f-ade2-4416-9925-a9c2ee1ab05a",
+      "name": "es_fuelwatch_lab",
+      "type": "Eventstream",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "79152e3d-e7fd-4335-b42d-00648af99cee",
+      "name": "act_fuelwatch_lab",
+      "type": "Reflex",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "20a5cd29-60de-49bc-9a0e-b59aec6877ba",
+      "name": "pl_m10_alert_audit",
+      "type": "DataPipeline",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "9ceee26e-9f2c-4347-b93d-7e719bcbcc2c",
+      "name": "10_brasil_todos_combustiveis",
+      "type": "Notebook",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "a0f67533-1697-4929-94f3-f4b509f02fad",
+      "name": "pl_anp_historico_landing",
+      "type": "DataPipeline",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "4b3485d2-9695-4b4c-baa4-2d4b79f0c904",
+      "name": "11_historico_bronze_silver",
+      "type": "Notebook",
+      "review_group": "active_candidate"
+    },
+    {
+      "id": "63f46632-71a1-4e43-ac9e-19d194604023",
+      "name": "12_historico_publicacao",
+      "type": "Notebook",
+      "review_group": "active_candidate"
+    },
+    {
+      "id": "001d0cbc-1581-4558-ab40-3c74b0e1e452",
+      "name": "pl_fuelwatch_historico",
+      "type": "DataPipeline",
+      "review_group": "active_candidate"
+    },
+    {
+      "id": "09c62179-9abe-4726-9f4f-c5d9495264dc",
+      "name": "13_historico_correcao_lab",
+      "type": "Notebook",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "9547a4f1-ba8e-402b-822d-bec0b2175d61",
+      "name": "14_historico_publicacao_lab",
+      "type": "Notebook",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "b37995e9-5194-41b9-a1b6-bf7a516c02c6",
+      "name": "pl_hist_old_correction_lab",
+      "type": "DataPipeline",
+      "review_group": "requires_dependency_review"
+    },
+    {
+      "id": "9767ec4e-a6bb-40f8-accc-b105c06c6387",
+      "name": "15_context_references",
+      "type": "Notebook",
+      "review_group": "active_candidate"
+    },
+    {
+      "id": "5904a32f-de04-471c-8424-c72e9b38b429",
+      "name": "pl_f2_historical_alert_audit",
+      "type": "DataPipeline",
+      "review_group": "requires_dependency_review"
+    }
+  ]
+}

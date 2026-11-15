@@ -1,0 +1,44 @@
+{
+  "status": "population_price_and_coverage_answers_reconciled",
+  "environment": "fabric",
+  "checked_at_utc": "2026-11-15T13:27:06.465536+00:00",
+  "query": "WITH base AS (\n SELECT * FROM analise_hist.populacao_municipio\n WHERE ano_referencia=2025 AND produto='GASOLINA' AND moeda='BRL' AND unidade='litro'\n )\n SELECT DISTINCT porte_populacional,\n COUNT_BIG(*) OVER(PARTITION BY porte_populacional) AS municipios,\n SUM(coletas) OVER(PARTITION BY porte_populacional) AS coletas,\n PERCENTILE_CONT(0.5) WITHIN GROUP(ORDER BY preco_mediano) OVER(PARTITION BY porte_populacional) AS mediana_municipios,\n PERCENTILE_CONT(0.25) WITHIN GROUP(ORDER BY preco_mediano) OVER(PARTITION BY porte_populacional) AS q1_preco,\n PERCENTILE_CONT(0.75) WITHIN GROUP(ORDER BY preco_mediano) OVER(PARTITION BY porte_populacional) AS q3_preco,\n PERCENTILE_CONT(0.5) WITHIN GROUP(ORDER BY postos_pesquisados_por_100mil) OVER(PARTITION BY porte_populacional) AS mediana_postos_por_100mil\n FROM base ORDER BY porte_populacional",
+  "answers": [
+    {
+      "porte_populacional": "100mil_a_500mil",
+      "municipios": 226,
+      "coletas": 106384,
+      "mediana_municipios": 6.19,
+      "q1_preco": 5.99,
+      "q3_preco": 6.47,
+      "mediana_postos_por_100mil": 8.831787951765856
+    },
+    {
+      "porte_populacional": "50mil_a_100mil",
+      "municipios": 118,
+      "coletas": 32639,
+      "mediana_municipios": 6.26,
+      "q1_preco": 6.09,
+      "q3_preco": 6.397500000000001,
+      "mediana_postos_por_100mil": 12.514331737155377
+    },
+    {
+      "porte_populacional": "acima_500mil",
+      "municipios": 48,
+      "coletas": 66795,
+      "mediana_municipios": 6.09,
+      "q1_preco": 5.99,
+      "q3_preco": 6.3725,
+      "mediana_postos_por_100mil": 5.26076213947793
+    },
+    {
+      "porte_populacional": "ate_50mil",
+      "municipios": 27,
+      "coletas": 6605,
+      "mediana_municipios": 6.19,
+      "q1_preco": 5.99,
+      "q3_preco": 6.41,
+      "mediana_postos_por_100mil": 20.2020202020202
+    }
+  ]
+}

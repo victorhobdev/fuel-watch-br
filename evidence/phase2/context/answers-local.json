@@ -1,0 +1,340 @@
+{
+  "status": "context_exploration_prepared_locally",
+  "fabric_executed": false,
+  "checked_at_utc": "2026-11-14T22:10:47.992705+00:00",
+  "answers": {
+    "population_price_and_coverage": [
+      {
+        "porte_populacional": "100mil_a_500mil",
+        "municipios": 226,
+        "coletas": 106384,
+        "mediana_municipios": 6.19,
+        "q1_preco": 5.99,
+        "q3_preco": 6.47,
+        "mediana_postos_por_100mil": 8.831787951765856
+      },
+      {
+        "porte_populacional": "50mil_a_100mil",
+        "municipios": 118,
+        "coletas": 32639,
+        "mediana_municipios": 6.26,
+        "q1_preco": 6.09,
+        "q3_preco": 6.397500000000001,
+        "mediana_postos_por_100mil": 12.51433173715538
+      },
+      {
+        "porte_populacional": "acima_500mil",
+        "municipios": 48,
+        "coletas": 66795,
+        "mediana_municipios": 6.09,
+        "q1_preco": 5.99,
+        "q3_preco": 6.3725,
+        "mediana_postos_por_100mil": 5.260762139477929
+      },
+      {
+        "porte_populacional": "ate_50mil",
+        "municipios": 27,
+        "coletas": 6605,
+        "mediana_municipios": 6.19,
+        "q1_preco": 5.99,
+        "q3_preco": 6.41,
+        "mediana_postos_por_100mil": 20.2020202020202
+      }
+    ],
+    "weather_rain_and_temperature": [
+      {
+        "uf": "RJ",
+        "ano": 2025,
+        "trimestre": 1,
+        "chuva": "10_a_40mm",
+        "municipios_semanas": 55,
+        "municipios": 16,
+        "mediana_precos": "6.340000",
+        "q1_precos": "6.090000",
+        "q3_precos": "6.555000",
+        "mediana_temperatura": 25.88869
+      },
+      {
+        "uf": "RJ",
+        "ano": 2025,
+        "trimestre": 1,
+        "chuva": "40mm_ou_mais",
+        "municipios_semanas": 63,
+        "municipios": 21,
+        "mediana_precos": "6.190000",
+        "q1_precos": "5.965000",
+        "q3_precos": "6.490000",
+        "mediana_temperatura": 25.539286
+      },
+      {
+        "uf": "RJ",
+        "ano": 2025,
+        "trimestre": 1,
+        "chuva": "abaixo_10mm",
+        "municipios_semanas": 153,
+        "municipios": 24,
+        "mediana_precos": "6.160000",
+        "q1_precos": "5.960000",
+        "q3_precos": "6.490000",
+        "mediana_temperatura": 27.245833
+      },
+      {
+        "uf": "RJ",
+        "ano": 2025,
+        "trimestre": 2,
+        "chuva": "10_a_40mm",
+        "municipios_semanas": 105,
+        "municipios": 25,
+        "mediana_precos": "6.005000",
+        "q1_precos": "5.940000",
+        "q3_precos": "6.450000",
+        "mediana_temperatura": 21.188095
+      },
+      {
+        "uf": "RJ",
+        "ano": 2025,
+        "trimestre": 2,
+        "chuva": "40mm_ou_mais",
+        "municipios_semanas": 28,
+        "municipios": 14,
+        "mediana_precos": "6.390000",
+        "q1_precos": "5.890000",
+        "q3_precos": "6.573750",
+        "mediana_temperatura": 22.616071
+      },
+      {
+        "uf": "RJ",
+        "ano": 2025,
+        "trimestre": 2,
+        "chuva": "abaixo_10mm",
+        "municipios_semanas": 180,
+        "municipios": 27,
+        "mediana_precos": "6.165000",
+        "q1_precos": "5.940000",
+        "q3_precos": "6.490000",
+        "mediana_temperatura": 21.42619
+      },
+      {
+        "uf": "RJ",
+        "ano": 2025,
+        "trimestre": 3,
+        "chuva": "10_a_40mm",
+        "municipios_semanas": 69,
+        "municipios": 22,
+        "mediana_precos": "6.125000",
+        "q1_precos": "5.890000",
+        "q3_precos": "6.450000",
+        "mediana_temperatura": 20.310119
+      },
+      {
+        "uf": "RJ",
+        "ano": 2025,
+        "trimestre": 3,
+        "chuva": "40mm_ou_mais",
+        "municipios_semanas": 5,
+        "municipios": 5,
+        "mediana_precos": "6.390000",
+        "q1_precos": "6.390000",
+        "q3_precos": "6.490000",
+        "mediana_temperatura": 17.207738
+      },
+      {
+        "uf": "RJ",
+        "ano": 2025,
+        "trimestre": 3,
+        "chuva": "abaixo_10mm",
+        "municipios_semanas": 194,
+        "municipios": 25,
+        "mediana_precos": "5.990000",
+        "q1_precos": "5.890000",
+        "q3_precos": "6.390000",
+        "mediana_temperatura": 20.5247025
+      },
+      {
+        "uf": "RJ",
+        "ano": 2025,
+        "trimestre": 4,
+        "chuva": "10_a_40mm",
+        "municipios_semanas": 144,
+        "municipios": 24,
+        "mediana_precos": "5.990000",
+        "q1_precos": "5.890000",
+        "q3_precos": "6.360000",
+        "mediana_temperatura": 23.782738
+      },
+      {
+        "uf": "RJ",
+        "ano": 2025,
+        "trimestre": 4,
+        "chuva": "40mm_ou_mais",
+        "municipios_semanas": 50,
+        "municipios": 20,
+        "mediana_precos": "6.290000",
+        "q1_precos": "5.990000",
+        "q3_precos": "6.390000",
+        "mediana_temperatura": 24.077381
+      },
+      {
+        "uf": "RJ",
+        "ano": 2025,
+        "trimestre": 4,
+        "chuva": "abaixo_10mm",
+        "municipios_semanas": 83,
+        "municipios": 24,
+        "mediana_precos": "6.060000",
+        "q1_precos": "5.915000",
+        "q3_precos": "6.390000",
+        "mediana_temperatura": 23.770238
+      },
+      {
+        "uf": "SP",
+        "ano": 2025,
+        "trimestre": 1,
+        "chuva": "10_a_40mm",
+        "municipios_semanas": 184,
+        "municipios": 51,
+        "mediana_precos": "6.090000",
+        "q1_precos": "5.990000",
+        "q3_precos": "6.190000",
+        "mediana_temperatura": 24.282738
+      },
+      {
+        "uf": "SP",
+        "ano": 2025,
+        "trimestre": 1,
+        "chuva": "40mm_ou_mais",
+        "municipios_semanas": 215,
+        "municipios": 47,
+        "mediana_precos": "6.090000",
+        "q1_precos": "5.982500",
+        "q3_precos": "6.190000",
+        "mediana_temperatura": 23.164935
+      },
+      {
+        "uf": "SP",
+        "ano": 2025,
+        "trimestre": 1,
+        "chuva": "abaixo_10mm",
+        "municipios_semanas": 184,
+        "municipios": 48,
+        "mediana_precos": "6.140000",
+        "q1_precos": "6.050000",
+        "q3_precos": "6.230000",
+        "mediana_temperatura": 25.061585
+      },
+      {
+        "uf": "SP",
+        "ano": 2025,
+        "trimestre": 2,
+        "chuva": "10_a_40mm",
+        "municipios_semanas": 271,
+        "municipios": 69,
+        "mediana_precos": "6.090000",
+        "q1_precos": "5.990000",
+        "q3_precos": "6.190000",
+        "mediana_temperatura": 19.844643
+      },
+      {
+        "uf": "SP",
+        "ano": 2025,
+        "trimestre": 2,
+        "chuva": "40mm_ou_mais",
+        "municipios_semanas": 76,
+        "municipios": 50,
+        "mediana_precos": "6.090000",
+        "q1_precos": "5.990000",
+        "q3_precos": "6.200000",
+        "mediana_temperatura": 20.3850495
+      },
+      {
+        "uf": "SP",
+        "ano": 2025,
+        "trimestre": 2,
+        "chuva": "abaixo_10mm",
+        "municipios_semanas": 465,
+        "municipios": 70,
+        "mediana_precos": "6.090000",
+        "q1_precos": "5.990000",
+        "q3_precos": "6.190000",
+        "mediana_temperatura": 18.592857
+      },
+      {
+        "uf": "SP",
+        "ano": 2025,
+        "trimestre": 3,
+        "chuva": "10_a_40mm",
+        "municipios_semanas": 84,
+        "municipios": 52,
+        "mediana_precos": "5.990000",
+        "q1_precos": "5.890000",
+        "q3_precos": "6.132500",
+        "mediana_temperatura": 16.8879005
+      },
+      {
+        "uf": "SP",
+        "ano": 2025,
+        "trimestre": 3,
+        "chuva": "40mm_ou_mais",
+        "municipios_semanas": 23,
+        "municipios": 23,
+        "mediana_precos": "5.990000",
+        "q1_precos": "5.947500",
+        "q3_precos": "6.140000",
+        "mediana_temperatura": 16.62381
+      },
+      {
+        "uf": "SP",
+        "ano": 2025,
+        "trimestre": 3,
+        "chuva": "abaixo_10mm",
+        "municipios_semanas": 675,
+        "municipios": 77,
+        "mediana_precos": "5.990000",
+        "q1_precos": "5.940000",
+        "q3_precos": "6.090000",
+        "mediana_temperatura": 19.442262
+      },
+      {
+        "uf": "SP",
+        "ano": 2025,
+        "trimestre": 4,
+        "chuva": "10_a_40mm",
+        "municipios_semanas": 342,
+        "municipios": 85,
+        "mediana_precos": "5.990000",
+        "q1_precos": "5.970000",
+        "q3_precos": "6.090000",
+        "mediana_temperatura": 23.167857
+      },
+      {
+        "uf": "SP",
+        "ano": 2025,
+        "trimestre": 4,
+        "chuva": "40mm_ou_mais",
+        "municipios_semanas": 264,
+        "municipios": 90,
+        "mediana_precos": "5.990000",
+        "q1_precos": "5.950000",
+        "q3_precos": "6.182500",
+        "mediana_temperatura": 22.635303
+      },
+      {
+        "uf": "SP",
+        "ano": 2025,
+        "trimestre": 4,
+        "chuva": "abaixo_10mm",
+        "municipios_semanas": 294,
+        "municipios": 90,
+        "mediana_precos": "5.990000",
+        "q1_precos": "5.972500",
+        "q3_precos": "6.090000",
+        "mediana_temperatura": 22.222892
+      }
+    ]
+  },
+  "interpretation": "Descritivo; município ou município-semana têm peso igual. Valores nominais, sem causalidade. Chuva é soma das horas válidas sem imputação. Análise de clima estratificada por UF e trimestre.",
+  "queries": {
+    "population_price_and_coverage": "\n      SELECT porte_populacional, COUNT(*) AS municipios, SUM(coletas) AS coletas,\n             MEDIAN(preco_mediano) AS mediana_municipios,\n             QUANTILE_CONT(preco_mediano,0.25) AS q1_preco,\n             QUANTILE_CONT(preco_mediano,0.75) AS q3_preco,\n             MEDIAN(postos_pesquisados_por_100mil) AS mediana_postos_por_100mil\n      FROM read_parquet('C:/Users/Vitinho/Documents/ChatGPT/Watch Fuel/data/artifacts/context/municipal_population.parquet')\n      WHERE ano_referencia=2025 AND produto='GASOLINA' AND moeda='BRL' AND unidade='litro'\n      GROUP BY porte_populacional ORDER BY porte_populacional",
+    "weather_rain_and_temperature": "\n      SELECT m.uf, YEAR(m.inicio_semana_iso) AS ano, QUARTER(m.inicio_semana_iso) AS trimestre,\n             CASE WHEN w.observed_rain_mm < 10 THEN 'abaixo_10mm'\n                  WHEN w.observed_rain_mm < 40 THEN '10_a_40mm' ELSE '40mm_ou_mais' END AS chuva,\n             COUNT(*) AS municipios_semanas, COUNT(DISTINCT m.municipio_ibge) AS municipios,\n             MEDIAN(m.mediana_municipio) AS mediana_precos,\n             QUANTILE_CONT(m.mediana_municipio,0.25) AS q1_precos,\n             QUANTILE_CONT(m.mediana_municipio,0.75) AS q3_precos,\n             MEDIAN(w.mean_temperature_degC) AS mediana_temperatura\n      FROM read_parquet('C:/Users/Vitinho/Documents/ChatGPT/Watch Fuel/data/artifacts/analytics-history/municipio_semana.parquet') m JOIN read_parquet('C:/Users/Vitinho/Documents/ChatGPT/Watch Fuel/data/artifacts/context/weather_municipal_weekly.parquet') w\n       ON m.municipio_ibge=w.municipio_ibge AND m.inicio_semana_iso=w.week_start\n      WHERE m.produto='GASOLINA' AND m.moeda='BRL' AND m.unidade='litro' AND m.benchmark_elegivel\n       AND w.rain_eligible AND w.temperature_eligible AND NOT w.partial_boundary_week\n       AND m.uf IN ('RJ','SP') AND YEAR(m.inicio_semana_iso)=2025\n      GROUP BY ALL ORDER BY m.uf, ano, trimestre, chuva"
+  }
+}

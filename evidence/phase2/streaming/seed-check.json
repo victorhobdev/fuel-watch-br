@@ -1,0 +1,8 @@
+{
+  "status": "seed_full_payload_reconciled",
+  "environment": "fabric",
+  "lab_run_id": "ae5e0526-4c65-45bb-928c-f80ea4c9c7e1",
+  "unique_ids": 10,
+  "full_payload_comparison": true,
+  "checked_at_utc": "2026-11-15T01:36:35.898672+00:00"
+}

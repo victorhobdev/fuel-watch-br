@@ -14,11 +14,8 @@
       "pending": []
     },
     "F2-02": {
-      "status": "partial",
-      "pending": [
-        "historical_analytics_report_and_common_station_panel",
-        "latest_official_notebook_definition_sync"
-      ],
+      "status": "completed",
+      "pending": [],
       "completed": [
         "four_official_historical_sources_profiled",
         "independent_typed_local_references",
@@ -35,7 +32,11 @@
         "old_official_files_refreshed_by_hash",
         "old_file_full_correction_and_scd2_rebuild_in_fabric",
         "five_real_update_failure_recovery_cases",
-        "seven_historical_analytical_views_fully_reconciled"
+        "seven_historical_analytical_views_fully_reconciled",
+        "common_station_view_fully_reconciled",
+        "historical_report_definition_created_and_three_dax_slices_reconciled",
+        "latest_official_notebook_definition_sync",
+        "historical_report_full_render_and_filter_verification"
       ],
       "prepared": [
         "versioned_bronze_silver_notebook_11",
@@ -48,47 +49,94 @@
         "evidence/phase2/refresh/pipeline-010951d0-40c0-4e89-86de-20885cf7ed8b.json",
         "evidence/phase2/refresh/schedule-once.json",
         "evidence/phase2/history/lab/fabric-correction.json",
-        "evidence/phase2/analytics-history/warehouse-verification.json"
+        "evidence/phase2/analytics-history/warehouse-verification.json",
+        "evidence/phase2/analytics-history/common-stations.json",
+        "evidence/phase2/analytics-history/common-model-check.json",
+        "evidence/phase2/history/notebook-sync.json",
+        "evidence/phase2/deployment/rebuild-history-report-qa4.json",
+        "evidence/phase2/deployment/rebuild-common-model-check.json",
+        "evidence/phase2/deployment/rebuild-context-model-check.json"
       ]
     },
     "F2-03": {
-      "status": "partial",
-      "pending": [
-        "dated_population_reference",
-        "weather_station_geography_coverage",
-        "nonmultiplying_temporal_joins",
-        "exploratory_answers",
-        "context_report_page"
-      ],
+      "status": "completed",
+      "pending": [],
       "completed": [
         "official_population_profile_local",
         "official_municipal_geography_profile_local",
         "population_join_nonmultiplication_local",
         "official_inmet_annual_archives_sampled",
-        "weather_hourly_weekly_reference_and_join_local"
+        "weather_hourly_weekly_reference_and_join_local",
+        "dated_population_reference",
+        "weather_station_geography_coverage",
+        "nonmultiplying_temporal_joins",
+        "context_spark_full_reference_validation",
+        "context_warehouse_coverage_reconciliation",
+        "population_and_weather_exploratory_answers_reconciled",
+        "context_report_page_definition_published",
+        "population_context_dax_all_four_groups_reconciled",
+        "mixed_product_period_price_guard_verified",
+        "context_report_render_validation"
       ],
       "prepared": [
         "population_temporal_contract",
         "weather_association_policy_and_catalog"
+      ],
+      "evidence": [
+        "evidence/phase2/deployment/rebuild-context-model-check.json",
+        "evidence/phase2/deployment/rebuild-history-report-qa4.json"
       ]
     },
     "F2-04": {
-      "status": "not_started",
-      "pending": [
-        "versioned_historical_event_benchmark",
-        "finite_transport_late_duplicate_cases",
-        "real_activator_action_and_shutdown",
-        "expanded_workload_baseline_intervention_reconciliation"
+      "status": "completed",
+      "prepared": [
+        "historical_benchmark_version_and_stale_missing_contract",
+        "finite_1000_event_batch_and_twenty_reinjections",
+        "local_classification_tests_passed"
+      ],
+      "completed": [
+        "seed_ten_events_full_payload_reconciled",
+        "historical_rule_enabled_via_official_mcp",
+        "finite_1020_payloads_and_multiplicities_reconciled",
+        "historical_event_classifications_recomputed",
+        "historical_rule_stopped_via_official_mcp",
+        "eventstream_destinations_paused_after_emission",
+        "context_query_three_alternating_measurements_per_condition",
+        "materialized_laboratory_copy_fully_reconciled",
+        "real_activator_action_and_verified_shutdown",
+        "expanded_historical_workload_baseline_intervention_reconciled"
+      ],
+      "pending": [],
+      "evidence": [
+        "evidence/phase2/streaming/activator-action.json",
+        "evidence/phase2/performance/context-query.json"
       ]
     },
     "F2-05": {
-      "status": "not_started",
+      "status": "partial",
+      "completed": [
+        "current_workspace_items_inventory",
+        "clean_rebuild_workspace_empty_baseline_verified_on_existing_trial",
+        "empty_workspace_rebuild_and_full_business_reconciliation",
+        "prior_m08_promotion_and_restore_evidence_reused",
+        "local_locked_ci_43_portable_plus_10_transport_tests_passed",
+        "dependency_locks_and_fabric_runtime_reviewed",
+        "final_demo_and_readme_updated",
+        "dev_test_rebuild_resource_audit_idle_same_ftl4_capacity"
+      ],
       "pending": [
-        "active_dependency_versioning",
-        "empty_workspace_rebuild",
-        "full_business_reconciliation",
-        "deployment_restore",
-        "ci_demo_resource_audit"
+        "github_workflow_dispatch_and_receipt"
+      ],
+      "evidence": [
+        "evidence/phase2/deployment/empty-workspace.json",
+        "evidence/phase2/deployment/rebuild-warehouse-history-rebuild01.json",
+        "evidence/phase2/deployment/rebuild-context-join.json",
+        "evidence/phase2/deployment/rebuild-history-report-qa4.json",
+        "evidence/phase2/deployment/dependency-versions.json",
+        "evidence/phase2/deployment/resource-audit-2026-11-15.json",
+        "evidence/fabric/deployment/checkpoint.json",
+        "docs/demo.md",
+        "docs/rebuild-phase2.md"
       ]
     }
   }

@@ -1,0 +1,14 @@
+{
+  "status": "rebuild_notebook_code_and_bindings_verified",
+  "environment": "fabric_rebuild",
+  "checks": [
+    {
+      "notebook": "01_landing_to_bronze",
+      "code_equal": true,
+      "target_lakehouse_verified": true,
+      "dev_literals_absent": true
+    }
+  ],
+  "workloads_executed": false,
+  "checked_at_utc": "2026-11-15T01:58:20.993611+00:00"
+}

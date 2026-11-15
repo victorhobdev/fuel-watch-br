@@ -1,0 +1,20 @@
+{
+  "status": "Completed",
+  "environment": "fabric_rebuild",
+  "workspace_id": "52ee7464-3b6a-4cce-a1cd-0048b4f460ad",
+  "lakehouse_id": "95eceead-a243-4d43-a633-d5a9eb7ea5c5",
+  "notebook": "10_brasil_todos_combustiveis",
+  "notebook_id": "59f29c4d-1723-471b-bc47-db9a13f3cee5",
+  "job_id": "bdd48a1e-5404-4e04-bb45-0de194c6fcf8",
+  "job_type": "execute",
+  "root_activity_id": "791aa3ed-04ff-4675-af5c-5ff703accf62",
+  "started_at_utc": "2026-11-15T12:44:03.5786201",
+  "ended_at_utc": "2026-11-15T12:49:06.9860754",
+  "failure_reason": null,
+  "exit_value": "{\"run_id\": \"022fe737-dda4-4b4b-818b-0c116e09e020\", \"environment\": \"fabric\", \"scope\": {\"scope_id\": \"anp-2026-1-br-todos\", \"date_start\": \"2026-01-01\", \"date_end\": \"2026-06-30\", \"contract_version\": \"national-1.0\", \"product_units\": {\"DIESEL\": \"R$ / litro\", \"DIESEL S10\": \"R$ / litro\", \"ETANOL\": \"R$ / litro\", \"GASOLINA\": \"R$ / litro\", \"GASOLINA ADITIVADA\": \"R$ / litro\", \"GNV\": \"R$ / m\\u00b3\"}}, \"status\": \"national_silver_validated\", \"started_at_utc\": \"2026-11-15T12:44:13.901880+00:00\", \"source_sha256\": \"a2c95e5dfa324a9d7253d4e8d53022e0c08dcc5eb6f18551527ee9f29305c54c\", \"ibge_sha256\": \"d9eec8439bc8c5dc2f7db6332a8e5569f5a3f637988e26aebc513412d4069d5c\", \"spark_version\": \"4.1.1.5.5.20260929.238183312\", \"manifest_sha256\": \"d8f755a68467c63883c3454a7c2e2861867f03fc9a64dff1e61eb0f119968ac8\", \"scope_id\": \"anp-2026-1-br-todos\", \"silver_delta_version\": 0, \"expected_rows\": 422412, \"expected_stations\": 7963, \"expected_municipalities\": 417, \"expected_history\": 8159, \"expected_weekly\": 50965, \"expected_unusual\": 11366, \"counts\": {\"selected\": 422418, \"invalid\": 0, \"exact_duplicate_excess\": 6, \"conflicting_rows_after_exact_dedup\": 0, \"accepted\": 422412}, \"ufs\": 27, \"products\": 6, \"previous_delta_version\": null, \"same_business_as_previous\": false, \"full_business_comparison_passed\": true, \"iqr_not_evaluated_rows\": 8657, \"finished_at_utc\": \"2026-11-15T12:48:59.414630+00:00\"}",
+  "compute": "Spark",
+  "livy_id": "ef93653d-a9fb-4d71-99e0-a301341e54e7",
+  "spark_application_id": "application_1794746348760_0001",
+  "runtime_version": "2.0",
+  "checked_at_utc": "2026-11-15T12:49:48.691114+00:00"
+}

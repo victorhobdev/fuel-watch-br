@@ -1,0 +1,8 @@
+{
+  "status": "acknowledged_ingestion_pending",
+  "lab_run_id": "ae5e0526-4c65-45bb-928c-f80ea4c9c7e1",
+  "rows": 10,
+  "started_at_utc": "2026-11-15T01:33:20.123737+00:00",
+  "destinations_paused": true,
+  "finished_at_utc": "2026-11-15T01:35:35.716044+00:00"
+}

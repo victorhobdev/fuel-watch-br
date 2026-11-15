@@ -29,3 +29,14 @@ No M10, mostrar o manifesto do lote `daf2320c-b0bc-4eef-b908-a2dd80939088`, quat
 ## Limites a declarar
 
 Não demonstramos concorrência entre publicadores nem uma transação única Lakehouse/Warehouse. O ensaio de desempenho mede uma agregação em cache; não comprova economia monetária ou aceleração do pipeline completo. O usuário dispensou a segunda conta e aceitou revisão de implementação M07; negação/RLS/DDM com leitor não foram testados. Integração Git nativa foi exercitada seletivamente no notebook 08, commit `6a30720`, além do push/CI. Não foi feito envio nativo de todos os itens.
+
+## Fase 2 — observatório nacional e histórico
+
+1. Abrir `evidence/phase2/deployment/rebuild-history-report-qa4.pdf`. A página Panorama traz a evolução semanal da mediana de posto; a página Postos e bandeiras limita o ranking aos 100 maiores desvios elegíveis; a terceira compara postos comuns entre semestres consecutivos; a quarta expõe os grupos populacionais e o status da cobertura climática.
+2. Explicar o universo: 2.125.547 coletas ANP, 13.030 postos, 462 municípios, 27 UFs e seis produtos no histórico até junho de 2026. A observação individual continua no fato; semanas e comparações são derivados.
+3. Ao discutir postos comuns, destacar que a comparação exige o mesmo CNPJ, produto, unidade, UF e município nos dois primeiros semestres. A amostra não é todos os postos existentes, preço é nominal e ausência de coleta não é zero.
+4. Ao discutir contexto, informar que a população é referência retrospectiva de julho por município/ano; clima representa associação geográfica e elegibilidade horária. O relatório mostra cobertura e ausência; nenhuma relação causal foi inferida.
+5. O Eventstream/Eventhouse usa apenas dados sintéticos. `evidence/phase2/streaming/activator-action.json` prova uma ativação real e a conclusão do pipeline interno no intervalo da sonda sintética de dois eventos. O registro Activator não expõe `event_id`; não afirmar vínculo individual com um dos eventos. A regra foi desligada e destinos pausados.
+6. O rebuild limpo usou uma capacidade FTL4 trial já existente. `evidence/phase2/deployment/resource-audit-2026-11-15.json` registra zero jobs, sessões Spark e agendas habilitadas nos workspaces dev, test e rebuild. Expiração da trial e consumo CU não foram verificados.
+
+Desempenho: `evidence/phase2/performance/context-query.json` compara a consulta completa da view com a cópia materializada reconciliada. O resultado retornou 6.914 grupos sobre uma publicação de 2.125.547 coletas; a mediana caiu de 7,375 s para 0,105 s nesta leitura TDS. Isso não mede DAX, o pipeline inteiro ou custo monetário.
