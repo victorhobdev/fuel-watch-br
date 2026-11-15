@@ -113,7 +113,7 @@
       ]
     },
     "F2-05": {
-      "status": "partial",
+      "status": "completed",
       "completed": [
         "current_workspace_items_inventory",
         "clean_rebuild_workspace_empty_baseline_verified_on_existing_trial",
@@ -126,11 +126,10 @@
         "dev_test_rebuild_resource_audit_idle_same_ftl4_capacity",
         "stale_publication_predecessor_guard_verified_in_dev_and_rebuild",
         "integrated_pipeline_identical_replay_skipped_publication",
-        "integrated_update_pipeline_reconstructed_and_verified_in_clean_workspace"
-      ],
-      "pending": [
+        "integrated_update_pipeline_reconstructed_and_verified_in_clean_workspace",
         "github_ci_for_rebuild_pipeline_revision"
       ],
+      "pending": [],
       "evidence": [
         "evidence/phase2/deployment/empty-workspace.json",
         "evidence/phase2/deployment/rebuild-warehouse-history-rebuild01.json",

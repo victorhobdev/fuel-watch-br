@@ -72,9 +72,9 @@ por ID para o Lakehouse de reconstrução. O runner verifica que não há sessã
 Spark ativa, registra o recibo uma única vez, espera o `Retry-After` e acompanha
 o mesmo `jobInstanceId`; nenhum POST é repetido automaticamente.
 
-O workflow remoto `Fuel Watch checks` foi disparado para o commit de
-implementação `ae18d4d` pelo
-runner self-hosted efêmero e concluiu com sucesso: 43 testes portáveis e 10 de
-transporte/identidade. O recibo e o link do run estão em
-`evidence/phase2/deployment/github-ci.json`; o runner se desregistrou ao fim do
-job. Não foi verificada a data de expiração da trial nem o consumo de CU.
+O workflow remoto `Fuel Watch checks` foi disparado para o commit
+`3076cd4f594c5e301f3f697b798d6cd65d0db090` pelo runner self-hosted efêmero e
+concluiu com sucesso: 47 testes portáveis e 10 de transporte/identidade. O
+recibo e o link do run estão em `evidence/phase2/deployment/github-ci.json`; o
+runner se desregistrou ao fim do job. A suíte local completa passou com 89
+testes. Não foi verificada a data de expiração da trial nem o consumo de CU.

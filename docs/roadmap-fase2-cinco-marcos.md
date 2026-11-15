@@ -18,12 +18,11 @@ Andamento detalhado e evidências: `evidence/phase2/progress.json`. Dados inicia
 
 ## Fechamento verificado em 15/11/2026
 
-F2-01 a F2-04 concluídos. F2-05 aguarda o CI do commit que contém o pipeline de
-rebuild; essa é a única pendência em `evidence/phase2/progress.json`. A
-publicação histórica compara o predecessor
+F2-01 a F2-05 concluídos. O CI do commit `3076cd4f594c5e301f3f697b798d6cd65d0db090`
+passou no GitHub Actions, com 47 testes portáveis e 10 de transporte/identidade;
+a suíte local completa passou com 89 testes. A publicação histórica compara o predecessor
 dentro da transação; o teste em dev e rebuild rejeitou um predecessor antigo
 sem alterar os dados. O pipeline integrado foi reconstruído no workspace vazio
 e a repetição de quatro arquivos terminou com publicação idêntica pulada. CI do
-commit anterior passou com 46 testes portáveis e 10 de transporte e identidade.
-Não foi criada capacidade paga; o consumo em CU e a expiração da trial não
-foram verificados.
+O runner do CI foi efêmero e ficou desregistrado após o job. Não foi criada
+capacidade paga; o consumo em CU e a expiração da trial não foram verificados.

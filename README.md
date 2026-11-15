@@ -8,7 +8,7 @@ O mesmo arquivo ANP de jan–jun/2026 já está tratado para **todas as 27 UFs e
 
 No Fabric: Lakehouse `lh_fuelwatch`, tabela `silver_preco_brasil`; Warehouse `wh_fuelwatch`, view **`gold_br.coletas`**, dimensões e agregado `gold_br.preco_semanal`. Silver/Gold, referência independente completa, repetição da publicação e exportação real foram validadas. [Guia dos dados, consultas e arquivos Parquet/CSV](docs/dados-nacionais.md), [evidências](evidence/fabric/national/).
 
-[Roadmap vigente da fase 2 em cinco marcos](docs/roadmap-fase2-cinco-marcos.md): **F2-01 a F2-04 concluídos; F2-05 em fechamento do CI final**. O plano anterior de dez itens permanece como detalhamento histórico.
+[Roadmap vigente da fase 2 em cinco marcos](docs/roadmap-fase2-cinco-marcos.md): **F2-01 a F2-05 concluídos**. O CI do commit `3076cd4` passou no GitHub Actions (47 testes portáveis e 10 de transporte/identidade); a suíte local completa passou com 89 testes. O plano anterior de dez itens permanece como detalhamento histórico.
 
 O observatório nacional agora tem sete visões `analise_br`, modelo DirectQuery e relatório **Fuel Watch BR Nacional**, com páginas de panorama e postos/bandeiras. As visões foram comparadas integralmente com referência independente; filtros e medidas foram reconciliados em SQL/DAX e quatro recortes foram renderizados e inspecionados. [Seis respostas interpretadas](docs/phase2-respostas-analiticas.md), [contrato analítico](docs/analytics-contract.md) e [aceite F2-01](evidence/phase2/analytics/acceptance.json).
 
