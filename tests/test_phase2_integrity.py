@@ -28,6 +28,13 @@ class Phase2IntegrityTests(unittest.TestCase):
         self.assertIn("'warehouse_id':s['warehouse']['id']", source)
         self.assertIn("target['warehouse']['id']", consumer)
 
+    def test_integrated_pipeline_can_bind_copy_notebooks_and_sql_to_rebuild(self):
+        source = (ROOT / "tools/fabric/phase2_history_pipeline.py").read_text(encoding="utf-8")
+        self.assertIn("p.add_argument('--rebuild',action='store_true')", source)
+        self.assertIn("s['notebooks']['11_historico_bronze_silver']", source)
+        self.assertIn("s['notebooks']['12_historico_publicacao']", source)
+        self.assertIn("link.update(endpoint=endpoint,artifactId=c['warehouse_id'],workspaceId=c['workspace_id'])", source)
+
 
 if __name__ == "__main__":
     unittest.main()

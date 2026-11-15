@@ -1,16 +1,30 @@
 """Orquestracao Fabric: Copy -> versoes -> candidato -> visibilidade -> Gold."""
 import argparse,base64,copy,json,re,time
 from datetime import datetime,timedelta,timezone
+from urllib.parse import urlparse
 from client import ROOT,request,definition_operation
 from evidence import write_json
 from warehouse import connect,results
 
 p=argparse.ArgumentParser();g=p.add_mutually_exclusive_group(required=True)
 g.add_argument('--prepare',action='store_true');g.add_argument('--start',metavar='ATTEMPT');g.add_argument('--watch',metavar='RUN_ID')
-p.add_argument('--force-rebuild',action='store_true');args=p.parse_args()
-c=json.loads((ROOT/'.local/fabric-environment.json').read_text());folder=ROOT/'.local/phase2-history';binding=folder/'binding.json';s=json.loads(binding.read_text())
-base=f"workspaces/{c['workspace_id']}";name='pl_fuelwatch_historico'
-versions=json.loads((folder/'bundle.json').read_text());publication=json.loads((folder/'publication-bundle.json').read_text())
+p.add_argument('--rebuild',action='store_true');p.add_argument('--force-rebuild',action='store_true');args=p.parse_args()
+dev=json.loads((ROOT/'.local/fabric-environment.json').read_text())
+if args.rebuild:
+    c=json.loads((ROOT/'.local/phase2-rebuild/environment.json').read_text())
+    folder=ROOT/'.local/phase2-rebuild/integrated-history';folder.mkdir(parents=True,exist_ok=True)
+    binding=ROOT/'.local/phase2-rebuild/binding.json';s=json.loads(binding.read_text())
+    s['notebook_id']=s['notebooks']['11_historico_bronze_silver']
+    s['publication_notebook_id']=s['notebooks']['12_historico_publicacao']
+    landing_pipeline_id=s['landing_pipeline_id'];master_pipeline_id=s.get('history_pipeline_id')
+    name='pl_fuelwatch_historico_rebuild'
+else:
+    c=dev;folder=ROOT/'.local/phase2-history';binding=folder/'binding.json';s=json.loads(binding.read_text())
+    landing_pipeline_id=s['pipeline_id'];master_pipeline_id=s.get('master_pipeline_id')
+    name='pl_fuelwatch_historico'
+history_folder=ROOT/'.local/phase2-history'
+base=f"workspaces/{c['workspace_id']}"
+versions=json.loads((history_folder/'bundle.json').read_text());publication=json.loads((history_folder/'publication-bundle.json').read_text())
 
 def expr(value):return {'value':value,'type':'Expression'}
 def depends(name):return [{'activity':name,'dependencyConditions':['Succeeded']}] if name else []
@@ -23,14 +37,29 @@ def notebook(label,item,parameters,after):
 if args.prepare:
     workspace=request('GET',base).json();cap=next(x for x in request('GET','capacities').json()['value'] if x['id']==workspace['capacityId'])
     assert cap['sku'].startswith('FTL') and cap['state']=='Active'
-    source=definition_operation(base+'/dataPipelines/'+s['pipeline_id']+'/getDefinition')
+    source=definition_operation(f"workspaces/{c['workspace_id']}/dataPipelines/{landing_pipeline_id}/getDefinition")
     source=json.loads(base64.b64decode(next(x for x in source['definition']['parts'] if x['path']=='pipeline-content.json')['payload']))
     loop=copy.deepcopy(source['properties']['activities'][0]);assert loop['type']=='ForEach'
-    parent=definition_operation(base+'/dataPipelines/'+c['pipeline_id']+'/getDefinition')
+    parent=definition_operation(f"workspaces/{dev['workspace_id']}/dataPipelines/{dev['pipeline_id']}/getDefinition")
     parent=json.loads(base64.b64decode(next(x for x in parent['definition']['parts'] if x['path']=='pipeline-content.json')['payload']))
     sql_template=next(a for a in parent['properties']['activities'] if a['type']=='Script')
+    if args.rebuild:
+        copy_activity=loop['typeProperties']['activities'][0]
+        location=copy_activity['typeProperties']['sink']['datasetSettings']['linkedService']['properties']['typeProperties']
+        assert location['workspaceId']==c['workspace_id'] and location['artifactId']==c['lakehouse_id']
+        profiles=json.loads((ROOT/'evidence/phase2/history/profile-summary.json').read_text(encoding='utf8'))['profiles']
+        sources=[{'source_id':x['source_id'],'relative_url':urlparse(x['source_url']).path,
+            'sha256':x['source_sha256'],'filename':x['source_url'].rsplit('/',1)[-1],'bytes':x['source_bytes']} for x in profiles]
+        source['properties']['parameters']['p_sources']['defaultValue']=sources
+        warehouse=request('GET',base+'/warehouses/'+c['warehouse_id']).json()
+        endpoint=warehouse['properties']['connectionInfo'].split(';',1)[0]
+        target_link=copy.deepcopy(sql_template['linkedService'])
+        link=target_link['properties']['typeProperties']
+        link.update(endpoint=endpoint,artifactId=c['warehouse_id'],workspaceId=c['workspace_id'])
+    else:target_link=None
     def script(label,text,after=None,retries=0):
         a=copy.deepcopy(sql_template);a['name']=label;a['dependsOn']=depends(after);a['policy']=copy.deepcopy(policy);a['policy']['retry']=retries
+        if target_link:a['linkedService']=copy.deepcopy(target_link)
         a['typeProperties']={'scripts':[{'type':'Query','text':text}],'scriptBlockExecutionTimeout':'00:30:00'}
         return a
     validation=notebook('Validate_Versions',s['notebook_id'],{'p_landing_run_id':expr('@pipeline().RunId'),'p_bundle_relative_path':expr('@pipeline().parameters.p_versions_path'),'p_manifest_sha256':expr('@pipeline().parameters.p_versions_sha')},loop['name'])
@@ -52,19 +81,29 @@ if args.prepare:
     parameters.update({key:{'type':'string','defaultValue':value} for key,value in {'p_versions_path':versions['relative_path'],'p_versions_sha':versions['manifest_sha256'],'p_publication_path':publication['relative_path'],'p_publication_sha':publication['manifest_sha256'],'p_expected_previous_batch_id':''}.items()})
     parameters['p_force_rebuild']={'type':'bool','defaultValue':False}
     content={'properties':{'activities':[loop,validation,current,changed],'parameters':parameters}}
+    if args.rebuild:
+        encoded_content=json.dumps(content)
+        for identifier in [dev['workspace_id'],dev['lakehouse_id']]:
+            assert identifier not in encoded_content,'ID de desenvolvimento vazou para o pipeline de rebuild'
+        assert target_link['properties']['typeProperties']['artifactId']==c['warehouse_id']
+        assert target_link['properties']['typeProperties']['workspaceId']==c['workspace_id']
+        assert all(x['typeProperties']['workspaceId']==c['workspace_id'] for x in [validation,candidate])
     definition={'parts':[{'path':'pipeline-content.json','payloadType':'InlineBase64','payload':base64.b64encode(json.dumps(content).encode()).decode()}]}
     matches=[x for x in request('GET',base+'/items').json()['value'] if x['displayName']==name];assert len(matches)<=1
-    if not s.get('master_pipeline_id'):
+    if not master_pipeline_id:
         item=matches[0] if matches else definition_operation(base+'/dataPipelines',{'displayName':name,'description':'Historico nacional integrado; aprovacao por manifesto e publicacao transacional','definition':definition})
-        s['master_pipeline_id']=item['id'];write_json(binding,s)
-    else:definition_operation(base+'/dataPipelines/'+s['master_pipeline_id']+'/updateDefinition',{'definition':definition})
-    actual=definition_operation(base+'/dataPipelines/'+s['master_pipeline_id']+'/getDefinition')
+        master_pipeline_id=item['id']
+        if args.rebuild:s['history_pipeline_id']=master_pipeline_id
+        else:s['master_pipeline_id']=master_pipeline_id
+        write_json(binding,s)
+    else:definition_operation(base+'/dataPipelines/'+master_pipeline_id+'/updateDefinition',{'definition':definition})
+    actual=definition_operation(base+'/dataPipelines/'+master_pipeline_id+'/getDefinition')
     actual_content=json.loads(base64.b64decode(next(x for x in actual['definition']['parts'] if x['path']=='pipeline-content.json')['payload']))
     assert actual_content['properties']['activities']==content['properties']['activities']
     write_json(folder/'master-pipeline-readback.private.json',actual)
     print('Integrated historical pipeline prepared and read back; no job started',flush=True)
     raise SystemExit(0)
-jobs=base+'/items/'+s['master_pipeline_id']+'/jobs'
+jobs=base+'/items/'+master_pipeline_id+'/jobs'
 if args.start:
     assert re.fullmatch('[a-z0-9_-]+',args.start)
     accepted=folder/(args.start+'-master-accepted.json');pending=folder/(args.start+'-master-pending.json')

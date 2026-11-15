@@ -1,0 +1,16 @@
+{
+  "status": "clean_rebuild_integrated_pipeline_definition_verified",
+  "environment": "fabric_rebuild",
+  "workspace_id": "52ee7464-3b6a-4cce-a1cd-0048b4f460ad",
+  "pipeline_id": "517406b9-70b3-4d22-92a1-779fe33e800b",
+  "pipeline_name": "pl_fuelwatch_historico_rebuild",
+  "source_files": 4,
+  "validation_notebook_id": "7d4bcd7b-4bfa-41cb-9546-7120f1a24639",
+  "publication_notebook_id": "de43229d-b38d-440d-ae25-2c95ad9e09a3",
+  "copy_destination_lakehouse_id": "95eceead-a243-4d43-a633-d5a9eb7ea5c5",
+  "script_destination_warehouse_id": "141daf38-c50a-438e-b117-e9fa04374e8c",
+  "development_workspace_id_absent": true,
+  "development_lakehouse_id_absent": true,
+  "definition_sha256": "261cf69f4eb4102b462fe8046a0557bb927ffa1cfc7ae94bcb627f8b4293ad0f",
+  "checked_at_utc": "2026-11-15T17:26:31.469843+00:00"
+}

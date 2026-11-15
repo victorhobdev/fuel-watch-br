@@ -5,10 +5,11 @@ que estava vazio, na mesma capacidade trial FTL4 do ambiente dev. Lakehouse e Wa
 criados no destino; nenhum Delta nem recibo de dev foi copiado. Bronze, Silver,
 Gold, contexto, modelo semântico e relatório foram gerados e reconciliados no
 destino. A auditoria final confirmou dev, test e rebuild sem jobs, sessões Spark
-ou agendas habilitadas. O pipeline integrado de atualização ainda precisa ser
-reconstruído neste destino; o teste atual de predecessor no Warehouse não prova
-que esse pipeline rode ali. O CI do commit corrigido passou e está registrado em
-`evidence/phase2/deployment/github-ci.json`.
+ou agendas habilitadas. O pipeline integrado foi reconstruído no destino e a
+repetição controlada completou Copy, validação Silver e verificação de publicação,
+pulando a escrita da Gold idêntica. Os recibos da definição e do run estão em
+`evidence/phase2/deployment/`. O CI do código corrigido passou e está registrado
+em `evidence/phase2/deployment/github-ci.json`.
 
 Bindings privados: `.local/phase2-rebuild/`; nunca substituir a configuração
 padrão de desenvolvimento. Conferir ausência de IDs literais de dev nas células

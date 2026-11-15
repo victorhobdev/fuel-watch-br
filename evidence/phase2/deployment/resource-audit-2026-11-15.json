@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-11-15T14:27:04.491627+00:00",
+  "checked_at_utc": "2026-11-15T17:26:35.437063+00:00",
   "workspaces": [
     {
       "alias": "dev",
@@ -50,7 +50,7 @@
       "active_spark_sessions": [],
       "enabled_pipeline_schedules": [],
       "item_types": {
-        "DataPipeline": 1,
+        "DataPipeline": 2,
         "Lakehouse": 1,
         "Notebook": 5,
         "Report": 1,

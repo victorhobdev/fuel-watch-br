@@ -16,13 +16,14 @@ Sequência: F2-01 → F2-02 → F2-03 → F2-04 → F2-05, com coleta de métric
 
 Andamento detalhado e evidências: `evidence/phase2/progress.json`. Dados iniciais: `evidence/fabric/national/acceptance.json`. O plano técnico anterior descreve os contratos e os cuidados de cada componente: `fase-2-roadmap-observatorio-completo-2026-11-13.md`.
 
-## Estado da revisão em 15/11/2026
+## Fechamento verificado em 15/11/2026
 
-F2-01 a F2-04 concluídos. F2-05 está parcial: o predecessor da publicação
-histórica agora é verificado dentro da transação e foi exercitado em dev e no
-workspace de rebuild; o pipeline integrado passou por uma repetição que pulou
-a republicação. Falta reconstruir e validar esse pipeline no workspace limpo.
-O CI do commit corrigido passou com 46 testes portáveis e 10 de transporte e
-identidade. Evidências e pendências em
-`evidence/phase2/progress.json`. Não foi criada capacidade paga; o consumo em
-CU e a expiração da trial não foram verificados.
+F2-01 a F2-04 concluídos. F2-05 aguarda o CI do commit que contém o pipeline de
+rebuild; essa é a única pendência em `evidence/phase2/progress.json`. A
+publicação histórica compara o predecessor
+dentro da transação; o teste em dev e rebuild rejeitou um predecessor antigo
+sem alterar os dados. O pipeline integrado foi reconstruído no workspace vazio
+e a repetição de quatro arquivos terminou com publicação idêntica pulada. CI do
+commit anterior passou com 46 testes portáveis e 10 de transporte e identidade.
+Não foi criada capacidade paga; o consumo em CU e a expiração da trial não
+foram verificados.

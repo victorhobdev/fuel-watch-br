@@ -4,9 +4,13 @@ from datetime import datetime,timedelta,timezone
 from client import ROOT,request
 from warehouse import connect,results
 from evidence import write_json
-p=argparse.ArgumentParser();p.add_argument('run_id');p.add_argument('--expect-skipped',action='store_true');args=p.parse_args()
-c=json.loads((ROOT/'.local/fabric-environment.json').read_text());folder=ROOT/'.local/phase2-history';s=json.loads((folder/'binding.json').read_text());base=f"workspaces/{c['workspace_id']}"
-job=request('GET',base+'/items/'+s['master_pipeline_id']+'/jobs/instances/'+args.run_id).json();assert job['status']=='Completed',job['status']
+p=argparse.ArgumentParser();p.add_argument('run_id');p.add_argument('--expect-skipped',action='store_true');p.add_argument('--rebuild',action='store_true');args=p.parse_args()
+if args.rebuild:
+    c=json.loads((ROOT/'.local/phase2-rebuild/environment.json').read_text());folder=ROOT/'.local/phase2-rebuild/integrated-history';s=json.loads((ROOT/'.local/phase2-rebuild/binding.json').read_text());pipeline_id=s['history_pipeline_id']
+else:
+    c=json.loads((ROOT/'.local/fabric-environment.json').read_text());folder=ROOT/'.local/phase2-history';s=json.loads((folder/'binding.json').read_text());pipeline_id=s['master_pipeline_id']
+base=f"workspaces/{c['workspace_id']}"
+job=request('GET',base+'/items/'+pipeline_id+'/jobs/instances/'+args.run_id).json();assert job['status']=='Completed',job['status']
 now=datetime.now(timezone.utc)
 body={'filters':[],'orderBy':[{'orderBy':'ActivityRunStart','order':'ASC'}],'lastUpdatedAfter':(now-timedelta(days=2)).isoformat(),'lastUpdatedBefore':(now+timedelta(minutes=1)).isoformat()}
 response=request('POST',base+'/datapipelines/pipelineruns/'+args.run_id+'/queryactivityruns',body).json()
@@ -41,6 +45,7 @@ with connect(c) as cn:
         assert candidate['status']=='historical_publication_candidate_validated' and candidate['full_business_comparison_passed']
         assert publication[0]['batch_id']==candidate['run_id']
         assert publication[0]['source_sha256']==candidate['manifest_sha256']
-report={'status':'historical_integrated_skip_verified' if args.expect_skipped else 'historical_integrated_end_to_end_verified','environment':'fabric','pipeline_run_id':args.run_id,'job_start':job['startTimeUtc'],'job_end':job['endTimeUtc'],'activities':[{'name':a['activityName'],'status':a['status'],'duration_ms':a.get('durationInMs'),'bytes_read':a.get('output',{}).get('dataRead'),'bytes_written':a.get('output',{}).get('dataWritten'),'execution_seconds':a.get('output',{}).get('executionDuration')} for a in activities],'versions_receipt':versions,'publication':publication,'totals':totals,'checked_at_utc':datetime.now(timezone.utc).isoformat()}
-write_json(ROOT/'evidence/phase2/refresh'/('pipeline-'+args.run_id+'.json'),report)
+report={'status':'historical_integrated_skip_verified' if args.expect_skipped else 'historical_integrated_end_to_end_verified','environment':'fabric_rebuild' if args.rebuild else 'fabric','workspace_id':c['workspace_id'],'pipeline_run_id':args.run_id,'job_start':job['startTimeUtc'],'job_end':job['endTimeUtc'],'activities':[{'name':a['activityName'],'status':a['status'],'duration_ms':a.get('durationInMs'),'bytes_read':a.get('output',{}).get('dataRead'),'bytes_written':a.get('output',{}).get('dataWritten'),'execution_seconds':a.get('output',{}).get('executionDuration')} for a in activities],'versions_receipt':versions,'publication':publication,'totals':totals,'checked_at_utc':datetime.now(timezone.utc).isoformat()}
+out=ROOT/'evidence/phase2/deployment'/('rebuild-integrated-pipeline-'+args.run_id+'.json') if args.rebuild else ROOT/'evidence/phase2/refresh'/('pipeline-'+args.run_id+'.json')
+write_json(out,report)
 print(json.dumps({'status':report['status'],'run_id':args.run_id,'totals':totals}),flush=True)

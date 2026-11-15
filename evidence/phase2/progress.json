@@ -119,16 +119,17 @@
         "clean_rebuild_workspace_empty_baseline_verified_on_existing_trial",
         "empty_workspace_rebuild_and_full_business_reconciliation",
         "prior_m08_promotion_and_restore_evidence_reused",
-        "local_locked_ci_46_portable_plus_10_transport_tests_passed",
+        "local_locked_ci_47_portable_plus_10_transport_tests_passed",
         "github_workflow_dispatch_and_receipt",
         "dependency_locks_and_fabric_runtime_reviewed",
         "final_demo_and_readme_updated",
         "dev_test_rebuild_resource_audit_idle_same_ftl4_capacity",
         "stale_publication_predecessor_guard_verified_in_dev_and_rebuild",
-        "integrated_pipeline_identical_replay_skipped_publication"
+        "integrated_pipeline_identical_replay_skipped_publication",
+        "integrated_update_pipeline_reconstructed_and_verified_in_clean_workspace"
       ],
       "pending": [
-        "integrated_update_pipeline_reconstructed_and_verified_in_clean_workspace"
+        "github_ci_for_rebuild_pipeline_revision"
       ],
       "evidence": [
         "evidence/phase2/deployment/empty-workspace.json",
@@ -137,6 +138,9 @@
         "evidence/phase2/deployment/rebuild-history-report-qa4.json",
         "evidence/phase2/deployment/github-ci.json",
         "evidence/phase2/deployment/predecessor-guard.json",
+        "evidence/phase2/deployment/rebuild-integrated-pipeline-definition.json",
+        "evidence/phase2/deployment/rebuild-integrated-pipeline-0da4170c-054f-4702-807b-d3b8773a0c70.json",
+        "evidence/phase2/deployment/resource-audit-2026-11-15.json",
         "evidence/phase2/refresh/pipeline-30c7fac3-012f-4b85-97cd-77ae8ce56084.json",
         "evidence/phase2/deployment/dependency-versions.json",
         "evidence/phase2/deployment/resource-audit-2026-11-15.json",
