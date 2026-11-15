@@ -19,7 +19,8 @@ Andamento detalhado e evidências: `evidence/phase2/progress.json`. Dados inicia
 ## Fechamento em 15/11/2026
 
 **F2-01 a F2-05 concluídos**, todos com `pending: []` em
-`evidence/phase2/progress.json`. O CI remoto do commit final `ae18d4d` passou
+`evidence/phase2/progress.json`. O CI remoto do commit de implementação
+`ae18d4d` passou
 com 43 testes portáveis e 10 de transporte/identidade; recibo:
 `evidence/phase2/deployment/github-ci.json`. Permanecem limites já registrados:
 não foi criada capacidade paga, e o consumo em CU e a expiração da trial não
