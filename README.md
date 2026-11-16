@@ -1,87 +1,103 @@
 # Fuel Watch BR
 
-Projeto pessoal para aprender Microsoft Fabric e praticar competências da DP-700 com dados públicos de preços de combustíveis. Explicações e registros em português; nomes de ferramentas preservados como aparecem na interface.
+**Engenharia de dados com Microsoft Fabric: da fonte pública à análise geográfica de preços.**
 
-## Ampliação nacional — dados disponíveis
+[Atlas interativo](https://victorhob.me/fuelwatch/) · [Apresentação do projeto](docs/portfolio.md) · [Demonstração técnica](docs/demo.md) · [Índice de evidências](evidence/README.md)
 
-O mesmo arquivo ANP de jan–jun/2026 já está tratado para **todas as 27 UFs e os seis produtos presentes**: **422.412 coletas válidas, 7.963 postos e 417 municípios observados**. Seis duplicatas exatas separadas; GNV em BRL/m3, demais produtos em BRL/litro.
+Projeto pessoal de estudo e portfólio voltado à engenharia de dados e à preparação para a DP-700. Integra preços de combustíveis da ANP, referências municipais/populacionais do IBGE e meteorologia do INMET, com transformação no Fabric e resultados verificáveis.
 
-No Fabric: Lakehouse `lh_fuelwatch`, tabela `silver_preco_brasil`; Warehouse `wh_fuelwatch`, view **`gold_br.coletas`**, dimensões e agregado `gold_br.preco_semanal`. Silver/Gold, referência independente completa, repetição da publicação e exportação real foram validadas. [Guia dos dados, consultas e arquivos Parquet/CSV](docs/dados-nacionais.md), [evidências](evidence/fabric/national/).
+**Escopo concluído:** 12 marcos iniciais e cinco marcos de ampliação aceitos. O [registro de fechamento](docs/roadmap-fase2-cinco-marcos.md#fechamento-verificado-em-15112026) e o [manifesto de progresso](evidence/phase2/progress.json) preservam critérios e evidências.
 
-[Roadmap vigente da fase 2 em cinco marcos](docs/roadmap-fase2-cinco-marcos.md): **F2-01 a F2-05 concluídos**. O CI do commit `3076cd4` passou no GitHub Actions (47 testes portáveis e 10 de transporte/identidade); a suíte local completa passou com 89 testes. O plano anterior de dez itens permanece como detalhamento histórico.
+## Resultado entregue
 
-O observatório nacional agora tem sete visões `analise_br`, modelo DirectQuery e relatório **Fuel Watch BR Nacional**, com páginas de panorama e postos/bandeiras. As visões foram comparadas integralmente com referência independente; filtros e medidas foram reconciliados em SQL/DAX e quatro recortes foram renderizados e inspecionados. [Seis respostas interpretadas](docs/phase2-respostas-analiticas.md), [contrato analítico](docs/analytics-contract.md) e [aceite F2-01](evidence/phase2/analytics/acceptance.json).
-
-O histórico de 2024–2025 foi processado no Spark e publicado junto de 2026H1 no Warehouse: **2.125.547 coletas, 13.030 postos, 462 municípios, 27 UFs e seis produtos**, em `gold_hist`. Referência/Silver/Gold, atualização, repetição, correção antiga isolada, falha e recuperação foram reconciliadas; a agenda finita foi executada e desabilitada. As sete visões `analise_hist`, contexto populacional/climático, modelo DirectQuery e quatro páginas do relatório histórico também foram reconciliados e renderizados. O rebuild em workspace vazio reproduziu dados, consumo e pipeline integrado; a repetição dos quatro arquivos verificou que uma publicação idêntica é pulada. [Guia dos dados históricos](docs/dados-historicos.md), [análises e limites](docs/analytics-contract.md), [PDF conferido](evidence/phase2/deployment/rebuild-history-report-qa4.pdf) e [andamento por marco](evidence/phase2/progress.json).
-
-O registro M00–M11 abaixo documenta o aceite anterior; a fase 2 amplia o histórico e o consumo com os artefatos acima.
-
-## Estado da etapa M00–M11 verificado em 13/11/2026
-
-O processamento oficial está validado no Fabric: ANP preservada por SHA-256, Bronze com 422.418 registros, Silver com **8.052 coletas, 502 postos e 27 municípios**, Gold com 518 versões observadas de posto e 656 grupos semanais. A coleta individual permanece disponível antes da agregação semanal. A primeira fatia é GASOLINA, RJ, janeiro a junho de 2026.
-
-| Marco | Evidência atual |
+| Dimensão | Cobertura histórica |
 | --- | --- |
-| M00–M04: fontes, camadas, correções e SCD2 | Aceitos; cenários reais e sintéticos identificados nas evidências |
-| M05: orquestração | Sete tentativas reconciliadas, incluindo falhas, recuperação, repetição e agenda |
-| M06: Dataflow Gen2 | Baseline, repetição, falha de contrato e recuperação reais; 92 municípios IBGE |
-| M07: segurança | Aceito por revisão de fonte/configuração real; testes com segunda conta dispensados pelo usuário e não executados |
-| M08: Git e implantação | Aceito: CI, Git nativo seletivo do notebook 08, promoção dev → test, recuperação e restauração reconciliadas |
-| M09: desempenho | Seis medições em dev e seis em test após restauração, com igualdade integral |
-| M10: streaming | 1.000 IDs reconciliados, 20 duplicatas, 10 atrasados, quatro consultas KQL e disparo real do Activator |
-| M11: consumo | Aceito: DirectQuery, cinco medidas SQL, PDF conferido, documentação e inventário final |
+| Período | Janeiro de 2024 a junho de 2026 |
+| Coletas aceitas | 2.125.547 |
+| Postos observados | 13.030 |
+| Municípios / UFs | 462 / 27 |
+| Combustíveis | Gasolina comum e aditivada, etanol, diesel comum e S10, GNV |
+| Histórico dimensional | 15.005 versões observadas de posto |
+| Agregações municipais | 252.391 grupos semana/produto/unidade |
 
-O laboratório sintético é separado dos dados oficiais. A regra Activator foi desligada e os destinos Eventstream pausados após a verificação. Usa-se a capacidade trial existente; não foi contratada capacidade paga. A data de expiração da trial e o consumo em CU não foram verificados.
+O atlas permite explorar Brasil → estado → município, filtrar combustível e semana e consultar medianas e cobertura. A camada individual carrega postos sob demanda por UF e produto, com localização de um snapshot cadastral ANP. Os relatórios Power BI apresentam evolução, posição relativa, bandeiras, postos comuns entre períodos e contexto populacional/climático.
 
-A execução usa CLI/API, OneLake e ODBC, com bindings e tokens fora do Git. Consulte [roadmap](docs/superpowers/plans/2026-11-12-fuel-watch-br-roadmap.md), [índice de evidências](evidence/README.md), [implantação](docs/deployment.md), [segurança](docs/security-matrix.md), [consumo](docs/consumption.md), [dicionário](docs/data-dictionary.md) e [demonstração](docs/demo.md). **12/12 marcos aceitos no escopo vigente.** O usuário substituiu os testes com leitor pela revisão de implementação M07; comportamento restrito não foi testado. O M08 sincronizou pelo Fabric o notebook 08 no commit `6a30720`, conferido por comparação da árvore sintática do código; os outros 23 itens não foram incluídos nesse envio seletivo. [Status consolidado](evidence/project-status-2026-11-13.json).
+## Arquitetura
 
-Verificação do workflow atualizado: recibo CI em `evidence/phase2/deployment/`. O runner é self-hosted efêmero; a auditoria final cobre jobs, sessões Spark, agendas e destinos dos workspaces do projeto.
+```mermaid
+flowchart LR
+    ANP[ANP: arquivos semestrais] --> L[Landing: ZIP e SHA-256]
+    L --> B[Bronze Delta: origem e metadados]
+    B --> S[Silver Delta: validação em PySpark]
+    IBGE[IBGE: municípios e população] --> S
+    INMET[INMET: medições meteorológicas] --> C[Referências de contexto]
+    S --> G[Warehouse Gold: fatos e SCD2]
+    C --> G
+    G --> A[Análises T-SQL]
+    A --> PBI[Power BI DirectQuery]
+    A --> SNAP[Snapshot reconciliado]
+    SNAP --> WEB[Atlas React e MapLibre]
+```
 
-Os dados são amostrais. Ausência de observação não representa preço zero nem cobertura de todos os postos. SCD2 registra mudança observada na referência, sem inferir a data histórica real de mudança do estabelecimento.
+Pipelines parametrizados orquestram ingestão e transformação. A publicação relaciona versão de origem, execução e snapshot; o Warehouse protege a troca de dimensões e fatos com transação. Um laboratório separado usa Eventstream, Eventhouse, KQL e Activator com eventos sintéticos.
 
-## Reproduzir o bloco local
+## Competências demonstradas
 
-Python 3.13.5 foi o ambiente observado. pandas e PyArrow já estavam disponíveis; não instalamos Spark nem modificamos a instalação global. Para outro ambiente, crie uma `.venv` e instale `requirements-local.txt` nela.
+- **Ingestão e transformação:** Copy, notebooks PySpark, Dataflow Gen2, Delta e T-SQL, preservando a coleta individual antes das agregações.
+- **Modelagem e temporalidade:** fato de preços, dimensões, SCD2 de atributos observados e comparação dos mesmos postos entre semestres.
+- **Qualidade e rastreabilidade:** versões por conteúdo, duplicatas, conflitos, ausências e reconciliação integral com referência independente.
+- **Operação:** repetição, correção de arquivo antigo, falha antes do commit, recuperação e agenda finita executada e encerrada.
+- **Ciclo de vida:** Git, CI, promoção/restauração dev → test e reconstrução de dados e consumo em workspace vazio.
+- **Desempenho:** experimento medido de materialização, com igualdade de conteúdo e limites registrados.
 
-Execute na raiz do repositório:
+## Análises e consumo
+
+A mediana regional parte da mediana semanal de cada posto, com um peso por estabelecimento. Comparações expõem tamanho da amostra e exigem cobertura mínima. A persistência considera somente semanas elegíveis; ausência de coleta permanece ausência. Bandeiras são comparadas em município/produto/semana comuns.
+
+![Panorama nacional no Power BI, gasolina, primeiro semestre de 2026](evidence/phase2/analytics/render/report-national-gasolina.png)
+
+[Relatório histórico de quatro páginas em PDF](evidence/phase2/deployment/rebuild-history-report-qa4.pdf) · [Regras analíticas](docs/analytics-contract.md) · [Dados históricos](docs/dados-historicos.md) · [Contexto e interpretação](docs/context-answers.md)
+
+## Evidências de confiabilidade
+
+| Cenário executado | Evidência |
+| --- | --- |
+| Publicação histórica e reconciliação | [Warehouse reconstruído](evidence/phase2/deployment/rebuild-warehouse-history-rebuild01.json) |
+| Falha antes do commit e publicação preservada | [Recibo de falha controlada](evidence/phase2/history/warehouse-fail_before_commit.json) |
+| Correção histórica e reconstrução SCD2 | [Laboratório de correção](evidence/phase2/history/lab/fabric-correction.json) |
+| Repetição integrada com publicação idêntica pulada | [Execução do pipeline reconstruído](evidence/phase2/deployment/rebuild-integrated-pipeline-0da4170c-054f-4702-807b-d3b8773a0c70.json) |
+| Contexto sem multiplicar as coletas | [Join no Warehouse](evidence/phase2/context/warehouse-join.json) |
+| CI executado no GitHub | [Recibo](evidence/phase2/deployment/github-ci.json) |
+| Otimização com conteúdo reconciliado | [Medições antes/depois](evidence/phase2/performance/context-query.json) |
+
+A verificação de fechamento registrou 89 testes locais do núcleo e dez de transporte/identidade. O CI executou o subconjunto de 47 testes portáveis e dez de transporte; essas contagens se sobrepõem. O workflow é manual, com runner local efêmero, e não executa código de pull requests automaticamente.
+
+## Executar localmente
+
+Python 3.13.5 foi o ambiente observado. A referência local valida contratos; a execução Fabric é demonstrada nos recibos próprios.
 
 ```powershell
-python -m pip install -r requirements-local.txt
-python -m scripts.download_sources
-python -m scripts.profile_sources
-python -m scripts.prepare_local_slice
-python -m scripts.prepare_local_slice
-python -m unittest discover -s tests -v
+python -m venv .venv
+.venv/Scripts/python.exe -m pip install -r requirements-local.txt
+.venv/Scripts/python.exe -m scripts.download_sources
+.venv/Scripts/python.exe -m scripts.profile_sources
+.venv/Scripts/python.exe -m scripts.prepare_local_slice
+.venv/Scripts/python.exe -m unittest discover -s tests -v
 ```
 
-O download exige rede, usa apenas URLs de `config/sources.json` e consulta novamente o conteúdo mesmo para semestres antigos. Uma entrega idêntica gera nova auditoria de download, reutilizando os bytes já preservados. Uma entrega diferente fica em outra pasta por hash.
+Os comandos acima reproduzem a primeira fatia local RJ/gasolina/2026H1. Para a solução ampliada, consulte [histórico e operação](docs/history-operations.md) e [reconstrução no Fabric](docs/rebuild-phase2.md). Autenticação, bindings e recursos Fabric pertencem ao ambiente do executor e ficam fora do Git.
 
-`data/raw/` contém os arquivos originais. `data/manifest/downloads.jsonl` registra os downloads. `data/local/<scope_id>/<run_id>/` contém Parquet, quarentena, duplicatas, conflitos, auditoria e uma consulta agregada por município. `current.json` aponta para a execução local concluída. O formato da consulta é JSON para inspeção; médias são de preços observados, sem ponderação por volume de vendas.
+## Escopo e limites
 
-Os arquivos de dados ficam fora do Git. Os relatórios pequenos em `evidence/` são evidências locais reais e podem mudar em uma nova execução. Há regras e tipos explícitos no [contrato mínimo](docs/contrato-minimo.md), resultados no [registro do bloco inicial](docs/bloco-01.md) e instruções para a próxima execução no [roteiro Fabric](docs/fabric-primeira-execucao.md).
+- Preços históricos, nominais e amostrais; os municípios observados não representam cobertura de todos os postos brasileiros. GNV usa BRL/m³; os outros produtos usam BRL/litro.
+- A localização individual do atlas vem do cadastro ANP consultado em 15/11/2026. Pode diferir do endereço histórico, tem cobertura parcial e é identificada como não validada pela ANP.
+- SCD2 representa mudanças observadas, sem inferir a data jurídica de uma alteração. População e clima têm referência temporal, cobertura e limites explícitos.
+- Streaming e correções injetadas são laboratórios sintéticos identificados. A revisão de segurança foi aceita por implementação/configuração; não houve teste com segunda identidade.
+- O experimento de materialização mede uma consulta via TDS; não mede o ganho do pipeline inteiro nem economia de capacidade.
+- O projeto foi executado na trial existente. Agendas e laboratórios foram encerrados após verificação; a demonstração estática independe de manter o Fabric ativo.
 
-## Desenho a validar no Fabric
+## Documentação e fontes
 
-```text
-ANP → Pipeline / Copy (Binary) → Lakehouse Files (ZIP original + manifesto)
-    → Notebook → Bronze Delta (strings + metadados)
-    → Notebook PySpark → Silver Delta (coletas validadas)
-    → Warehouse Gold (T-SQL, dimensões e fato de coleta)
-    → consumo semanal derivado / Power BI enxuto
+[Modelo de dados](docs/data-model.md) · [Contrato histórico](docs/history-contract.md) · [Implantação](docs/deployment.md) · [Segurança](docs/security-matrix.md) · [Consumo](docs/consumption.md) · [Roteiro de demonstração](docs/demo.md)
 
-IBGE localidades → referência de municípios identificada por snapshot
-```
-
-A Copy activity preservará o arquivo, e o notebook fará a extração e a interpretação. Isso separa transporte de dados e regras de negócio. O ensaio Python local serve para validar a fonte e as regras; ele não substitui a execução dos componentes do Fabric.
-
-Na etapa de confiabilidade, precisamos definir o marcador de versão ativa, promoção controlada de Silver para Gold, reprocessamento por escopo, SCD2 de mudanças observadas e reconciliação entre granularidades. O manifesto de download ainda não é um catálogo transacional de publicação no Fabric.
-
-Git remoto, integração do workspace e implantação entre ambientes permanecem no escopo. Segurança, monitoramento e diagnóstico acompanharão as execuções. Eventstream, Eventhouse, KQL e Activator usarão eventos sintéticos separados, posteriormente. Clima, predição e aplicação web estão fora da primeira fatia.
-
-## Fontes e atribuição
-
-- [ANP — série histórica e downloads](https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/serie-historica-de-precos-de-combustiveis).
-- [ANP — metadados vigentes consultados](https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/arquivos/shpc/metadados-serie-historica-precos-combustiveis-1.pdf).
-- [IBGE — API de localidades](https://servicodados.ibge.gov.br/api/docs/localidades).
-
-Fonte dos preços: ANP, Levantamento de Preços de Combustíveis. Fonte dos códigos municipais: IBGE. Processamento: Fuel Watch BR. A página da ANP apresenta aviso geral CC BY-ND 3.0; não identificamos uma licença específica adicional no arquivo de metadados. O repositório privado contém código e evidências selecionadas, não os arquivos-fonte, e não atribui licença própria a eles. Condições de qualquer redistribuição pública dos dados devem ser revistas antes de publicar material fora do repositório privado.
+Fontes: [ANP — série histórica de preços](https://www.gov.br/anp/pt-br/centrais-de-conteudo/dados-abertos/serie-historica-de-precos-de-combustiveis), [IBGE — localidades](https://servicodados.ibge.gov.br/api/docs/localidades), [INMET](https://portal.inmet.gov.br/). Código e documentação são do projeto; as fontes mantêm sua autoria e condições de uso. Dados brutos, credenciais, caches de autenticação e bindings privados ficam fora do repositório.

@@ -37,6 +37,7 @@ A agenda finita disparou o job `481d3ce1-a08c-4614-994e-d2362d8c9107` com
 desabilitada e relida pela API. Prova: `evidence/phase2/refresh/schedule-once.json`.
 Nenhuma operação contínua foi habilitada.
 
-O F2-02 ainda exige o consumo analítico do histórico, incluindo comparação de
-postos comuns entre períodos, e a sincronização final das definições oficiais
-com o código preparado. Os artefatos do laboratório não substituem essa etapa.
+O consumo analítico histórico, a comparação de postos comuns e a sincronização
+final foram concluídos e reconciliados. O fechamento está em
+`roadmap-fase2-cinco-marcos.md`; os artefatos de laboratório permanecem
+identificados separadamente dos resultados oficiais.

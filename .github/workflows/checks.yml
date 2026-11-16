@@ -5,7 +5,7 @@ permissions:
   contents: read
 jobs:
   portable-tests:
-    # Runner efemero local, exclusivo deste repositorio privado; sem runner pago.
+    # Runner efemero local; acionamento manual por mantenedor, sem gatilho de PR.
     runs-on: [self-hosted, Windows, X64, fuelwatch-local]
     timeout-minutes: 15
     steps:
