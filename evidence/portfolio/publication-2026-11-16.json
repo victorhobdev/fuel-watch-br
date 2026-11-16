@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-16",
+  "status": "published_and_verified",
+  "site": "https://victorhob.me/fuelwatch/",
+  "hosting": "Existing GitHub Pages: victorhobdev/victorhob1981.github.io, main, root /",
+  "pages_commit": "74a51bda098a7ac477af72bae099a19bb3756106",
+  "source_commit": "e2ca8e8c4fd589bb98827604c186a7fc043fe006",
+  "github_repository": "https://github.com/victorhobdev/fuel-watch-br",
+  "visibility": "public",
+  "build": "TypeScript + Vite via build-site.mjs, base /fuelwatch/, exit 0",
+  "http_200": [
+    "https://victorhob.me/fuelwatch/",
+    "https://victorhob.me/fuelwatch/data/manifest.json",
+    "https://victorhob.me/fuelwatch/data/stations/gasolina/SP.geojson",
+    "https://victorhob.me/fuelwatch/assets/maplibre-gl-worker-B-FFqHT7.js",
+    "https://victorhob.me/mapa-rural/",
+    "https://github.com/victorhobdev/fuel-watch-br"
+  ],
+  "browser_observed": [
+    "National gasoline median BRL 6.64 at week 129",
+    "SP station layer: 802 mapped stations",
+    "Campinas gasoline: 25 mapped stations and BRL 6.48 median",
+    "Campinas GNV: 2 mapped stations; unit m3",
+    "Return to national map"
+  ],
+  "credential_scan": {
+    "historical_blobs": 920,
+    "staged_files": 222,
+    "findings": 0,
+    "scope": "Pattern scan for private keys, GitHub tokens, JWTs and storage keys; staged directory exclusions checked. This is not a guarantee of absence of every possible secret."
+  },
+  "other_sites": "Publishing commit added only fuelwatch/; CNAME and mapa-rural preserved.",
+  "not_changed": [
+    "Cloudflare DNS",
+    "OCI services",
+    "Fabric data and workloads",
+    "GitHub Pages hosting repository visibility"
+  ],
+  "limitations": [
+    "HTTP client urllib received 403 from Cloudflare; public curl/browser checks returned 200 and rendered the application.",
+    "Individual station popup was not successfully exercised in this verification."
+  ]
+}
