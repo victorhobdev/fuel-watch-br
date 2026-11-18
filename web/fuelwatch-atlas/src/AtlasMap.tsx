@@ -1,16 +1,17 @@
 import { useEffect, useRef, useState } from 'react';
 import * as maplibregl from 'maplibre-gl';
-import { type GeoJSONSource, type MapMouseEvent } from 'maplibre-gl';
+import { type GeoJSONSource, type MapMouseEvent, type StyleSpecification } from 'maplibre-gl';
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
-import { ArrowLeft, Compass, Crosshair, Eye, EyeOff, Minus, Plus } from 'lucide-react';
+import { ArrowLeft, Crosshair, Eye, EyeOff, Layers, Minus, Plus } from 'lucide-react';
 import {
   count,
-  date,
+  distributorVisual,
   getData,
   money,
   moneyCompact,
   NO_DATA_FILL,
   priceColor,
+  priceDigits,
   signedPercent,
   unitLabel,
   type ActiveStation,
@@ -19,39 +20,18 @@ import {
   type Metric,
   type Selection,
   type StateRow,
+  type ViewportBounds,
 } from './data';
 
 maplibregl.setWorkerUrl(workerUrl);
 
 type PolyFeature = GeoJSON.Feature<
   GeoJSON.Geometry,
-  { codarea: string; color?: string; selected?: boolean }
+  { codarea: string; color?: string; selected?: boolean; hasData?: boolean }
 >;
 type PolyCollection = GeoJSON.FeatureCollection<GeoJSON.Geometry, PolyFeature['properties']>;
 
-type StationMarkerProps = {
-  key: string;
-  name: string;
-  distributor: string;
-  address: string;
-  complement: string;
-  neighborhood: string;
-  cep: string;
-  municipality: string;
-  uf: string;
-  accuracyMeters: number;
-  origin: string;
-  dataObtained: string;
-  price: number;
-  collections: number;
-  deltaPercent?: number;
-  color: string;
-};
-type StationMarkerFeature = GeoJSON.Feature<GeoJSON.Point, StationMarkerProps>;
-type StationMarkerCollection = GeoJSON.FeatureCollection<GeoJSON.Point, StationMarkerProps>;
-
 const EMPTY_POLYGONS: PolyCollection = { type: 'FeatureCollection', features: [] };
-const EMPTY_STATIONS: StationMarkerCollection = { type: 'FeatureCollection', features: [] };
 
 const STATE_LABEL_OFFSETS: Record<string, [number, number]> = {
   RN: [16, -7],
@@ -63,6 +43,92 @@ const STATE_LABEL_OFFSETS: Record<string, [number, number]> = {
   RJ: [10, 9],
   DF: [9, -5],
 };
+
+const FALLBACK_LIGHT_STYLE: StyleSpecification = {
+  version: 8,
+  sources: {},
+  layers: [
+    {
+      id: 'background',
+      type: 'background',
+      paint: { 'background-color': '#CBE2F5' },
+    },
+  ],
+};
+
+const VECTOR_STYLE_URLS = [
+  'https://tiles.openfreemap.org/styles/liberty',
+  'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json',
+];
+
+const BRASIL_BOUNDS: [[number, number], [number, number]] = [
+  [-73.99, -33.75],
+  [-34.75, 5.28],
+];
+
+const BRASIL_MAX_BOUNDS: [[number, number], [number, number]] = [
+  [-77.5, -36.8],
+  [-30.5, 8.2],
+];
+
+const BRASIL_FIT_PADDING = { top: 28, right: 38, bottom: 28, left: 24 };
+
+function tuneStyleForBrazilFocus(raw: StyleSpecification): StyleSpecification {
+  const tunedLayers = raw.layers
+    .filter(layer => !layer.id.startsWith('label_country'))
+    .map(layer => {
+      if (layer.id === 'natural_earth' && layer.type === 'raster') {
+        return {
+          ...layer,
+          paint: { ...(layer.paint || {}), 'raster-opacity': 0.12 },
+        };
+      }
+      if (layer.id === 'boundary_2' && layer.type === 'line') {
+        return {
+          ...layer,
+          paint: { ...(layer.paint || {}), 'line-opacity': 0.22 },
+        };
+      }
+      if (
+        layer.type === 'symbol' &&
+        (layer.id.startsWith('label_city') ||
+          layer.id.startsWith('label_town') ||
+          layer.id.startsWith('label_state') ||
+          layer.id.startsWith('country'))
+      ) {
+        return {
+          ...layer,
+          minzoom: Math.max(layer.minzoom ?? 0, 5.4),
+        };
+      }
+      return layer;
+    });
+
+  return { ...raw, layers: tunedLayers };
+}
+
+async function resolveBasemapStyle(): Promise<{
+  style: StyleSpecification;
+  hasStreetTiles: boolean;
+}> {
+  for (const url of VECTOR_STYLE_URLS) {
+    const controller = new AbortController();
+    const timer = window.setTimeout(() => controller.abort(), 4500);
+    try {
+      const res = await fetch(url, { signal: controller.signal });
+      window.clearTimeout(timer);
+      if (res.ok) {
+        const json = (await res.json()) as StyleSpecification;
+        if (json && Array.isArray(json.layers)) {
+          return { style: tuneStyleForBrazilFocus(json), hasStreetTiles: true };
+        }
+      }
+    } catch {
+      window.clearTimeout(timer);
+    }
+  }
+  return { style: FALLBACK_LIGHT_STYLE, hasStreetTiles: false };
+}
 
 type Props = {
   manifest: Manifest;
@@ -80,9 +146,10 @@ type Props = {
   national?: number;
   range: [number, number];
   unit: string;
-  productLabel: string;
-  weekIso: string;
+  visible: boolean;
+  reframeToken: number;
   onSelect: (selection: Selection) => void;
+  onViewportChange: (bounds: ViewportBounds, zoom: number) => void;
 };
 
 type HoverState = {
@@ -93,85 +160,8 @@ type HoverState = {
   referenceName?: string;
   x: number;
   y: number;
-  clusterCount?: number;
+  clusterInfo?: { count: number; minPrice: number };
 };
-
-function buildPopupDOM(
-  station: StationMarkerProps,
-  unit: string,
-  productLabel: string,
-  weekIso: string,
-): HTMLElement {
-  const root = document.createElement('div');
-  root.className = 'station-popup';
-
-  const eyebrow = document.createElement('span');
-  eyebrow.className = 'station-popup-eyebrow';
-  eyebrow.textContent = `POSTO INDIVIDUAL · SEMANA ${date(weekIso)}`;
-  root.append(eyebrow);
-
-  const name = document.createElement('strong');
-  name.className = 'station-popup-name';
-  name.textContent = station.name;
-  root.append(name);
-
-  if (station.distributor) {
-    const brand = document.createElement('span');
-    brand.className = 'station-popup-brand';
-    brand.textContent = station.distributor;
-    root.append(brand);
-  }
-
-  const priceWrap = document.createElement('div');
-  priceWrap.className = 'station-popup-price-row';
-
-  const price = document.createElement('span');
-  price.className = 'station-popup-price';
-  price.textContent = `${money(station.price)} / ${unitLabel(unit)}`;
-  priceWrap.append(price);
-
-  if (station.deltaPercent !== undefined && Number.isFinite(station.deltaPercent)) {
-    const badge = document.createElement('span');
-    badge.className = `station-popup-delta ${station.deltaPercent > 0 ? 'up' : station.deltaPercent < 0 ? 'down' : ''}`;
-    badge.textContent = `${signedPercent(station.deltaPercent)} vs. UF`;
-    priceWrap.append(badge);
-  }
-  root.append(priceWrap);
-
-  const samples = document.createElement('p');
-  samples.className = 'station-popup-samples';
-  samples.textContent = `${count(station.collections)} ${station.collections === 1 ? 'coleta' : 'coletas'} na semana · mediana de ${productLabel.toLowerCase()}`;
-  root.append(samples);
-
-  const street = [station.address, station.complement]
-    .map(part => (part || '').trim())
-    .filter(part => part && part !== '.' && part !== '-')
-    .join(', ');
-  const locality = [station.neighborhood, `${station.municipality} · ${station.uf}`, station.cep]
-    .map(part => (part || '').trim())
-    .filter(Boolean)
-    .join(' · ');
-
-  if (street) {
-    const line = document.createElement('div');
-    line.className = 'station-popup-address';
-    line.textContent = street;
-    root.append(line);
-  }
-  if (locality) {
-    const line = document.createElement('div');
-    line.className = 'station-popup-locality';
-    line.textContent = locality;
-    root.append(line);
-  }
-
-  const source = document.createElement('small');
-  source.className = 'station-popup-source';
-  source.textContent = `${station.origin || 'Cadastro ANP'} · obtido em ${station.dataObtained || 'data não informada'} · acurácia ${station.accuracyMeters} m · posição não validada pela ANP`;
-  root.append(source);
-
-  return root;
-}
 
 function computeBounds(feature: GeoJSON.Feature | PolyCollection): maplibregl.LngLatBounds {
   const b = new maplibregl.LngLatBounds();
@@ -187,420 +177,468 @@ function computeBounds(feature: GeoJSON.Feature | PolyCollection): maplibregl.Ln
   return b;
 }
 
+function buildPricePinElement(
+  station: ActiveStation,
+  unit: string,
+  isCheapest: boolean,
+  isSelected: boolean,
+  onClick: () => void,
+): HTMLButtonElement {
+  const vis = distributorVisual(station.properties.distributor);
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = [
+    'wa-price-pin',
+    isCheapest ? 'is-cheapest' : '',
+    isSelected ? 'is-selected' : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
+  btn.setAttribute(
+    'aria-label',
+    `${station.properties.name}, ${money(station.price)} por ${unitLabel(unit)}, ${vis.label}`,
+  );
+
+  const card = document.createElement('span');
+  card.className = 'wa-pin-card';
+
+  const priceBar = document.createElement('span');
+  priceBar.className = 'wa-pin-price';
+  priceBar.textContent = priceDigits(station.price);
+  card.append(priceBar);
+
+  const brandBox = document.createElement('span');
+  brandBox.className = 'wa-pin-brand';
+
+  const pill = document.createElement('span');
+  pill.className = `wa-pin-brand-pill ${vis.isWhiteLabel ? 'is-white' : ''}`;
+  pill.style.backgroundColor = vis.bg;
+  pill.style.color = vis.fg;
+  pill.textContent = vis.short;
+  brandBox.append(pill);
+  card.append(brandBox);
+
+  const tip = document.createElement('span');
+  tip.className = 'wa-pin-tip';
+  card.append(tip);
+
+  btn.append(card);
+
+  btn.addEventListener('click', ev => {
+    ev.stopPropagation();
+    onClick();
+  });
+
+  return btn;
+}
+
+function buildClusterElement(
+  clusterCount: number,
+  minPrice: number,
+  unit: string,
+  isCheapest: boolean,
+  onClick: () => void,
+  onHoverEnter: (ev: MouseEvent) => void,
+  onHoverLeave: () => void,
+): HTMLButtonElement {
+  const sizeClass =
+    clusterCount >= 200
+      ? 'size-xl'
+      : clusterCount >= 50
+        ? 'size-lg'
+        : clusterCount >= 10
+          ? 'size-md'
+          : 'size-sm';
+
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = `wa-cluster-pin ${sizeClass} ${isCheapest ? 'is-cheapest' : ''}`;
+  btn.setAttribute(
+    'aria-label',
+    `${count(clusterCount)} ${clusterCount === 1 ? 'posto' : 'postos'}, menor preço ${money(minPrice)} por ${unitLabel(unit)}`,
+  );
+
+  const core = document.createElement('span');
+  core.className = 'wa-cluster-core';
+  core.textContent = count(clusterCount);
+  btn.append(core);
+
+  btn.addEventListener('click', ev => {
+    ev.stopPropagation();
+    onClick();
+  });
+  btn.addEventListener('mouseenter', onHoverEnter);
+  btn.addEventListener('mouseleave', onHoverLeave);
+
+  return btn;
+}
+
 export default function AtlasMap(props: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const stateShapesRef = useRef<PolyCollection | null>(null);
+  const cityShapesRef = useRef<PolyCollection | null>(null);
   const currentProps = useRef(props);
   currentProps.current = props;
 
   const [ready, setReady] = useState(false);
+  const [hasStreetTiles, setHasStreetTiles] = useState(true);
   const [hover, setHover] = useState<HoverState | null>(null);
   const [problem, setProblem] = useState('');
   const [loadingCities, setLoadingCities] = useState(false);
-  const [zoom, setZoom] = useState(3.4);
+  const [zoom, setZoom] = useState(3.5);
   const [retry, setRetry] = useState(0);
+  const [showChoroplethLegend, setShowChoroplethLegend] = useState(true);
 
   const stateLabelsRef = useRef<maplibregl.Marker[]>([]);
   const cityLabelsRef = useRef<maplibregl.Marker[]>([]);
+  const stationMarkersRef = useRef<maplibregl.Marker[]>([]);
   const cameraSelectionRef = useRef('');
-  const popupRef = useRef<maplibregl.Popup | null>(null);
-  const popupKeyRef = useRef('');
-  const popupPinnedRef = useRef(false);
-  const internalStationClickRef = useRef(false);
+  const internalClickedKeyRef = useRef<string | null>(null);
+  const renderMarkersFnRef = useRef<() => void>(() => {});
 
+  const emitViewport = (instance: maplibregl.Map) => {
+    const b = instance.getBounds();
+    const z = instance.getZoom();
+    setZoom(z);
+    currentProps.current.onViewportChange(
+      {
+        west: b.getWest(),
+        south: b.getSouth(),
+        east: b.getEast(),
+        north: b.getNorth(),
+      },
+      z,
+    );
+  };
+
+  // Initialize MapLibre with OpenFreeMap street vector style (and resilient fallback)
   useEffect(() => {
     if (!containerRef.current) return;
     let alive = true;
-    let instance: maplibregl.Map;
-    try {
-      instance = new maplibregl.Map({
-        container: containerRef.current,
-        attributionControl: false,
-        center: [-52.5, -14.2],
-        zoom: 3.4,
-        minZoom: 2.3,
-        maxZoom: 13.5,
-        maxPitch: 0,
-        renderWorldCopies: false,
-        style: {
-          version: 8,
-          sources: {},
-          layers: [
-            {
-              id: 'background',
-              type: 'background',
-              paint: { 'background-color': '#060910' },
-            },
-          ],
-        },
-      });
-    } catch {
-      setProblem('Seu navegador não conseguiu iniciar o motor WebGL do mapa. A busca e os painéis laterais continuam disponíveis.');
-      return;
-    }
+    let instance: maplibregl.Map | null = null;
 
-    mapRef.current = instance;
-    instance.dragRotate.disable();
-    instance.touchZoomRotate.disableRotation();
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    void resolveBasemapStyle().then(({ style, hasStreetTiles: streetOk }) => {
+      if (!alive || !containerRef.current) return;
+      setHasStreetTiles(streetOk);
 
-    instance.on('load', async () => {
       try {
-        const shapes = await getData<PolyCollection>(props.manifest.geometry.statesFile);
-        if (!alive) return;
-        stateShapesRef.current = shapes;
-
-        const grid: GeoJSON.FeatureCollection = { type: 'FeatureCollection', features: [] };
-        for (let lng = -85; lng <= -25; lng += 5) {
-          grid.features.push({
-            type: 'Feature',
-            properties: {},
-            geometry: { type: 'LineString', coordinates: [[lng, -40], [lng, 12]] },
-          });
-        }
-        for (let lat = -35; lat <= 10; lat += 5) {
-          grid.features.push({
-            type: 'Feature',
-            properties: {},
-            geometry: { type: 'LineString', coordinates: [[-85, lat], [-25, lat]] },
-          });
-        }
-
-        instance.addSource('grid', { type: 'geojson', data: grid });
-        instance.addLayer({
-          id: 'grid',
-          type: 'line',
-          source: 'grid',
-          paint: { 'line-color': '#94a3b8', 'line-opacity': 0.06, 'line-width': 1 },
+        instance = new maplibregl.Map({
+          container: containerRef.current,
+          attributionControl: false,
+          bounds: BRASIL_BOUNDS,
+          fitBoundsOptions: { padding: BRASIL_FIT_PADDING },
+          maxBounds: BRASIL_MAX_BOUNDS,
+          minZoom: 3.35,
+          maxZoom: 17.5,
+          maxPitch: 0,
+          renderWorldCopies: false,
+          style,
         });
-
-        instance.addSource('states', { type: 'geojson', data: shapes });
-        instance.addLayer({
-          id: 'states-fill',
-          type: 'fill',
-          source: 'states',
-          paint: {
-            'fill-color': ['coalesce', ['get', 'color'], NO_DATA_FILL],
-            'fill-opacity': 0.95,
-          },
-        });
-        instance.addLayer({
-          id: 'states-line',
-          type: 'line',
-          source: 'states',
-          paint: { 'line-color': '#080d18', 'line-width': 1.1, 'line-opacity': 0.92 },
-        });
-        instance.addLayer({
-          id: 'states-selected',
-          type: 'line',
-          source: 'states',
-          filter: ['==', ['get', 'selected'], true],
-          paint: { 'line-color': '#f8fafc', 'line-width': 2.2 },
-        });
-
-        instance.addSource('cities', { type: 'geojson', data: EMPTY_POLYGONS });
-        instance.addLayer({
-          id: 'cities-fill',
-          type: 'fill',
-          source: 'cities',
-          paint: {
-            'fill-color': ['coalesce', ['get', 'color'], NO_DATA_FILL],
-            'fill-opacity': 0.96,
-          },
-        });
-        instance.addLayer({
-          id: 'cities-line',
-          type: 'line',
-          source: 'cities',
-          paint: { 'line-color': '#080d18', 'line-width': 0.85 },
-        });
-        instance.addLayer({
-          id: 'city-selected',
-          type: 'line',
-          source: 'cities',
-          filter: ['==', ['get', 'selected'], true],
-          paint: { 'line-color': '#ffffff', 'line-width': 2.6 },
-        });
-
-        instance.addSource('stations', {
-          type: 'geojson',
-          data: EMPTY_STATIONS,
-          cluster: true,
-          clusterRadius: 32,
-          clusterMaxZoom: 9,
-        });
-        instance.addLayer({
-          id: 'station-clusters-halo',
-          type: 'circle',
-          source: 'stations',
-          minzoom: 4.2,
-          filter: ['has', 'point_count'],
-          paint: {
-            'circle-color': '#38bdf8',
-            'circle-radius': ['step', ['get', 'point_count'], 16, 15, 20, 60, 25],
-            'circle-opacity': 0.22,
-          },
-        });
-        instance.addLayer({
-          id: 'station-clusters',
-          type: 'circle',
-          source: 'stations',
-          minzoom: 4.2,
-          filter: ['has', 'point_count'],
-          paint: {
-            'circle-color': '#0284c7',
-            'circle-radius': ['step', ['get', 'point_count'], 10.5, 15, 13.5, 60, 17],
-            'circle-opacity': 0.95,
-            'circle-stroke-color': '#e0f2fe',
-            'circle-stroke-width': 1.6,
-          },
-        });
-        instance.addLayer({
-          id: 'station-points',
-          type: 'circle',
-          source: 'stations',
-          minzoom: 8.8,
-          filter: ['!', ['has', 'point_count']],
-          paint: {
-            'circle-color': ['get', 'color'],
-            'circle-radius': ['interpolate', ['linear'], ['zoom'], 8.8, 4.6, 12, 6.8],
-            'circle-opacity': 0.97,
-            'circle-stroke-color': '#0b111e',
-            'circle-stroke-width': 1.5,
-          },
-        });
-        instance.addLayer({
-          id: 'station-focused',
-          type: 'circle',
-          source: 'stations',
-          filter: ['==', ['get', 'key'], ''],
-          paint: {
-            'circle-color': ['get', 'color'],
-            'circle-radius': 8.5,
-            'circle-stroke-color': '#ffffff',
-            'circle-stroke-width': 2.8,
-          },
-        });
-
-        instance.on('mousemove', (event: MapMouseEvent) => {
-          const p = currentProps.current;
-          if (popupPinnedRef.current) return;
-          const queryLayers = p.selection.uf
-            ? p.showStations
-              ? ['station-points', 'station-clusters', 'cities-fill', 'states-fill']
-              : ['cities-fill', 'states-fill']
-            : ['states-fill'];
-          const features = instance.queryRenderedFeatures(event.point, { layers: queryLayers });
-
-          const station = features.find(f => f.layer.id === 'station-points') as
-            | StationMarkerFeature
-            | undefined;
-          if (station) {
-            const [lon, lat] = station.geometry.coordinates;
-            if (popupKeyRef.current !== station.properties.key) {
-              popupRef.current?.remove();
-              const popup = new maplibregl.Popup({
-                closeButton: false,
-                closeOnClick: false,
-                maxWidth: '320px',
-                className: 'atlas-station-popup hover-mode',
-              })
-                .setLngLat([lon, lat])
-                .setDOMContent(
-                  buildPopupDOM(station.properties, p.unit, p.productLabel, p.weekIso),
-                )
-                .addTo(instance);
-              popupRef.current = popup;
-              popupKeyRef.current = station.properties.key;
-            }
-            setHover(null);
-            instance.getCanvas().style.cursor = 'pointer';
-            return;
-          }
-
-          const cluster = features.find(f => f.layer.id === 'station-clusters');
-          if (cluster) {
-            popupRef.current?.remove();
-            popupKeyRef.current = '';
-            instance.getCanvas().style.cursor = 'pointer';
-            setHover({
-              eyebrow: 'AGRUPAMENTO DE POSTOS',
-              name: `${count(Number(cluster.properties.point_count))} postos na região`,
-              x: event.point.x,
-              y: event.point.y,
-              clusterCount: Number(cluster.properties.point_count),
-            });
-            return;
-          }
-
-          popupRef.current?.remove();
-          popupRef.current = null;
-          popupKeyRef.current = '';
-
-          const cityFeature = features.find(f => f.layer.id === 'cities-fill');
-          const poly = cityFeature || features.find(f => f.layer.id === 'states-fill');
-          if (!poly) {
-            setHover(null);
-            instance.getCanvas().style.cursor = '';
-            return;
-          }
-
-          const id = String(poly.properties.codarea);
-          const isCity = Boolean(cityFeature);
-          instance.getCanvas().style.cursor = 'pointer';
-
-          if (isCity) {
-            const place = p.manifest.cities.find(c => c.id === id);
-            const row = p.cities.find(c => c.id === id);
-            setHover({
-              eyebrow: `MUNICÍPIO · ${place?.uf || ''}`,
-              name: place?.name || id,
-              row,
-              reference: row?.ref,
-              referenceName: place?.uf || 'UF',
-              x: event.point.x,
-              y: event.point.y,
-            });
-          } else {
-            const state = p.manifest.states.find(s => s.id === id);
-            const row = p.states.find(s => s.uf === state?.uf);
-            setHover({
-              eyebrow: `ESTADO · ${(state?.region || '').toUpperCase()}`,
-              name: state ? `${state.name} (${state.uf})` : id,
-              row,
-              reference: p.national,
-              referenceName: 'Brasil',
-              x: event.point.x,
-              y: event.point.y,
-            });
-          }
-        });
-
-        instance.on('mouseout', () => {
-          setHover(null);
-          if (!popupPinnedRef.current) {
-            popupRef.current?.remove();
-            popupRef.current = null;
-            popupKeyRef.current = '';
-          }
-        });
-
-        instance.on('click', (event: MapMouseEvent) => {
-          const p = currentProps.current;
-          const queryLayers = p.selection.uf
-            ? p.showStations
-              ? ['station-points', 'station-clusters', 'cities-fill', 'states-fill']
-              : ['cities-fill', 'states-fill']
-            : ['states-fill'];
-          const features = instance.queryRenderedFeatures(event.point, { layers: queryLayers });
-
-          const station = features.find(f => f.layer.id === 'station-points') as
-            | StationMarkerFeature
-            | undefined;
-          if (station) {
-            const [lon, lat] = station.geometry.coordinates;
-            popupRef.current?.remove();
-            const popup = new maplibregl.Popup({
-              closeButton: true,
-              closeOnClick: true,
-              maxWidth: '320px',
-              className: 'atlas-station-popup pinned-mode',
-            })
-              .setLngLat([lon, lat])
-              .setDOMContent(
-                buildPopupDOM(station.properties, p.unit, p.productLabel, p.weekIso),
-              )
-              .addTo(instance);
-            popupRef.current = popup;
-            popupKeyRef.current = station.properties.key;
-            popupPinnedRef.current = true;
-            internalStationClickRef.current = true;
-            p.onFocusStation(station.properties.key);
-            popup.on('close', () => {
-              if (popupRef.current === popup) {
-                popupRef.current = null;
-                popupKeyRef.current = '';
-                popupPinnedRef.current = false;
-                currentProps.current.onFocusStation(null);
-              }
-            });
-            setHover(null);
-            return;
-          }
-
-          const cluster = features.find(f => f.layer.id === 'station-clusters');
-          if (cluster) {
-            popupRef.current?.remove();
-            popupRef.current = null;
-            popupPinnedRef.current = false;
-            p.onFocusStation(null);
-            const source = instance.getSource('stations') as GeoJSONSource;
-            const coordinates = (cluster.geometry as GeoJSON.Point).coordinates as [number, number];
-            void source
-              .getClusterExpansionZoom(Number(cluster.properties.cluster_id))
-              .then(nextZoom =>
-                instance.easeTo({
-                  center: coordinates,
-                  zoom: Math.min(nextZoom + 0.35, 12.5),
-                  duration: reduced ? 0 : 420,
-                }),
-              );
-            setHover(null);
-            return;
-          }
-
-          popupRef.current?.remove();
-          popupRef.current = null;
-          popupKeyRef.current = '';
-          popupPinnedRef.current = false;
-          p.onFocusStation(null);
-
-          const city = features.find(f => f.layer.id === 'cities-fill');
-          if (city) {
-            const place = p.manifest.cities.find(c => c.id === String(city.properties.codarea));
-            if (place) p.onSelect({ uf: place.uf, city: place.id });
-            return;
-          }
-
-          const statePoly = features.find(f => f.layer.id === 'states-fill');
-          if (statePoly) {
-            const state = p.manifest.states.find(s => s.id === String(statePoly.properties.codarea));
-            if (state) p.onSelect({ uf: state.uf });
-          }
-        });
-
-        instance.on('zoomend', () => setZoom(instance.getZoom()));
-        const observer = new ResizeObserver(() => instance.resize());
-        observer.observe(containerRef.current!);
-        instance.once('remove', () => observer.disconnect());
-        instance.fitBounds(
-          [
-            [-74.2, -34.0],
-            [-34.0, 5.5],
-          ],
-          { padding: { top: 86, right: 44, bottom: 96, left: 44 }, duration: reduced ? 0 : 650 },
-        );
-        setReady(true);
       } catch {
-        if (alive) {
-          setProblem('A malha cartográfica do IBGE não pôde ser carregada. Tente novamente.');
-        }
+        setProblem(
+          'Seu navegador não conseguiu iniciar o motor WebGL do mapa. A lista lateral, filtros e tabelas continuam disponíveis.',
+        );
+        return;
       }
+
+      mapRef.current = instance;
+      instance.dragRotate.disable();
+      instance.touchZoomRotate.disableRotation();
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      instance.once('style.load', async () => {
+        if (!alive || !instance) return;
+        try {
+          const shapes = await getData<PolyCollection>(
+            currentProps.current.manifest.geometry.statesFile,
+          );
+          if (!alive || !instance) return;
+          stateShapesRef.current = shapes;
+
+          // Place IBGE polygons beneath vector text labels so street/place names stay crisp
+          const styleLayers = instance.getStyle()?.layers || [];
+          const firstSymbolId =
+            styleLayers.find(l => l.type === 'symbol' && !l.id.includes('arrow'))?.id ||
+            styleLayers.find(l => l.type === 'symbol')?.id;
+
+          const pInit = currentProps.current;
+          const initialStates: PolyCollection = {
+            ...shapes,
+            features: shapes.features.map(feature => {
+              const state = pInit.manifest.states.find(
+                s => s.id === String(feature.properties.codarea),
+              );
+              const row = pInit.states.find(r => r.uf === state?.uf);
+              const value =
+                pInit.metric === 'comparison'
+                  ? row?.eligible && pInit.national
+                    ? (row.p / pInit.national - 1) * 100
+                    : undefined
+                  : row?.p;
+              return {
+                ...feature,
+                properties: {
+                  ...feature.properties,
+                  color: priceColor(value, ...pInit.range, pInit.metric),
+                  selected: state?.uf === pInit.selection.uf,
+                },
+              };
+            }),
+          };
+
+          instance.addSource('states', { type: 'geojson', data: initialStates });
+          instance.addLayer(
+            {
+              id: 'states-fill',
+              type: 'fill',
+              source: 'states',
+              paint: {
+                'fill-color': ['coalesce', ['get', 'color'], NO_DATA_FILL],
+                'fill-opacity': 0.86,
+              },
+            },
+            firstSymbolId,
+          );
+          instance.addLayer(
+            {
+              id: 'states-line',
+              type: 'line',
+              source: 'states',
+              paint: {
+                'line-color': '#FFFFFF',
+                'line-width': 1.35,
+                'line-opacity': 0.95,
+              },
+            },
+            firstSymbolId,
+          );
+          instance.addLayer(
+            {
+              id: 'states-selected',
+              type: 'line',
+              source: 'states',
+              filter: ['==', ['get', 'selected'], true],
+              paint: {
+                'line-color': '#4B287D',
+                'line-width': 2.5,
+                'line-opacity': 0.9,
+              },
+            },
+            firstSymbolId,
+          );
+
+          instance.addSource('cities', { type: 'geojson', data: EMPTY_POLYGONS });
+          instance.addLayer(
+            {
+              id: 'cities-fill',
+              type: 'fill',
+              source: 'cities',
+              paint: {
+                'fill-color': ['coalesce', ['get', 'color'], NO_DATA_FILL],
+                'fill-opacity': [
+                  'interpolate',
+                  ['linear'],
+                  ['zoom'],
+                  5,
+                  ['case', ['boolean', ['get', 'hasData'], false], 0.52, 0.16],
+                  8.5,
+                  ['case', ['boolean', ['get', 'hasData'], false], 0.34, 0.08],
+                  10.8,
+                  ['case', ['boolean', ['get', 'hasData'], false], 0.08, 0.02],
+                  12.5,
+                  0.02,
+                ],
+              },
+            },
+            firstSymbolId,
+          );
+          instance.addLayer(
+            {
+              id: 'cities-line',
+              type: 'line',
+              source: 'cities',
+              paint: {
+                'line-color': '#64748B',
+                'line-width': ['interpolate', ['linear'], ['zoom'], 5, 0.55, 11, 0.85],
+                'line-opacity': ['interpolate', ['linear'], ['zoom'], 5, 0.42, 11, 0.22, 13, 0.1],
+              },
+            },
+            firstSymbolId,
+          );
+          instance.addLayer(
+            {
+              id: 'city-selected',
+              type: 'line',
+              source: 'cities',
+              filter: ['==', ['get', 'selected'], true],
+              paint: {
+                'line-color': '#00797B',
+                'line-width': 2.5,
+                'line-dasharray': [2, 1.5],
+              },
+            },
+            firstSymbolId,
+          );
+
+          instance.on('mousemove', (event: MapMouseEvent) => {
+            if (!instance) return;
+            const p = currentProps.current;
+            // At street zoom (>= 10.6) inside a UF, let the street map breathe without polygon hover noise
+            if (p.selection.uf && instance.getZoom() >= 10.6) {
+              setHover(prev => (prev?.clusterInfo ? prev : null));
+              instance.getCanvas().style.cursor = '';
+              return;
+            }
+
+            const queryLayers = p.selection.uf ? ['cities-fill', 'states-fill'] : ['states-fill'];
+            const features = instance.queryRenderedFeatures(event.point, { layers: queryLayers });
+            const cityFeature = features.find(f => f.layer.id === 'cities-fill');
+            const poly = cityFeature || features.find(f => f.layer.id === 'states-fill');
+            if (!poly) {
+              setHover(prev => (prev?.clusterInfo ? prev : null));
+              instance.getCanvas().style.cursor = '';
+              return;
+            }
+
+            const id = String(poly.properties.codarea);
+            const isCity = Boolean(cityFeature);
+            instance.getCanvas().style.cursor = 'pointer';
+
+            if (isCity) {
+              const place = p.manifest.cities.find(c => c.id === id);
+              const row = p.cities.find(c => c.id === id);
+              if (!place && !row) {
+                setHover(null);
+                instance.getCanvas().style.cursor = '';
+                return;
+              }
+              setHover({
+                eyebrow: `MUNICÍPIO · ${place?.uf || p.selection.uf || ''}`,
+                name: place?.name || `Município IBGE ${id}`,
+                row,
+                reference: row?.ref,
+                referenceName: place?.uf || 'UF',
+                x: event.point.x,
+                y: event.point.y,
+              });
+            } else {
+              const state = p.manifest.states.find(s => s.id === id);
+              const row = p.states.find(s => s.uf === state?.uf);
+              setHover({
+                eyebrow: `ESTADO · ${(state?.region || '').toUpperCase()}`,
+                name: state ? `${state.name} (${state.uf})` : id,
+                row,
+                reference: p.national,
+                referenceName: 'Brasil',
+                x: event.point.x,
+                y: event.point.y,
+              });
+            }
+          });
+
+          instance.on('mouseout', () => {
+            setHover(null);
+          });
+
+          instance.on('click', (event: MapMouseEvent) => {
+            if (!instance) return;
+            const p = currentProps.current;
+
+            if (!p.selection.uf) {
+              const features = instance.queryRenderedFeatures(event.point, {
+                layers: ['states-fill'],
+              });
+              const statePoly = features[0];
+              if (statePoly) {
+                const state = p.manifest.states.find(
+                  s => s.id === String(statePoly.properties.codarea),
+                );
+                if (state) p.onSelect({ uf: state.uf });
+              }
+              return;
+            }
+
+            // At state zoom (< 10.4), clicking a researched municipality drills into it;
+            // at street zoom (>= 10.4), clicking empty map clears focused station without hijacking pan.
+            if (instance.getZoom() < 10.4) {
+              const features = instance.queryRenderedFeatures(event.point, {
+                layers: ['cities-fill', 'states-fill'],
+              });
+              const city = features.find(f => f.layer.id === 'cities-fill');
+              if (city) {
+                const place = p.manifest.cities.find(
+                  c => c.id === String(city.properties.codarea),
+                );
+                if (place) {
+                  p.onSelect({ uf: place.uf, city: place.id });
+                  return;
+                }
+              }
+              const statePoly = features.find(f => f.layer.id === 'states-fill');
+              if (statePoly) {
+                const state = p.manifest.states.find(
+                  s => s.id === String(statePoly.properties.codarea),
+                );
+                if (state && state.uf !== p.selection.uf) {
+                  p.onSelect({ uf: state.uf });
+                  return;
+                }
+              }
+            }
+
+            if (p.focusedStationKey) {
+              p.onFocusStation(null);
+            }
+          });
+
+          const onCameraChangeEnd = () => {
+            if (!instance) return;
+            emitViewport(instance);
+            renderMarkersFnRef.current();
+          };
+
+          instance.on('moveend', onCameraChangeEnd);
+          instance.on('zoomend', onCameraChangeEnd);
+
+          const observer = new ResizeObserver(() => {
+            instance?.resize();
+            renderMarkersFnRef.current();
+          });
+          observer.observe(containerRef.current!);
+          instance.once('remove', () => observer.disconnect());
+
+          if (!currentProps.current.selection.uf) {
+            cameraSelectionRef.current = `BR::${currentProps.current.reframeToken}`;
+            instance.fitBounds(BRASIL_BOUNDS, {
+              padding: BRASIL_FIT_PADDING,
+              duration: 0,
+            });
+          }
+          emitViewport(instance);
+          setReady(true);
+        } catch {
+          if (alive) {
+            setProblem('A malha cartográfica do IBGE não pôde ser carregada. Tente novamente.');
+          }
+        }
+      });
     });
 
     return () => {
       alive = false;
       stateLabelsRef.current.forEach(m => m.remove());
       cityLabelsRef.current.forEach(m => m.remove());
+      stationMarkersRef.current.forEach(m => m.remove());
       stateLabelsRef.current = [];
       cityLabelsRef.current = [];
-      instance.remove();
+      stationMarkersRef.current = [];
+      instance?.remove();
       mapRef.current = null;
     };
   }, [props.manifest]);
 
-  // Update State Polygons & State Labels
+  // Update State Polygons & Clickable State Pills at Brasil Level
   useEffect(() => {
     if (!ready || !mapRef.current || !stateShapesRef.current) return;
     const p = props;
@@ -626,20 +664,36 @@ export default function AtlasMap(props: Props) {
       }),
     };
 
-    (mapRef.current.getSource('states') as GeoJSONSource).setData(updated);
-    mapRef.current.setPaintProperty('states-fill', 'fill-opacity', p.selection.uf ? 0.2 : 0.95);
+    const source = mapRef.current.getSource('states') as GeoJSONSource | undefined;
+    source?.setData(updated);
+    if (mapRef.current.getLayer('states-fill')) {
+      mapRef.current.setPaintProperty('states-fill', 'fill-opacity', p.selection.uf ? 0.03 : 0.86);
+    }
+    if (mapRef.current.getLayer('states-line')) {
+      mapRef.current.setPaintProperty(
+        'states-line',
+        'line-color',
+        p.selection.uf ? '#94A3B8' : '#FFFFFF',
+      );
+    }
 
     stateLabelsRef.current.forEach(m => m.remove());
     stateLabelsRef.current = [];
 
     if (!p.selection.uf) {
+      const minStatePrice = p.states.length ? Math.min(...p.states.map(s => s.p)) : undefined;
       updated.features.forEach(feature => {
         const state = p.manifest.states.find(s => s.id === String(feature.properties.codarea));
         if (!state) return;
         const row = p.states.find(r => r.uf === state.uf);
+        const isLowest =
+          row !== undefined &&
+          minStatePrice !== undefined &&
+          Math.abs(row.p - minStatePrice) < 0.0005;
+
         const btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = 'map-state-pill';
+        btn.className = `map-state-pill ${isLowest ? 'is-cheapest' : ''}`;
         btn.textContent = state.uf;
         btn.setAttribute(
           'aria-label',
@@ -660,16 +714,24 @@ export default function AtlasMap(props: Props) {
       });
     }
     setHover(null);
-  }, [ready, props.states, props.range, props.metric, props.selection.uf, props.national, props.manifest]);
+  }, [
+    ready,
+    props.states,
+    props.range,
+    props.metric,
+    props.selection.uf,
+    props.national,
+    props.manifest,
+  ]);
 
-  // Update Municipality Polygons, Camera & City Labels
+  // Update Municipality Polygons & Camera Framing on Selection / Reframe
   useEffect(() => {
     if (!ready || !mapRef.current) return;
     let alive = true;
     const instance = mapRef.current;
-    const { selection, manifest } = props;
-    const duration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 620;
-    const cameraKey = `${selection.uf || 'BR'}:${selection.city || ''}`;
+    const { selection, manifest, reframeToken } = props;
+    const duration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 580;
+    const cameraKey = `${selection.uf || 'BR'}:${selection.city || ''}:${reframeToken}`;
     const shouldMoveCamera = cameraKey !== cameraSelectionRef.current;
     cameraSelectionRef.current = cameraKey;
 
@@ -678,15 +740,10 @@ export default function AtlasMap(props: Props) {
     setProblem('');
 
     if (!selection.uf) {
-      (instance.getSource('cities') as GeoJSONSource).setData(EMPTY_POLYGONS);
+      cityShapesRef.current = null;
+      (instance.getSource('cities') as GeoJSONSource | undefined)?.setData(EMPTY_POLYGONS);
       if (shouldMoveCamera) {
-        instance.fitBounds(
-          [
-            [-74.2, -34.0],
-            [-34.0, 5.5],
-          ],
-          { padding: { top: 86, right: 44, bottom: 96, left: 44 }, duration },
-        );
+        instance.fitBounds(BRASIL_BOUNDS, { padding: BRASIL_FIT_PADDING, duration });
       }
       setLoadingCities(false);
       return;
@@ -698,16 +755,17 @@ export default function AtlasMap(props: Props) {
     );
     if (stateFeature && !selection.city && shouldMoveCamera) {
       instance.fitBounds(computeBounds(stateFeature), {
-        padding: { top: 92, right: 56, bottom: 96, left: 56 },
+        padding: { top: 56, right: 56, bottom: 64, left: 56 },
         duration,
-        maxZoom: 8,
+        maxZoom: 8.2,
       });
     }
 
     setLoadingCities(true);
     getData<PolyCollection>(manifest.geometry.cityFiles.replace('{uf}', selection.uf))
       .then(shapes => {
-        if (!alive) return;
+        if (!alive || !mapRef.current) return;
+        cityShapesRef.current = shapes;
         const p = currentProps.current;
         const colored: PolyCollection = {
           ...shapes,
@@ -725,63 +783,64 @@ export default function AtlasMap(props: Props) {
                 ...feature.properties,
                 color: priceColor(value, ...p.range, p.metric),
                 selected: String(feature.properties.codarea) === selection.city,
+                hasData: row !== undefined,
               },
             };
           }),
         };
 
-        (instance.getSource('cities') as GeoJSONSource).setData(colored);
+        (instance.getSource('cities') as GeoJSONSource | undefined)?.setData(colored);
         const selectedCityFeature = colored.features.find(
           f => String(f.properties.codarea) === selection.city,
         );
         if (selectedCityFeature && shouldMoveCamera) {
           instance.fitBounds(computeBounds(selectedCityFeature), {
-            padding: { top: 96, right: 64, bottom: 100, left: 64 },
+            padding: { top: 64, right: 64, bottom: 68, left: 64 },
             duration,
-            maxZoom: 10.2,
+            maxZoom: 11.8,
           });
         }
 
-        const shapeCityIds = new Set(shapes.features.map(f => String(f.properties.codarea)));
-        const candidates = selection.city
-          ? manifest.cities.filter(c => c.id === selection.city)
-          : manifest.cities
-              .filter(c => shapeCityIds.has(c.id))
-              .sort(
-                (a, b) =>
-                  (p.cities.find(c => c.id === b.id)?.n || 0) -
-                  (p.cities.find(c => c.id === a.id)?.n || 0),
-              );
-
-        const labelled: typeof candidates = [];
-        for (const candidate of candidates) {
-          if (labelled.length >= 7) break;
-          const tooClose = labelled.some(
-            placed =>
-              Math.hypot(placed.lon - candidate.lon, placed.lat - candidate.lat) < 0.55,
-          );
-          if (!tooClose || selection.city) labelled.push(candidate);
-        }
-
-        labelled.forEach(c => {
-          const btn = document.createElement('button');
-          btn.type = 'button';
-          btn.className = 'map-city-pill';
-          btn.textContent = c.name;
-          btn.setAttribute('aria-label', `Selecionar município ${c.name}`);
-          btn.addEventListener('click', ev => {
-            ev.stopPropagation();
-            currentProps.current.onSelect({ uf: c.uf, city: c.id });
+        // Only show floating city pills when street tiles failed to load (vector basemap already labels cities!)
+        if (!hasStreetTiles) {
+          const shapeCityIds = new Set(shapes.features.map(f => String(f.properties.codarea)));
+          const candidates = selection.city
+            ? manifest.cities.filter(c => c.id === selection.city)
+            : manifest.cities
+                .filter(c => shapeCityIds.has(c.id))
+                .sort(
+                  (a, b) =>
+                    (p.cities.find(c => c.id === b.id)?.n || 0) -
+                    (p.cities.find(c => c.id === a.id)?.n || 0),
+                );
+          const labelled: typeof candidates = [];
+          for (const candidate of candidates) {
+            if (labelled.length >= 6) break;
+            const tooClose = labelled.some(
+              placed =>
+                Math.hypot(placed.lon - candidate.lon, placed.lat - candidate.lat) < 0.55,
+            );
+            if (!tooClose || selection.city) labelled.push(candidate);
+          }
+          labelled.forEach(c => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'map-city-pill';
+            btn.textContent = c.name;
+            btn.addEventListener('click', ev => {
+              ev.stopPropagation();
+              currentProps.current.onSelect({ uf: c.uf, city: c.id });
+            });
+            cityLabelsRef.current.push(
+              new maplibregl.Marker({ element: btn }).setLngLat([c.lon, c.lat]).addTo(instance),
+            );
           });
-          cityLabelsRef.current.push(
-            new maplibregl.Marker({ element: btn }).setLngLat([c.lon, c.lat]).addTo(instance),
-          );
-        });
+        }
         setLoadingCities(false);
       })
       .catch(() => {
         if (alive) {
-          setProblem('Não foi possível carregar os polígonos municipais desta UF.');
+          setProblem('Não foi possível carregar os limites municipais desta UF.');
           setLoadingCities(false);
         }
       });
@@ -791,425 +850,500 @@ export default function AtlasMap(props: Props) {
     };
   }, [
     ready,
+    hasStreetTiles,
     props.selection.uf,
     props.selection.city,
     props.cities,
     props.metric,
     props.range,
     props.manifest,
+    props.reframeToken,
     retry,
   ]);
 
-  // Update Station GeoJSON Layer & Layer Visibility
-  useEffect(() => {
-    if (!ready || !mapRef.current) return;
+  // FuelWatch WA Cluster Bubbles & Vertical Price Callout Pins Engine
+  const renderStationMarkers = () => {
+    stationMarkersRef.current.forEach(m => m.remove());
+    stationMarkersRef.current = [];
+
     const instance = mapRef.current;
-    const source = instance.getSource('stations') as GeoJSONSource;
-
-    const visibility = props.showStations && props.selection.uf ? 'visible' : 'none';
-    for (const layerId of [
-      'station-clusters-halo',
-      'station-clusters',
-      'station-points',
-      'station-focused',
-    ]) {
-      if (instance.getLayer(layerId)) {
-        instance.setLayoutProperty(layerId, 'visibility', visibility);
-      }
-    }
-
-    if (!props.selection.uf || !props.activeStations.length) {
-      source.setData(EMPTY_STATIONS);
-      popupRef.current?.remove();
-      popupRef.current = null;
-      popupKeyRef.current = '';
-      popupPinnedRef.current = false;
+    const p = currentProps.current;
+    if (!instance || !ready || !p.selection.uf || !p.showStations || !p.activeStations.length) {
       return;
     }
 
-    const features: StationMarkerFeature[] = props.activeStations.map(st => ({
-      type: 'Feature',
-      geometry: { type: 'Point', coordinates: [st.lon, st.lat] },
-      properties: {
-        key: st.key,
-        name: st.properties.name,
-        distributor: st.properties.distributor,
-        address: st.properties.address,
-        complement: st.properties.complement,
-        neighborhood: st.properties.neighborhood,
-        cep: st.properties.cep,
-        municipality: st.properties.municipality,
-        uf: st.properties.uf,
-        accuracyMeters: st.properties.accuracyMeters,
-        origin: st.properties.origin,
-        dataObtained: st.properties.dataObtained,
-        price: st.price,
-        collections: st.collections,
-        deltaPercent: st.deltaPercent,
-        color: st.color,
-      },
-    }));
+    const bounds = instance.getBounds();
+    const west = bounds.getWest();
+    const east = bounds.getEast();
+    const south = bounds.getSouth();
+    const north = bounds.getNorth();
+    const padLon = Math.max(0.01, (east - west) * 0.16);
+    const padLat = Math.max(0.01, (north - south) * 0.16);
 
-    source.setData({ type: 'FeatureCollection', features });
-  }, [ready, props.selection.uf, props.activeStations, props.showStations]);
+    const strictInBounds = p.activeStations.filter(
+      s => s.lon >= west && s.lon <= east && s.lat >= south && s.lat <= north,
+    );
+    const cheapestPool = strictInBounds.length > 0 ? strictInBounds : p.activeStations;
+    const minPrice = Math.min(...cheapestPool.map(s => s.price));
+    const isCheapestPrice = (val: number) => val <= minPrice + 0.0005;
 
-  // Sync Focused Station from Side Explorer / Selection
-  useEffect(() => {
-    if (!ready || !mapRef.current) return;
-    const instance = mapRef.current;
-    instance.setFilter('station-focused', ['==', ['get', 'key'], props.focusedStationKey || '']);
+    const paddedStations = p.activeStations.filter(
+      s =>
+        s.lon >= west - padLon &&
+        s.lon <= east + padLon &&
+        s.lat >= south - padLat &&
+        s.lat <= north + padLat,
+    );
 
-    if (!props.focusedStationKey) {
-      if (popupPinnedRef.current) {
-        popupRef.current?.remove();
-        popupRef.current = null;
-        popupKeyRef.current = '';
-        popupPinnedRef.current = false;
-      }
-      return;
-    }
-
-    const target = props.activeStations.find(st => st.key === props.focusedStationKey);
-    if (!target) {
-      popupRef.current?.remove();
-      popupRef.current = null;
-      popupKeyRef.current = '';
-      popupPinnedRef.current = false;
-      return;
-    }
-
-    const wasInternalClick = internalStationClickRef.current;
-    internalStationClickRef.current = false;
-
+    const z = instance.getZoom();
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!wasInternalClick) {
-      instance.easeTo({
-        center: [target.lon, target.lat],
-        zoom: Math.max(instance.getZoom(), 11.2),
-        duration: reduced ? 0 : 520,
-      });
-    }
-
-    popupRef.current?.remove();
-    const markerProps: StationMarkerProps = {
-      key: target.key,
-      name: target.properties.name,
-      distributor: target.properties.distributor,
-      address: target.properties.address,
-      complement: target.properties.complement,
-      neighborhood: target.properties.neighborhood,
-      cep: target.properties.cep,
-      municipality: target.properties.municipality,
-      uf: target.properties.uf,
-      accuracyMeters: target.properties.accuracyMeters,
-      origin: target.properties.origin,
-      dataObtained: target.properties.dataObtained,
-      price: target.price,
-      collections: target.collections,
-      deltaPercent: target.deltaPercent,
-      color: target.color,
-    };
-
-    const popup = new maplibregl.Popup({
-      closeButton: true,
-      closeOnClick: true,
-      maxWidth: '320px',
-      className: 'atlas-station-popup pinned-mode',
-    })
-      .setLngLat([target.lon, target.lat])
-      .setDOMContent(buildPopupDOM(markerProps, props.unit, props.productLabel, props.weekIso))
-      .addTo(instance);
-
-    popupRef.current = popup;
-    popupKeyRef.current = target.key;
-    popupPinnedRef.current = true;
-    popup.on('close', () => {
-      if (popupRef.current === popup) {
-        popupRef.current = null;
-        popupKeyRef.current = '';
-        popupPinnedRef.current = false;
-        currentProps.current.onFocusStation(null);
-      }
-    });
-  }, [ready, props.focusedStationKey, props.activeStations, props.unit, props.productLabel, props.weekIso]);
-
-  const selectedState = props.manifest.states.find(s => s.uf === props.selection.uf);
-  const selectedCity = props.manifest.cities.find(c => c.id === props.selection.city);
-  const hoverDelta =
-    hover?.row && hover.reference && hover.row.eligible
-      ? (hover.row.p / hover.reference - 1) * 100
+    const focused = p.focusedStationKey
+      ? p.activeStations.find(s => s.key === p.focusedStationKey)
       : undefined;
 
-  const hasCoverage = props.selection.uf
-    ? props.cities.some(
-        c => props.manifest.cities.find(place => place.id === c.id)?.uf === props.selection.uf,
-      )
-    : props.states.length > 0;
+    const others = focused
+      ? paddedStations.filter(s => s.key !== focused.key)
+      : paddedStations;
 
-  const containerW = containerRef.current?.clientWidth || 720;
-  const containerH = containerRef.current?.clientHeight || 580;
+    // Determine pixel grid cell size for WA-style clustering
+    const showIndividualPins =
+      z >= 10.6 || (strictInBounds.length <= 16 && z >= 9.0);
+    const cellSize = z >= 14.4 ? 0 : z >= 13.4 ? 22 : z >= 11.8 ? 48 : 60;
+
+    type Bucket = {
+      stations: ActiveStation[];
+      sumLon: number;
+      sumLat: number;
+      minPrice: number;
+    };
+
+    const buckets: Bucket[] = [];
+    if (cellSize === 0 && others.length <= 85) {
+      for (const st of others) {
+        buckets.push({
+          stations: [st],
+          sumLon: st.lon,
+          sumLat: st.lat,
+          minPrice: st.price,
+        });
+      }
+    } else {
+      const effectiveCell = cellSize || 24;
+      const grid = new Map<string, Bucket>();
+      for (const st of others) {
+        const pt = instance.project([st.lon, st.lat]);
+        const key = `${Math.floor(pt.x / effectiveCell)}:${Math.floor(pt.y / effectiveCell)}`;
+        const existing = grid.get(key);
+        if (existing) {
+          existing.stations.push(st);
+          existing.sumLon += st.lon;
+          existing.sumLat += st.lat;
+          if (st.price < existing.minPrice) existing.minPrice = st.price;
+        } else {
+          grid.set(key, {
+            stations: [st],
+            sumLon: st.lon,
+            sumLat: st.lat,
+            minPrice: st.price,
+          });
+        }
+      }
+      buckets.push(...grid.values());
+    }
+
+    // Sort buckets so regular clusters/pins mount first and cheapest mount on top (higher z-index)
+    buckets.sort((a, b) => {
+      const aCheap = isCheapestPrice(a.minPrice) ? 1 : 0;
+      const bCheap = isCheapestPrice(b.minPrice) ? 1 : 0;
+      if (aCheap !== bCheap) return aCheap - bCheap;
+      return b.minPrice - a.minPrice;
+    });
+
+    for (const bucket of buckets) {
+      const n = bucket.stations.length;
+      const cheap = isCheapestPrice(bucket.minPrice);
+
+      if (n === 1 && showIndividualPins) {
+        const st = bucket.stations[0];
+        const el = buildPricePinElement(st, p.unit, cheap, false, () => {
+          internalClickedKeyRef.current = st.key;
+          currentProps.current.onFocusStation(st.key);
+          instance.easeTo({
+            center: [st.lon, st.lat],
+            zoom: Math.max(instance.getZoom(), 13.0),
+            duration: reduced ? 0 : 340,
+          });
+        });
+        const marker = new maplibregl.Marker({ element: el, anchor: 'bottom' })
+          .setLngLat([st.lon, st.lat])
+          .addTo(instance);
+        stationMarkersRef.current.push(marker);
+      } else {
+        const cLon = bucket.sumLon / n;
+        const cLat = bucket.sumLat / n;
+        const el = buildClusterElement(
+          n,
+          bucket.minPrice,
+          p.unit,
+          cheap,
+          () => {
+            setHover(null);
+            if (n === 1) {
+              const lone = bucket.stations[0];
+              internalClickedKeyRef.current = lone.key;
+              currentProps.current.onFocusStation(lone.key);
+              instance.easeTo({
+                center: [lone.lon, lone.lat],
+                zoom: Math.max(z + 2.5, 13.2),
+                duration: reduced ? 0 : 450,
+              });
+              return;
+            }
+            const b = new maplibregl.LngLatBounds();
+            bucket.stations.forEach(s => b.extend([s.lon, s.lat]));
+            const span = Math.max(
+              Math.abs(b.getEast() - b.getWest()),
+              Math.abs(b.getNorth() - b.getSouth()),
+            );
+            if (span < 0.0012) {
+              instance.easeTo({
+                center: [cLon, cLat],
+                zoom: Math.min(16, z + 2.6),
+                duration: reduced ? 0 : 420,
+              });
+            } else {
+              instance.fitBounds(b, {
+                padding: 90,
+                maxZoom: Math.max(z + 2.5, 13.2),
+                duration: reduced ? 0 : 450,
+              });
+            }
+          },
+          ev => {
+            const rect = containerRef.current?.getBoundingClientRect();
+            if (!rect) return;
+            setHover({
+              eyebrow: cheap ? 'MENOR PREÇO NA REGIÃO' : 'AGRUPAMENTO DE POSTOS',
+              name: `${count(n)} ${n === 1 ? 'posto' : 'postos'} nesta área`,
+              x: ev.clientX - rect.left,
+              y: ev.clientY - rect.top,
+              clusterInfo: { count: n, minPrice: bucket.minPrice },
+            });
+          },
+          () => {
+            setHover(prev => (prev?.clusterInfo ? null : prev));
+          },
+        );
+        const marker = new maplibregl.Marker({ element: el, anchor: 'center' })
+          .setLngLat([cLon, cLat])
+          .addTo(instance);
+        stationMarkersRef.current.push(marker);
+      }
+    }
+
+    // Always render the focused station on top as a selected WA Price Callout Pin
+    if (focused) {
+      const cheap = isCheapestPrice(focused.price);
+      const el = buildPricePinElement(focused, p.unit, cheap, true, () => {
+        currentProps.current.onFocusStation(focused.key);
+      });
+      const marker = new maplibregl.Marker({ element: el, anchor: 'bottom' })
+        .setLngLat([focused.lon, focused.lat])
+        .addTo(instance);
+      stationMarkersRef.current.push(marker);
+    }
+  };
+
+  renderMarkersFnRef.current = renderStationMarkers;
+
+  // Re-render station pins whenever station list, selection, visibility, or focused station changes
+  useEffect(() => {
+    renderStationMarkers();
+  }, [
+    ready,
+    props.activeStations,
+    props.showStations,
+    props.selection.uf,
+    props.focusedStationKey,
+    props.unit,
+  ]);
+
+  // Resize cleanly when returning from Tendências / Dados subviews while preserving exact camera
+  useEffect(() => {
+    if (!props.visible || !ready || !mapRef.current) return;
+    mapRef.current.resize();
+    renderMarkersFnRef.current();
+  }, [props.visible, ready]);
+
+  // Smoothly fly to a station selected from the left sidebar or global search
+  useEffect(() => {
+    const instance = mapRef.current;
+    if (!ready || !instance || !props.focusedStationKey) return;
+
+    if (internalClickedKeyRef.current === props.focusedStationKey) {
+      internalClickedKeyRef.current = null;
+      return;
+    }
+    internalClickedKeyRef.current = null;
+
+    const target = props.activeStations.find(s => s.key === props.focusedStationKey);
+    if (!target) return;
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    instance.easeTo({
+      center: [target.lon, target.lat],
+      zoom: Math.max(instance.getZoom(), 13.8),
+      duration: reduced ? 0 : 480,
+    });
+  }, [ready, props.focusedStationKey, props.activeStations]);
+
+  const handleRecenter = () => {
+    const instance = mapRef.current;
+    if (!instance) return;
+    const duration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 480;
+
+    if (props.selection.city && cityShapesRef.current) {
+      const feat = cityShapesRef.current.features.find(
+        f => String(f.properties.codarea) === props.selection.city,
+      );
+      if (feat) {
+        instance.fitBounds(computeBounds(feat), { padding: 64, maxZoom: 11.8, duration });
+        return;
+      }
+    }
+    if (props.selection.uf && stateShapesRef.current) {
+      const st = props.manifest.states.find(s => s.uf === props.selection.uf);
+      const feat = stateShapesRef.current.features.find(
+        f => String(f.properties.codarea) === st?.id,
+      );
+      if (feat) {
+        instance.fitBounds(computeBounds(feat), { padding: 56, maxZoom: 8.2, duration });
+        return;
+      }
+    }
+    instance.fitBounds(BRASIL_BOUNDS, { padding: BRASIL_FIT_PADDING, duration });
+  };
+
+  const hoverDelta =
+    hover?.row?.eligible && hover.reference
+      ? (hover.row.p / hover.reference - 1) * 100
+      : undefined;
 
   return (
     <div className="map-stage">
       <div
         ref={containerRef}
         className="map-canvas"
-        aria-label="Mapa geográfico interativo de preços de combustíveis no Brasil"
+        role="region"
+        aria-label="Mapa interativo de preços de combustíveis no Brasil"
       />
 
-      <div className="map-hud-top-left">
-        {props.selection.uf && (
-          <div className="map-back-bar">
-            <button
-              type="button"
-              className="map-pill-btn"
-              onClick={() =>
-                props.selection.city && props.selection.uf
-                  ? props.onSelect({ uf: props.selection.uf })
-                  : props.onSelect({})
-              }
-            >
-              <ArrowLeft size={14} />
-              <span>
-                {props.selection.city ? `Voltar para ${selectedState?.uf}` : 'Voltar ao Brasil'}
-              </span>
-            </button>
-            {props.selection.city && (
-              <button
-                type="button"
-                className="map-pill-btn ghost"
-                onClick={() => props.onSelect({})}
-              >
-                Brasil
-              </button>
-            )}
-          </div>
-        )}
-
-        <div className="map-context-title">
-          <span className="eyebrow accent">
-            {selectedCity
-              ? `RECORTE MUNICIPAL · ${selectedCity.uf}`
-              : selectedState
-                ? `UNIDADE DA FEDERAÇÃO · ${selectedState.region.toUpperCase()}`
-                : 'PANORAMA GEOGRÁFICO · 27 UFs'}
-          </span>
-          <h2>{selectedCity?.name || selectedState?.name || 'Brasil — distribuição regional'}</h2>
-          <p>
-            {props.selection.uf
-              ? !props.showStations
-                ? 'Camada de postos oculta. Clique em um município para inspecionar.'
-                : zoom < 8.8
-                  ? 'Círculos agrupam postos localizados; aproxime ou clique para individualizar.'
-                  : 'Cada ponto representa a mediana semanal de um posto localizado.'
-              : 'Passe o cursor sobre os estados ou clique em uma UF para abrir municípios e postos.'}
-          </p>
-        </div>
-      </div>
-
-      <div className="map-hud-top-right">
+      {/* Top-left floating scope bar */}
+      <div className="map-top-controls">
         {props.selection.uf && (
           <button
             type="button"
-            className={`map-station-toggle ${props.showStations ? 'active' : ''}`}
+            className="map-pill-btn"
+            onClick={() =>
+              props.selection.city
+                ? props.onSelect({ uf: props.selection.uf })
+                : props.onSelect({})
+            }
+          >
+            <ArrowLeft size={15} />
+            <span>{props.selection.city ? `Voltar para ${props.selection.uf}` : 'Visão Brasil'}</span>
+          </button>
+        )}
+
+        {props.selection.uf && (
+          <button
+            type="button"
+            className={`map-pill-btn ${props.showStations ? 'active' : ''}`}
             aria-pressed={props.showStations}
             onClick={props.onToggleStations}
           >
-            {props.showStations ? <Eye size={15} /> : <EyeOff size={15} />}
-            <span>
-              Postos ({count(props.activeStations.length)})
-            </span>
-          </button>
-        )}
-        <div className="map-compass" aria-hidden="true">
-          <Compass size={20} strokeWidth={1.5} />
-          <span>N</span>
-        </div>
-      </div>
-
-      {!ready && !problem && (
-        <div className="map-init-overlay" role="status">
-          <span className="spinner" />
-          <span>Carregando malha cartográfica IBGE…</span>
-        </div>
-      )}
-
-      {(loadingCities || props.loadingStations) && (
-        <div className="map-status-toast" role="status">
-          <span className="spinner" />
-          <span>
-            {loadingCities && props.loadingStations
-              ? 'Carregando malha municipal e postos…'
-              : loadingCities
-                ? 'Carregando malha municipal…'
-                : 'Carregando postos localizados…'}
-          </span>
-        </div>
-      )}
-
-      {problem && (
-        <div className="map-error-toast" role="alert">
-          <span>{problem}</span>
-          {ready && (
-            <button type="button" onClick={() => setRetry(v => v + 1)}>
-              Tentar novamente
-            </button>
-          )}
-        </div>
-      )}
-
-      {hover && (
-        <div
-          className="map-tooltip"
-          style={{
-            left: Math.min(hover.x + 18, Math.max(16, containerW - 268)),
-            top: Math.max(16, Math.min(hover.y - 84, containerH - 188)),
-          }}
-        >
-          <span className="eyebrow accent">{hover.eyebrow}</span>
-          <strong>{hover.name}</strong>
-          {hover.clusterCount !== undefined ? (
-            <p className="tooltip-meta">
-              Clique para expandir o agrupamento e inspecionar postos individuais.
-            </p>
-          ) : hover.row ? (
-            <>
-              <div className="tooltip-price-row">
-                <span className="tooltip-price">
-                  {money(hover.row.p)} <small>/ {unitLabel(props.unit)}</small>
-                </span>
-                {hoverDelta !== undefined && (
-                  <span
-                    className={`delta-chip ${hoverDelta > 0 ? 'up' : hoverDelta < 0 ? 'down' : ''}`}
-                  >
-                    {signedPercent(hoverDelta)} vs. {hover.referenceName}
-                  </span>
-                )}
-              </div>
-              <div className="tooltip-stats">
-                <span>
-                  {count(hover.row.n)} {hover.row.n === 1 ? 'posto' : 'postos'} ·{' '}
-                  {count(hover.row.c)} {hover.row.c === 1 ? 'coleta' : 'coletas'}
-                </span>
-                <span>
-                  Extremos: {money(hover.row.lo)} — {money(hover.row.hi)}
-                </span>
-                {hoverDelta === undefined && (
-                  <span className="tooltip-warn">Base insuficiente p/ comparação</span>
-                )}
-              </div>
-              <span className="tooltip-cta">Clique para selecionar →</span>
-            </>
-          ) : (
-            <p className="tooltip-meta">Sem coleta registrada neste combustível e semana.</p>
-          )}
-        </div>
-      )}
-
-      <div className="map-zoom-controls" role="group" aria-label="Controles de navegação do mapa">
-        <button
-          type="button"
-          title="Aproximar"
-          aria-label="Aproximar mapa"
-          onClick={() => mapRef.current?.zoomIn()}
-        >
-          <Plus size={17} />
-        </button>
-        <button
-          type="button"
-          title="Afastar"
-          aria-label="Afastar mapa"
-          onClick={() => mapRef.current?.zoomOut()}
-        >
-          <Minus size={17} />
-        </button>
-        <span className="divider" />
-        <button
-          type="button"
-          title="Enquadrar o Brasil"
-          aria-label="Voltar à visão nacional do Brasil"
-          onClick={() => {
-            props.onSelect({});
-            cameraSelectionRef.current = '';
-            mapRef.current?.fitBounds(
-              [
-                [-74.2, -34.0],
-                [-34.0, 5.5],
-              ],
-              { padding: 60, duration: 0 },
-            );
-          }}
-        >
-          <Crosshair size={17} />
-        </button>
-      </div>
-
-      <div className="map-legend-card" aria-label="Legenda cromática do mapa">
-        {hasCoverage ? (
-          <>
-            <div className="legend-head">
-              <span>
-                {props.metric === 'price'
-                  ? `Mediana semanal (R$/${unitLabel(props.unit)})`
-                  : `Desvio vs. ${props.selection.uf ? 'UF' : 'Brasil'} (±15%)`}
-              </span>
-              <span className="legend-nodata">
-                <i /> Sem coleta{props.metric === 'comparison' ? ' / s/ base' : ''}
-              </span>
-            </div>
-            <div
-              className={`legend-bar ${props.metric === 'comparison' ? 'diverging' : 'sequential'}`}
-            />
-            <div className="legend-ticks">
-              <b>
-                {props.metric === 'price'
-                  ? moneyCompact(props.range[0])
-                  : `≤ −15%`}
-              </b>
-              <span>
-                {props.metric === 'price'
-                  ? 'menor → maior'
-                  : '0% (em linha)'}
-              </span>
-              <b>
-                {props.metric === 'price'
-                  ? moneyCompact(props.range[1])
-                  : `≥ +15%`}
-              </b>
-            </div>
-          </>
-        ) : (
-          <span className="legend-empty">Nenhuma coleta registrada neste recorte.</span>
-        )}
-      </div>
-
-      <div className="map-provenance-card">
-        <div className="prov-row">
-          <span className="prov-dot poly" />
-          <span>
-            {props.selection.uf ? 'Municípios observados (IBGE)' : '27 Unidades da Federação (IBGE)'}
-          </span>
-        </div>
-        {props.selection.uf && props.showStations && (
-          <div className="prov-row">
-            <span className="prov-dot station" />
+            {props.showStations ? <Eye size={14} /> : <EyeOff size={14} />}
             <span>
               {props.loadingStations
                 ? 'Carregando postos…'
-                : props.stationError
-                  ? 'Cadastro de postos indisponível'
-                  : props.activeStations.length === 0
-                    ? 'Nenhum posto georreferenciado na semana'
-                    : `${count(props.activeStations.length)} ${props.activeStations.length === 1 ? 'posto' : 'postos'} com coleta e coordenada`}
+                : `Postos (${count(props.activeStations.length)})`}
             </span>
-          </div>
+          </button>
         )}
-        <small>
-          {props.selection.uf && props.activeStations.length > 0 && props.manifest.stationLayer
-            ? `Coordenadas: Cadastro ANP (${date(props.manifest.stationLayer.snapshotAt)}) · posição não validada`
-            : 'Fonte: Série Histórica ANP · Reconciliado no Microsoft Fabric'}
-        </small>
+
+        {(loadingCities || props.loadingStations) && (
+          <span className="map-loading-chip" role="status">
+            <span className="spinner-sm" /> Atualizando mapa…
+          </span>
+        )}
       </div>
+
+      {/* Compact Legend (Brasil view or low-zoom regional view) */}
+      {(!props.selection.uf || zoom < 10.2) && showChoroplethLegend && (
+        <aside className="wa-map-legend" aria-label="Legenda do mapa">
+          <div className="wa-legend-head">
+            <span>
+              <Layers size={13} />{' '}
+              {props.metric === 'comparison'
+                ? `Desvio vs. ${props.selection.uf ? props.selection.uf : 'Brasil'}`
+                : `Mediana (R$/${unitLabel(props.unit)})`}
+            </span>
+            <button
+              type="button"
+              className="legend-hide-btn"
+              aria-label="Ocultar legenda"
+              onClick={() => setShowChoroplethLegend(false)}
+            >
+              ×
+            </button>
+          </div>
+          <div className={`wa-legend-ramp ${props.metric}`} />
+          <div className="wa-legend-ticks">
+            {props.metric === 'comparison' ? (
+              <>
+                <span>−15%</span>
+                <span>0%</span>
+                <span>+15%</span>
+              </>
+            ) : (
+              <>
+                <span>{moneyCompact(props.range[0])}</span>
+                <span>{moneyCompact((props.range[0] + props.range[1]) / 2)}</span>
+                <span>{moneyCompact(props.range[1])}</span>
+              </>
+            )}
+          </div>
+          {props.selection.uf && (
+            <div className="wa-legend-pins">
+              <span>
+                <i className="dot-crimson" /> Menor preço
+              </span>
+              <span>
+                <i className="dot-purple" /> Agrupamento
+              </span>
+              <span>
+                <i className="dot-teal" /> Posto
+              </span>
+            </div>
+          )}
+        </aside>
+      )}
+
+      {!showChoroplethLegend && (!props.selection.uf || zoom < 10.2) && (
+        <button
+          type="button"
+          className="wa-legend-reopen"
+          onClick={() => setShowChoroplethLegend(true)}
+        >
+          <Layers size={14} /> Legenda
+        </button>
+      )}
+
+      {/* FuelWatch WA Bottom-Right Floating Zoom Pill + Recenter Target */}
+      <div className="wa-zoom-dock" aria-label="Controles de navegação do mapa">
+        <div className="wa-zoom-pill">
+          <button
+            type="button"
+            aria-label="Aproximar mapa"
+            title="Aproximar"
+            onClick={() => mapRef.current?.zoomIn()}
+          >
+            <Plus size={18} strokeWidth={2.3} />
+          </button>
+          <button
+            type="button"
+            aria-label="Afastar mapa"
+            title="Afastar"
+            onClick={() => mapRef.current?.zoomOut()}
+          >
+            <Minus size={18} strokeWidth={2.3} />
+          </button>
+        </div>
+        <button
+          type="button"
+          className="wa-locate-btn"
+          aria-label="Reenquadrar área selecionada"
+          title="Reenquadrar mapa"
+          onClick={handleRecenter}
+        >
+          <Crosshair size={18} strokeWidth={2.1} />
+        </button>
+      </div>
+
+      {/* Attribution */}
+      <div className="wa-map-attribution">
+        {hasStreetTiles ? (
+          <>
+            <a href="https://openfreemap.org" target="_blank" rel="noreferrer">
+              OpenFreeMap
+            </a>{' '}
+            · ©{' '}
+            <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">
+              OpenStreetMap
+            </a>{' '}
+            · Malha IBGE · Dados ANP
+          </>
+        ) : (
+          <>Malha oficial IBGE · Dados históricos ANP</>
+        )}
+      </div>
+
+      {/* Hover Tooltip */}
+      {hover && (
+        <div
+          className="wa-map-tooltip"
+          style={{
+            left: Math.min(
+              hover.x + 16,
+              (containerRef.current?.clientWidth || 500) - 255,
+            ),
+            top: Math.max(14, hover.y - 16),
+          }}
+        >
+          <span className="eyebrow">{hover.eyebrow}</span>
+          <strong>{hover.name}</strong>
+          {hover.clusterInfo ? (
+            <p className="tooltip-sub">
+              A partir de <b className="text-crimson">{money(hover.clusterInfo.minPrice)}</b>/
+              {unitLabel(props.unit)} · clique para aproximar
+            </p>
+          ) : hover.row ? (
+            <>
+              <div className="tooltip-price-line">
+                <b>
+                  {money(hover.row.p)}/{unitLabel(props.unit)}
+                </b>
+                {hoverDelta !== undefined && (
+                  <em className={hoverDelta < 0 ? 'down' : hoverDelta > 0 ? 'up' : ''}>
+                    {signedPercent(hoverDelta)} vs. {hover.referenceName}
+                  </em>
+                )}
+              </div>
+              <small>
+                {count(hover.row.n)} postos · {count(hover.row.c)} coletas
+              </small>
+            </>
+          ) : (
+            <p className="tooltip-sub">Sem coleta da ANP nesta semana</p>
+          )}
+        </div>
+      )}
+
+      {(problem || props.stationError) && (
+        <div className="map-error-toast" role="alert">
+          <p>
+            {problem ||
+              'Não foi possível abrir o arquivo de postos desta UF. Os dados estaduais e municipais seguem disponíveis.'}
+          </p>
+          <button
+            type="button"
+            className="wa-btn-secondary"
+            onClick={() => setRetry(v => v + 1)}
+          >
+            Tentar novamente
+          </button>
+        </div>
+      )}
     </div>
   );
 }

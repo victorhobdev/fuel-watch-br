@@ -21,6 +21,7 @@ type Props = {
   windowMode: ChartWindow;
   onWindowChange: (mode: ChartWindow) => void;
   onSelectWeek: (weekIndex: number) => void;
+  variant?: 'compact' | 'wide';
 };
 
 type Point = { w: number; x: number; y: number; row: Observation };
@@ -47,7 +48,9 @@ function buildContiguousAreaPaths(points: Point[], baselineY: number): string[] 
   return segments
     .filter(seg => seg.length >= 2)
     .map(seg => {
-      const top = seg.map((pt, i) => `${i === 0 ? 'M' : 'L'}${pt.x.toFixed(1)},${pt.y.toFixed(1)}`).join(' ');
+      const top = seg
+        .map((pt, i) => `${i === 0 ? 'M' : 'L'}${pt.x.toFixed(1)},${pt.y.toFixed(1)}`)
+        .join(' ');
       const last = seg[seg.length - 1];
       const first = seg[0];
       return `${top} L${last.x.toFixed(1)},${baselineY.toFixed(1)} L${first.x.toFixed(1)},${baselineY.toFixed(1)} Z`;
@@ -65,6 +68,7 @@ export default function TrendChart({
   windowMode,
   onWindowChange,
   onSelectWeek,
+  variant = 'compact',
 }: Props) {
   const gradientId = useId();
   const svgRef = useRef<SVGSVGElement>(null);
@@ -86,12 +90,12 @@ export default function TrendChart({
     [referenceRows, startW, endW],
   );
 
-  const width = 360;
-  const height = 138;
-  const padLeft = 52;
-  const padRight = 10;
-  const padTop = 12;
-  const padBottom = 24;
+  const width = variant === 'wide' ? 820 : 340;
+  const height = variant === 'wide' ? 270 : 148;
+  const padLeft = variant === 'wide' ? 62 : 52;
+  const padRight = variant === 'wide' ? 18 : 10;
+  const padTop = variant === 'wide' ? 16 : 12;
+  const padBottom = variant === 'wide' ? 30 : 24;
   const plotW = width - padLeft - padRight;
   const plotH = height - padTop - padBottom;
   const baselineY = padTop + plotH;
@@ -122,7 +126,7 @@ export default function TrendChart({
       primaryPoints: toPoints(visiblePrimary),
       refPoints: toPoints(visibleRef),
     };
-  }, [visiblePrimary, visibleRef, startW, endW, plotW, plotH]);
+  }, [visiblePrimary, visibleRef, startW, endW, plotW, plotH, padLeft, padTop]);
 
   const activeW = hoverWeek !== null ? hoverWeek : week;
   const activePrimary = useMemo(
@@ -157,15 +161,33 @@ export default function TrendChart({
   const midVal = (minVal + maxVal) / 2;
   const activeDelta =
     activePrimary && activeRef && activeRef.p > 0 && activePrimary.eligible !== false
-      ? ((activePrimary.p / activeRef.p) - 1) * 100
+      ? (activePrimary.p / activeRef.p - 1) * 100
       : undefined;
 
+  const yTicks =
+    variant === 'wide'
+      ? [
+          { y: padTop, val: maxVal },
+          { y: padTop + plotH * 0.25, val: minVal + (maxVal - minVal) * 0.75 },
+          { y: padTop + plotH * 0.5, val: midVal },
+          { y: padTop + plotH * 0.75, val: minVal + (maxVal - minVal) * 0.25 },
+          { y: baselineY, val: minVal },
+        ]
+      : [
+          { y: padTop, val: maxVal },
+          { y: padTop + plotH / 2, val: midVal },
+          { y: baselineY, val: minVal },
+        ];
+
   return (
-    <section className="chart-card" aria-label="Evolução semanal de preços">
+    <section
+      className={`chart-card ${variant === 'wide' ? 'chart-card-wide' : ''}`}
+      aria-label="Evolução semanal de preços"
+    >
       <div className="chart-header">
         <div>
-          <span className="eyebrow">SÉRIE HISTÓRICA</span>
-          <h3>Evolução semanal</h3>
+          <span className="eyebrow">HISTÓRICO SEMANAL</span>
+          <h3>{variant === 'wide' ? `Curva semanal · ${primaryLabel}` : 'Evolução de preços'}</h3>
         </div>
         <div className="segmented-mini" role="group" aria-label="Janela da série histórica">
           <button
@@ -188,7 +210,7 @@ export default function TrendChart({
       <div className="chart-readout" aria-live="polite">
         <span className="chart-readout-date">
           {weeks[activeW] ? date(weeks[activeW]) : '—'}
-          {hoverWeek !== null && hoverWeek !== week ? ' (clique p/ ir)' : ''}
+          {hoverWeek !== null && hoverWeek !== week ? ' · clique para fixar' : ''}
         </span>
         <span className="chart-readout-values">
           {activePrimary ? (
@@ -196,7 +218,9 @@ export default function TrendChart({
               <strong>
                 {money(activePrimary.p)}/{unitLabel(unit)}
               </strong>
-              <small>{count(activePrimary.n)} {activePrimary.n === 1 ? 'posto' : 'postos'}</small>
+              <small>
+                {count(activePrimary.c)} {activePrimary.c === 1 ? 'coleta' : 'coletas'}
+              </small>
               {activeDelta !== undefined && (
                 <em className={activeDelta > 0 ? 'up' : activeDelta < 0 ? 'down' : ''}>
                   {signedPercent(activeDelta)}
@@ -204,14 +228,14 @@ export default function TrendChart({
               )}
             </>
           ) : (
-            <span className="muted">Sem coleta nesta semana</span>
+            <span className="muted">Sem coleta na semana</span>
           )}
         </span>
       </div>
 
       {visiblePrimary.length < 2 ? (
         <div className="chart-empty">
-          Coletas insuficientes nesta janela para traçar a curva semanal. Ausências permanecem sem interpolação.
+          Coletas insuficientes nesta janela para traçar a curva semanal. Semanas sem pesquisa permanecem abertas sem interpolação.
         </div>
       ) : (
         <>
@@ -227,27 +251,23 @@ export default function TrendChart({
           >
             <defs>
               <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.26" />
-                <stop offset="100%" stopColor="#38bdf8" stopOpacity="0.0" />
+                <stop offset="0%" stopColor="#4B287D" stopOpacity="0.20" />
+                <stop offset="100%" stopColor="#4B287D" stopOpacity="0.01" />
               </linearGradient>
             </defs>
 
-            {[
-              { y: padTop, val: maxVal },
-              { y: padTop + plotH / 2, val: midVal },
-              { y: baselineY, val: minVal },
-            ].map((tick, idx) => (
+            {yTicks.map((tick, idx) => (
               <g key={idx}>
                 <line
                   x1={padLeft}
                   y1={tick.y}
                   x2={width - padRight}
                   y2={tick.y}
-                  stroke="#1e293b"
-                  strokeDasharray={idx === 2 ? undefined : '3 4'}
+                  stroke="#E2E8F0"
+                  strokeDasharray={idx === yTicks.length - 1 ? undefined : '3 4'}
                 />
                 <text
-                  x={padLeft - 6}
+                  x={padLeft - 7}
                   y={tick.y + 3.5}
                   textAnchor="end"
                   className="chart-axis-text"
@@ -263,9 +283,9 @@ export default function TrendChart({
                 y1={padTop}
                 x2={activeX}
                 y2={baselineY}
-                stroke={hoverWeek !== null ? '#94a3b8' : '#38bdf8'}
-                strokeWidth="1"
-                strokeDasharray="2 3"
+                stroke={hoverWeek !== null ? '#64748B' : '#00797B'}
+                strokeWidth="1.2"
+                strokeDasharray="3 3"
               />
             )}
 
@@ -277,8 +297,8 @@ export default function TrendChart({
               <path
                 d={buildGapSafeLinePath(refPoints)}
                 fill="none"
-                stroke="#64748b"
-                strokeWidth="1.5"
+                stroke="#00797B"
+                strokeWidth="1.6"
                 strokeDasharray="4 3"
               />
             )}
@@ -286,8 +306,8 @@ export default function TrendChart({
             <path
               d={buildGapSafeLinePath(primaryPoints)}
               fill="none"
-              stroke="#38bdf8"
-              strokeWidth="2.2"
+              stroke="#4B287D"
+              strokeWidth={variant === 'wide' ? '2.6' : '2.2'}
               strokeLinecap="round"
               strokeLinejoin="round"
             />
@@ -298,10 +318,10 @@ export default function TrendChart({
                   key={pt.w}
                   cx={pt.x}
                   cy={pt.y}
-                  r={pt.w === activeW ? 4.2 : 1.8}
-                  fill={pt.w === activeW ? '#f8fafc' : '#38bdf8'}
-                  stroke={pt.w === activeW ? '#0284c7' : 'none'}
-                  strokeWidth={pt.w === activeW ? 2 : 0}
+                  r={pt.w === activeW ? 4.5 : 2.1}
+                  fill={pt.w === activeW ? '#FFFFFF' : '#4B287D'}
+                  stroke={pt.w === activeW ? '#C8102E' : 'none'}
+                  strokeWidth={pt.w === activeW ? 2.4 : 0}
                 />
               ))}
 
@@ -309,19 +329,19 @@ export default function TrendChart({
               <circle
                 cx={activePoint.x}
                 cy={activePoint.y}
-                r={4.2}
-                fill="#f8fafc"
-                stroke="#0284c7"
-                strokeWidth={2}
+                r={4.6}
+                fill="#FFFFFF"
+                stroke="#C8102E"
+                strokeWidth={2.4}
               />
             )}
 
-            <text x={padLeft} y={height - 5} textAnchor="start" className="chart-axis-text">
+            <text x={padLeft} y={height - 6} textAnchor="start" className="chart-axis-text">
               {weeks[startW] ? date(weeks[startW], { month: 'short', year: '2-digit' }) : ''}
             </text>
             <text
               x={padLeft + plotW / 2}
-              y={height - 5}
+              y={height - 6}
               textAnchor="middle"
               className="chart-axis-text"
             >
@@ -329,7 +349,12 @@ export default function TrendChart({
                 ? date(weeks[Math.round((startW + endW) / 2)], { month: 'short', year: '2-digit' })
                 : ''}
             </text>
-            <text x={width - padRight} y={height - 5} textAnchor="end" className="chart-axis-text">
+            <text
+              x={width - padRight}
+              y={height - 6}
+              textAnchor="end"
+              className="chart-axis-text"
+            >
               {weeks[endW] ? date(weeks[endW], { month: 'short', year: '2-digit' }) : ''}
             </text>
           </svg>
