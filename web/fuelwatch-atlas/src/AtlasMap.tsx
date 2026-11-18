@@ -66,10 +66,8 @@ const BRASIL_BOUNDS: [[number, number], [number, number]] = [
   [-34.75, 5.28],
 ];
 
-const BRASIL_MAX_BOUNDS: [[number, number], [number, number]] = [
-  [-77.5, -36.8],
-  [-30.5, 8.2],
-];
+const MIN_MAP_ZOOM = 2.8;
+const MAX_MAP_ZOOM = 17.5;
 
 const BRASIL_FIT_PADDING = { top: 28, right: 38, bottom: 28, left: 24 };
 
@@ -328,9 +326,8 @@ export default function AtlasMap(props: Props) {
           attributionControl: false,
           bounds: BRASIL_BOUNDS,
           fitBoundsOptions: { padding: BRASIL_FIT_PADDING },
-          maxBounds: BRASIL_MAX_BOUNDS,
-          minZoom: 3.35,
-          maxZoom: 17.5,
+          minZoom: MIN_MAP_ZOOM,
+          maxZoom: MAX_MAP_ZOOM,
           maxPitch: 0,
           renderWorldCopies: false,
           style,
@@ -1246,6 +1243,7 @@ export default function AtlasMap(props: Props) {
             type="button"
             aria-label="Aproximar mapa"
             title="Aproximar"
+            disabled={zoom >= MAX_MAP_ZOOM - 0.05}
             onClick={() => mapRef.current?.zoomIn()}
           >
             <Plus size={18} strokeWidth={2.3} />
@@ -1254,6 +1252,7 @@ export default function AtlasMap(props: Props) {
             type="button"
             aria-label="Afastar mapa"
             title="Afastar"
+            disabled={zoom <= MIN_MAP_ZOOM + 0.05}
             onClick={() => mapRef.current?.zoomOut()}
           >
             <Minus size={18} strokeWidth={2.3} />

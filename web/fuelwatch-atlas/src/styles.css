@@ -1724,9 +1724,14 @@ button {
   border-top: 1px solid #e5e7eb;
 }
 
-.wa-zoom-pill button:hover {
+.wa-zoom-pill button:hover:not(:disabled) {
   background: var(--wa-subtle);
   color: var(--wa-purple);
+}
+
+.wa-zoom-pill button:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
 }
 
 .wa-locate-btn {
